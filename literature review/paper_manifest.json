@@ -1,0 +1,1623 @@
+[
+  {
+    "slug": "01_compressed_causal_reasoning",
+    "topic": "direct quantization and causality",
+    "arxiv_version": "2512.13725v2",
+    "landing_url": "https://arxiv.org/abs/2512.13725v2",
+    "pdf_url": "https://arxiv.org/pdf/2512.13725v2",
+    "resolved_pdf_url": "https://arxiv.org/pdf/2512.13725v2",
+    "metadata": {
+      "viewport": [
+        "width=device-width, initial-scale=1"
+      ],
+      "msapplication-TileColor": [
+        "#da532c"
+      ],
+      "theme-color": [
+        "#ffffff"
+      ],
+      "description": [
+        "Abstract page for arXiv paper 2512.13725v2: Compressed Causal Reasoning: Quantization and GraphRAG Effects on Interventional and Counterfactual Accuracy"
+      ],
+      "og:type": [
+        "website"
+      ],
+      "og:site_name": [
+        "arXiv.org"
+      ],
+      "og:title": [
+        "Compressed Causal Reasoning: Quantization and GraphRAG Effects on Interventional and Counterfactual Accuracy"
+      ],
+      "og:url": [
+        "https://arxiv.org/abs/2512.13725v2"
+      ],
+      "og:image": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:secure_url": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:width": [
+        "1200"
+      ],
+      "og:image:height": [
+        "700"
+      ],
+      "og:image:alt": [
+        "arXiv logo"
+      ],
+      "og:description": [
+        "Causal reasoning in Large Language Models spanning association, intervention, and counterfactual inference is essential for reliable decision making in high stakes settings. As deployment shifts toward edge and resource constrained environments, quantized models such as INT8 and NF4 are becoming standard. Yet the impact of precision reduction on formal causal reasoning is poorly understood. To our knowledge, this is the first study to systematically evaluate quantization effects across all three levels of Pearls Causal Ladder. Using a 3000 sample stratified CLadder benchmark, we find that rung level accuracy in Llama 3 8B remains broadly stable under quantization, with NF4 showing less than one percent overall degradation. Interventional queries at rung 2 are the most sensitive to precision loss, whereas counterfactual reasoning at rung 3 is comparatively stable but exhibits heterogeneous weaknesses across query types such as collider bias and backdoor adjustment. Experiments on the CRASS benchmark show near identical performance across precisions, indicating that existing commonsense counterfactual datasets lack the structural sensitivity needed to reveal quantization induced reasoning drift. We further evaluate Graph Retrieval Augmented Generation using ground truth causal graphs and observe a consistent improvement in NF4 interventional accuracy of plus 1.7 percent, partially offsetting compression related degradation. These results suggest that causal reasoning is unexpectedly robust to four bit quantization, graph structured augmentation can selectively reinforce interventional reasoning, and current counterfactual benchmarks fail to capture deeper causal brittleness. This work provides an initial empirical map of compressed causal reasoning and practical guidance for deploying efficient and structurally supported causal AI systems."
+      ],
+      "twitter:site": [
+        "@arxiv"
+      ],
+      "twitter:card": [
+        "summary"
+      ],
+      "twitter:title": [
+        "Compressed Causal Reasoning: Quantization and GraphRAG Effects on..."
+      ],
+      "twitter:description": [
+        "Causal reasoning in Large Language Models spanning association, intervention, and counterfactual inference is essential for reliable decision making in high stakes settings. As deployment shifts..."
+      ],
+      "twitter:image": [
+        "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+      ],
+      "twitter:image:alt": [
+        "arXiv logo"
+      ],
+      "citation_title": [
+        "Compressed Causal Reasoning: Quantization and GraphRAG Effects on Interventional and Counterfactual Accuracy"
+      ],
+      "citation_author": [
+        "Nwaiwu, Steve",
+        "Jongsawat, Nipat",
+        "Tungkasthan, Anucha"
+      ],
+      "citation_date": [
+        "2025/12/13"
+      ],
+      "citation_online_date": [
+        "2025/12/24"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2512.13725"
+      ],
+      "citation_arxiv_id": [
+        "2512.13725"
+      ],
+      "citation_abstract": [
+        "Causal reasoning in Large Language Models spanning association, intervention, and counterfactual inference is essential for reliable decision making in high stakes settings. As deployment shifts toward edge and resource constrained environments, quantized models such as INT8 and NF4 are becoming standard. Yet the impact of precision reduction on formal causal reasoning is poorly understood. To our knowledge, this is the first study to systematically evaluate quantization effects across all three levels of Pearls Causal Ladder. Using a 3000 sample stratified CLadder benchmark, we find that rung level accuracy in Llama 3 8B remains broadly stable under quantization, with NF4 showing less than one percent overall degradation. Interventional queries at rung 2 are the most sensitive to precision loss, whereas counterfactual reasoning at rung 3 is comparatively stable but exhibits heterogeneous weaknesses across query types such as collider bias and backdoor adjustment. Experiments on the CRASS benchmark show near identical performance across precisions, indicating that existing commonsense counterfactual datasets lack the structural sensitivity needed to reveal quantization induced reasoning drift. We further evaluate Graph Retrieval Augmented Generation using ground truth causal graphs and observe a consistent improvement in NF4 interventional accuracy of plus 1.7 percent, partially offsetting compression related degradation. These results suggest that causal reasoning is unexpectedly robust to four bit quantization, graph structured augmentation can selectively reinforce interventional reasoning, and current counterfactual benchmarks fail to capture deeper causal brittleness. This work provides an initial empirical map of compressed causal reasoning and practical guidance for deploying efficient and structurally supported causal AI systems."
+      ]
+    },
+    "pages": 13,
+    "bytes": 348973,
+    "sha256": "75029a59a3184169f93b26c388ad5fc8558cdf32af6ab0b4f9f2d6d27378fdb3",
+    "downloaded_on": "2026-10-28",
+    "pdf_file": "papers/01_compressed_causal_reasoning.pdf",
+    "summary_file": "summaires/01_compressed_causal_reasoning.md",
+    "review_date_note": "2025-12-13; downloaded revision: 2025-12-24 (v2)",
+    "publication_status": "arXiv preprint; peer-reviewed publication not verified",
+    "verification": "PDF parsed; full text extracted; source metadata and relevant sections inspected"
+  },
+  {
+    "slug": "02_quantization_inflates_reasoning",
+    "topic": "quantization and reasoning",
+    "arxiv_version": "2606.25519v2",
+    "landing_url": "https://arxiv.org/abs/2606.25519v2",
+    "pdf_url": "https://arxiv.org/pdf/2606.25519v2",
+    "resolved_pdf_url": "https://arxiv.org/pdf/2606.25519v2",
+    "metadata": {
+      "viewport": [
+        "width=device-width, initial-scale=1"
+      ],
+      "msapplication-TileColor": [
+        "#da532c"
+      ],
+      "theme-color": [
+        "#ffffff"
+      ],
+      "description": [
+        "Abstract page for arXiv paper 2606.25519v2: Quantization Inflates Reasoning: Token Inflation as a Hidden Cost of Low-Bit Reasoning Models"
+      ],
+      "og:type": [
+        "website"
+      ],
+      "og:site_name": [
+        "arXiv.org"
+      ],
+      "og:title": [
+        "Quantization Inflates Reasoning: Token Inflation as a Hidden Cost of Low-Bit Reasoning Models"
+      ],
+      "og:url": [
+        "https://arxiv.org/abs/2606.25519v2"
+      ],
+      "og:image": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:secure_url": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:width": [
+        "1200"
+      ],
+      "og:image:height": [
+        "700"
+      ],
+      "og:image:alt": [
+        "arXiv logo"
+      ],
+      "og:description": [
+        "Quantization is widely used to reduce the inference cost of large language models, but its effect on reasoning models is not fully captured by final-answer accuracy or per-token latency. We show that low-bit post-training quantization can introduce a hidden test-time compute cost: quantized reasoning models often generate longer chains of thought even when they still answer correctly. Across mathematical reasoning, code generation, scientific question answering, and agentic tool-use benchmarks, we find that INT4/INT3 quantization can preserve accuracy but increase reasoning-token usage, offsetting the expected per-token speedup. To measure this effect, we introduce the CoT Token Inflation Ratio, which compares reasoning length between quantized and full-precision models averaged across all evaluation benchmarks. We further show that token inflation is accompanied by behavioral changes in the reasoning trace, including more intermediate steps and greater semantic repetition. These changes translate into measurable end-to-end real-world serving penalties. Finally, we evaluate mitigation strategies and find that prompting and decoding-time sampling offer inconsistent accuracy-length trade-offs, while quantization-aware training shows more promise in reducing both accuracy degradation and token inflation. Our results suggest that reasoning-token usage should be reported alongside accuracy when evaluating quantized reasoning models."
+      ],
+      "twitter:site": [
+        "@arxiv"
+      ],
+      "twitter:card": [
+        "summary"
+      ],
+      "twitter:title": [
+        "Quantization Inflates Reasoning: Token Inflation as a Hidden Cost..."
+      ],
+      "twitter:description": [
+        "Quantization is widely used to reduce the inference cost of large language models, but its effect on reasoning models is not fully captured by final-answer accuracy or per-token latency. We show..."
+      ],
+      "twitter:image": [
+        "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+      ],
+      "twitter:image:alt": [
+        "arXiv logo"
+      ],
+      "citation_title": [
+        "Quantization Inflates Reasoning: Token Inflation as a Hidden Cost of Low-Bit Reasoning Models"
+      ],
+      "citation_author": [
+        "Lian, Xinyu",
+        "Krichene, Walid",
+        "Huang, Beichen",
+        "Tanaka, Masahiro",
+        "Ruwase, Olatunji",
+        "Zhang, Li",
+        "Zhang, Minjia"
+      ],
+      "citation_date": [
+        "2026/06/24"
+      ],
+      "citation_online_date": [
+        "2026/06/29"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2606.25519"
+      ],
+      "citation_arxiv_id": [
+        "2606.25519"
+      ],
+      "citation_abstract": [
+        "Quantization is widely used to reduce the inference cost of large language models, but its effect on reasoning models is not fully captured by final-answer accuracy or per-token latency. We show that low-bit post-training quantization can introduce a hidden test-time compute cost: quantized reasoning models often generate longer chains of thought even when they still answer correctly. Across mathematical reasoning, code generation, scientific question answering, and agentic tool-use benchmarks, we find that INT4/INT3 quantization can preserve accuracy but increase reasoning-token usage, offsetting the expected per-token speedup. To measure this effect, we introduce the CoT Token Inflation Ratio, which compares reasoning length between quantized and full-precision models averaged across all evaluation benchmarks. We further show that token inflation is accompanied by behavioral changes in the reasoning trace, including more intermediate steps and greater semantic repetition. These changes translate into measurable end-to-end real-world serving penalties. Finally, we evaluate mitigation strategies and find that prompting and decoding-time sampling offer inconsistent accuracy-length trade-offs, while quantization-aware training shows more promise in reducing both accuracy degradation and token inflation. Our results suggest that reasoning-token usage should be reported alongside accuracy when evaluating quantized reasoning models."
+      ]
+    },
+    "pages": 12,
+    "bytes": 1021997,
+    "sha256": "b57528ab3bc791bb7ead2d5ab7934b867afc380f878b00487e062248a0d10a80",
+    "downloaded_on": "2026-10-28",
+    "pdf_file": "papers/02_quantization_inflates_reasoning.pdf",
+    "summary_file": "summaires/02_quantization_inflates_reasoning.md",
+    "review_date_note": "2026-06-24; downloaded revision: 2026-06-29 (v2)",
+    "publication_status": "arXiv preprint; peer-reviewed publication not verified",
+    "verification": "PDF parsed; full text extracted; source metadata and relevant sections inspected"
+  },
+  {
+    "slug": "03_extreme_low_bit_inference",
+    "topic": "quantization and reasoning",
+    "arxiv_version": "2606.02011v1",
+    "landing_url": "https://arxiv.org/abs/2606.02011v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.02011v1",
+    "resolved_pdf_url": "https://arxiv.org/pdf/2606.02011v1",
+    "metadata": {
+      "viewport": [
+        "width=device-width, initial-scale=1"
+      ],
+      "msapplication-TileColor": [
+        "#da532c"
+      ],
+      "theme-color": [
+        "#ffffff"
+      ],
+      "description": [
+        "Abstract page for arXiv paper 2606.02011v1: Extreme Low-Bit Inference in Reasoning Models: Failure Modes and Targeted Recovery"
+      ],
+      "og:type": [
+        "website"
+      ],
+      "og:site_name": [
+        "arXiv.org"
+      ],
+      "og:title": [
+        "Extreme Low-Bit Inference in Reasoning Models: Failure Modes and Targeted Recovery"
+      ],
+      "og:url": [
+        "https://arxiv.org/abs/2606.02011v1"
+      ],
+      "og:image": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:secure_url": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:width": [
+        "1200"
+      ],
+      "og:image:height": [
+        "700"
+      ],
+      "og:image:alt": [
+        "arXiv logo"
+      ],
+      "og:description": [
+        "Large Reasoning Models (LRMs) rely on long reasoning traces, making inference expensive. While low-bit quantization reduces per-token decoding cost, we show that aggressive 2-bit inference can fail to deliver end-to-end speedup because instability in the generation process inflates total token count. Instead of merely lowering answer accuracy, 2-bit quantization often produces much longer traces with repetitive loops, budget exhaustion, delayed commitment, and unclosed reasoning segments. We analyze full reasoning traces of Qwen3 reasoning models across mathematical and commonsense benchmarks and show that accuracy degradation is tightly linked to these process-level failures. To address them, we introduce two lightweight controls: FP16 planning, which gives the 2-bit model a short high-precision outline, and loop rescue, which detects repetitive traces and either commits to an earlier answer or falls back to FP16. On MATH-500, loop rescue improves Qwen3-8B accuracy from 17.2% to 74.2%, while planning plus loop rescue improves Qwen3-32B from 65.0% to 87.2%. Overall, our results show that extreme low-bit reasoning becomes practical when its failures are treated as controllable generation pathologies: with lightweight detection and selective FP16 support, 2-bit inference can recover accuracy while preserving real end-to-end speed. Our code is available at: https://github.com/brain-lab-research/quantized-reasoning."
+      ],
+      "twitter:site": [
+        "@arxiv"
+      ],
+      "twitter:card": [
+        "summary"
+      ],
+      "twitter:title": [
+        "Extreme Low-Bit Inference in Reasoning Models: Failure Modes and..."
+      ],
+      "twitter:description": [
+        "Large Reasoning Models (LRMs) rely on long reasoning traces, making inference expensive. While low-bit quantization reduces per-token decoding cost, we show that aggressive 2-bit inference can..."
+      ],
+      "twitter:image": [
+        "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+      ],
+      "twitter:image:alt": [
+        "arXiv logo"
+      ],
+      "citation_title": [
+        "Extreme Low-Bit Inference in Reasoning Models: Failure Modes and Targeted Recovery"
+      ],
+      "citation_author": [
+        "Alimaskina, Ekaterina",
+        "Rudas, Darya",
+        "Shveykin, Denis",
+        "Molodtsov, Gleb",
+        "Vasiliev, Pavel",
+        "Beznosikov, Aleksandr"
+      ],
+      "citation_date": [
+        "2026/06/01"
+      ],
+      "citation_online_date": [
+        "2026/06/01"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2606.02011"
+      ],
+      "citation_arxiv_id": [
+        "2606.02011"
+      ],
+      "citation_abstract": [
+        "Large Reasoning Models (LRMs) rely on long reasoning traces, making inference expensive. While low-bit quantization reduces per-token decoding cost, we show that aggressive 2-bit inference can fail to deliver end-to-end speedup because instability in the generation process inflates total token count. Instead of merely lowering answer accuracy, 2-bit quantization often produces much longer traces with repetitive loops, budget exhaustion, delayed commitment, and unclosed reasoning segments. We analyze full reasoning traces of Qwen3 reasoning models across mathematical and commonsense benchmarks and show that accuracy degradation is tightly linked to these process-level failures. To address them, we introduce two lightweight controls: FP16 planning, which gives the 2-bit model a short high-precision outline, and loop rescue, which detects repetitive traces and either commits to an earlier answer or falls back to FP16. On MATH-500, loop rescue improves Qwen3-8B accuracy from 17.2% to 74.2%, while planning plus loop rescue improves Qwen3-32B from 65.0% to 87.2%. Overall, our results show that extreme low-bit reasoning becomes practical when its failures are treated as controllable generation pathologies: with lightweight detection and selective FP16 support, 2-bit inference can recover accuracy while preserving real end-to-end speed. Our code is available at: https://github.com/brain-lab-research/quantized-reasoning."
+      ]
+    },
+    "pages": 17,
+    "bytes": 1899176,
+    "sha256": "031045fc594842070f35b3884aefc37c33923af02a38bffdae606029c21d917b",
+    "downloaded_on": "2026-10-28",
+    "pdf_file": "papers/03_extreme_low_bit_inference.pdf",
+    "summary_file": "summaires/03_extreme_low_bit_inference.md",
+    "review_date_note": "2026-06-01 (v1)",
+    "publication_status": "arXiv preprint; peer-reviewed publication not verified",
+    "verification": "PDF parsed; full text extracted; source metadata and relevant sections inspected"
+  },
+  {
+    "slug": "04_reasoning_qat_systematic_study",
+    "topic": "quantization and recovery",
+    "arxiv_version": "2601.14888v1",
+    "landing_url": "https://arxiv.org/abs/2601.14888v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.14888v1",
+    "resolved_pdf_url": "https://arxiv.org/pdf/2601.14888v1",
+    "metadata": {
+      "viewport": [
+        "width=device-width, initial-scale=1"
+      ],
+      "msapplication-TileColor": [
+        "#da532c"
+      ],
+      "theme-color": [
+        "#ffffff"
+      ],
+      "description": [
+        "Abstract page for arXiv paper 2601.14888v1: What Makes Low-Bit Quantization-Aware Training Work for Reasoning LLMs? A Systematic Study"
+      ],
+      "og:type": [
+        "website"
+      ],
+      "og:site_name": [
+        "arXiv.org"
+      ],
+      "og:title": [
+        "What Makes Low-Bit Quantization-Aware Training Work for Reasoning LLMs? A Systematic Study"
+      ],
+      "og:url": [
+        "https://arxiv.org/abs/2601.14888v1"
+      ],
+      "og:image": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:secure_url": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:width": [
+        "1200"
+      ],
+      "og:image:height": [
+        "700"
+      ],
+      "og:image:alt": [
+        "arXiv logo"
+      ],
+      "og:description": [
+        "Reasoning models excel at complex tasks such as coding and mathematics, yet their inference is often slow and token-inefficient. To improve the inference efficiency, post-training quantization (PTQ) usually comes with the cost of large accuracy drops, especially for reasoning tasks under low-bit settings. In this study, we present a systematic empirical study of quantization-aware training (QAT) for reasoning models. Our key findings include: (1) Knowledge distillation is a robust objective for reasoning models trained via either supervised fine-tuning or reinforcement learning; (2) PTQ provides a strong initialization for QAT, improving accuracy while reducing training cost; (3) Reinforcement learning remains feasible for quantized models given a viable cold start and yields additional gains; and (4) Aligning the PTQ calibration domain with the QAT training domain accelerates convergence and often improves the final accuracy. Finally, we consolidate these findings into an optimized workflow (Reasoning-QAT), and show that it consistently outperforms state-of-the-art PTQ methods across multiple LLM backbones and reasoning datasets. For instance, on Qwen3-0.6B, it surpasses GPTQ by 44.53% on MATH-500 and consistently recovers performance in the 2-bit regime."
+      ],
+      "twitter:site": [
+        "@arxiv"
+      ],
+      "twitter:card": [
+        "summary"
+      ],
+      "twitter:title": [
+        "What Makes Low-Bit Quantization-Aware Training Work for Reasoning..."
+      ],
+      "twitter:description": [
+        "Reasoning models excel at complex tasks such as coding and mathematics, yet their inference is often slow and token-inefficient. To improve the inference efficiency, post-training quantization..."
+      ],
+      "twitter:image": [
+        "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+      ],
+      "twitter:image:alt": [
+        "arXiv logo"
+      ],
+      "citation_title": [
+        "What Makes Low-Bit Quantization-Aware Training Work for Reasoning LLMs? A Systematic Study"
+      ],
+      "citation_author": [
+        "Lv, Keyu",
+        "Zhang, Manyi",
+        "Xia, Xiaobo",
+        "Ni, Jingchen",
+        "Yan, Shannan",
+        "Yu, Xianzhi",
+        "Hou, Lu",
+        "Yuan, Chun",
+        "Bai, Haoli"
+      ],
+      "citation_date": [
+        "2026/01/21"
+      ],
+      "citation_online_date": [
+        "2026/01/21"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2601.14888"
+      ],
+      "citation_arxiv_id": [
+        "2601.14888"
+      ],
+      "citation_abstract": [
+        "Reasoning models excel at complex tasks such as coding and mathematics, yet their inference is often slow and token-inefficient. To improve the inference efficiency, post-training quantization (PTQ) usually comes with the cost of large accuracy drops, especially for reasoning tasks under low-bit settings. In this study, we present a systematic empirical study of quantization-aware training (QAT) for reasoning models. Our key findings include: (1) Knowledge distillation is a robust objective for reasoning models trained via either supervised fine-tuning or reinforcement learning; (2) PTQ provides a strong initialization for QAT, improving accuracy while reducing training cost; (3) Reinforcement learning remains feasible for quantized models given a viable cold start and yields additional gains; and (4) Aligning the PTQ calibration domain with the QAT training domain accelerates convergence and often improves the final accuracy. Finally, we consolidate these findings into an optimized workflow (Reasoning-QAT), and show that it consistently outperforms state-of-the-art PTQ methods across multiple LLM backbones and reasoning datasets. For instance, on Qwen3-0.6B, it surpasses GPTQ by 44.53% on MATH-500 and consistently recovers performance in the 2-bit regime."
+      ]
+    },
+    "pages": 14,
+    "bytes": 6938340,
+    "sha256": "1ce40355658f72e96a28c0a564459612cd99da51b8b3293d0eb5252457d78afe",
+    "downloaded_on": "2026-10-28",
+    "pdf_file": "papers/04_reasoning_qat_systematic_study.pdf",
+    "summary_file": "summaires/04_reasoning_qat_systematic_study.md",
+    "review_date_note": "2026-01-21 (v1)",
+    "publication_status": "arXiv preprint; peer-reviewed publication not verified",
+    "verification": "PDF parsed; full text extracted; source metadata and relevant sections inspected"
+  },
+  {
+    "slug": "05_quantization_hurts_reasoning",
+    "topic": "quantization and reasoning",
+    "arxiv_version": "2504.04823v2",
+    "landing_url": "https://arxiv.org/abs/2504.04823v2",
+    "pdf_url": "https://arxiv.org/pdf/2504.04823v2",
+    "resolved_pdf_url": "https://arxiv.org/pdf/2504.04823v2",
+    "metadata": {
+      "viewport": [
+        "width=device-width, initial-scale=1"
+      ],
+      "msapplication-TileColor": [
+        "#da532c"
+      ],
+      "theme-color": [
+        "#ffffff"
+      ],
+      "description": [
+        "Abstract page for arXiv paper 2504.04823v2: Quantization Hurts Reasoning? An Empirical Study on Quantized Reasoning Models"
+      ],
+      "og:type": [
+        "website"
+      ],
+      "og:site_name": [
+        "arXiv.org"
+      ],
+      "og:title": [
+        "Quantization Hurts Reasoning? An Empirical Study on Quantized Reasoning Models"
+      ],
+      "og:url": [
+        "https://arxiv.org/abs/2504.04823v2"
+      ],
+      "og:image": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:secure_url": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:width": [
+        "1200"
+      ],
+      "og:image:height": [
+        "700"
+      ],
+      "og:image:alt": [
+        "arXiv logo"
+      ],
+      "og:description": [
+        "Recent advancements in reasoning language models have demonstrated remarkable performance in complex tasks, but their extended chain-of-thought reasoning process increases inference overhead. While quantization has been widely adopted to reduce the inference cost of large language models, its impact on reasoning models remains understudied. In this paper, we conduct the first systematic study on quantized reasoning models, evaluating the open-sourced DeepSeek-R1-Distilled Qwen and LLaMA families ranging from 1.5B to 70B parameters, QwQ-32B, and Qwen3-8B. Our investigation covers weight, KV cache, and activation quantization using state-of-the-art algorithms at varying bit-widths, with extensive evaluation across mathematical (AIME, MATH-500), scientific (GPQA), and programming (LiveCodeBench) reasoning benchmarks. Our findings reveal that while lossless quantization can be achieved with W8A8 or W4A16 quantization, lower bit-widths introduce significant accuracy risks. We further identify model size, model origin, and task difficulty as critical determinants of performance. Contrary to expectations, quantized models do not exhibit increased output lengths. In addition, strategically scaling the model sizes or reasoning steps can effectively enhance the performance. All quantized models and codes are open-sourced in https://github.com/ruikangliu/Quantized-Reasoning-Models."
+      ],
+      "twitter:site": [
+        "@arxiv"
+      ],
+      "twitter:card": [
+        "summary"
+      ],
+      "twitter:title": [
+        "Quantization Hurts Reasoning? An Empirical Study on Quantized..."
+      ],
+      "twitter:description": [
+        "Recent advancements in reasoning language models have demonstrated remarkable performance in complex tasks, but their extended chain-of-thought reasoning process increases inference overhead...."
+      ],
+      "twitter:image": [
+        "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+      ],
+      "twitter:image:alt": [
+        "arXiv logo"
+      ],
+      "citation_title": [
+        "Quantization Hurts Reasoning? An Empirical Study on Quantized Reasoning Models"
+      ],
+      "citation_author": [
+        "Liu, Ruikang",
+        "Sun, Yuxuan",
+        "Zhang, Manyi",
+        "Bai, Haoli",
+        "Yu, Xianzhi",
+        "Yu, Tiezheng",
+        "Yuan, Chun",
+        "Hou, Lu"
+      ],
+      "citation_date": [
+        "2025/04/07"
+      ],
+      "citation_online_date": [
+        "2025/08/18"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2504.04823"
+      ],
+      "citation_arxiv_id": [
+        "2504.04823"
+      ],
+      "citation_abstract": [
+        "Recent advancements in reasoning language models have demonstrated remarkable performance in complex tasks, but their extended chain-of-thought reasoning process increases inference overhead. While quantization has been widely adopted to reduce the inference cost of large language models, its impact on reasoning models remains understudied. In this paper, we conduct the first systematic study on quantized reasoning models, evaluating the open-sourced DeepSeek-R1-Distilled Qwen and LLaMA families ranging from 1.5B to 70B parameters, QwQ-32B, and Qwen3-8B. Our investigation covers weight, KV cache, and activation quantization using state-of-the-art algorithms at varying bit-widths, with extensive evaluation across mathematical (AIME, MATH-500), scientific (GPQA), and programming (LiveCodeBench) reasoning benchmarks. Our findings reveal that while lossless quantization can be achieved with W8A8 or W4A16 quantization, lower bit-widths introduce significant accuracy risks. We further identify model size, model origin, and task difficulty as critical determinants of performance. Contrary to expectations, quantized models do not exhibit increased output lengths. In addition, strategically scaling the model sizes or reasoning steps can effectively enhance the performance. All quantized models and codes are open-sourced in https://github.com/ruikangliu/Quantized-Reasoning-Models."
+      ]
+    },
+    "pages": 25,
+    "bytes": 16977653,
+    "sha256": "e700f2a8b7a9c38071a95bc833f42741e92ef2db7c4616cd77e0b3c234b5448d",
+    "downloaded_on": "2026-10-28",
+    "pdf_file": "papers/05_quantization_hurts_reasoning.pdf",
+    "summary_file": "summaires/05_quantization_hurts_reasoning.md",
+    "review_date_note": "2025-04-07; downloaded revision: 2025-08-18 (v2)",
+    "publication_status": "COLM 2025; venue stated on arXiv and in the paper",
+    "verification": "PDF parsed; full text extracted; source metadata and relevant sections inspected"
+  },
+  {
+    "slug": "06_quantization_meets_reasoning",
+    "topic": "quantization and reasoning",
+    "arxiv_version": "2505.11574v4",
+    "landing_url": "https://arxiv.org/abs/2505.11574v4",
+    "pdf_url": "https://arxiv.org/pdf/2505.11574v4",
+    "resolved_pdf_url": "https://arxiv.org/pdf/2505.11574v4",
+    "metadata": {
+      "viewport": [
+        "width=device-width, initial-scale=1"
+      ],
+      "msapplication-TileColor": [
+        "#da532c"
+      ],
+      "theme-color": [
+        "#ffffff"
+      ],
+      "description": [
+        "Abstract page for arXiv paper 2505.11574v4: Quantization Meets Reasoning: Exploring and Mitigating Degradation of Low-Bit LLMs in Mathematical Reasoning"
+      ],
+      "og:type": [
+        "website"
+      ],
+      "og:site_name": [
+        "arXiv.org"
+      ],
+      "og:title": [
+        "Quantization Meets Reasoning: Exploring and Mitigating Degradation of Low-Bit LLMs in Mathematical Reasoning"
+      ],
+      "og:url": [
+        "https://arxiv.org/abs/2505.11574v4"
+      ],
+      "og:image": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:secure_url": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:width": [
+        "1200"
+      ],
+      "og:image:height": [
+        "700"
+      ],
+      "og:image:alt": [
+        "arXiv logo"
+      ],
+      "og:description": [
+        "Low-bit post-training quantization (PTQ) is a practical route to deploy reasoning-capable LLMs under tight memory and latency budgets, yet it can markedly impair mathematical reasoning (drops up to 69.81% in our harder settings). We address two deployment-critical questions with process-level precision: Where along a step-structured solution does degradation first arise? How to mitigate it while staying in the low-bit regime? Across widely used PTQ methods (AWQ, GPTQ, SmoothQuant), open-source model families (Qwen, LLaMA; 0.5--7B), and math reasoning benchmarks (GSM8K, MATH, AIME), we perform format-aligned chain-of-thought with step-aligned attribution and uncover two robust regularities: (i) PTQ disproportionately elevates method and execution errors relative to high-level conceptual mistakes; and (ii) failures emerge early, with the first vulnerable step flipping and cascading to the final answer. These regularities suggest a general intervention principle: restore local token-level margins exactly at the earliest failure frontier. We instantiate this principle as a lightweight measure$\\rightarrow$locate$\\rightarrow$restore loop that operates directly on the quantized model: detect the first faulty step, construct our \"Silver Bullet\" datasets, and apply small-scale supervised/preference tuning. In our settings, as few as 332 curated examples and 3--5 minutes of compute on a single GPU recover 4-bit weight math reasoning toward the full-precision baseline while preserving PTQ efficiency. Our framework is quantizer- and architecture-agnostic within the evaluated regimes, and turns low-bit degradation from a global accuracy problem into a local, reproducible process intervention."
+      ],
+      "twitter:site": [
+        "@arxiv"
+      ],
+      "twitter:card": [
+        "summary"
+      ],
+      "twitter:title": [
+        "Quantization Meets Reasoning: Exploring and Mitigating Degradation..."
+      ],
+      "twitter:description": [
+        "Low-bit post-training quantization (PTQ) is a practical route to deploy reasoning-capable LLMs under tight memory and latency budgets, yet it can markedly impair mathematical reasoning (drops up..."
+      ],
+      "twitter:image": [
+        "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+      ],
+      "twitter:image:alt": [
+        "arXiv logo"
+      ],
+      "citation_title": [
+        "Quantization Meets Reasoning: Exploring and Mitigating Degradation of Low-Bit LLMs in Mathematical Reasoning"
+      ],
+      "citation_author": [
+        "Li, Zhen",
+        "Su, Yupeng",
+        "Wang, Songmiao",
+        "Yang, Runming",
+        "Xie, Congkai",
+        "Liu, Aofan",
+        "Li, Ming",
+        "Cao, Jiannong",
+        "Xie, Yuan",
+        "Wong, Ngai",
+        "Yang, Hongxia"
+      ],
+      "citation_date": [
+        "2025/05/16"
+      ],
+      "citation_online_date": [
+        "2026/01/20"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2505.11574"
+      ],
+      "citation_arxiv_id": [
+        "2505.11574"
+      ],
+      "citation_abstract": [
+        "Low-bit post-training quantization (PTQ) is a practical route to deploy reasoning-capable LLMs under tight memory and latency budgets, yet it can markedly impair mathematical reasoning (drops up to 69.81% in our harder settings). We address two deployment-critical questions with process-level precision: Where along a step-structured solution does degradation first arise? How to mitigate it while staying in the low-bit regime? Across widely used PTQ methods (AWQ, GPTQ, SmoothQuant), open-source model families (Qwen, LLaMA; 0.5--7B), and math reasoning benchmarks (GSM8K, MATH, AIME), we perform format-aligned chain-of-thought with step-aligned attribution and uncover two robust regularities: (i) PTQ disproportionately elevates method and execution errors relative to high-level conceptual mistakes; and (ii) failures emerge early, with the first vulnerable step flipping and cascading to the final answer. These regularities suggest a general intervention principle: restore local token-level margins exactly at the earliest failure frontier. We instantiate this principle as a lightweight measure$\\rightarrow$locate$\\rightarrow$restore loop that operates directly on the quantized model: detect the first faulty step, construct our \"Silver Bullet\" datasets, and apply small-scale supervised/preference tuning. In our settings, as few as 332 curated examples and 3--5 minutes of compute on a single GPU recover 4-bit weight math reasoning toward the full-precision baseline while preserving PTQ efficiency. Our framework is quantizer- and architecture-agnostic within the evaluated regimes, and turns low-bit degradation from a global accuracy problem into a local, reproducible process intervention."
+      ]
+    },
+    "pages": 27,
+    "bytes": 677515,
+    "sha256": "990b726ac05e3605601aff0904cc2ac1ad8bdb8034fe27d75330fce11446c6d8",
+    "downloaded_on": "2026-10-28",
+    "pdf_file": "papers/06_quantization_meets_reasoning.pdf",
+    "summary_file": "summaires/06_quantization_meets_reasoning.md",
+    "review_date_note": "2025-05-16; downloaded revision: 2026-01-20 (v4)",
+    "publication_status": "arXiv preprint; peer-reviewed publication not verified",
+    "verification": "PDF parsed; full text extracted; source metadata and relevant sections inspected"
+  },
+  {
+    "slug": "07_when_reasoning_meets_compression",
+    "topic": "compression and mechanisms",
+    "arxiv_version": "2504.02010v3",
+    "landing_url": "https://arxiv.org/abs/2504.02010v3",
+    "pdf_url": "https://arxiv.org/pdf/2504.02010v3",
+    "resolved_pdf_url": "https://arxiv.org/pdf/2504.02010v3",
+    "metadata": {
+      "viewport": [
+        "width=device-width, initial-scale=1"
+      ],
+      "msapplication-TileColor": [
+        "#da532c"
+      ],
+      "theme-color": [
+        "#ffffff"
+      ],
+      "description": [
+        "Abstract page for arXiv paper 2504.02010v3: When Reasoning Meets Compression: Understanding the Effects of LLMs Compression on Large Reasoning Models"
+      ],
+      "og:type": [
+        "website"
+      ],
+      "og:site_name": [
+        "arXiv.org"
+      ],
+      "og:title": [
+        "When Reasoning Meets Compression: Understanding the Effects of LLMs Compression on Large Reasoning Models"
+      ],
+      "og:url": [
+        "https://arxiv.org/abs/2504.02010v3"
+      ],
+      "og:image": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:secure_url": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:width": [
+        "1200"
+      ],
+      "og:image:height": [
+        "700"
+      ],
+      "og:image:alt": [
+        "arXiv logo"
+      ],
+      "og:description": [
+        "Compression methods, including quantization, distillation, and pruning, improve the computational efficiency of large reasoning models (LRMs). However, existing studies either fail to sufficiently compare all three compression methods on LRMs or lack in-depth interpretation analysis. In this paper, we investigate how the reasoning capabilities of LRMs are compromised during compression, through performance benchmarking and mechanistic interpretation. To uncover the effects of compression on reasoning performance, we benchmark quantized, distilled, and pruned DeepSeek-R1 models on four reasoning datasets (AIME 2024, FOLIO, Temporal Sequences, and MuSiQue). To precisely locate compression effects on model weights, we adapt difference of means and attribution patching techniques, focusing on the activation of every linear component in compressed LRMs, to interpret fine-grained causal relationships between weights and various reasoning capabilities. This fine-grained interpretation addresses a fundamental question of compression: which weights are the most important for reasoning? Overall, we find dynamically quantized 2.51-bit R1 reaches close-to-R1 performance. With empirical verification, we present three main findings that generalize across both R1 and non-R1 LRMs: (1) Weight count has a greater impact on LRMs' knowledge memorization than reasoning, highlighting the risks of pruning and distillation; (2) The MLP up projection in the final layer of distilled LRMs is one of the most important components, offering a new perspective on locating critical weights - a fundamental problem in model compression; and (3) Current quantization methods overly compress the final-layer modules and MLP gate projections, so protecting just 2% of all weights that are excessively compressed can raise average accuracy by 6.57%, greatly surpassing the state-of-the-art."
+      ],
+      "twitter:site": [
+        "@arxiv"
+      ],
+      "twitter:card": [
+        "summary"
+      ],
+      "twitter:title": [
+        "When Reasoning Meets Compression: Understanding the Effects of..."
+      ],
+      "twitter:description": [
+        "Compression methods, including quantization, distillation, and pruning, improve the computational efficiency of large reasoning models (LRMs). However, existing studies either fail to sufficiently..."
+      ],
+      "twitter:image": [
+        "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+      ],
+      "twitter:image:alt": [
+        "arXiv logo"
+      ],
+      "citation_title": [
+        "When Reasoning Meets Compression: Understanding the Effects of LLMs Compression on Large Reasoning Models"
+      ],
+      "citation_author": [
+        "Zhang, Nan",
+        "Kwek, Eugene",
+        "Zhang, Yusen",
+        "Nguyen, Ngoc-Hieu",
+        "Mitra, Prasenjit",
+        "Zhang, Rui"
+      ],
+      "citation_date": [
+        "2025/04/02"
+      ],
+      "citation_online_date": [
+        "2026/03/02"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2504.02010"
+      ],
+      "citation_arxiv_id": [
+        "2504.02010"
+      ],
+      "citation_abstract": [
+        "Compression methods, including quantization, distillation, and pruning, improve the computational efficiency of large reasoning models (LRMs). However, existing studies either fail to sufficiently compare all three compression methods on LRMs or lack in-depth interpretation analysis. In this paper, we investigate how the reasoning capabilities of LRMs are compromised during compression, through performance benchmarking and mechanistic interpretation. To uncover the effects of compression on reasoning performance, we benchmark quantized, distilled, and pruned DeepSeek-R1 models on four reasoning datasets (AIME 2024, FOLIO, Temporal Sequences, and MuSiQue). To precisely locate compression effects on model weights, we adapt difference of means and attribution patching techniques, focusing on the activation of every linear component in compressed LRMs, to interpret fine-grained causal relationships between weights and various reasoning capabilities. This fine-grained interpretation addresses a fundamental question of compression: which weights are the most important for reasoning? Overall, we find dynamically quantized 2.51-bit R1 reaches close-to-R1 performance. With empirical verification, we present three main findings that generalize across both R1 and non-R1 LRMs: (1) Weight count has a greater impact on LRMs' knowledge memorization than reasoning, highlighting the risks of pruning and distillation; (2) The MLP up projection in the final layer of distilled LRMs is one of the most important components, offering a new perspective on locating critical weights - a fundamental problem in model compression; and (3) Current quantization methods overly compress the final-layer modules and MLP gate projections, so protecting just 2% of all weights that are excessively compressed can raise average accuracy by 6.57%, greatly surpassing the state-of-the-art."
+      ]
+    },
+    "pages": 27,
+    "bytes": 2047438,
+    "sha256": "cd48002570a07a61dc27fb33486b0b1b78d8f5509909faed84298001f2e25dcc",
+    "downloaded_on": "2026-10-28",
+    "pdf_file": "papers/07_when_reasoning_meets_compression.pdf",
+    "summary_file": "summaires/07_when_reasoning_meets_compression.md",
+    "review_date_note": "2025-04-02; downloaded revision: 2026-03-02 (v3)",
+    "publication_status": "ICLR 2026; stated in the downloaded paper",
+    "verification": "PDF parsed; full text extracted; source metadata and relevant sections inspected"
+  },
+  {
+    "slug": "08_causalflip",
+    "topic": "causal versus associative behavior",
+    "arxiv_version": "2602.20094v2",
+    "landing_url": "https://arxiv.org/abs/2602.20094v2",
+    "pdf_url": "https://arxiv.org/pdf/2602.20094v2",
+    "resolved_pdf_url": "https://arxiv.org/pdf/2602.20094v2",
+    "metadata": {
+      "viewport": [
+        "width=device-width, initial-scale=1"
+      ],
+      "msapplication-TileColor": [
+        "#da532c"
+      ],
+      "theme-color": [
+        "#ffffff"
+      ],
+      "description": [
+        "Abstract page for arXiv paper 2602.20094v2: CausalFlip: A Benchmark for LLM Causal Judgment Beyond Semantic Matching"
+      ],
+      "og:type": [
+        "website"
+      ],
+      "og:site_name": [
+        "arXiv.org"
+      ],
+      "og:title": [
+        "CausalFlip: A Benchmark for LLM Causal Judgment Beyond Semantic Matching"
+      ],
+      "og:url": [
+        "https://arxiv.org/abs/2602.20094v2"
+      ],
+      "og:image": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:secure_url": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:width": [
+        "1200"
+      ],
+      "og:image:height": [
+        "700"
+      ],
+      "og:image:alt": [
+        "arXiv logo"
+      ],
+      "og:description": [
+        "As large language models (LLMs) witness increasing deployment in complex, high-stakes decision-making scenarios, it becomes imperative to ground their reasoning in causality rather than spurious correlations. However, strong performance on traditional reasoning benchmarks does not guarantee true causal reasoning ability of LLMs, as high accuracy may still arise from memorizing semantic patterns instead of analyzing the underlying true causal structures. To bridge this critical gap, we propose a new causal reasoning benchmark, CausalFlip, designed to encourage the development of new LLM paradigm or training algorithms that ground LLM reasoning in causality rather than semantic correlation. CausalFlip consists of causal judgment questions built over event triples that could form different confounder, chain, and collider relations. Based on this, for each event triple, we construct pairs of semantically similar questions that reuse the same events but yield opposite causal answers, where models that rely heavily on semantic matching are systematically driven toward incorrect predictions. To further probe models' reliance on semantic patterns, we introduce a noisy-prefix evaluation that prepends causally irrelevant text before intermediate causal reasoning steps without altering the underlying causal relations or the logic of the reasoning process. We evaluate LLMs under multiple training paradigms, including answer-only training, explicit Chain-of-Thought (CoT) supervision, and a proposed internalized causal reasoning approach that aims to mitigate explicit reliance on correlation in the reasoning process. Our results show that explicit CoT can still be misled by spurious semantic correlations, where internalizing reasoning steps yields substantially improved causal grounding, suggesting that it is promising to better elicit the latent causal reasoning capabilities of base LLMs."
+      ],
+      "twitter:site": [
+        "@arxiv"
+      ],
+      "twitter:card": [
+        "summary"
+      ],
+      "twitter:title": [
+        "CausalFlip: A Benchmark for LLM Causal Judgment Beyond Semantic Matching"
+      ],
+      "twitter:description": [
+        "As large language models (LLMs) witness increasing deployment in complex, high-stakes decision-making scenarios, it becomes imperative to ground their reasoning in causality rather than spurious..."
+      ],
+      "twitter:image": [
+        "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+      ],
+      "twitter:image:alt": [
+        "arXiv logo"
+      ],
+      "citation_title": [
+        "CausalFlip: A Benchmark for LLM Causal Judgment Beyond Semantic Matching"
+      ],
+      "citation_author": [
+        "Wang, Yuzhe",
+        "Zhu, Yaochen",
+        "Li, Jundong"
+      ],
+      "citation_date": [
+        "2026/02/23"
+      ],
+      "citation_online_date": [
+        "2026/06/25"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2602.20094"
+      ],
+      "citation_arxiv_id": [
+        "2602.20094"
+      ],
+      "citation_abstract": [
+        "As large language models (LLMs) witness increasing deployment in complex, high-stakes decision-making scenarios, it becomes imperative to ground their reasoning in causality rather than spurious correlations. However, strong performance on traditional reasoning benchmarks does not guarantee true causal reasoning ability of LLMs, as high accuracy may still arise from memorizing semantic patterns instead of analyzing the underlying true causal structures. To bridge this critical gap, we propose a new causal reasoning benchmark, CausalFlip, designed to encourage the development of new LLM paradigm or training algorithms that ground LLM reasoning in causality rather than semantic correlation. CausalFlip consists of causal judgment questions built over event triples that could form different confounder, chain, and collider relations. Based on this, for each event triple, we construct pairs of semantically similar questions that reuse the same events but yield opposite causal answers, where models that rely heavily on semantic matching are systematically driven toward incorrect predictions. To further probe models' reliance on semantic patterns, we introduce a noisy-prefix evaluation that prepends causally irrelevant text before intermediate causal reasoning steps without altering the underlying causal relations or the logic of the reasoning process. We evaluate LLMs under multiple training paradigms, including answer-only training, explicit Chain-of-Thought (CoT) supervision, and a proposed internalized causal reasoning approach that aims to mitigate explicit reliance on correlation in the reasoning process. Our results show that explicit CoT can still be misled by spurious semantic correlations, where internalizing reasoning steps yields substantially improved causal grounding, suggesting that it is promising to better elicit the latent causal reasoning capabilities of base LLMs."
+      ]
+    },
+    "pages": 10,
+    "bytes": 951034,
+    "sha256": "102317dc4bbbe833ea9b7e56f4e211c13342e587824e8bb3d1455629fa41fbcd",
+    "downloaded_on": "2026-10-28",
+    "pdf_file": "papers/08_causalflip.pdf",
+    "summary_file": "summaires/08_causalflip.md",
+    "review_date_note": "2026-02-23; downloaded revision: 2026-06-25 (v2)",
+    "publication_status": "arXiv preprint; abstract page says under review",
+    "verification": "PDF parsed; full text extracted; source metadata and relevant sections inspected"
+  },
+  {
+    "slug": "09_causalab",
+    "topic": "interactive causal agents",
+    "arxiv_version": "2605.26029v2",
+    "landing_url": "https://arxiv.org/abs/2605.26029v2",
+    "pdf_url": "https://arxiv.org/pdf/2605.26029v2",
+    "resolved_pdf_url": "https://arxiv.org/pdf/2605.26029v2",
+    "metadata": {
+      "viewport": [
+        "width=device-width, initial-scale=1"
+      ],
+      "msapplication-TileColor": [
+        "#da532c"
+      ],
+      "theme-color": [
+        "#ffffff"
+      ],
+      "description": [
+        "Abstract page for arXiv paper 2605.26029v2: CausaLab: A Scalable Environment for Interactive Causal Discovery Toward AI Scientists"
+      ],
+      "og:type": [
+        "website"
+      ],
+      "og:site_name": [
+        "arXiv.org"
+      ],
+      "og:title": [
+        "CausaLab: A Scalable Environment for Interactive Causal Discovery Toward AI Scientists"
+      ],
+      "og:url": [
+        "https://arxiv.org/abs/2605.26029v2"
+      ],
+      "og:image": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:secure_url": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:width": [
+        "1200"
+      ],
+      "og:image:height": [
+        "700"
+      ],
+      "og:image:alt": [
+        "arXiv logo"
+      ],
+      "og:description": [
+        "We introduce CausaLab, a scalable environment for evaluating interactive causal discovery by LLM agents. Unlike prior evaluations, CausaLab evaluates both whether an agent can solve a problem using causal evidence and whether its answer is grounded in a faithful recovered causal mechanism. Each episode places an agent in a synthetic laboratory: it receives prior measurement records, intervenes on a manipulator crystal, and predicts the resonance frequency of a held-out reactor crystal governed by the same mechanism. The hidden data-generating process is a randomly sampled structural causal model (SCM), so success requires recovering both a causal graph and structural equations rather than recalling prior knowledge.\n  Experiments show a persistent gap between prediction and mechanism recovery: in the purely observational 6-node setting, GPT-5.2-high reaches 92% task accuracy but only 0.471 all-edge $F_1$. Mixed observation-intervention strategies improve structural fidelity, while pure intervention remains difficult even for strong agents. We identify premature stopping as a major weakness and show that consistency verification mitigates it. CausaLab therefore separates predictive success from causal understanding and exposes current LLM agents' limits as experimental causal reasoners."
+      ],
+      "twitter:site": [
+        "@arxiv"
+      ],
+      "twitter:card": [
+        "summary"
+      ],
+      "twitter:title": [
+        "CausaLab: A Scalable Environment for Interactive Causal Discovery..."
+      ],
+      "twitter:description": [
+        "We introduce CausaLab, a scalable environment for evaluating interactive causal discovery by LLM agents. Unlike prior evaluations, CausaLab evaluates both whether an agent can solve a problem..."
+      ],
+      "twitter:image": [
+        "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+      ],
+      "twitter:image:alt": [
+        "arXiv logo"
+      ],
+      "citation_title": [
+        "CausaLab: A Scalable Environment for Interactive Causal Discovery Toward AI Scientists"
+      ],
+      "citation_author": [
+        "Yang, Junlin",
+        "Zhang, Dylan",
+        "Song, Xiangchen",
+        "Dai, Qirun",
+        "Liu, Xiao",
+        "Chen, Yuen",
+        "Vashishtha, Aniket",
+        "Shi, Jing",
+        "Tan, Chenhao",
+        "Peng, Hao"
+      ],
+      "citation_date": [
+        "2026/05/25"
+      ],
+      "citation_online_date": [
+        "2026/05/28"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2605.26029"
+      ],
+      "citation_arxiv_id": [
+        "2605.26029"
+      ],
+      "citation_abstract": [
+        "We introduce CausaLab, a scalable environment for evaluating interactive causal discovery by LLM agents. Unlike prior evaluations, CausaLab evaluates both whether an agent can solve a problem using causal evidence and whether its answer is grounded in a faithful recovered causal mechanism. Each episode places an agent in a synthetic laboratory: it receives prior measurement records, intervenes on a manipulator crystal, and predicts the resonance frequency of a held-out reactor crystal governed by the same mechanism. The hidden data-generating process is a randomly sampled structural causal model (SCM), so success requires recovering both a causal graph and structural equations rather than recalling prior knowledge. Experiments show a persistent gap between prediction and mechanism recovery: in the purely observational 6-node setting, GPT-5.2-high reaches 92% task accuracy but only 0.471 all-edge $F_1$. Mixed observation-intervention strategies improve structural fidelity, while pure intervention remains difficult even for strong agents. We identify premature stopping as a major weakness and show that consistency verification mitigates it. CausaLab therefore separates predictive success from causal understanding and exposes current LLM agents' limits as experimental causal reasoners."
+      ]
+    },
+    "pages": 34,
+    "bytes": 1593948,
+    "sha256": "eb994abdd176dcf031e0626a24b3e44ef55d10d1b640ece9412804b9fe27c068",
+    "downloaded_on": "2026-10-28",
+    "pdf_file": "papers/09_causalab.pdf",
+    "summary_file": "summaires/09_causalab.md",
+    "review_date_note": "2026-05-25; downloaded revision: 2026-05-28 (v2)",
+    "publication_status": "arXiv preprint; peer-reviewed publication not verified",
+    "verification": "PDF parsed; full text extracted; source metadata and relevant sections inspected"
+  },
+  {
+    "slug": "10_active_causal_discovery_benchmark",
+    "topic": "interactive causal agents",
+    "arxiv_version": "2609.31675v1",
+    "landing_url": "https://arxiv.org/abs/2609.31675v1",
+    "pdf_url": "https://arxiv.org/pdf/2609.31675v1",
+    "resolved_pdf_url": "https://arxiv.org/pdf/2609.31675v1",
+    "metadata": {
+      "viewport": [
+        "width=device-width, initial-scale=1"
+      ],
+      "msapplication-TileColor": [
+        "#da532c"
+      ],
+      "theme-color": [
+        "#ffffff"
+      ],
+      "description": [
+        "Abstract page for arXiv paper 2609.31675v1: Active Causal Discovery Benchmark: Evaluating LLM Agents Under Budgeted Interventions"
+      ],
+      "og:type": [
+        "website"
+      ],
+      "og:site_name": [
+        "arXiv.org"
+      ],
+      "og:title": [
+        "Active Causal Discovery Benchmark: Evaluating LLM Agents Under Budgeted Interventions"
+      ],
+      "og:url": [
+        "https://arxiv.org/abs/2609.31675v1"
+      ],
+      "og:image": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:secure_url": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:width": [
+        "1200"
+      ],
+      "og:image:height": [
+        "700"
+      ],
+      "og:image:alt": [
+        "arXiv logo"
+      ],
+      "og:description": [
+        "We introduce the Active Causal Discovery Benchmark (ACDB), an SCM-grounded environment for evaluating whether LLM agents recover causal graph structure from observations and budget-constrained hard interventions. ACDB pairs a linear-Gaussian world generator with a fixed observe-intervene-submit API and a three-layer scoring contract that separates skeleton recovery, DAG recovery, and intervention efficiency. On the current six-level ladder, PC with a greedy active orientation heuristic is the strongest non-oracle method (directed F1 42.7%, SHD 4.79), ahead of Claude Sonnet 4.6 raw active (31.7%, 7.25) and GPT-5.4 raw active (22.9%, 9.27). The most informative diagnostic is the precision-recall decomposition: PC under-commits with high precision, LLMs over-commit with lower precision, and statistical-tool access often increases abstention rather than useful intervention. A structure-blind random DAG baseline reaches 23.6% directed F1 on this dense v0 ladder; a density probe lowers this floor to 16.9%, motivating the v1 calibration pass. The current results should therefore be read as a benchmark audit and calibration report, not as evidence that current LLMs solve active causal discovery."
+      ],
+      "twitter:site": [
+        "@arxiv"
+      ],
+      "twitter:card": [
+        "summary"
+      ],
+      "twitter:title": [
+        "Active Causal Discovery Benchmark: Evaluating LLM Agents Under..."
+      ],
+      "twitter:description": [
+        "We introduce the Active Causal Discovery Benchmark (ACDB), an SCM-grounded environment for evaluating whether LLM agents recover causal graph structure from observations and budget-constrained..."
+      ],
+      "twitter:image": [
+        "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+      ],
+      "twitter:image:alt": [
+        "arXiv logo"
+      ],
+      "citation_title": [
+        "Active Causal Discovery Benchmark: Evaluating LLM Agents Under Budgeted Interventions"
+      ],
+      "citation_author": [
+        "Deb, Sagar",
+        "Shah, Devam",
+        "Krishnan, Ashwanth"
+      ],
+      "citation_date": [
+        "2026/09/16"
+      ],
+      "citation_online_date": [
+        "2026/09/16"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2609.31675"
+      ],
+      "citation_arxiv_id": [
+        "2609.31675"
+      ],
+      "citation_abstract": [
+        "We introduce the Active Causal Discovery Benchmark (ACDB), an SCM-grounded environment for evaluating whether LLM agents recover causal graph structure from observations and budget-constrained hard interventions. ACDB pairs a linear-Gaussian world generator with a fixed observe-intervene-submit API and a three-layer scoring contract that separates skeleton recovery, DAG recovery, and intervention efficiency. On the current six-level ladder, PC with a greedy active orientation heuristic is the strongest non-oracle method (directed F1 42.7%, SHD 4.79), ahead of Claude Sonnet 4.6 raw active (31.7%, 7.25) and GPT-5.4 raw active (22.9%, 9.27). The most informative diagnostic is the precision-recall decomposition: PC under-commits with high precision, LLMs over-commit with lower precision, and statistical-tool access often increases abstention rather than useful intervention. A structure-blind random DAG baseline reaches 23.6% directed F1 on this dense v0 ladder; a density probe lowers this floor to 16.9%, motivating the v1 calibration pass. The current results should therefore be read as a benchmark audit and calibration report, not as evidence that current LLMs solve active causal discovery."
+      ]
+    },
+    "pages": 12,
+    "bytes": 378774,
+    "sha256": "0517f8df63362e49476b0b4947a8a447248ab58ae2f29ce31d38d2937b2e505e",
+    "downloaded_on": "2026-10-28",
+    "pdf_file": "papers/10_active_causal_discovery_benchmark.pdf",
+    "summary_file": "summaires/10_active_causal_discovery_benchmark.md",
+    "review_date_note": "2026-09-16 (v1)",
+    "publication_status": "arXiv preprint; explicitly a preliminary benchmark audit",
+    "verification": "PDF parsed; full text extracted; source metadata and relevant sections inspected"
+  },
+  {
+    "slug": "11_causalds",
+    "topic": "causal data-science agents",
+    "arxiv_version": "2607.08093v2",
+    "landing_url": "https://arxiv.org/abs/2607.08093v2",
+    "pdf_url": "https://arxiv.org/pdf/2607.08093v2",
+    "resolved_pdf_url": "https://arxiv.org/pdf/2607.08093v2",
+    "metadata": {
+      "viewport": [
+        "width=device-width, initial-scale=1"
+      ],
+      "msapplication-TileColor": [
+        "#da532c"
+      ],
+      "theme-color": [
+        "#ffffff"
+      ],
+      "description": [
+        "Abstract page for arXiv paper 2607.08093v2: CausalDS: Benchmarking Causal Reasoning in Data-Science Agents"
+      ],
+      "og:type": [
+        "website"
+      ],
+      "og:site_name": [
+        "arXiv.org"
+      ],
+      "og:title": [
+        "CausalDS: Benchmarking Causal Reasoning in Data-Science Agents"
+      ],
+      "og:url": [
+        "https://arxiv.org/abs/2607.08093v2"
+      ],
+      "og:image": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:secure_url": [
+        "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+      ],
+      "og:image:width": [
+        "1200"
+      ],
+      "og:image:height": [
+        "700"
+      ],
+      "og:image:alt": [
+        "arXiv logo"
+      ],
+      "og:description": [
+        "Large language models (LLMs) increasingly act as data-science agents, combining abstract reasoning with advanced tool use. Yet the relevant benchmark landscape largely divides into symbolic causal reasoning benchmarks without realistic data analysis or data analysis benchmarks without causal data-generating structure or a range of causal data science tasks. Existing causal evaluation datasets are often restricted to curated examples from existing sources, with diversity coming from limited templatized variations rather than from systematic generation of novel synthetic causal structures. We introduce CausalDS, a benchmark for evaluating causal reasoning in agentic data-science workflows. Each benchmark instance is a scene consisting of a sampled structural causal model (SCM) with generated observational data and an accompanying synthetic natural-language story grounded in a real domain. We ground the composition of the benchmark components in empirical distributions obtained from real-world datasets, thus retaining empirical structure while reducing the memorization risk through completely synthetic generation. From each scene, we then derive tasks spanning all three of Pearl's rungs. Most tasks include a data science coding component, where the model typically needs to use several tools to arrive at the final answer due to imperfect observations. Abstention is tested directly: for targets the graph does not identify, the graded answer is to abstain. The benchmark thus jointly evaluates symbolic causal reasoning, data science, uncertainty quantification, abstention, and tool use/coding. Because the generator is fully synthetic, the exam is not a fixed dataset: composition, difficulty, and size are parameters, and fresh exams can be drawn at will."
+      ],
+      "twitter:site": [
+        "@arxiv"
+      ],
+      "twitter:card": [
+        "summary"
+      ],
+      "twitter:title": [
+        "CausalDS: Benchmarking Causal Reasoning in Data-Science Agents"
+      ],
+      "twitter:description": [
+        "Large language models (LLMs) increasingly act as data-science agents, combining abstract reasoning with advanced tool use. Yet the relevant benchmark landscape largely divides into symbolic causal..."
+      ],
+      "twitter:image": [
+        "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+      ],
+      "twitter:image:alt": [
+        "arXiv logo"
+      ],
+      "citation_title": [
+        "CausalDS: Benchmarking Causal Reasoning in Data-Science Agents"
+      ],
+      "citation_author": [
+        "Leban, Andrej",
+        "Saarinen, Theo",
+        "Sun, Yuekai"
+      ],
+      "citation_date": [
+        "2026/07/09"
+      ],
+      "citation_online_date": [
+        "2026/10/14"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2607.08093"
+      ],
+      "citation_arxiv_id": [
+        "2607.08093"
+      ],
+      "citation_abstract": [
+        "Large language models (LLMs) increasingly act as data-science agents, combining abstract reasoning with advanced tool use. Yet the relevant benchmark landscape largely divides into symbolic causal reasoning benchmarks without realistic data analysis or data analysis benchmarks without causal data-generating structure or a range of causal data science tasks. Existing causal evaluation datasets are often restricted to curated examples from existing sources, with diversity coming from limited templatized variations rather than from systematic generation of novel synthetic causal structures. We introduce CausalDS, a benchmark for evaluating causal reasoning in agentic data-science workflows. Each benchmark instance is a scene consisting of a sampled structural causal model (SCM) with generated observational data and an accompanying synthetic natural-language story grounded in a real domain. We ground the composition of the benchmark components in empirical distributions obtained from real-world datasets, thus retaining empirical structure while reducing the memorization risk through completely synthetic generation. From each scene, we then derive tasks spanning all three of Pearl's rungs. Most tasks include a data science coding component, where the model typically needs to use several tools to arrive at the final answer due to imperfect observations. Abstention is tested directly: for targets the graph does not identify, the graded answer is to abstain. The benchmark thus jointly evaluates symbolic causal reasoning, data science, uncertainty quantification, abstention, and tool use/coding. Because the generator is fully synthetic, the exam is not a fixed dataset: composition, difficulty, and size are parameters, and fresh exams can be drawn at will."
+      ]
+    },
+    "pages": 74,
+    "bytes": 1059607,
+    "sha256": "83b730efff2ed3a1268d3cc04f995bba688ba9c46ad5b5b7e55e4ed287ec3063",
+    "downloaded_on": "2026-10-28",
+    "pdf_file": "papers/11_causalds.pdf",
+    "summary_file": "summaires/11_causalds.md",
+    "review_date_note": "2026-07-09; downloaded revision: 2026-10-14 (v2)",
+    "publication_status": "arXiv preprint; peer-reviewed publication not verified",
+    "verification": "PDF parsed; full text extracted; source metadata and relevant sections inspected"
+  },
+  {
+    "slug": "12_prism",
+    "topic": "recall versus context and mechanisms",
+    "arxiv_version": null,
+    "landing_url": "https://link.springer.com/article/10.1007/s10791-026-10580-5",
+    "pdf_url": "https://link.springer.com/content/pdf/10.1007/s10791-026-10580-5.pdf",
+    "resolved_pdf_url": "https://link.springer.com/content/pdf/10.1007/s10791-026-10580-5.pdf?error=cookies_not_supported&code=033f52aa-57b7-4ad5-b000-cb9080e602f7",
+    "metadata": {
+      "": [
+        "",
+        "IE=edge",
+        "1",
+        "2",
+        "3"
+      ],
+      "applicable-device": [
+        "pc,mobile"
+      ],
+      "viewport": [
+        "width=device-width, initial-scale=1"
+      ],
+      "robots": [
+        "max-image-preview:large"
+      ],
+      "access": [
+        "Yes"
+      ],
+      "360-site-verification": [
+        "1268d79b5e96aecf3ff2a7dac04ad990"
+      ],
+      "twitter:site": [
+        "@SpringerLink"
+      ],
+      "twitter:card": [
+        "summary_large_image"
+      ],
+      "twitter:image:alt": [
+        "Content cover image"
+      ],
+      "twitter:title": [
+        "PRISM a diagnostic framework for parametric recall degradation in quantized large language models"
+      ],
+      "twitter:description": [
+        "Discover Computing - Post-training quantization (PTQ) is the standard method for deploying large language models (LLMs), though it is widely assumed to degrade model quality uniformly. Although,..."
+      ],
+      "twitter:image": [
+        "https://media.springernature.com/m685/springer-static/image/art%3A10.1007%2Fs10791-026-10580-5/MediaObjects/10791_2026_10580_Fig1_HTML.png"
+      ],
+      "journal_id": [
+        "10791"
+      ],
+      "dc.title": [
+        "PRISM a diagnostic framework for parametric recall degradation in quantized large language models"
+      ],
+      "dc.source": [
+        "Discover Computing 2026 29:1"
+      ],
+      "dc.format": [
+        "text/html"
+      ],
+      "dc.publisher": [
+        "Springer"
+      ],
+      "dc.date": [
+        "2026-10-06"
+      ],
+      "dc.type": [
+        "OriginalPaper"
+      ],
+      "dc.language": [
+        "En"
+      ],
+      "dc.copyright": [
+        "2026 The Author(s)"
+      ],
+      "dc.rights": [
+        "2026 The Author(s)"
+      ],
+      "dc.rightsAgent": [
+        "journalpermissions@springernature.com"
+      ],
+      "dc.description": [
+        "Post-training quantization (PTQ) is the standard method for deploying large language models (LLMs), though it is widely assumed to degrade model quality uniformly. Although, this assumption masks how quantization uniquely affects different mechanisms, particularly the balance between a model’s internal parametric memory and its ability to utilize external context. Existing benchmarks primarily measure overall accuracy, failing to isolate these specific sources of knowledge degradation when bit-rates are reduced. To address this, we introduce PRISM (Precision-Resolved Inspection of Stored Memory), an efficient diagnostic framework that separates and measures these distinct capabilities on a single 8GB consumer GPU. PRISM isolates these effects by leveraging counterfactual knowledge-conflict probes, component-wise mixed-precision quantization, and leak-free comprehension probes. We evaluate this framework across multiple model families (Qwen2.5, Llama-3.2, Gemma-2) and diverse quantization schemes (round-to-nearest, NF4, GGUF, GPTQ). Our results demonstrate that open-ended parametric recall collapses under low-bit PTQ while verbatim copy-from-context remains robust; furthermore, component-wise probing reveals that MLP/FFN quantization drives this recall collapse far more than attention layers. Ultimately, these insights reveal that while closed-book benchmarks overstate quantization harm for simple retrieval tasks, complex multi-hop reasoning remains vulnerable, providing crucial nuance for deploying compressed LLMs. Clinical trial Not applicable."
+      ],
+      "prism.issn": [
+        "2948-2992"
+      ],
+      "prism.publicationName": [
+        "Discover Computing"
+      ],
+      "prism.publicationDate": [
+        "2026-10-06"
+      ],
+      "prism.volume": [
+        "29"
+      ],
+      "prism.number": [
+        "1"
+      ],
+      "prism.section": [
+        "OriginalPaper"
+      ],
+      "prism.startingPage": [
+        "700"
+      ],
+      "prism.endingPage": [
+        ""
+      ],
+      "prism.copyright": [
+        "2026 The Author(s)"
+      ],
+      "prism.rightsAgent": [
+        "journalpermissions@springernature.com"
+      ],
+      "prism.url": [
+        "https://link.springer.com/article/10.1007/s10791-026-10580-5"
+      ],
+      "prism.doi": [
+        "doi:10.1007/s10791-026-10580-5"
+      ],
+      "citation_pdf_url": [
+        "https://link.springer.com/content/pdf/10.1007/s10791-026-10580-5.pdf"
+      ],
+      "citation_fulltext_html_url": [
+        "https://link.springer.com/article/10.1007/s10791-026-10580-5"
+      ],
+      "citation_journal_title": [
+        "Discover Computing"
+      ],
+      "citation_journal_abbrev": [
+        "Discov Computing"
+      ],
+      "citation_publisher": [
+        "Springer Netherlands"
+      ],
+      "citation_issn": [
+        "2948-2992"
+      ],
+      "citation_title": [
+        "PRISM a diagnostic framework for parametric recall degradation in quantized large language models"
+      ],
+      "citation_volume": [
+        "29"
+      ],
+      "citation_issue": [
+        "1"
+      ],
+      "citation_publication_date": [
+        "2026/12"
+      ],
+      "citation_online_date": [
+        "2026/10/06"
+      ],
+      "citation_firstpage": [
+        "700"
+      ],
+      "citation_lastpage": [
+        ""
+      ],
+      "citation_article_type": [
+        "Research"
+      ],
+      "citation_fulltext_world_readable": [
+        ""
+      ],
+      "citation_language": [
+        "en"
+      ],
+      "dc.identifier": [
+        "doi:10.1007/s10791-026-10580-5"
+      ],
+      "DOI": [
+        "10.1007/s10791-026-10580-5"
+      ],
+      "size": [
+        "421146"
+      ],
+      "citation_doi": [
+        "10.1007/s10791-026-10580-5"
+      ],
+      "citation_springer_api_url": [
+        "http://api.springer.com/xmldata/jats?q=doi:10.1007/s10791-026-10580-5&api_key="
+      ],
+      "description": [
+        "Post-training quantization (PTQ) is the standard method for deploying large language models (LLMs), though it is widely assumed to degrade model quality un"
+      ],
+      "dc.creator": [
+        "Vaish, Swastik",
+        "Gautam, Arpit Singh",
+        "Tiwari, Varun",
+        "Yadav, Jitendra Singh"
+      ],
+      "dc.subject": [
+        "Information Storage and Retrieval",
+        "Natural Language Processing (NLP)",
+        "Data Mining and Knowledge Discovery",
+        "Data Structures and Information Theory",
+        "Pattern Recognition"
+      ],
+      "citation_reference": [
+        "Frantar E, Ashkboos S, Hoefler T, Alistarh D. GPTQ: accurate post-training quantization for generative pre-trained transformers. arXiv preprint arXiv:2210.17323. 2022.",
+        "Liu Z, Zhao C, Huang H, Chen S, Zhang J, Zhao J, et al. ParetoQ: scaling laws in extremely low-bit LLM quantization. arXiv preprint arXiv:2502. 2025.",
+        "Ouyang X, Ge T, Hartvigsen T, Zhang Z, Mi H, Yu D. Low-bit quantization favors undertrained LLMs: scaling laws for quantized LLMs with 100T training tokens. arXiv preprint arXiv:2411.17691. 2024.",
+        "citation_journal_title=Adv Neural Inf Process Syst; citation_title=Retrieval-augmented generation for knowledge-intensive nlp tasks; citation_author=P Lewis, E Perez, A Piktus, F Petroni, V Karpukhin, N Goyal; citation_volume=33; citation_publication_date=2020; citation_pages=9459-74; citation_id=CR4",
+        "Guu K, Lee K, Tung Z, Pasupat P, Chang M. Retrieval augmented language model pre-training. In: Proceedings of the International Conference on Machine Learning. 2020. p. 3929–3938.",
+        "Karpukhin V, Oguz B, Min S, Lewis P, Wu L, Edunov S, et al. Dense passage retrieval for open-domain question answering. In: Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP). 2020. p. 6769–6781.",
+        "citation_journal_title=J Mach Learn Res; citation_title=Atlas: few-shot learning with retrieval augmented language models; citation_author=G Izacard, P Lewis, M Lomeli, L Hosseini, F Petroni, T Schick; citation_volume=24; citation_issue=251; citation_publication_date=2023; citation_pages=1-43; citation_id=CR7",
+        "Asai A, Wu Z, Wang Y, Sil A, Hajishirzi H. Self-RAG: learning to retrieve, generate, and critique through self-reflection. International Conference on Learning Representations. 2024, 2024. p. 9112–9141.",
+        "Gao Y, Xiong Y, Gao X, Jia K, Pan J, Bi Y, et al. Retrieval-augmented generation for large language models: a survey. arXiv preprint arXiv:2312.10997 2023;2(1):32.",
+        "Jin T, Clement N, Dong X, Nagarajan V, Carbin M, Ragan-Kelley J, et al. The cost of down-scaling language models: fact recall deteriorates before in-context learning. arXiv preprint arXiv:2310.04680. 2023.",
+        "Wang Q, Wang M, Feldhus N, Ostermann S, Cao Y, Schütze H, et al. Through a compressed lens: investigating the impact of quantization on factual knowledge recall. arXiv preprint arXiv:2505.13963. 2025.",
+        "Geva M, Schuster R, Berant J, Levy O. Transformer feed-forward layers are key-value memories. In: Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing. 2021, pp. 5484–95.",
+        "citation_journal_title=Adv Neural Inf Process Syst; citation_title=Locating and editing factual associations in gpt; citation_author=K Meng, D Bau, A Andonian, Y Belinkov; citation_volume=35; citation_publication_date=2022; citation_pages=17359-72; citation_doi=10.52202/068431-1262; citation_id=CR13",
+        "Lin J, Tang J, Tang H, Yang S, Chen W-M, Wang W-C, et al. Awq: activation-aware weight quantization for on-device llm compression and acceleration. In: Proceedings of machine learning and systems. 2024, pp. 87–100, vol. 6.",
+        "Xiao G, Lin J, Seznec M, Wu H, Demouth J, Han S. Smoothquant: accurate and efficient post-training quantization for large language models. International Conference on Machine Learning. PMLR; 2023, pp. 38087–99.",
+        "citation_journal_title=Adv Neural Inf Process Syst; citation_title=Qlora: efficient finetuning of quantized llms; citation_author=T Dettmers, A Pagnoni, A Holtzman, L Zettlemoyer; citation_volume=36; citation_publication_date=2023; citation_pages=10088-115; citation_doi=10.52202/075280-0441; citation_id=CR16",
+        "Li S, Ning X, Wang L, Liu T, Shi X, Yan S, et al. Evaluating quantized large language models. arXiv preprint arXiv:2402.18158. 2024.",
+        "Dai D, Dong L, Hao Y, Sui Z, Chang B, Wei F. Knowledge neurons in pretrained transformers. In: Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers). 2022, pp. 8493–502.",
+        "Longpre S, Perisetla K, Chen A, Ramesh N, DuBois C, Singh S. Entity-based knowledge conflicts in question answering. In: Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing. 2021, pp. 7052–63.",
+        "Xie J, Zhang K, Chen J, Lou R, Su Y. Adaptive chameleon or stubborn sloth: revealing the behavior of large language models in knowledge conflicts. International Conference on Learning Representations. 2024, pp. 35623–46, vol. 2024.",
+        "Neeman E, Aharoni R, Honovich O, Choshen L, Szpektor I, Abend O. Disentqa: disentangling parametric and contextual knowledge with counterfactual question answering. In: Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers). 2023, pp. 10056–70.",
+        "Gholami A, Kim S, Dong Z, Yao Z, Mahoney MW, Keutzer K. A survey of quantization methods for efficient neural network inference. In: Low-power computer vision. Chapman and Hall/CRC, ???; 2022. p. 291–326.",
+        "citation_journal_title=Adv Neural Inf Process Syst; citation_title=Gpt3. int8 (): 8-bit matrix multiplication for transformers at scale; citation_author=T Dettmers, M Lewis, Y Belkada, L Zettlemoyer; citation_volume=35; citation_publication_date=2022; citation_pages=30318-32; citation_doi=10.52202/068431-2198; citation_id=CR23",
+        "Egiazarian V, Panferov A, Kuznedelev D, Frantar E, Babenko A, Alistarh D. Extreme compression of large language models via additive quantization. arXiv preprint arXiv:2401.06118. 2024.",
+        "citation_journal_title=Adv Neural Inf Process Syst; citation_title=Quip: 2-bit quantization of large language models with guarantees; citation_author=J Chee, Y Cai, V Kuleshov, CM De Sa; citation_volume=36; citation_publication_date=2023; citation_pages=4396-429; citation_doi=10.52202/075280-0196; citation_id=CR25",
+        "Dettmers T, Svirschevski R, Egiazarian V, Kuznedelev D, Frantar E, Ashkboos S, et al. Spqr: a sparse-quantized representation for near-lossless llm weight compression. arXiv preprint arXiv:2306.03078 (2023.",
+        "Shao W, Chen M, Zhang Z, Xu P, Zhao L, Li Z, et al. Omniquant: omnidirectionally calibrated quantization for large language models. International Conference on Learning Representations. 2024, pp. 45472–96, vol. 2024.",
+        "Kumar T, Ankner Z, Spector B, Bordelon B, Muennighoff N, Paul M, et al. Scaling laws for precision. International Conference on Learning Representations. 2025, pp. 71833–64, vol. 2025.",
+        "Liu P, Liu Z, Gao Z-F, Gao D, Zhao WX, Li Y, et al. Do emergent abilities exist in quantized large language models: An empirical study. In: Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024). 2024, pp. 5174–90.",
+        "Li Z, Su Y, Yang R, Xie C, Wang Z, Xie Z, et al. Quantization meets reasoning: exploring llm low-bit quantization degradation for mathematical reasoning. arXiv preprint arXiv:2501.03035. 2025.",
+        "Yazan M, Verberne S, Situmeang F. The impact of quantization on retrieval-augmented generation: an analysis of small llms. arXiv preprint arXiv:2406.10251. 2024.",
+        "Xu R, Qi Z, Guo Z, Wang C, Wang H, Zhang Y, et al. Knowledge conflicts for llms: a survey. In: Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing. 2024, pp. 8541–65.",
+        "Ming Y, Purushwalkam S, Pandit S, Ke Z, Nguyen X-P, Xiong C, et al. Faitheval: can your language model stay faithful to context, even if” the moon is made of marshmallows”. International Conference on Learning Representations. 2025, pp. 29430–56, vol. 2025.",
+        "Li Y, Zhou K, Qiao Q, Nguyen B, Wang Q, Li Q. Investigating context faithfulness in large language models: the roles of memory strength and evidence style. In: Findings of the association for computational linguistics: aCL 2025. Vienna, Austria: Association for Computational Linguistics; 2025. p. 4789–807. \n                  https://doi.org/10.18653/v1/2025.findings-acl.247\n                  \n                . \n                  https://aclanthology.org/2025.findings-acl.247/\n                  \n                .",
+        "Mallen A, Asai A, Zhong V, Das R, Khashabi D, Hajishirzi H. When not to trust language models: investigating effectiveness of parametric and non-parametric memories. In: Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (volume 1: Long Papers). 2023, pp. 9802–22.",
+        "Zhou W, Zhang S, Poon H, Chen M. Context-faithful prompting for large language models. Findings Assoc Comput Linguistics: EMNLP 2023. 2023;14544–56.",
+        "Shi W, Han X, Lewis M, Tsvetkov Y, Zettlemoyer L, Yih W-T. Trusting your evidence: hallucinate less with context-aware decoding. In: Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 2: Short Papers). 2024, pp. 783–91.",
+        "citation_journal_title=Transformer Circuits Thread; citation_title=A mathematical framework for transformer circuits; citation_author=N Elhage, N Nanda, C Olsson, T Henighan, N Joseph, B Mann; citation_volume=1; citation_issue=1; citation_publication_date=2021; citation_pages=12; citation_id=CR38",
+        "Olsson C, Elhage N, Nanda N, Joseph N, DasSarma N, Henighan T, et al. In-context learning and induction heads. arXiv preprint arXiv:2209.11895. 2022.",
+        "Wang K, Variengien A, Conmy A, Shlegeris B, Steinhardt J. Interpretability in the wild: a circuit for indirect object identification in gpt-2 small. arXiv preprint arXiv:2211.00593. 2022.",
+        "Geva M, Caciularu A, Wang K, Goldberg Y. Transformer feed-forward layers build predictions by promoting concepts in the vocabulary space. In: Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing. 2022, pp. 30–45.",
+        "Geva M, Bastings J, Filippova K, Globerson A. Dissecting recall of factual associations in auto-regressive language models. In: Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing. 2023, pp. 12216–35.",
+        "Belrose N, Ostrovsky I, McKinney L, Furman Z, Smith L, Halawi D, et al. Eliciting latent predictions from transformers with the tuned lens. arXiv preprint arXiv:2303.08112. 2023.",
+        "citation_title=Memit: mass editing memory in a transformer; citation_publication_date=2023; citation_id=CR44; citation_author=K Meng; citation_author=Y Belinkov; citation_author=D Klein; citation_publisher=ACL",
+        "citation_journal_title=Adv Neural Inf Process Syst; citation_title=Towards automated circuit discovery for mechanistic interpretability; citation_author=A Conmy, A Mavor-Parker, A Lynch, S Heimersheim, A Garriga-Alonso; citation_volume=36; citation_publication_date=2023; citation_pages=16318-52; citation_doi=10.52202/075280-0719; citation_id=CR45",
+        "Hendrycks D, Burns C, Basart S, Zou A, Mazeika M, Song D, et al. Measuring massive multitask language understanding. arXiv preprint arXiv:2009.03300. 2020.",
+        "citation_journal_title=Adv Neural Inf Process Syst; citation_title=Does localization inform editing? surprising differences in causality-based localization vs. knowledge editing in language models; citation_author=P Hase, M Bansal, B Kim, A Ghandeharioun; citation_volume=36; citation_publication_date=2023; citation_pages=17643-68; citation_doi=10.52202/075280-0774; citation_id=CR47",
+        "Qwen AY, Yang B, Zhang B, Hui B, Zheng B, Yu B, et al. Qwen2. 5 technical report. arXiv preprint. 2024.",
+        "Grattafiori A, Dubey A, Jauhri A, Pandey A, Kadian A, Al-Dahle A, et al. The llama 3 herd of models. arXiv preprint arXiv:2407.21783. 2024.",
+        "Team G, Riviere M, Pathak S, Sessa PG, Hardin C, Bhupatiraju S, et al. Gemma 2: improving open language models at a practical size. arXiv preprint arXiv:2408.00118. 2024.",
+        "Gerganov G. Llama.Cpp contributors: llama.Cpp: LLM inference in C/C++. 2023. \n                  https://github.com/ggml-org/llama.cpp\n                  \n                ."
+      ],
+      "citation_author": [
+        "Vaish, Swastik",
+        "Gautam, Arpit Singh",
+        "Tiwari, Varun",
+        "Yadav, Jitendra Singh"
+      ],
+      "citation_author_email": [
+        "swastikvaish@gmail.com",
+        "arpitsinghgautam777@gmail.com",
+        "varun.tiwari@jaipur.manipal.edu",
+        "jitendrasingh.yadav@jaipur.manipal.edu"
+      ],
+      "citation_author_institution": [
+        "School of Computer Science and Engineering, Manipal University Jaipur, Jaipur, India",
+        "Proeffico Solutions Private Ltd., Noida, India",
+        "School of Computer Science and Engineering, Manipal University Jaipur, Jaipur, India",
+        "School of Computer Science and Engineering, Manipal University Jaipur, Jaipur, India",
+        "School of Computer Science and Engineering, Manipal University Jaipur, Jaipur, India"
+      ],
+      "format-detection": [
+        "telephone=no",
+        "telephone=no"
+      ],
+      "citation_cover_date": [
+        "2026/12/01"
+      ],
+      "og:url": [
+        "https://link.springer.com/article/10.1007/s10791-026-10580-5"
+      ],
+      "og:type": [
+        "article"
+      ],
+      "og:site_name": [
+        "SpringerLink"
+      ],
+      "og:title": [
+        "PRISM a diagnostic framework for parametric recall degradation in quantized large language models - Discover Computing"
+      ],
+      "og:description": [
+        "Post-training quantization (PTQ) is the standard method for deploying large language models (LLMs), though it is widely assumed to degrade model quality uniformly. Although, this assumption masks how quantization uniquely affects different mechanisms, particularly the balance between a model’s internal parametric memory and its ability to utilize external context. Existing benchmarks primarily measure overall accuracy, failing to isolate these specific sources of knowledge degradation when bit-rates are reduced. To address this, we introduce PRISM (Precision-Resolved Inspection of Stored Memory), an efficient diagnostic framework that separates and measures these distinct capabilities on a single 8GB consumer GPU. PRISM isolates these effects by leveraging counterfactual knowledge-conflict probes, component-wise mixed-precision quantization, and leak-free comprehension probes. We evaluate this framework across multiple model families (Qwen2.5, Llama-3.2, Gemma-2) and diverse quantization schemes (round-to-nearest, NF4, GGUF, GPTQ). Our results demonstrate that open-ended parametric recall collapses under low-bit PTQ while verbatim copy-from-context remains robust; furthermore, component-wise probing reveals that MLP/FFN quantization drives this recall collapse far more than attention layers. Ultimately, these insights reveal that while closed-book benchmarks overstate quantization harm for simple retrieval tasks, complex multi-hop reasoning remains vulnerable, providing crucial nuance for deploying compressed LLMs.Clinical trialNot applicable."
+      ],
+      "og:image": [
+        "https://media.springernature.com/m685/springer-static/image/art%3A10.1007%2Fs10791-026-10580-5/MediaObjects/10791_2026_10580_Fig1_HTML.png"
+      ],
+      "theme-color": [
+        "#e6e6e6"
+      ]
+    },
+    "pages": 38,
+    "bytes": 5825158,
+    "sha256": "7d782d464edd1ebc4125c7c25a936bd3c688c904df8677dab275c30a10358109",
+    "downloaded_on": "2026-10-28",
+    "pdf_file": "papers/12_prism.pdf",
+    "summary_file": "summaires/12_prism.md",
+    "review_date_note": "2026-10-06 online publication; journal issue metadata says 2026/12",
+    "publication_status": "Discover Computing 29, article 700 (2026); open-access journal article",
+    "verification": "PDF parsed; full text extracted; source metadata and relevant sections inspected"
+  },
+  {
+    "slug": "13_causaleval",
+    "topic": "causal evaluation",
+    "arxiv_version": null,
+    "landing_url": "https://aclanthology.org/2025.naacl-long.622/",
+    "pdf_url": "https://aclanthology.org/2025.naacl-long.622.pdf",
+    "resolved_pdf_url": "https://aclanthology.org/2025.naacl-long.622.pdf",
+    "metadata": {
+      "": [
+        ""
+      ],
+      "viewport": [
+        "width=device-width,initial-scale=1,shrink-to-fit=no"
+      ],
+      "generator": [
+        "Hugo 0.160.0"
+      ],
+      "citation_title": [
+        "CausalEval: Towards Better Causal Reasoning in Language Models"
+      ],
+      "citation_author": [
+        "Longxuan Yu",
+        "Delin Chen",
+        "Siheng Xiong",
+        "Qingyang Wu",
+        "Dawei Li",
+        "Zhikai Chen",
+        "Xiaoze Liu",
+        "Liangming Pan"
+      ],
+      "citation_conference_title": [
+        "Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers)"
+      ],
+      "citation_publication_date": [
+        "2025/4"
+      ],
+      "citation_pdf_url": [
+        "https://aclanthology.org/2025.naacl-long.622.pdf"
+      ],
+      "citation_firstpage": [
+        "12512"
+      ],
+      "citation_lastpage": [
+        "12540"
+      ],
+      "citation_doi": [
+        "10.18653/v1/2025.naacl-long.622"
+      ],
+      "og:title": [
+        "CausalEval: Towards Better Causal Reasoning in Language Models"
+      ],
+      "og:image": [
+        "https://aclanthology.org/thumb/2025.naacl-long.622.jpg"
+      ],
+      "og:image:alt": [
+        "First page of paper PDF."
+      ],
+      "og:type": [
+        "article"
+      ],
+      "og:site_name": [
+        "ACL Anthology"
+      ],
+      "og:url": [
+        "https://aclanthology.org/2025.naacl-long.622/"
+      ],
+      "og:description": [
+        "Longxuan Yu, Delin Chen, Siheng Xiong, Qingyang Wu, Dawei Li, Zhikai Chen, Xiaoze Liu, Liangming Pan. Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers). 2025."
+      ]
+    },
+    "pages": 29,
+    "bytes": 1004250,
+    "sha256": "13fd95014fa0f96dc18aae831ccf6b471e8a8762990a8a076d384e1c5a0ac1c2",
+    "downloaded_on": "2026-10-28",
+    "pdf_file": "papers/13_causaleval.pdf",
+    "summary_file": "summaires/13_causaleval.md",
+    "review_date_note": "NAACL 2025 proceedings, April-May 2025",
+    "publication_status": "NAACL 2025, Volume 1: Long Papers; review plus empirical evaluation",
+    "verification": "PDF parsed; full text extracted; source metadata and relevant sections inspected"
+  },
+  {
+    "slug": "14_causal_inference_llm_survey",
+    "topic": "causal inference background",
+    "arxiv_version": null,
+    "landing_url": "https://aclanthology.org/2025.findings-naacl.327/",
+    "pdf_url": "https://aclanthology.org/2025.findings-naacl.327.pdf",
+    "resolved_pdf_url": "https://aclanthology.org/2025.findings-naacl.327.pdf",
+    "metadata": {
+      "": [
+        ""
+      ],
+      "viewport": [
+        "width=device-width,initial-scale=1,shrink-to-fit=no"
+      ],
+      "generator": [
+        "Hugo 0.160.0"
+      ],
+      "citation_title": [
+        "Causal Inference with Large Language Model: A Survey"
+      ],
+      "citation_author": [
+        "Jing Ma"
+      ],
+      "citation_conference_title": [
+        "Findings of the Association for Computational Linguistics: NAACL 2025"
+      ],
+      "citation_publication_date": [
+        "2025/4"
+      ],
+      "citation_pdf_url": [
+        "https://aclanthology.org/2025.findings-naacl.327.pdf"
+      ],
+      "citation_firstpage": [
+        "5901"
+      ],
+      "citation_lastpage": [
+        "5913"
+      ],
+      "citation_doi": [
+        "10.18653/v1/2025.findings-naacl.327"
+      ],
+      "og:title": [
+        "Causal Inference with Large Language Model: A Survey"
+      ],
+      "og:image": [
+        "https://aclanthology.org/thumb/2025.findings-naacl.327.jpg"
+      ],
+      "og:image:alt": [
+        "First page of paper PDF."
+      ],
+      "og:type": [
+        "article"
+      ],
+      "og:site_name": [
+        "ACL Anthology"
+      ],
+      "og:url": [
+        "https://aclanthology.org/2025.findings-naacl.327/"
+      ],
+      "og:description": [
+        "Jing Ma. Findings of the Association for Computational Linguistics: NAACL 2025. 2025."
+      ]
+    },
+    "pages": 13,
+    "bytes": 295538,
+    "sha256": "a94c38743afa0d89768ace5a419e1047fd6b6f52dc63d8117b255e7d6ff1b827",
+    "downloaded_on": "2026-10-28",
+    "pdf_file": "papers/14_causal_inference_llm_survey.pdf",
+    "summary_file": "summaires/14_causal_inference_llm_survey.md",
+    "review_date_note": "Findings of NAACL 2025, April-May 2025",
+    "publication_status": "Findings of NAACL 2025; survey",
+    "verification": "PDF parsed; full text extracted; source metadata and relevant sections inspected"
+  }
+]

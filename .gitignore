@@ -1,0 +1,35 @@
+# Local credentials and configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account*.json
+.aws/
+
+# Dependencies and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+node_modules/
+.cache/
+.tools/
+
+# Reproducible literature extraction cache
+literature review/_sources/
+
+# Future large experiment artifacts
+checkpoints/
+model_weights/
+wandb/
+
+# Local editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

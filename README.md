@@ -1,0 +1,73 @@
+# CausalFade
+
+**Does aggressive quantization change how AI agents reason about causes?**
+
+CausalFade is an advanced statistics course research project at the intersection of AI agents, model quantization and causal inference. It investigates whether compressed models become more vulnerable to misleading associations when choosing interventions, and whether this differs from factual recall loss or general reasoning degradation.
+
+## Research question
+
+> Does aggressive post-training quantization increase an AI agent's reliance on misleading associations when choosing interventions, beyond its general effect on task performance?
+
+The motivating idea is that compression might disrupt mechanisms supporting causal reasoning. The primary experiment will measure **behavioral causal competence**. Claims about damaged internal causal graphs require additional mechanistic interventions and cannot be established by accuracy alone.
+
+## Current status
+
+The project is in the **literature review and experimental design** phase. The repository contains 14 research papers from 2025–2026, individual critical summaries, and a synthesis outlining a proposed experiment. Eight papers were first released or published in 2026. No agent experiments or empirical project findings are available yet.
+
+Start with the [executive summary](literature%20review/EXECUTIVE_SUMMARY.md), then use the [reading index](literature%20review/READING_INDEX.md) to browse papers and summaries. Publication status and downloaded versions are documented; reported findings have not been independently reproduced.
+
+## Working hypotheses
+
+Compare matched tasks where an observational association either agrees or conflicts with the beneficial causal intervention. For a precision setting `p`, define:
+
+```text
+ConflictPenalty(p) = Accuracy(p, aligned) - Accuracy(p, conflicting)
+Delta(p) = ConflictPenalty(p) - ConflictPenalty(full precision)
+```
+
+- **Null hypothesis:** `Delta(p) <= 0`. Quantization does not increase the conflict penalty.
+- **Alternative hypothesis:** `Delta(p) > 0`. Quantization increases the conflict penalty.
+
+The directional contrast must be prespecified. A positive result supports increased behavioral vulnerability to misleading associations under the tested conditions. Failure to reject the null does not demonstrate preservation; that conclusion needs a predefined practical tolerance and equivalence or noninferiority analysis.
+
+## Planned workflow
+
+1. **Implement a controlled experiment.** Generate small structural causal models with known ground truth and an agent interface for observations, interventions and final decisions. Compare precision variants derived from the same checkpoint, keeping the quantizer, calibration procedure and inference configuration explicit.
+2. **Collect reproducible trajectories.** Reuse world seeds across precision conditions. Record observations, actions, tokens, stopping reasons, tool failures and final answers. Include recall, context-comprehension and matched noncausal controls, plus random and classical causal baselines.
+3. **Analyze and visualize.** Separate intervention success, graph recovery, estimation error, abstention and process failures. Plot paired changes and effect estimates with uncertainty rather than relying on aggregate accuracy alone.
+4. **Estimate causal effects.** Prespecify the primary precision contrast and task population. Use a hierarchical binomial model with precision-by-conflict terms and world-level dependence, report probability-scale contrasts, and check robustness with paired world-level resampling. Choose sample sizes through pilot-based simulation.
+5. **Investigate mechanisms if warranted.** Consider targeted component precision restoration after establishing a robust behavioral effect. Treat fine-tuning and high-precision assistance as separate experimental treatments.
+
+These are planned methods, not implemented or validated results. The simulator's true graph, the agent's reported graph and the model's internal computational mechanisms are distinct objects.
+
+## Repository contents
+
+```text
+literature review/
+  EXECUTIVE_SUMMARY.md    Cross-paper synthesis and proposed study
+  READING_INDEX.md        Links to all papers and summaries
+  paper_manifest.json    Sources, versions, checksums and page counts
+  papers/                14 downloaded research PDFs
+  summaires/             One critical Markdown summary per paper
+  _sources/              Local source-page and extracted-text cache
+  download_papers.py     Download and validate the selected sources
+  write_review.py        Generate individual summaries and reading index
+```
+
+The `summaires` spelling is retained from the original project request. The source cache stays local and is excluded from Git; PDFs, summaries and provenance metadata are versioned.
+
+## Literature tooling
+
+Python 3.10 or newer and `pypdf` are sufficient for the existing scripts:
+
+```bash
+python -m pip install -r requirements.txt
+python "literature review/download_papers.py"
+python "literature review/write_review.py"
+```
+
+The downloader accesses arXiv, ACL Anthology and Springer, pins arXiv versions, checks PDF headers, parses pages, extracts text and records SHA-256 checksums. It reuses existing PDFs. Run the summary generator after downloading to restore the review annotations in the manifest. The executive summary is maintained separately. These scripts reproduce the selected collection and authored notes; they do not conduct an automated literature search or reproduce the papers' experiments.
+
+## Attribution
+
+Research papers retain their authors' and publishers' copyrights and licenses. Source records are linked in the reading index, individual summaries and manifest. Summaries distinguish authors' findings from reviewer interpretations. No blanket license is granted over the bundled third-party papers.
