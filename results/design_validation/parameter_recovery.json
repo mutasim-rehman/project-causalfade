@@ -1,0 +1,736 @@
+{
+  "status": "synthetic_parameter_recovery_not_LLM_or_quantization_results",
+  "seed": 20261101,
+  "python_version": "3.12.14",
+  "numpy_version": "2.3.5",
+  "repetitions": 200,
+  "bootstrap_replicates": 500,
+  "sample_size_note": "n_per_cell; each replicate has four times that many independent synthetic responses",
+  "recovery": [
+    {
+      "scenario": "interior",
+      "n_per_cell": 50,
+      "repetitions": 200,
+      "truth": {
+        "C": 0.65,
+        "A": 0.45,
+        "B": 0.5
+      },
+      "nonconverged": 0,
+      "near_simplex_boundary": 3,
+      "parameters": {
+        "C": {
+          "bias": 0.0002920008700189375,
+          "rmse": 0.050649621395245994,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "A": {
+          "bias": 0.005445226867744596,
+          "rmse": 0.1407365326695794,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "B": {
+          "bias": 0.014606095871299659,
+          "rmse": 0.15267722036638587,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        }
+      }
+    },
+    {
+      "scenario": "interior",
+      "n_per_cell": 200,
+      "repetitions": 200,
+      "truth": {
+        "C": 0.65,
+        "A": 0.45,
+        "B": 0.5
+      },
+      "nonconverged": 0,
+      "near_simplex_boundary": 0,
+      "parameters": {
+        "C": {
+          "bias": -0.0031735559108599844,
+          "rmse": 0.02518544944920732,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "A": {
+          "bias": -0.0006696366428624179,
+          "rmse": 0.0703316055823409,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "B": {
+          "bias": -0.003283939325909723,
+          "rmse": 0.06988154094827316,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        }
+      }
+    },
+    {
+      "scenario": "interior",
+      "n_per_cell": 1000,
+      "repetitions": 200,
+      "truth": {
+        "C": 0.65,
+        "A": 0.45,
+        "B": 0.5
+      },
+      "nonconverged": 0,
+      "near_simplex_boundary": 0,
+      "parameters": {
+        "C": {
+          "bias": 0.00016364070631565475,
+          "rmse": 0.010779035454261747,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "A": {
+          "bias": -0.0015770990375654826,
+          "rmse": 0.027678425253668995,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "B": {
+          "bias": -0.0023355045878361716,
+          "rmse": 0.027327298737637454,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        }
+      }
+    },
+    {
+      "scenario": "lower_causal_sensitivity",
+      "n_per_cell": 50,
+      "repetitions": 200,
+      "truth": {
+        "C": 0.35,
+        "A": 0.45,
+        "B": 0.5
+      },
+      "nonconverged": 0,
+      "near_simplex_boundary": 0,
+      "parameters": {
+        "C": {
+          "bias": -0.009233871654329649,
+          "rmse": 0.06494792125537248,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "A": {
+          "bias": -0.005151985399170503,
+          "rmse": 0.09248405344856665,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "B": {
+          "bias": -0.01008697242598867,
+          "rmse": 0.08714931395079181,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        }
+      }
+    },
+    {
+      "scenario": "lower_causal_sensitivity",
+      "n_per_cell": 200,
+      "repetitions": 200,
+      "truth": {
+        "C": 0.35,
+        "A": 0.45,
+        "B": 0.5
+      },
+      "nonconverged": 0,
+      "near_simplex_boundary": 0,
+      "parameters": {
+        "C": {
+          "bias": 0.0005313265092435304,
+          "rmse": 0.032390481298880454,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "A": {
+          "bias": 0.003075208323202312,
+          "rmse": 0.0482019320121476,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "B": {
+          "bias": 0.0005111954414434161,
+          "rmse": 0.04255893411953502,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        }
+      }
+    },
+    {
+      "scenario": "lower_causal_sensitivity",
+      "n_per_cell": 1000,
+      "repetitions": 200,
+      "truth": {
+        "C": 0.35,
+        "A": 0.45,
+        "B": 0.5
+      },
+      "nonconverged": 0,
+      "near_simplex_boundary": 0,
+      "parameters": {
+        "C": {
+          "bias": 0.00023425440212836935,
+          "rmse": 0.0135541909341117,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "A": {
+          "bias": -0.00011842063125452135,
+          "rmse": 0.021278723814845604,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "B": {
+          "bias": 8.978406279143009e-05,
+          "rmse": 0.01927824391641852,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        }
+      }
+    },
+    {
+      "scenario": "higher_conditional_association",
+      "n_per_cell": 50,
+      "repetitions": 200,
+      "truth": {
+        "C": 0.65,
+        "A": 0.75,
+        "B": 0.5
+      },
+      "nonconverged": 0,
+      "near_simplex_boundary": 44,
+      "parameters": {
+        "C": {
+          "bias": -0.004088884332314268,
+          "rmse": 0.05147995366349092,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "A": {
+          "bias": -0.005706903131473984,
+          "rmse": 0.11363968671097631,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "B": {
+          "bias": -0.018385238517348853,
+          "rmse": 0.27275421592229115,
+          "undefined_count": 4,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 196
+        }
+      }
+    },
+    {
+      "scenario": "higher_conditional_association",
+      "n_per_cell": 200,
+      "repetitions": 200,
+      "truth": {
+        "C": 0.65,
+        "A": 0.75,
+        "B": 0.5
+      },
+      "nonconverged": 0,
+      "near_simplex_boundary": 0,
+      "parameters": {
+        "C": {
+          "bias": -0.0001826590868496758,
+          "rmse": 0.026695298316072008,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "A": {
+          "bias": 0.0019053548430797119,
+          "rmse": 0.05286724823975399,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "B": {
+          "bias": 0.014237554326677636,
+          "rmse": 0.11022246567695344,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        }
+      }
+    },
+    {
+      "scenario": "higher_conditional_association",
+      "n_per_cell": 1000,
+      "repetitions": 200,
+      "truth": {
+        "C": 0.65,
+        "A": 0.75,
+        "B": 0.5
+      },
+      "nonconverged": 0,
+      "near_simplex_boundary": 0,
+      "parameters": {
+        "C": {
+          "bias": 3.013767078013818e-05,
+          "rmse": 0.011025504811205915,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "A": {
+          "bias": -0.0009416105004048564,
+          "rmse": 0.02580081937007652,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "B": {
+          "bias": -0.0023344772530430546,
+          "rmse": 0.050846356274654995,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        }
+      }
+    },
+    {
+      "scenario": "action_bias",
+      "n_per_cell": 50,
+      "repetitions": 200,
+      "truth": {
+        "C": 0.65,
+        "A": 0.45,
+        "B": 0.8
+      },
+      "nonconverged": 0,
+      "near_simplex_boundary": 31,
+      "parameters": {
+        "C": {
+          "bias": -0.013926286517150341,
+          "rmse": 0.053526939293822726,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "A": {
+          "bias": 0.003908795753919539,
+          "rmse": 0.1202227819558932,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "B": {
+          "bias": 0.014580328811982946,
+          "rmse": 0.1191730929653955,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        }
+      }
+    },
+    {
+      "scenario": "action_bias",
+      "n_per_cell": 200,
+      "repetitions": 200,
+      "truth": {
+        "C": 0.65,
+        "A": 0.45,
+        "B": 0.8
+      },
+      "nonconverged": 0,
+      "near_simplex_boundary": 0,
+      "parameters": {
+        "C": {
+          "bias": 0.0012861126111999937,
+          "rmse": 0.025354121245564226,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "A": {
+          "bias": -0.0033595541510562732,
+          "rmse": 0.06715798400312983,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "B": {
+          "bias": 0.00047502682631956727,
+          "rmse": 0.05684173961490758,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        }
+      }
+    },
+    {
+      "scenario": "action_bias",
+      "n_per_cell": 1000,
+      "repetitions": 200,
+      "truth": {
+        "C": 0.65,
+        "A": 0.45,
+        "B": 0.8
+      },
+      "nonconverged": 0,
+      "near_simplex_boundary": 0,
+      "parameters": {
+        "C": {
+          "bias": 0.00020091218624892772,
+          "rmse": 0.010792632857063052,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "A": {
+          "bias": 0.00025099097643285355,
+          "rmse": 0.029829958789728998,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "B": {
+          "bias": -0.00027674717526631533,
+          "rmse": 0.02415079964315896,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        }
+      }
+    },
+    {
+      "scenario": "near_causal_boundary",
+      "n_per_cell": 50,
+      "repetitions": 200,
+      "truth": {
+        "C": 0.98,
+        "A": 0.45,
+        "B": 0.5
+      },
+      "nonconverged": 13,
+      "near_simplex_boundary": 181,
+      "parameters": {
+        "C": {
+          "bias": 0.0005692525516674306,
+          "rmse": 0.013781023546378716,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 13,
+          "used_repetitions": 187
+        },
+        "A": {
+          "bias": -0.008244828171308154,
+          "rmse": 0.3539900551062567,
+          "undefined_count": 27,
+          "excluded_nonconverged_count": 13,
+          "used_repetitions": 160
+        },
+        "B": {
+          "bias": -0.048797872857405604,
+          "rmse": 0.4752725163326621,
+          "undefined_count": 58,
+          "excluded_nonconverged_count": 13,
+          "used_repetitions": 129
+        }
+      }
+    },
+    {
+      "scenario": "near_causal_boundary",
+      "n_per_cell": 200,
+      "repetitions": 200,
+      "truth": {
+        "C": 0.98,
+        "A": 0.45,
+        "B": 0.5
+      },
+      "nonconverged": 3,
+      "near_simplex_boundary": 122,
+      "parameters": {
+        "C": {
+          "bias": -0.0006686814266477308,
+          "rmse": 0.006829323013209358,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 3,
+          "used_repetitions": 197
+        },
+        "A": {
+          "bias": 0.03265189541692267,
+          "rmse": 0.2967291385374622,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 3,
+          "used_repetitions": 197
+        },
+        "B": {
+          "bias": 0.030618267281139366,
+          "rmse": 0.36231937784128787,
+          "undefined_count": 19,
+          "excluded_nonconverged_count": 3,
+          "used_repetitions": 178
+        }
+      }
+    },
+    {
+      "scenario": "near_causal_boundary",
+      "n_per_cell": 1000,
+      "repetitions": 200,
+      "truth": {
+        "C": 0.98,
+        "A": 0.45,
+        "B": 0.5
+      },
+      "nonconverged": 0,
+      "near_simplex_boundary": 1,
+      "parameters": {
+        "C": {
+          "bias": -0.00017202932711528506,
+          "rmse": 0.0030751475714970236,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "A": {
+          "bias": 0.004421554908702723,
+          "rmse": 0.14052674207206636,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "B": {
+          "bias": -0.0060663556500234195,
+          "rmse": 0.1406087266038956,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        }
+      }
+    },
+    {
+      "scenario": "near_association_boundary",
+      "n_per_cell": 50,
+      "repetitions": 200,
+      "truth": {
+        "C": 0.4,
+        "A": 0.98,
+        "B": 0.5
+      },
+      "nonconverged": 0,
+      "near_simplex_boundary": 180,
+      "parameters": {
+        "C": {
+          "bias": -0.0035882971161458437,
+          "rmse": 0.04645279378818893,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "A": {
+          "bias": 0.0008749443107678084,
+          "rmse": 0.02588269843516039,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "B": {
+          "bias": 0.04505138887618858,
+          "rmse": 0.44022760514006165,
+          "undefined_count": 115,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 85
+        }
+      }
+    },
+    {
+      "scenario": "near_association_boundary",
+      "n_per_cell": 200,
+      "repetitions": 200,
+      "truth": {
+        "C": 0.4,
+        "A": 0.98,
+        "B": 0.5
+      },
+      "nonconverged": 0,
+      "near_simplex_boundary": 107,
+      "parameters": {
+        "C": {
+          "bias": 0.0010386219929205485,
+          "rmse": 0.024707753830405146,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "A": {
+          "bias": 0.001382439637594659,
+          "rmse": 0.011994026002733242,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "B": {
+          "bias": 0.03238498456061144,
+          "rmse": 0.36381118800382706,
+          "undefined_count": 19,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 181
+        }
+      }
+    },
+    {
+      "scenario": "near_association_boundary",
+      "n_per_cell": 1000,
+      "repetitions": 200,
+      "truth": {
+        "C": 0.4,
+        "A": 0.98,
+        "B": 0.5
+      },
+      "nonconverged": 0,
+      "near_simplex_boundary": 0,
+      "parameters": {
+        "C": {
+          "bias": -0.00043519903058101997,
+          "rmse": 0.01108196438221377,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "A": {
+          "bias": 6.567749311112759e-05,
+          "rmse": 0.005663549028501157,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        },
+        "B": {
+          "bias": -0.023313501162263967,
+          "rmse": 0.14153455182897495,
+          "undefined_count": 0,
+          "excluded_nonconverged_count": 0,
+          "used_repetitions": 200
+        }
+      }
+    }
+  ],
+  "model_checks": {
+    "tree_generated": {
+      "generating_probabilities": [
+        0.09625,
+        0.25375000000000003,
+        0.7462500000000001,
+        0.90375
+      ],
+      "fit_test": {
+        "deviance": 0.47135465579991553,
+        "bootstrap_p": 0.5069860279441117,
+        "bootstrap_replicates": 500,
+        "nonconverged": 0,
+        "observed_fit_converged": true
+      },
+      "logistic_converged": true,
+      "heldout_log_loss": {
+        "processing_tree": 0.44173025700800495,
+        "logistic_integration": 0.4417367068812865
+      }
+    },
+    "observationally_equivalent_logistic": {
+      "generating_probabilities": [
+        0.04742587317756678,
+        0.5,
+        0.5,
+        0.9525741268224334
+      ],
+      "fit_test": {
+        "deviance": 0.6875682221079571,
+        "bootstrap_p": 0.43313373253493015,
+        "bootstrap_replicates": 500,
+        "nonconverged": 0,
+        "observed_fit_converged": true
+      },
+      "logistic_converged": true,
+      "heldout_log_loss": {
+        "processing_tree": 0.44441541047686917,
+        "logistic_integration": 0.4443649930400361
+      }
+    },
+    "incompatible_logistic": {
+      "generating_probabilities": [
+        0.11920292202211755,
+        0.7310585786300049,
+        0.8807970779778823,
+        0.9933071490757153
+      ],
+      "fit_test": {
+        "deviance": 702.7459104318147,
+        "bootstrap_p": 0.001996007984031936,
+        "bootstrap_replicates": 500,
+        "nonconverged": 0,
+        "observed_fit_converged": true
+      },
+      "logistic_converged": true,
+      "heldout_log_loss": {
+        "processing_tree": 0.3972779317426279,
+        "logistic_integration": 0.34973997856290484
+      }
+    }
+  },
+  "illustrative_intervals": {
+    "C": {
+      "estimate": 0.6471578602039371,
+      "percentile_95_interval": [
+        0.6157714129410745,
+        0.6788877739147202
+      ],
+      "undefined_bootstrap_count": 0
+    },
+    "A": {
+      "estimate": 0.4411500271891019,
+      "percentile_95_interval": [
+        0.349989684834574,
+        0.5256439568454154
+      ],
+      "undefined_bootstrap_count": 0
+    },
+    "B": {
+      "estimate": 0.5550406544873411,
+      "percentile_95_interval": [
+        0.47255219286844824,
+        0.6260915183466479
+      ],
+      "undefined_bootstrap_count": 0
+    }
+  },
+  "interval_nonconverged": 0,
+  "limitations": [
+    "Pooled homogeneous MLE, not hierarchical Bayesian inference.",
+    "No empirical LLM trials, power calculation, or interval-coverage validation.",
+    "A/B recovery is intrinsically weak near boundaries; parameters are model-dependent.",
+    "Model-generated independent binomial trials are not a model of independent LLM checkpoints."
+  ]
+}

@@ -12,7 +12,9 @@ The motivating idea is that compression might disrupt mechanisms supporting caus
 
 ## Current status
 
-The project is in the **literature review and experimental design** phase. The repository contains 14 research papers from 2025–2026, individual critical summaries, and a synthesis outlining a proposed experiment. Eight papers were first released or published in 2026. No agent experiments or empirical project findings are available yet.
+The project now has an **executable simulator and synthetic methodology-validation package**, plus 14 research papers from 2025–2026 and critical summaries. Eight papers were first released or published in 2026. No LLM or quantized-agent experiments have been run. Synthetic parameter-recovery results are not evidence of model degradation.
+
+Read the [research methodology](docs/RESEARCH_METHODOLOGY.md), [reproduction instructions](docs/REPRODUCIBILITY.md), and [generated validation report](results/design_validation/VALIDATION_REPORT.md). The proposed psychological adaptation separates causal sensitivity, conditional associative influence and residual action bias, with explicit identification and model-fit limitations.
 
 Start with the [executive summary](literature%20review/EXECUTIVE_SUMMARY.md), then use the [reading index](literature%20review/READING_INDEX.md) to browse papers and summaries. Publication status and downloaded versions are documented; reported findings have not been independently reproduced.
 
@@ -38,11 +40,15 @@ The directional contrast must be prespecified. A positive result supports increa
 4. **Estimate causal effects.** Prespecify the primary precision contrast and task population. Use a hierarchical binomial model with precision-by-conflict terms and world-level dependence, report probability-scale contrasts, and check robustness with paired world-level resampling. Choose sample sizes through pilot-based simulation.
 5. **Investigate mechanisms if warranted.** Consider targeted component precision restoration after establishing a robust behavioral effect. Treat fine-tuning and high-precision assistance as separate experimental treatments.
 
-These are planned methods, not implemented or validated results. The simulator's true graph, the agent's reported graph and the model's internal computational mechanisms are distinct objects.
+This is the broader research workflow; the current implementation covers the simulator and synthetic validation described above. The simulator's true graph, the agent's reported graph and the model's internal computational mechanisms are distinct objects.
 
 ## Repository contents
 
 ```text
+causalfade/                Simulator, measurement fitting, scoring and paired analysis
+docs/                      Research methodology, data contract and study decisions
+tests/                     Simulator, measurement and scoring checks
+results/design_validation/ Reproducible synthetic tasks and recovery results
 literature review/
   EXECUTIVE_SUMMARY.md    Cross-paper synthesis and proposed study
   READING_INDEX.md        Links to all papers and summaries
@@ -56,9 +62,20 @@ literature review/
 
 The `summaires` spelling is retained from the original project request. The source cache stays local and is excluded from Git; PDFs, summaries and provenance metadata are versioned.
 
-## Literature tooling
+## Reproducing the research utilities
 
-Python 3.10 or newer and `pypdf` are sufficient for the existing scripts:
+Python 3.10 or newer is required. NumPy supports the research utilities; pypdf supports the literature downloader.
+
+```bash
+python -m pip install -r requirements.txt
+python -m unittest discover -s tests -v
+python -m causalfade.generate
+python -m causalfade.validate
+```
+
+The generator exports 24 independent families, each with four causal/association conditions and two evidence layers. The validation study fits 3,600 independent synthetic response datasets; see its report for convergence failures, weak boundary recovery and observational equivalence. The planned hierarchical LLM analyses, power calculations and live model runner remain future work. See [decisions before collection](docs/DECISIONS_BEFORE_COLLECTION.md).
+
+For the literature tools:
 
 ```bash
 python -m pip install -r requirements.txt
