@@ -1,6 +1,8 @@
 # CausalFade research methodology
 
-**Version:** 0.1, 1 November 2026. **Status:** exploratory design and executable synthetic validation; not a registered protocol and not an LLM results paper.
+**Version:** 0.2, 1 November 2026. **Status:** exploratory design and executable synthetic validation; not a registered protocol and not an LLM results paper.
+
+For source findings, the exact CNI-style mathematical mapping, the rationale for transfer and its limits, read [Methodology adaptation and source evidence](METHODOLOGY_ADAPTATION.md).
 
 ## 1. Objective and contribution
 
@@ -83,7 +85,7 @@ The validation generator draws effect magnitude 0.06-0.12, severity gap 0.50-0.7
 
 Each family has T,S = (0,0), (0,1), (1,0), (1,1), where 1 favors activating X and 0 favors declining it. T=S is aligned; T!=S is conflict. All four share effect magnitude, severity gap and assignment-strength magnitude. Two causal directions and two association directions prevent a simple yes/no preference from masquerading as evidence sensitivity.
 
-Process dissociation supplies the experimental principle: put candidate influences in agreement and opposition. The processing tree is our proposed adaptation; it is not a literal implementation of Jacoby's original memory paradigm, and human psychological labels are not assumed to apply to neural computation.
+Process dissociation supplies the experimental principle: put candidate influences in agreement and opposition. The closest formal template is Gawronski et al.'s (2017) CNI model, also used in LLM moral-judgment research. Our C,A,B tree retains that type of mathematical structure with changed constructs and B=1-I for residual action coding. It is a proposed CNI-style adaptation, not a newly invented tree or a literal implementation of Jacoby's memory paradigm. Human psychological labels are not assumed to apply to neural computation; see the [mapping and source findings](METHODOLOGY_ADAPTATION.md).
 
 The initial task is a constrained evidence-interpretation decision. It supplies the graph and confounder, so it **does not measure causal discovery**. It measures application of causal identification and estimation given sufficient information. Do not describe static JSON answers as an already implemented autonomous scientific agent.
 
@@ -220,7 +222,7 @@ The initial symmetric logistic comparison exposed observational equivalence. An 
 
 Before real confirmatory collection, expand simulations to evaluate estimator coverage, fit-test size/power, family heterogeneity, invalid outputs, plausible effect sizes and dependence. Determine the number of independent families from the desired precision/power for Delta, not from the 24-family demonstration export or the number of synthetic binomial responses. Fit tests, parameter intervals and power under real LLM variation remain open validation work.
 
-Use development-only data for choosing prompts and thresholds. Split by whole family, including every evidence layer, label direction and paraphrase. Freeze the generator/configuration, analysis script and primary contrast, then register or timestamp the final plan before collecting the untouched test set. Version 0.1 is not that registration.
+Use development-only data for choosing prompts and thresholds. Split by whole family, including every evidence layer, label direction and paraphrase. Freeze the generator/configuration, analysis script and primary contrast, then register or timestamp the final plan before collecting the untouched test set. Version 0.2 is not that registration.
 
 ## 10. Novelty, feasibility and claims
 
@@ -235,6 +237,8 @@ Permissible eventual claim: a particular compression configuration changes causa
 See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for commands and artifacts, [DATA_CONTRACT.md](DATA_CONTRACT.md) for inputs and scoring, and [DECISIONS_BEFORE_COLLECTION.md](DECISIONS_BEFORE_COLLECTION.md) for unresolved choices.
 
 Sources supporting the methodological lineage and overlap (the adaptation itself is proposed here):
+
+The direct formal source is Gawronski et al. (2017), *Consequences, Norms, and Generalized Inaction in Moral Dilemmas*, DOI [10.1037/pspa0000086](https://doi.org/10.1037/pspa0000086). Its relevant cognitive-load findings and the adaptation are explained in the [source-evidence document](METHODOLOGY_ADAPTATION.md). This supplements the references below.
 
 1. Jacoby (1991), [A Process Dissociation Framework](https://doi.org/10.1016/0749-596X(91)90025-F). The foundational method predates the project's 2025-2026 empirical-paper collection and is cited as methodological background.
 2. Heck, Arnold & Arnold (2018), [TreeBUGS](https://pmc.ncbi.nlm.nih.gov/articles/PMC5809562/): hierarchical processing-tree estimation and measurement modeling.

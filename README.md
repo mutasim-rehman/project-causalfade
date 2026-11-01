@@ -16,6 +16,8 @@ The project now has an **executable simulator and synthetic methodology-validati
 
 Read the [research methodology](docs/RESEARCH_METHODOLOGY.md), [reproduction instructions](docs/REPRODUCIBILITY.md), and [generated validation report](results/design_validation/VALIDATION_REPORT.md). The proposed psychological adaptation separates causal sensitivity, conditional associative influence and residual action bias, with explicit identification and model-fit limitations.
 
+The [methodology adaptation and source evidence](docs/METHODOLOGY_ADAPTATION.md) explains the source papers' findings, why the approach suits this question, the exact CNI-style mapping, and what changes in our application. [BibTeX references](docs/references.bib) are included for the proposal.
+
 Start with the [executive summary](literature%20review/EXECUTIVE_SUMMARY.md), then use the [reading index](literature%20review/READING_INDEX.md) to browse papers and summaries. Publication status and downloaded versions are documented; reported findings have not been independently reproduced.
 
 ## Working hypotheses
