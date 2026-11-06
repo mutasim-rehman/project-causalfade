@@ -46,10 +46,15 @@ This is the broader research workflow; the current implementation covers the sim
 
 ## Repository contents
 
+All research code lives in this Git repository. The external SSD at `H:\CAUSALFADE` holds weights, datasets, runtime logs, results and provenance only. Do not copy scripts, source snapshots, executables or environments onto it. Run commands from the repository checkout; create the Python environment on each PC and point data paths at the SSD. When switching PCs, clone/pull this repository and reconnect the SSD, updating its drive path if needed.
+
+The [SSD asset audit](docs/SSD_ASSET_REUSE.md) documents reused models and transfer checks. [The import utility](tools/reuse_ssd_assets.py) enforces a data-only destination allowlist. Record the Git commit and environment versions with each experiment; the SSD is a working data location and still needs a separate backup for irreplaceable results.
+
 ```text
 causalfade/                Simulator, measurement fitting, scoring and paired analysis
 docs/                      Research methodology, data contract and study decisions
 tests/                     Simulator, measurement and scoring checks
+tools/                     Asset import and storage maintenance code (run from this repo)
 results/design_validation/ Reproducible synthetic tasks and recovery results
 literature review/
   EXECUTIVE_SUMMARY.md    Cross-paper synthesis and proposed study
