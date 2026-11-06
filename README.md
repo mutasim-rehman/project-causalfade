@@ -18,6 +18,8 @@ Read the [research methodology](docs/RESEARCH_METHODOLOGY.md), [reproduction ins
 
 The [methodology adaptation and source evidence](docs/METHODOLOGY_ADAPTATION.md) explains the source papers' findings, why the approach suits this question, the exact CNI-style mapping, and what changes in our application. [BibTeX references](docs/references.bib) are included for the proposal.
 
+The external SSD has all four Qwen2.5-Instruct sizes (0.5B, 1.5B, 3B, 7B) in F16 plus `Q8_0`, `Q4_K_M`, `Q2_K` and `Q1_0` GGUF formats. See the [SSD quantization preparation record](docs/SSD_ASSET_REUSE.md#gguf-quantization-prepared-for-lab-use). These are prepared weights only; no model tasks or research data collection have been run.
+
 Start with the [executive summary](literature%20review/EXECUTIVE_SUMMARY.md), then use the [reading index](literature%20review/READING_INDEX.md) to browse papers and summaries. Publication status and downloaded versions are documented; reported findings have not been independently reproduced.
 
 ## Working hypotheses

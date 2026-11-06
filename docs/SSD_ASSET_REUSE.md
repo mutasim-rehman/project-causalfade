@@ -44,7 +44,15 @@ Original checkpoints plus the five GGUFs occupy about 51.9 GiB. Small provenance
 
 ## What remains to prepare
 
-The selected GGUFs cover five of the nominal twenty size/precision combinations: four F16 baselines and one 7B Q4 configuration. They do not provide the other fifteen configurations. Most missing variants can potentially be generated from the retained high-precision sources without downloading the models again, once quantizer/backend support is verified. Approximately 1-bit formats must be recorded by exact format and effective precision, not inferred from filenames.
+## GGUF quantization prepared for lab use
+
+The SSD now contains all four model sizes (0.5B, 1.5B, 3B, 7B) as F16 baselines and four weight-only GGUF quantization formats: `Q8_0`, `Q4_K_M`, `Q2_K` and `Q1_0`. The original AGERE 7B `Q4_K_M` file is preserved under `weights/gguf/agere_original`; the canonical 7B Q4 file was regenerated with the same quantizer as the other variants. The four F16 sources are retained at `weights/gguf`.
+
+The quantizer was the official llama.cpp Windows x64 CPU release `b12176` (download archive SHA-256 `5c1b4049b67d59aa13488f095e00afe823f62569e6a0d76fae8f555717886606`). Its executable and extracted files stayed in the local repository workspace's ignored `.tools` directory; no code or binaries were placed on the SSD. Preparation script: `tools/prepare_gguf_quantizations.py`. Outputs, per-file logs and hashes are recorded on the SSD in `manifests/quantization_preparation.json` and beside each GGUF as `.quantize.log`.
+
+`Q1_0` is the literal one-bit family used for this setup. Its effective bits per weight exceed exactly 1.0 because of block scales and file overhead. We used it without an importance matrix to avoid choosing calibration data during this setup-only step. `IQ1_S` was not generated because its calibration/importance matrix must be defined in the research protocol. Exact GGUF type names, source hashes, output hashes and byte sizes are in the SSD manifest.
+
+This completed model preparation only. No inference prompts, causal tasks, evaluation or research data collection were run. Model behavior, numerical parity and practical validity of each quantization level have not been assessed.
 
 Hashes and revision records establish local provenance and transfer integrity; they do not verify numerical parity between HF and GGUF inference or certify every binary/runtime combination. Before collection, run a fixed smoke/parity set with controlled chat template, decoding, context and tensor/cache precision. Explicitly override model-embedded sampling defaults.
 
