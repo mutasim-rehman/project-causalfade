@@ -16,6 +16,8 @@ The project now has an **executable simulator and synthetic methodology-validati
 
 Read the [research methodology](docs/RESEARCH_METHODOLOGY.md), [reproduction instructions](docs/REPRODUCIBILITY.md), and [generated validation report](results/design_validation/VALIDATION_REPORT.md). The proposed psychological adaptation separates causal sensitivity, conditional associative influence and residual action bias, with explicit identification and model-fit limitations.
 
+The [implementation and research roadmap](docs/STUDY_ROADMAP.md) defines the lab setup, durable runner, bounded agent, pilot, power analysis, protocol freeze, collection, statistics and reporting phases. Research execution is currently on hold; model preparation and documentation do not constitute LLM experiments.
+
 The [methodology adaptation and source evidence](docs/METHODOLOGY_ADAPTATION.md) explains the source papers' findings, why the approach suits this question, the exact CNI-style mapping, and what changes in our application. [BibTeX references](docs/references.bib) are included for the proposal.
 
 The external SSD has all four Qwen2.5-Instruct sizes (0.5B, 1.5B, 3B, 7B) in F16 plus `Q8_0`, `Q4_K_M`, `Q2_K` and `Q1_0` GGUF formats. See the [SSD quantization preparation record](docs/SSD_ASSET_REUSE.md#gguf-quantization-prepared-for-lab-use). These are prepared weights only; no model tasks or research data collection have been run.

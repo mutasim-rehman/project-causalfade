@@ -1,6 +1,8 @@
 # CausalFade research methodology
 
-**Version:** 0.2, 1 November 2026. **Status:** exploratory design and executable synthetic validation; not a registered protocol and not an LLM results paper.
+**Version:** 0.3, 7 November 2026. **Status:** documented design, executable synthetic validation and completed weight preparation. No LLM inference, agent evaluation or confirmatory data collection has been performed. This document is not a registered protocol.
+
+The [implementation and research roadmap](STUDY_ROADMAP.md) records completed work, remaining deliverables, dependencies and decisions before collection. The user's current authorization is documentation and setup only; the roadmap does not authorize running research.
 
 For source findings, the exact CNI-style mathematical mapping, the rationale for transfer and its limits, read [Methodology adaptation and source evidence](METHODOLOGY_ADAPTATION.md).
 
@@ -22,10 +24,11 @@ Neither a significant accuracy difference nor a fitted tree proves that internal
 - Structured response scorer preserving missing/invalid predictions.
 - Paired family-block bootstrap utility for the probability-scale conflict-penalty contrast.
 - Reproducible synthetic outputs and unit tests.
+- SSD model preparation: four Qwen2.5-Instruct sizes, each with F16, Q8_0, Q4_K_M, Q2_K and Q1_0 GGUF files. Quantization logs and hashes are retained; inference compatibility is not yet established.
 
 ### Planned, not implemented or established
 
-- Live LLM/tool-agent runner, quantized checkpoints, calibration and inference measurements.
+- Live LLM/tool-agent runner, inference compatibility checks and runtime measurements. Importance-matrix calibration is absent from the prepared configurations; adding it would define another treatment.
 - Hierarchical logistic experimental analysis and hierarchical Bayesian processing-tree inference.
 - Power/precision simulations for the final design, interval-coverage study and confirmatory collection.
 - Active experiment selection and investigator/analyst precision crossing.
@@ -48,6 +51,18 @@ The target is `tau = E[Y | do(X=1)] - E[Y | do(X=0)]`. The observational shortcu
 **Across-model target:** the difference in behavior under prespecified precision configurations of the same base checkpoint. Evaluate all configurations on the same independently generated world families and frozen prompts. Randomize execution order to limit operational drift. This is an intervention on the inference configuration, not an observational comparison of unrelated models.
 
 If quantizer, calibration set, kernels or cache precision differ, the estimated treatment effect concerns that entire configuration. Do not attribute a bundled effect exclusively to bit width. Generalization beyond the selected checkpoints needs additional model families.
+
+### Prepared configurations and hardware
+
+Use Qwen2.5-Instruct at 0.5B, 1.5B, 3B and 7B. Within each size, compare five configurations: F16 reference, Q8_0, Q4_K_M, Q2_K and Q1_0. This gives 20 model configurations. Treat size and GGUF format as categorical factors. A continuous regression on filename bit labels would conflate quantizer algorithms, mixed tensor types and storage overhead.
+
+All 16 quantized files were prepared from their matched retained F16 GGUFs using the official llama.cpp Windows CPU release b12176, eight quantization threads and no importance matrix. The canonical 7B Q4_K_M was rebuilt with that release; its earlier AGERE copy is archived and excluded from the main grid. The original Hugging Face checkpoints contain BF16 weights; the reference used here is the converted F16 GGUF, not the original BF16 checkpoint. See [asset provenance](SSD_ASSET_REUSE.md#gguf-quantization-prepared-for-lab-use).
+
+Q1_0 replaces the earlier proposed IQ1_S for this preparation. These are different formats. IQ1_S was not prepared; any future calibrated IQ configuration needs an explicit calibration corpus, split and protocol amendment. Nominal bit labels do not give exact whole-model bits per weight. Record tensor types and actual byte sizes alongside format names.
+
+The lab specification is 32 GB system RAM and 10 GB VRAM. The 7B F16 GGUF is larger than VRAM and needs CPU execution or partial CPU/GPU offload. Freeze and report the offload policy per configuration; validate any machine change on a separate overlap set. A CPU-only sensitivity run or another justified common execution policy is needed before attributing hardware-dependent numerical differences to quantization. Do not interpret latency across different offload policies as a pure precision effect.
+
+Preparation checks establish file presence, headers and recorded hashes. They do not establish inference quality, runtime compatibility, numerical parity or the scientific adequacy of the low-bit conditions.
 
 ## 3. Structural causal model and exact identification
 
@@ -105,6 +120,12 @@ The current prompt requests `ate_estimate`, binary integer `activate`, and `adju
 Control and record base checkpoint revision/hash, quantized weight hash, quantizer and group size, calibration data and seed, activation/cache precision, compute dtype, tokenizer and chat template, serving backend/version, hardware, decoding policy, output budget, tool configuration, prompt hash, run order, random seed and stopping reason. Include same-bit calibration replicates when feasible to estimate configuration instability.
 
 Do not treat repeated identical greedy calls as independent trials. Use independent world families for the experimental sampling unit. Stochastic decoding repetitions and paraphrases remain nested within family and checkpoint.
+
+### Agent implementation for the course project
+
+The current generator produces a direct-response measurement task. The planned course submission adds a bounded analyst agent that can choose to inspect observational strata, request deterministic arithmetic, and submit the structured final decision. The environment supplies the known graph and evidence; it does not expose evaluator labels. Tool choice, arguments, returned values, failures and final actions must be logged. This supports an agent-level analysis without claiming causal discovery.
+
+Implement direct response first to validate the measurement pipeline, then the bounded tool interface. Treat interface mode as a separate experimental factor or separate study stratum; do not pool responses across modes. Before confirmatory collection, designate one mode as primary. Freeze allowed tools, call/token limits, calculator semantics, retries and stopping rules on development data. An active investigator that intervenes on the SCM is a later extension with its own protocol.
 
 Confirmatory gates include above-chance full-precision task competence, low protocol-failure rates, and evidence that the selected suite exercises the desired contrast. Gates and thresholds must be fixed on development data, then checked once on an untouched confirmatory split; do not filter individual items by whether full precision happened to answer correctly.
 
@@ -192,7 +213,15 @@ H1: Delta > 0
 
 Select one primary precision contrast and practical effect threshold before confirmatory collection. Full precision is a reference configuration, not an assumed perfect or superior agent.
 
+The working recommendation for planning is 3B Q2_K versus matched 3B F16 on exact evidence, because it includes substantial compression while keeping the reference model smaller than 7B. This is a proposed choice, not a registered primary comparison. Pilot feasibility and competence checks may change it before the plan is frozen; any change must be documented without consulting confirmatory outcomes. Keep evidence layer and agent mode explicit in the final estimand.
+
 Fit a hierarchical logistic model for correctness with precision, conflict, causal direction and prespecified interactions, accounting for family dependence. Treat a small set of checkpoints as fixed effects or report checkpoint-specific contrasts rather than estimating a broad LLM population from two examples. Include evidence layer as a separate stratum initially. Standardize predictions over the balanced task population to obtain Delta on the probability scale: a logistic interaction coefficient is not Delta.
+
+For a checkpoint-specific analysis, a candidate specification is `logit Pr(correct_fqk=1) = alpha + beta_q + gamma*k + eta_q*k + theta*T + u_f + v_f*k`, with F16 as the format reference and k indicating conflict. The random family intercept and conflict slope account for repeated matched cells; simulation must establish whether the planned family count supports this structure. If singular fits or separation are anticipated, freeze a regularized alternative and its interpretation in advance. Do not choose between models according to which yields significance. In a joint size analysis, use size-specific fixed contrasts and retain the shared family structure.
+
+For each format, obtain standardized aligned and conflict accuracy by averaging predicted probabilities over the prespecified family/covariate population. Then subtract the corresponding F16 conflict penalty. State whether predictions integrate over family random effects or describe the observed families; these target different populations. Prefer population-level predictions when claiming generalization to newly sampled worlds.
+
+The proposed primary test uses a one-sided alpha of .05 for Delta>0. Report the estimate, a two-sided 95% interval for estimation, and the matching one-sided lower confidence bound or calibrated one-sided p-value for the directional decision. A two-sided 95% interval and one-sided .05 test are not interchangeable decision rules. Validate the chosen inference method by simulation under the clustered design. Keep the result exploratory until that calibration and protocol freeze are complete.
 
 Use family-level paired bootstrap intervals as a robustness analysis, resampling complete families with all conditions/configurations together. Clarify inference is over the synthetic-world population. If randomized prompt/assignment schedules are used for randomization inference, permutations must follow that actual design; arbitrary swaps of deterministic precision labels are not automatically a valid randomization test.
 
@@ -202,13 +231,21 @@ Fit the hierarchical tree only after parameter-recovery, fit and identifiability
 
 Report Delta_C, Delta_A, Delta_B and Delta_wA with posterior intervals and practical-effect probabilities. Describe B as residual action bias, not a response preference measured independently of the tree. Do not present a Bayesian credible interval as a frequentist confidence interval. The current percentile bootstrap example is neither of those planned hierarchical analyses.
 
+Invalid actions have no binary activate value. Never recode them as decline for the tree. Plan a two-part model for response validity and binary action conditional on validity, with family dependence. A simpler valid-response tree is a labeled sensitivity analysis whose parameters describe the selected valid-response population. Format-dependent invalidity can change that population, so it cannot by itself support an unconditional mechanism claim. The primary correctness analysis continues to count invalid responses as failures.
+
 ### Secondary estimation outcomes
 
 Report paired differences in RMSE, bias and regret with family-bootstrap uncertainty and explicit valid-response denominators. Include both directions of decision flips; better average accuracy can conceal harmed tasks. Control multiplicity for prespecified secondary contrasts, for example with Holm correction, and label later analyses exploratory. Additional tests should correspond to additional questions, not inflate the number of significance tests.
 
+There are 16 possible within-size quantized-versus-F16 contrasts in the prepared grid. If one is designated primary, list the remaining contrasts in an explicit secondary family and apply Holm adjustment within that family. This does not establish global family-wise error control over unrelated endpoints. Define separate endpoint families or a gatekeeping procedure in the frozen plan. Size trends, sampled-evidence replication and alternative agent modes require declared analysis roles.
+
 ### Preservation and specificity
 
 Failure to reject degradation does not establish preservation. Equivalence/noninferiority requires a justified tolerance fixed before confirmatory data. A selective causal deficit also requires matched recall, context-comprehension and noncausal numerical controls. The current simulator does not implement those additional controls; it cannot exclude all general-capacity explanations.
+
+For equivalence, define a substantively justified margin epsilon and test whether Delta lies within [-epsilon,+epsilon], using a procedure and interval calibrated for the paired families. For noninferiority, specify the permitted increase in conflict penalty. Leave the margin undecided until a scientific justification is recorded; do not derive it from the observed confirmatory effect. An overall-accuracy loss and a change in conflict penalty answer different questions.
+
+For specificity, compare quantization effects on causal and matched control tasks through a prespecified task-type interaction on the probability scale. Match arithmetic operations, response format, context length and evidence strength where possible. This contrast assesses behavioral selectivity under those matching assumptions; it does not prove a latent causal route is damaged. Basic recall/comprehension alone cannot rule out every general reasoning explanation.
 
 Do not adjust away token count or tool failure in the total-effect analysis: they can be consequences of precision. Analyze them as outcomes. A causal mediation interpretation requires additional assumptions or stage interventions and is not supplied by processing-tree labels.
 
@@ -222,7 +259,17 @@ The initial symmetric logistic comparison exposed observational equivalence. An 
 
 Before real confirmatory collection, expand simulations to evaluate estimator coverage, fit-test size/power, family heterogeneity, invalid outputs, plausible effect sizes and dependence. Determine the number of independent families from the desired precision/power for Delta, not from the 24-family demonstration export or the number of synthetic binomial responses. Fit tests, parameter intervals and power under real LLM variation remain open validation work.
 
-Use development-only data for choosing prompts and thresholds. Split by whole family, including every evidence layer, label direction and paraphrase. Freeze the generator/configuration, analysis script and primary contrast, then register or timestamp the final plan before collecting the untouched test set. Version 0.2 is not that registration.
+Use development-only data for choosing prompts and thresholds. Split by whole family, including every evidence layer, label direction and paraphrase. Freeze the generator/configuration, analysis script and primary contrast, then register or timestamp the final plan before collecting the untouched test set. Version 0.3 is not that registration.
+
+## 9a. Portable execution, resumption and analysis deliverables
+
+All source code, prompts/templates, analysis scripts and dependency specifications belong in the Git repository. The external SSD holds weights, generated datasets, raw trajectories, runtime logs, scored results and provenance. Installed environments and executables stay on the current PC. Git commit plus model/task hashes identify an experiment across machines; the drive letter is not an experiment identifier.
+
+The future runner must create a durable run manifest and write a completed task record before advancing its checkpoint. Use stable keys including run ID, configuration, task ID and repetition. Resume only missing records under the identical frozen configuration; reject conflicting duplicates and preserve raw failed attempts. A retry policy must not replace an incorrect valid answer with a later preferred answer. If a process fails mid-task, retain the interruption and apply the same predefined infrastructure-retry policy across formats.
+
+When changing PCs, record machine/driver/backend versions and use a separate development overlap set to detect drift. Do not introduce a new machine silently halfway through a format condition. Balance run order in complete family blocks where feasible, and account for unavoidable machine blocks in the analysis. Capture interruptions and missingness rather than silently discarding incomplete difficult configurations. Maintain a second backup of irreplaceable trajectories; the external SSD alone does not guarantee progress preservation.
+
+Planned figures are accuracy by format and conflict, probability-scale paired contrast forest plots, effect-error/regret distributions, invalid-output and tool-failure rates, model-fit/recovery diagnostics, and C/A/B intervals only when the measurement model is supported. Facet by checkpoint and keep exact/sampled and direct/tool modes distinct. Export publication figures as PDF/SVG plus PNG previews using repository plotting code; archive the numeric estimates behind every figure. No actual research figures have been produced by documenting this plan.
 
 ## 10. Novelty, feasibility and claims
 
