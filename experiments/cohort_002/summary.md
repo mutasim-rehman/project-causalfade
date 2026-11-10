@@ -14,3 +14,5 @@ In the formula control, Q4_K_M's estimate signs were 7 fewer correct on aligned 
 The explicit action conflict penalty was 0 points for F16 and −9.375 points for Q4_K_M under fence handling. The latter reflects three correct activations in one conflict cell amid a strong decline bias. These are exploratory repeated-family results. We did not fit the processing tree given near-constant decisions and differences in output behavior.
 
 [Between-format comparison](f16_vs_q4_k_m_formula.json) · [F16 original vs. formula](f16_matched_prompt_contrast.json) · [Q4_K_M original vs. formula](q4_k_m_matched_prompt_contrast.json)
+
+The [post hoc sign-derived policy](estimate_sign_policy_sensitivity.json) turns each saved numeric estimate into an action using its sign. This reduces accuracy by 25 points under Q4_K_M relative to F16 (paired 16-family percentile interval −37.5 to −10.94). The change in conflict penalty is +6.25 points (−9.38 to +21.88). The larger overall change and wide conflict interval make this a candidate arithmetic execution effect for a later protocol, with no basis here for a selective conflict claim. These values come from rescoring existing responses.
