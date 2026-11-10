@@ -69,3 +69,7 @@ Treat the source-selection penalty as sensitive to default actions and task pres
 ## 2026-11-10 14:13 PKT
 
 Freeze the reversal diagnostic before inference. Compare historical-first versus randomized-first conflict accuracy within each task and format, keeping the family as the resampling block. The earlier order split predicts lower historical-first accuracy for F16. Report the difference between formats as exploratory. The complementary order was collected in a later block, so account for possible time-order effects in the interpretation.
+
+## 2026-11-10 14:19 PKT
+
+Treat Q8_0 as a candidate reference-preserving configuration for estimate sign on the formula control. It tied F16 at 61/64 on the reused sample and exceeded Q4_K_M by 16 correct signs, but matched the F16 explicit decline bias. The observed tie is not an equivalence test. Continue the separate fresh-family F16 versus Q4_K_M replication.

@@ -1,0 +1,386 @@
+[
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0021",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8263207875803595, \"population_cell_probability\": 0.04382727743629544}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7447158605545092, \"population_cell_probability\": 0.45617272256370456}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.2552841394454908, \"population_cell_probability\": 0.45617272256370456}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.17367921241964043, \"population_cell_probability\": 0.043827277436295414}]}",
+    "task_id": "6e39f6152120c3d91bc7"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0005",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7827911905784776, \"population_cell_probability\": 0.08065516688824709}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8792251180800735, \"population_cell_probability\": 0.4193448331117529}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.12077488191992643, \"population_cell_probability\": 0.4193448331117529}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.2172088094215225, \"population_cell_probability\": 0.08065516688824709}]}",
+    "task_id": "390474a6846f381b494f"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0011",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7084482342553503, \"population_cell_probability\": 0.05907540940268152}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8018871900144456, \"population_cell_probability\": 0.4409245905973185}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.19811280998555442, \"population_cell_probability\": 0.4409245905973185}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.29155176574464964, \"population_cell_probability\": 0.059075409402681495}]}",
+    "task_id": "f99337cfb86c7fddfd3d"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0021",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7447158605545092, \"population_cell_probability\": 0.04382727743629544}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8263207875803595, \"population_cell_probability\": 0.45617272256370456}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.17367921241964043, \"population_cell_probability\": 0.45617272256370456}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.2552841394454908, \"population_cell_probability\": 0.043827277436295414}]}",
+    "task_id": "1033fcc10de398cb2476"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0011",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7084482342553503, \"population_cell_probability\": 0.4409245905973185}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8018871900144456, \"population_cell_probability\": 0.059075409402681495}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.19811280998555442, \"population_cell_probability\": 0.05907540940268152}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.29155176574464964, \"population_cell_probability\": 0.4409245905973185}]}",
+    "task_id": "5b1b93e01377fbbd6e9c"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0008",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8477219324321328, \"population_cell_probability\": 0.4641134461475825}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7437876749788692, \"population_cell_probability\": 0.03588655385241751}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.2562123250211307, \"population_cell_probability\": 0.03588655385241751}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.15227806756786727, \"population_cell_probability\": 0.4641134461475825}]}",
+    "task_id": "2ad3973e3592bd03a986"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0010",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8379592244479157, \"population_cell_probability\": 0.41729388495285624}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7449295797437026, \"population_cell_probability\": 0.08270611504714376}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.25507042025629756, \"population_cell_probability\": 0.08270611504714376}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.1620407755520843, \"population_cell_probability\": 0.41729388495285624}]}",
+    "task_id": "cfa5ea2f7634a2af4936"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0019",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7525539033068116, \"population_cell_probability\": 0.47235801366347707}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8406658704954315, \"population_cell_probability\": 0.027641986336522956}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.15933412950456838, \"population_cell_probability\": 0.027641986336522928}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.2474460966931884, \"population_cell_probability\": 0.47235801366347707}]}",
+    "task_id": "c3d7a9f414599cfdfbc0"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0018",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7722809568447001, \"population_cell_probability\": 0.05056442117376658}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8545520392155003, \"population_cell_probability\": 0.4494355788262334}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.14544796078449973, \"population_cell_probability\": 0.4494355788262334}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.2277190431552999, \"population_cell_probability\": 0.050564421173766555}]}",
+    "task_id": "23ed5ad61202cda68580"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0009",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7938640477596216, \"population_cell_probability\": 0.43180463384476575}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8771001409296931, \"population_cell_probability\": 0.06819536615523428}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.12289985907030689, \"population_cell_probability\": 0.06819536615523425}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.2061359522403784, \"population_cell_probability\": 0.43180463384476575}]}",
+    "task_id": "69f456a8a3b7b43b0be6"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0017",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7096674295575875, \"population_cell_probability\": 0.4741670311840418}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8027318929787375, \"population_cell_probability\": 0.02583296881595823}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.19726810702126257, \"population_cell_probability\": 0.0258329688159582}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.2903325704424125, \"population_cell_probability\": 0.4741670311840418}]}",
+    "task_id": "60f497e083876bf60d26"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0022",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8988170721956374, \"population_cell_probability\": 0.0307176247170019}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7853827567434308, \"population_cell_probability\": 0.4692823752829981}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.21461724325656922, \"population_cell_probability\": 0.4692823752829981}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.1011829278043625, \"population_cell_probability\": 0.030717624717001873}]}",
+    "task_id": "ab3747ae274ce12b3a2a"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0021",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7447158605545092, \"population_cell_probability\": 0.45617272256370456}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8263207875803595, \"population_cell_probability\": 0.043827277436295414}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.17367921241964043, \"population_cell_probability\": 0.04382727743629544}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.2552841394454908, \"population_cell_probability\": 0.45617272256370456}]}",
+    "task_id": "2c524482ab93ea2fe9ed"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0003",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8180044820189931, \"population_cell_probability\": 0.06869373362782583}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7319725181027001, \"population_cell_probability\": 0.4313062663721742}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.26802748189729986, \"population_cell_probability\": 0.4313062663721742}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.18199551798100685, \"population_cell_probability\": 0.06869373362782585}]}",
+    "task_id": "d2d8f6dc41321be947e4"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0010",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8379592244479157, \"population_cell_probability\": 0.08270611504714376}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7449295797437026, \"population_cell_probability\": 0.41729388495285624}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.25507042025629756, \"population_cell_probability\": 0.41729388495285624}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.1620407755520843, \"population_cell_probability\": 0.08270611504714376}]}",
+    "task_id": "ab27f5a19529345be551"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0018",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8545520392155003, \"population_cell_probability\": 0.05056442117376658}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7722809568447001, \"population_cell_probability\": 0.4494355788262334}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.2277190431552999, \"population_cell_probability\": 0.4494355788262334}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.14544796078449973, \"population_cell_probability\": 0.050564421173766555}]}",
+    "task_id": "dbf68e2fdf660ad63fd6"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0015",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8535714250753124, \"population_cell_probability\": 0.07020826754228132}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7615233252433331, \"population_cell_probability\": 0.4297917324577187}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.23847667475666687, \"population_cell_probability\": 0.4297917324577187}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.14642857492468755, \"population_cell_probability\": 0.07020826754228132}]}",
+    "task_id": "014639b01f70614cc453"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0012",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.886812864034169, \"population_cell_probability\": 0.07489459605812998}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8050104346193763, \"population_cell_probability\": 0.42510540394187}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.19498956538062373, \"population_cell_probability\": 0.42510540394187}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.11318713596583098, \"population_cell_probability\": 0.07489459605813001}]}",
+    "task_id": "2b02cafd5c97e725fe38"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0010",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7449295797437026, \"population_cell_probability\": 0.08270611504714376}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8379592244479157, \"population_cell_probability\": 0.41729388495285624}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.1620407755520843, \"population_cell_probability\": 0.41729388495285624}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.25507042025629756, \"population_cell_probability\": 0.08270611504714376}]}",
+    "task_id": "702e9b55164fc4212724"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0019",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8406658704954315, \"population_cell_probability\": 0.47235801366347707}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7525539033068116, \"population_cell_probability\": 0.027641986336522956}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.2474460966931884, \"population_cell_probability\": 0.027641986336522928}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.15933412950456838, \"population_cell_probability\": 0.47235801366347707}]}",
+    "task_id": "68d38eaeeb7d74cb31c5"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0006",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8795832945392263, \"population_cell_probability\": 0.45095004953175855}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7796364180036794, \"population_cell_probability\": 0.04904995046824143}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.22036358199632053, \"population_cell_probability\": 0.049049950468241454}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.12041670546077368, \"population_cell_probability\": 0.45095004953175855}]}",
+    "task_id": "93e2ce0319be9df7018e"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0020",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.764829588091979, \"population_cell_probability\": 0.04461472119878257}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8837556814805231, \"population_cell_probability\": 0.45538527880121743}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.11624431851947696, \"population_cell_probability\": 0.45538527880121743}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.23517041190802096, \"population_cell_probability\": 0.04461472119878257}]}",
+    "task_id": "bf48523581fa39ae0d4c"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0003",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8180044820189931, \"population_cell_probability\": 0.4313062663721742}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7319725181027001, \"population_cell_probability\": 0.06869373362782585}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.26802748189729986, \"population_cell_probability\": 0.06869373362782583}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.18199551798100685, \"population_cell_probability\": 0.4313062663721742}]}",
+    "task_id": "fb9288497ee75932c284"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0017",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8027318929787375, \"population_cell_probability\": 0.4741670311840418}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7096674295575875, \"population_cell_probability\": 0.02583296881595823}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.2903325704424125, \"population_cell_probability\": 0.0258329688159582}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.19726810702126257, \"population_cell_probability\": 0.4741670311840418}]}",
+    "task_id": "9a7853ceba28deb3fd8b"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0016",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7020013477041601, \"population_cell_probability\": 0.0385181179413997}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8199353372858639, \"population_cell_probability\": 0.4614818820586003}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.18006466271413613, \"population_cell_probability\": 0.4614818820586003}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.29799865229583977, \"population_cell_probability\": 0.0385181179413997}]}",
+    "task_id": "0df6e63d6c0703a864ee"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0015",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8535714250753124, \"population_cell_probability\": 0.4297917324577187}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7615233252433331, \"population_cell_probability\": 0.07020826754228132}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.23847667475666687, \"population_cell_probability\": 0.07020826754228132}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.14642857492468755, \"population_cell_probability\": 0.4297917324577187}]}",
+    "task_id": "75fe030c85c64c545b13"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0019",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8406658704954315, \"population_cell_probability\": 0.027641986336522928}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7525539033068116, \"population_cell_probability\": 0.47235801366347707}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.2474460966931884, \"population_cell_probability\": 0.47235801366347707}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.15933412950456838, \"population_cell_probability\": 0.027641986336522956}]}",
+    "task_id": "03fc376388a73eb1c4b6"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0020",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.764829588091979, \"population_cell_probability\": 0.45538527880121743}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8837556814805231, \"population_cell_probability\": 0.04461472119878257}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.11624431851947696, \"population_cell_probability\": 0.04461472119878257}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.23517041190802096, \"population_cell_probability\": 0.45538527880121743}]}",
+    "task_id": "8e97b369617007993eba"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0022",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7853827567434308, \"population_cell_probability\": 0.0307176247170019}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8988170721956374, \"population_cell_probability\": 0.4692823752829981}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.1011829278043625, \"population_cell_probability\": 0.4692823752829981}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.21461724325656922, \"population_cell_probability\": 0.030717624717001873}]}",
+    "task_id": "efe6c78886853e07a92e"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0005",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7827911905784776, \"population_cell_probability\": 0.4193448331117529}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8792251180800735, \"population_cell_probability\": 0.08065516688824709}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.12077488191992643, \"population_cell_probability\": 0.08065516688824709}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.2172088094215225, \"population_cell_probability\": 0.4193448331117529}]}",
+    "task_id": "af80a5d416b08b588745"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0003",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7319725181027001, \"population_cell_probability\": 0.4313062663721742}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8180044820189931, \"population_cell_probability\": 0.06869373362782585}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.18199551798100685, \"population_cell_probability\": 0.06869373362782583}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.26802748189729986, \"population_cell_probability\": 0.4313062663721742}]}",
+    "task_id": "8520d263c8042334fd09"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0015",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7615233252433331, \"population_cell_probability\": 0.07020826754228132}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8535714250753124, \"population_cell_probability\": 0.4297917324577187}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.14642857492468755, \"population_cell_probability\": 0.4297917324577187}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.23847667475666687, \"population_cell_probability\": 0.07020826754228132}]}",
+    "task_id": "27efeab1b207fed750b0"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0016",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7020013477041601, \"population_cell_probability\": 0.4614818820586003}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8199353372858639, \"population_cell_probability\": 0.0385181179413997}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.18006466271413613, \"population_cell_probability\": 0.0385181179413997}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.29799865229583977, \"population_cell_probability\": 0.4614818820586003}]}",
+    "task_id": "426e330481b6c8995cd3"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0008",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7437876749788692, \"population_cell_probability\": 0.03588655385241751}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8477219324321328, \"population_cell_probability\": 0.4641134461475825}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.15227806756786727, \"population_cell_probability\": 0.4641134461475825}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.2562123250211307, \"population_cell_probability\": 0.03588655385241751}]}",
+    "task_id": "bb3f89cc640f64b7f473"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0011",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8018871900144456, \"population_cell_probability\": 0.4409245905973185}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7084482342553503, \"population_cell_probability\": 0.059075409402681495}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.29155176574464964, \"population_cell_probability\": 0.05907540940268152}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.19811280998555442, \"population_cell_probability\": 0.4409245905973185}]}",
+    "task_id": "91036a2902f048c30a6c"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0019",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7525539033068116, \"population_cell_probability\": 0.027641986336522928}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8406658704954315, \"population_cell_probability\": 0.47235801366347707}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.15933412950456838, \"population_cell_probability\": 0.47235801366347707}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.2474460966931884, \"population_cell_probability\": 0.027641986336522956}]}",
+    "task_id": "a7f571811b08403a5e14"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0005",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8792251180800735, \"population_cell_probability\": 0.08065516688824709}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7827911905784776, \"population_cell_probability\": 0.4193448331117529}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.2172088094215225, \"population_cell_probability\": 0.4193448331117529}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.12077488191992643, \"population_cell_probability\": 0.08065516688824709}]}",
+    "task_id": "3e459f5e3dcade7fc172"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0003",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7319725181027001, \"population_cell_probability\": 0.06869373362782583}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8180044820189931, \"population_cell_probability\": 0.4313062663721742}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.18199551798100685, \"population_cell_probability\": 0.4313062663721742}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.26802748189729986, \"population_cell_probability\": 0.06869373362782585}]}",
+    "task_id": "d6d5dff023c056fac7df"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0012",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8050104346193763, \"population_cell_probability\": 0.42510540394187}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.886812864034169, \"population_cell_probability\": 0.07489459605813001}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.11318713596583098, \"population_cell_probability\": 0.07489459605812998}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.19498956538062373, \"population_cell_probability\": 0.42510540394187}]}",
+    "task_id": "82d242b75d47da544ded"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0009",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7938640477596216, \"population_cell_probability\": 0.06819536615523425}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8771001409296931, \"population_cell_probability\": 0.43180463384476575}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.12289985907030689, \"population_cell_probability\": 0.43180463384476575}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.2061359522403784, \"population_cell_probability\": 0.06819536615523428}]}",
+    "task_id": "938702ac4dd26c777ffb"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0017",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8027318929787375, \"population_cell_probability\": 0.0258329688159582}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7096674295575875, \"population_cell_probability\": 0.4741670311840418}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.2903325704424125, \"population_cell_probability\": 0.4741670311840418}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.19726810702126257, \"population_cell_probability\": 0.02583296881595823}]}",
+    "task_id": "cb7588b3b803c08832fe"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0005",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8792251180800735, \"population_cell_probability\": 0.4193448331117529}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7827911905784776, \"population_cell_probability\": 0.08065516688824709}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.2172088094215225, \"population_cell_probability\": 0.08065516688824709}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.12077488191992643, \"population_cell_probability\": 0.4193448331117529}]}",
+    "task_id": "9be691cb1113985a746f"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0009",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8771001409296931, \"population_cell_probability\": 0.43180463384476575}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7938640477596216, \"population_cell_probability\": 0.06819536615523428}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.2061359522403784, \"population_cell_probability\": 0.06819536615523425}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.12289985907030689, \"population_cell_probability\": 0.43180463384476575}]}",
+    "task_id": "f0a326c2d5d1d4b3443c"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0020",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8837556814805231, \"population_cell_probability\": 0.04461472119878257}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.764829588091979, \"population_cell_probability\": 0.45538527880121743}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.23517041190802096, \"population_cell_probability\": 0.45538527880121743}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.11624431851947696, \"population_cell_probability\": 0.04461472119878257}]}",
+    "task_id": "a54c44b6e92086caa897"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0006",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7796364180036794, \"population_cell_probability\": 0.45095004953175855}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8795832945392263, \"population_cell_probability\": 0.04904995046824143}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.12041670546077368, \"population_cell_probability\": 0.049049950468241454}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.22036358199632053, \"population_cell_probability\": 0.45095004953175855}]}",
+    "task_id": "4aa4ec500bd2d6bae242"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0006",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8795832945392263, \"population_cell_probability\": 0.049049950468241454}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7796364180036794, \"population_cell_probability\": 0.45095004953175855}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.22036358199632053, \"population_cell_probability\": 0.45095004953175855}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.12041670546077368, \"population_cell_probability\": 0.04904995046824143}]}",
+    "task_id": "71165028597dcabc2f61"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0008",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8477219324321328, \"population_cell_probability\": 0.03588655385241751}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7437876749788692, \"population_cell_probability\": 0.4641134461475825}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.2562123250211307, \"population_cell_probability\": 0.4641134461475825}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.15227806756786727, \"population_cell_probability\": 0.03588655385241751}]}",
+    "task_id": "4e169ae496a347c4f5d3"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0015",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7615233252433331, \"population_cell_probability\": 0.4297917324577187}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8535714250753124, \"population_cell_probability\": 0.07020826754228132}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.14642857492468755, \"population_cell_probability\": 0.07020826754228132}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.23847667475666687, \"population_cell_probability\": 0.4297917324577187}]}",
+    "task_id": "cf5052c8938236ec8275"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0012",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8050104346193763, \"population_cell_probability\": 0.07489459605812998}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.886812864034169, \"population_cell_probability\": 0.42510540394187}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.11318713596583098, \"population_cell_probability\": 0.42510540394187}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.19498956538062373, \"population_cell_probability\": 0.07489459605813001}]}",
+    "task_id": "ce221f7d1b43dfa11220"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0017",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7096674295575875, \"population_cell_probability\": 0.0258329688159582}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8027318929787375, \"population_cell_probability\": 0.4741670311840418}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.19726810702126257, \"population_cell_probability\": 0.4741670311840418}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.2903325704424125, \"population_cell_probability\": 0.02583296881595823}]}",
+    "task_id": "157a816cec941ef138e2"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0016",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8199353372858639, \"population_cell_probability\": 0.4614818820586003}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7020013477041601, \"population_cell_probability\": 0.0385181179413997}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.29799865229583977, \"population_cell_probability\": 0.0385181179413997}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.18006466271413613, \"population_cell_probability\": 0.4614818820586003}]}",
+    "task_id": "07b01d9d50446af85dfb"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0006",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7796364180036794, \"population_cell_probability\": 0.049049950468241454}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8795832945392263, \"population_cell_probability\": 0.45095004953175855}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.12041670546077368, \"population_cell_probability\": 0.45095004953175855}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.22036358199632053, \"population_cell_probability\": 0.04904995046824143}]}",
+    "task_id": "177ec0c5e5661fabeaeb"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0008",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7437876749788692, \"population_cell_probability\": 0.4641134461475825}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8477219324321328, \"population_cell_probability\": 0.03588655385241751}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.15227806756786727, \"population_cell_probability\": 0.03588655385241751}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.2562123250211307, \"population_cell_probability\": 0.4641134461475825}]}",
+    "task_id": "6d1b44143c3c33edd387"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0021",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8263207875803595, \"population_cell_probability\": 0.45617272256370456}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7447158605545092, \"population_cell_probability\": 0.043827277436295414}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.2552841394454908, \"population_cell_probability\": 0.04382727743629544}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.17367921241964043, \"population_cell_probability\": 0.45617272256370456}]}",
+    "task_id": "79152ae75c088df436e7"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0020",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8837556814805231, \"population_cell_probability\": 0.45538527880121743}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.764829588091979, \"population_cell_probability\": 0.04461472119878257}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.23517041190802096, \"population_cell_probability\": 0.04461472119878257}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.11624431851947696, \"population_cell_probability\": 0.45538527880121743}]}",
+    "task_id": "da81800bd7ed445a2f66"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0011",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8018871900144456, \"population_cell_probability\": 0.05907540940268152}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7084482342553503, \"population_cell_probability\": 0.4409245905973185}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.29155176574464964, \"population_cell_probability\": 0.4409245905973185}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.19811280998555442, \"population_cell_probability\": 0.059075409402681495}]}",
+    "task_id": "c03d25858706d32bc297"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0018",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7722809568447001, \"population_cell_probability\": 0.4494355788262334}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8545520392155003, \"population_cell_probability\": 0.050564421173766555}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.14544796078449973, \"population_cell_probability\": 0.05056442117376658}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.2277190431552999, \"population_cell_probability\": 0.4494355788262334}]}",
+    "task_id": "0d3131293ae00f86fc9a"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0012",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.886812864034169, \"population_cell_probability\": 0.42510540394187}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8050104346193763, \"population_cell_probability\": 0.07489459605813001}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.19498956538062373, \"population_cell_probability\": 0.07489459605812998}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.11318713596583098, \"population_cell_probability\": 0.42510540394187}]}",
+    "task_id": "fc0dbfe5c2cfe36ba96c"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0016",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8199353372858639, \"population_cell_probability\": 0.0385181179413997}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7020013477041601, \"population_cell_probability\": 0.4614818820586003}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.29799865229583977, \"population_cell_probability\": 0.4614818820586003}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.18006466271413613, \"population_cell_probability\": 0.0385181179413997}]}",
+    "task_id": "02b841f328a3bd0bf666"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0018",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8545520392155003, \"population_cell_probability\": 0.4494355788262334}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7722809568447001, \"population_cell_probability\": 0.050564421173766555}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.2277190431552999, \"population_cell_probability\": 0.05056442117376658}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.14544796078449973, \"population_cell_probability\": 0.4494355788262334}]}",
+    "task_id": "69f93aa73adad37d4cf7"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0010",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7449295797437026, \"population_cell_probability\": 0.41729388495285624}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8379592244479157, \"population_cell_probability\": 0.08270611504714376}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.1620407755520843, \"population_cell_probability\": 0.08270611504714376}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.25507042025629756, \"population_cell_probability\": 0.41729388495285624}]}",
+    "task_id": "01d04b81c1c5085ff585"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0022",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.7853827567434308, \"population_cell_probability\": 0.4692823752829981}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.8988170721956374, \"population_cell_probability\": 0.030717624717001873}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.1011829278043625, \"population_cell_probability\": 0.0307176247170019}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.21461724325656922, \"population_cell_probability\": 0.4692823752829981}]}",
+    "task_id": "b0485c440287b4aeb681"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0022",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8988170721956374, \"population_cell_probability\": 0.4692823752829981}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7853827567434308, \"population_cell_probability\": 0.030717624717001873}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.21461724325656922, \"population_cell_probability\": 0.0307176247170019}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.1011829278043625, \"population_cell_probability\": 0.4692823752829981}]}",
+    "task_id": "6cbef096d927bc21d144"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0009",
+    "prompt": "Apply this numeric decision rule to a table indexed by binary z and x.\nLet r[z,x] be success_probability for that row. The score is the average\nof r[0,1] minus r[0,0] and r[1,1] minus r[1,0]:\n0.5 * ((r[0,1] - r[0,0]) + (r[1,1] - r[1,0])).\nSet activate to 1 if the score is positive and 0 otherwise. Return only\nJSON with keys ate_estimate (the numeric score), activate (0 or 1), and\nadjustment_set (the list of variable names used to group the rows).\nEvidence:\n{\"type\": \"exact_population_probabilities\", \"strata\": [{\"z\": 0, \"x\": 0, \"success_probability\": 0.8771001409296931, \"population_cell_probability\": 0.06819536615523425}, {\"z\": 0, \"x\": 1, \"success_probability\": 0.7938640477596216, \"population_cell_probability\": 0.43180463384476575}, {\"z\": 1, \"x\": 0, \"success_probability\": 0.2061359522403784, \"population_cell_probability\": 0.43180463384476575}, {\"z\": 1, \"x\": 1, \"success_probability\": 0.12289985907030689, \"population_cell_probability\": 0.06819536615523428}]}",
+    "task_id": "14c4c8452cc75f859db3"
+  }
+]
