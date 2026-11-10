@@ -15,3 +15,5 @@ The [Q2_K repacking diagnostic](experiments/cohort_003/summary.md) completed 32 
 A follow-up GGUF metadata audit found identical tokenizer and embedded chat-template metadata across the 3B F16, Q2_K and Q4_K_M files. The runtime reported matching prompt token counts on all 64 matched prompts. See the [metadata audit](experiments/cohort_001/tokenizer_metadata_audit.json).
 
 The [formula-given control](experiments/cohort_002/summary.md) completed 128 requests. Under fence handling, F16 and Q4_K_M scored 32/64 and 35/64 in their explicit action fields. The sign of the reported numeric estimate was correct on 61/64 and 45/64. The control reversed the models' near-constant preference from activate to decline while improving numeric performance. All control evidence is kept alongside the original direct-response pilot.
+
+The [7B F16 reference screen](experiments/cohort_004/summary.md) completed 32 responses. Fence-only accuracy was 17/32, with activation on 31/32. It named the correct adjustment set on every item but failed the predeclared 22/32 overall gate. The matched 7B Q2_K arm was not launched. The evidence-source selection diagnostic started after the screen.

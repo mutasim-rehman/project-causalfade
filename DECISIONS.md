@@ -57,3 +57,7 @@ Plan a matched Q8_0 follow-up on the formula control. It tests whether the less 
 ## 2026-11-10 14:04 PKT
 
 Create a fresh 12-family replication of the 3B F16 versus Q4_K_M estimate-sign result under the formula scaffold. Choose generator seed 20261111 before any inference, use all four exact cells in each new family and retain the same control text and backend. This tests repeatability beyond the original 16 families while preserving the separate original cohort. Freeze single-fence sign scoring, keep invalid estimates in the denominator and report the paired overall difference and condition-specific rates. The expected direction is lower Q4_K_M sign accuracy. The family count fits the session budget and is not a confirmatory power calculation.
+
+## 2026-11-10 14:07 PKT
+
+Close the 7B screen at the F16 reference because 17/32 correct fails the predeclared 22/32 threshold. Both validity and the conflict minimum were met. Correct adjustment labels on all 32 items did not translate to competent decisions. Allocate remaining runtime to the source-selection diagnostic and the formula-sign follow-ups.
