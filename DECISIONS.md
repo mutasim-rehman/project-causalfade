@@ -49,3 +49,7 @@ Separate the numeric estimate's sign from the model's explicit action in control
 ## 2026-11-10 13:55 PKT
 
 Use both explicit action and estimate sign in future pilot diagnostics. The completed formula controls reveal better estimate signs but near-constant explicit decline at both precisions. Preserve the existing outcome and consider an explicitly separate deterministic sign-to-action policy if numeric competence is the research target. Treat the lower Q4_K_M estimate-sign accuracy as exploratory arithmetic or execution evidence under the scaffold.
+
+## 2026-11-10 14:00 PKT
+
+Plan a matched Q8_0 follow-up on the formula control. It tests whether the less compressed configuration retains more estimate-sign accuracy than Q4_K_M on the same inputs, given the large retrospective difference between Q4_K_M and F16. Declare the sign score and handling of invalid estimates before this run. Reuse the archived control arms and fixed schedule. This is a screening result for an arithmetic execution target, with no equivalence claim.

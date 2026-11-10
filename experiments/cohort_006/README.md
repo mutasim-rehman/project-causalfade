@@ -1,0 +1,3 @@
+# Q8_0 arithmetic-control follow-up
+
+The formula-given control found a 25-point drop in the accuracy of the action implied by the numeric estimate between 3B F16 and Q4_K_M. Test whether Q8_0 is closer to F16 using the identical 64 control prompts, order and inference settings. Evaluate the explicit action field as before. For this follow-up, declare the sign of a finite estimate under single-fence parsing as the primary descriptive diagnostic. An absent or invalid estimate counts as a failure for this diagnostic. Compare matched family blocks with both archived control arms. The archived arms are shared references. This comparison is exploratory and the GGUF configurations differ in more than nominal bit width.

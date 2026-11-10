@@ -21,7 +21,7 @@ def load(path):
     return json.loads(path.read_text())
 
 
-def arm(directory, truth):
+def arm(directory, truth, estimate_sign_policy=False):
     if load(directory / "status.json")["status"] != "success":
         raise ValueError(f"Cannot compare incomplete run {directory}")
     strict = load(directory / "results.json")
@@ -80,7 +80,20 @@ def arm(directory, truth):
             }
             for name, conflict in (("aligned", False), ("conflict", True))
         }
+    if estimate_sign_policy:
+        chosen_truth = [r for r in truth if r["task_id"] in ids]
+        strict = sign_policy_rows(chosen_truth, [r["prediction"] for r in raw])
+        relaxed = sign_policy_rows(chosen_truth, predictions)
     return strict, relaxed, diagnostics
+
+
+def sign_policy_rows(truth, predictions):
+    projected = []
+    for row in predictions:
+        estimate = row.get("ate_estimate")
+        valid = type(estimate) in (int, float) and math.isfinite(estimate)
+        projected.append({**row, "activate": int(estimate > 0) if valid else None})
+    return score(truth, projected)
 
 
 def describe(rows):
@@ -122,12 +135,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for key in ("reference", "comparison", "truth", "out"):
         parser.add_argument(f"--{key}", type=Path, required=True)
+    parser.add_argument("--estimate-sign-policy", action="store_true")
     args = parser.parse_args()
     truth = [json.loads(line) for line in args.truth.read_text().splitlines()]
-    f16 = arm(args.reference, truth)
-    quant = arm(args.comparison, truth)
+    f16 = arm(args.reference, truth, args.estimate_sign_policy)
+    quant = arm(args.comparison, truth, args.estimate_sign_policy)
     evidence = f16[0][0]["evidence_mode"]
     output = {"reference": str(args.reference), "comparison": str(args.comparison),
+              "decision_policy": "estimate_sign" if args.estimate_sign_policy else "explicit_action",
               "diagnostics": {"reference": f16[2], "comparison": quant[2]}}
     for index, name in enumerate(("strict", "exploratory_fence_sensitivity")):
         output[name] = {"contrast": paired_contrast(f16[index], quant[index], mode=evidence,
