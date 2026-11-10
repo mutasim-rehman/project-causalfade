@@ -33,3 +33,7 @@ Close the CPU repacking diagnostic after both arms completed 16/16 requests with
 ## 2026-11-10 13:39 PKT
 
 Add a source-selection diagnostic after the current control and 7B screen if time permits. Reconstruct randomized and historical success rates from the public strata and present them without an action label. This removes estimation from strata while retaining the two potentially competing evidence sources. Vary presentation order by family and keep all four family variants and both precision settings matched. Declare single-fence scoring as the descriptive primary outcome before running, given established fencing behavior. A shorter answer contract and the simpler evidence representation change the task, so compare the two precisions within this new cohort and interpret cross-cohort differences as exploratory.
+
+## 2026-11-10 13:42 PKT
+
+Check tokenizer and embedded template metadata as possible explanations for the 3B Q2_K failure. All tokenizer fields, including the template, matched across the three 3B formats. Runtime prompt token counts matched on 64/64 tasks. Keep the runtime and preparation records attached to the result. The matched tokenizer evidence narrows one alternative explanation while leaving kernel and weight effects open.

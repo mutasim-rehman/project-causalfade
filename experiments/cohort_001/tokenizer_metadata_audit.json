@@ -1,0 +1,54 @@
+{
+  "method": "SHA-256 of each tokenizer.* GGUF v3 metadata value, prefixed with its 4-byte little-endian type tag",
+  "identical_tokenizer_and_chat_template_metadata": true,
+  "models": {
+    "f16": {
+      "version": 3,
+      "tensor_count": 434,
+      "tokenizer_kv_sha256": {
+        "tokenizer.ggml.model": "35b5fa96b5f7fc8c0addda0366ee9029c0e3f4c0fb1b604032bc88054dc127a6",
+        "tokenizer.ggml.pre": "990e4f305ba24d6340e5c629e476833c725021a877cda723fcf86969ec73d2b6",
+        "tokenizer.ggml.tokens": "472ef7f46405c14df0f3b3c29ca6acf94ba51409f55861e532e2e5d42f48a27e",
+        "tokenizer.ggml.token_type": "7447a6647d69a6d309d2ed8d314a3431daa753bce32c26589384b425e212bce0",
+        "tokenizer.ggml.merges": "2ff617ef6beefbb249e7980b0d7fd31eedede40d318b4f367342570684649bd7",
+        "tokenizer.ggml.eos_token_id": "2dcd78369d013b23ca81d96ca6caf071005d25ff64d73bd03d3eec7638013881",
+        "tokenizer.ggml.padding_token_id": "0428ddfd7c56d83be46c913a2c41edce49c3087e344c19ebf0ad42bedc99e0f7",
+        "tokenizer.ggml.bos_token_id": "0428ddfd7c56d83be46c913a2c41edce49c3087e344c19ebf0ad42bedc99e0f7",
+        "tokenizer.ggml.add_bos_token": "e16ab60aa1eeb7074ca590e8a95bc4ce6264aa74f4f79359e580ede60b892bbe",
+        "tokenizer.chat_template": "e43b762b34d1a2327ba89a5cb6be592fc80b809458bbf2eb56e1ebb5fa75594d"
+      }
+    },
+    "q2_k": {
+      "version": 3,
+      "tensor_count": 434,
+      "tokenizer_kv_sha256": {
+        "tokenizer.ggml.model": "35b5fa96b5f7fc8c0addda0366ee9029c0e3f4c0fb1b604032bc88054dc127a6",
+        "tokenizer.ggml.pre": "990e4f305ba24d6340e5c629e476833c725021a877cda723fcf86969ec73d2b6",
+        "tokenizer.ggml.tokens": "472ef7f46405c14df0f3b3c29ca6acf94ba51409f55861e532e2e5d42f48a27e",
+        "tokenizer.ggml.token_type": "7447a6647d69a6d309d2ed8d314a3431daa753bce32c26589384b425e212bce0",
+        "tokenizer.ggml.merges": "2ff617ef6beefbb249e7980b0d7fd31eedede40d318b4f367342570684649bd7",
+        "tokenizer.ggml.eos_token_id": "2dcd78369d013b23ca81d96ca6caf071005d25ff64d73bd03d3eec7638013881",
+        "tokenizer.ggml.padding_token_id": "0428ddfd7c56d83be46c913a2c41edce49c3087e344c19ebf0ad42bedc99e0f7",
+        "tokenizer.ggml.bos_token_id": "0428ddfd7c56d83be46c913a2c41edce49c3087e344c19ebf0ad42bedc99e0f7",
+        "tokenizer.ggml.add_bos_token": "e16ab60aa1eeb7074ca590e8a95bc4ce6264aa74f4f79359e580ede60b892bbe",
+        "tokenizer.chat_template": "e43b762b34d1a2327ba89a5cb6be592fc80b809458bbf2eb56e1ebb5fa75594d"
+      }
+    },
+    "q4_k_m": {
+      "version": 3,
+      "tensor_count": 434,
+      "tokenizer_kv_sha256": {
+        "tokenizer.ggml.model": "35b5fa96b5f7fc8c0addda0366ee9029c0e3f4c0fb1b604032bc88054dc127a6",
+        "tokenizer.ggml.pre": "990e4f305ba24d6340e5c629e476833c725021a877cda723fcf86969ec73d2b6",
+        "tokenizer.ggml.tokens": "472ef7f46405c14df0f3b3c29ca6acf94ba51409f55861e532e2e5d42f48a27e",
+        "tokenizer.ggml.token_type": "7447a6647d69a6d309d2ed8d314a3431daa753bce32c26589384b425e212bce0",
+        "tokenizer.ggml.merges": "2ff617ef6beefbb249e7980b0d7fd31eedede40d318b4f367342570684649bd7",
+        "tokenizer.ggml.eos_token_id": "2dcd78369d013b23ca81d96ca6caf071005d25ff64d73bd03d3eec7638013881",
+        "tokenizer.ggml.padding_token_id": "0428ddfd7c56d83be46c913a2c41edce49c3087e344c19ebf0ad42bedc99e0f7",
+        "tokenizer.ggml.bos_token_id": "0428ddfd7c56d83be46c913a2c41edce49c3087e344c19ebf0ad42bedc99e0f7",
+        "tokenizer.ggml.add_bos_token": "e16ab60aa1eeb7074ca590e8a95bc4ce6264aa74f4f79359e580ede60b892bbe",
+        "tokenizer.chat_template": "e43b762b34d1a2327ba89a5cb6be592fc80b809458bbf2eb56e1ebb5fa75594d"
+      }
+    }
+  }
+}

@@ -1,12 +1,14 @@
 """Compare completed pilot arms and quantify sensitivity to Markdown fences."""
 import argparse
-from collections import Counter
+from collections import Counter, defaultdict
 import json
 import math
 from pathlib import Path
 import re
 from statistics import mean, median
 import sys
+
+import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from causalfade.analyze import paired_contrast
@@ -87,6 +89,23 @@ def describe(rows):
     return cells
 
 
+def accuracy_change(reference, comparison):
+    by_id = {r["task_id"]: r for r in reference}
+    changes = defaultdict(list)
+    transitions = Counter()
+    for row in comparison:
+        original = by_id[row["task_id"]]
+        changes[row["family_id"]].append(row["correct"] - original["correct"])
+        transitions[f'{original["correct"]}_to_{row["correct"]}'] += 1
+    family_deltas = np.array([mean(changes[key]) for key in sorted(changes)])
+    rng = np.random.default_rng(20261101)
+    indices = rng.integers(len(family_deltas), size=(10000, len(family_deltas)))
+    boot = family_deltas[indices].mean(axis=1)
+    return {"accuracy_change": float(family_deltas.mean()),
+            "paired_family_bootstrap_percentile_95_interval": np.quantile(boot, [.025, .975]).tolist(),
+            "item_correctness_transitions": dict(transitions)}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for key in ("reference", "comparison", "truth", "out"):
@@ -101,6 +120,7 @@ def main():
     for index, name in enumerate(("strict", "exploratory_fence_sensitivity")):
         output[name] = {"contrast": paired_contrast(f16[index], quant[index], mode=evidence,
                                                   bootstrap=10000),
+                        "overall": accuracy_change(f16[index], quant[index]),
                         "reference_cells": describe(f16[index]), "comparison_cells": describe(quant[index])}
     with args.out.open("x") as file:
         json.dump(output, file, indent=2, allow_nan=False)
