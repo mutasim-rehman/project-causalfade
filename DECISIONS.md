@@ -25,3 +25,7 @@ Add a small matched Q2_K runtime diagnostic with default and disabled CPU repack
 ## 2026-11-10 13:30 PKT
 
 Plan an eight-family 7B F16 feasibility screen after the 3B diagnostic and control runs. The 3B F16 reference was near chance after format recovery and showed extreme activation bias. A larger reference could improve competence before further quantization comparisons. Use one CPU-only process and the same prompt and generation policies. Check at least 28/32 valid, 22/32 correct overall and 9/16 correct in conflict under the already defined fence-only rule before allocating a matched Q2_K arm. The gate concerns the next exploratory run and leaves the final confirmatory criteria undecided.
+
+## 2026-11-10 13:38 PKT
+
+Close the CPU repacking diagnostic after both arms completed 16/16 requests with zero usable decisions. Disabling repacking altered text on every item while preserving the failure. Use Q2_K as an operational-failure observation for this session and focus on reference competence and the working Q4_K_M format. The evidence rules out disabling repacking as a remedy on these inputs, while other backends remain open.
