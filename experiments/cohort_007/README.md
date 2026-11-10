@@ -1,0 +1,7 @@
+# Fresh-family replication of the formula sign gap
+
+The initial formula-control pilot found that Q4_K_M lost 25 points of estimate-sign accuracy relative to F16 on 16 development families. This follow-up asks whether the direction replicates on fresh families. Generate 12 new independent families using the unchanged simulator and seed 20261111. Run every exact cell in the formula-given variant, for 48 prompts per format. The matching and shuffle seed, output budget, runtime and parser remain as before. The archived 16-family estimates motivated this follow-up and are not pooled into the replication estimate.
+
+The declared descriptive outcome is accuracy of the action implied by the sign of the finite estimate after allowing one full JSON fence. Missing or invalid estimates are failures. The expected direction is lower accuracy for Q4_K_M. Report the paired overall accuracy difference, the family-block percentile interval and the aligned/conflicting components. Keep the explicit action score separate. This is an exploratory independent-family replication within the same generator and checkpoint. It does not establish general preservation or selective causal degradation.
+
+The [input folder](input/) preserves the derived exact formula prompts, evaluator-only truth, baselines and checksums. Regenerate the source via `python -m causalfade.generate --families 12 --seed 20261111 --out NEW_SOURCE`, then apply `tools/make_arithmetic_control.py` with the default formula variant. The fixture generation record captures the untransformed source manifest.

@@ -1,0 +1,35 @@
+{
+  "seed": 20261111,
+  "families": 12,
+  "tasks": 48,
+  "sampled_rows_per_task": 2000,
+  "evidence_modes": [
+    "exact"
+  ],
+  "status": "exploratory_formula_given_arithmetic_control",
+  "numpy_version": "2.5.4",
+  "file_sha256": {
+    "public_tasks.jsonl": "ee33238f7003c5f2f091030012842ad33d028be409e864eeb721638dca49ec13",
+    "oracle_truth.jsonl": "6690372c61b4937211d2698aec1dcf861901d79355407e4697e4dc33d01a0d82",
+    "baselines.jsonl": "d9bc9ec7aa2840b97ef291f8b5c77aec190c7e13a02a5914067ead043e061392"
+  },
+  "baseline_summary": {
+    "exact:backdoor": {
+      "accuracy": 1.0,
+      "invalid_count": 0
+    },
+    "exact:association": {
+      "accuracy": 0.5,
+      "invalid_count": 0
+    },
+    "exact:random": {
+      "accuracy": 0.5208333333333334,
+      "invalid_count": 0
+    }
+  },
+  "source_file_sha256": {
+    "public_tasks.jsonl": "efe65237b43f9da23456490b78c161e9a2e1b73aea1b69ff63483d1b1f830013",
+    "oracle_truth.jsonl": "6438df9df1f0587ba9a31fb7779244d1b84d775b9862e829cbf8507c027b0f8e",
+    "baselines.jsonl": "2cca7c78c2954b63a3c9364d3047bbfe6f28dc01f50d8515dd56c24fa278d688"
+  }
+}

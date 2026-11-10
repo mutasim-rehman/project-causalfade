@@ -53,3 +53,7 @@ Use both explicit action and estimate sign in future pilot diagnostics. The comp
 ## 2026-11-10 14:00 PKT
 
 Plan a matched Q8_0 follow-up on the formula control. It tests whether the less compressed configuration retains more estimate-sign accuracy than Q4_K_M on the same inputs, given the large retrospective difference between Q4_K_M and F16. Declare the sign score and handling of invalid estimates before this run. Reuse the archived control arms and fixed schedule. This is a screening result for an arithmetic execution target, with no equivalence claim.
+
+## 2026-11-10 14:04 PKT
+
+Create a fresh 12-family replication of the 3B F16 versus Q4_K_M estimate-sign result under the formula scaffold. Choose generator seed 20261111 before any inference, use all four exact cells in each new family and retain the same control text and backend. This tests repeatability beyond the original 16 families while preserving the separate original cohort. Freeze single-fence sign scoring, keep invalid estimates in the denominator and report the paired overall difference and condition-specific rates. The expected direction is lower Q4_K_M sign accuracy. The family count fits the session budget and is not a confirmatory power calculation.
