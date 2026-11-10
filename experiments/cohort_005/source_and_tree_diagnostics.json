@@ -1,0 +1,75 @@
+{
+  "status": "post_hoc_descriptive_checks",
+  "evidence_strength": {
+    "aligned": {
+      "mean_abs_causal_effect": 0.09532806791973289,
+      "mean_abs_observational_difference": 0.5710147039411606
+    },
+    "conflict": {
+      "mean_abs_causal_effect": 0.09532806791973289,
+      "mean_abs_observational_difference": 0.3803585681016948
+    }
+  },
+  "f16": {
+    "activation_additivity_residual": -0.4375,
+    "residual_95pct_paired_family_percentile_interval": [
+      -0.6875,
+      -0.1875
+    ],
+    "residual_definition": "p11 - p10 - p01 + p00, required to be 0 by the homogeneous processing tree",
+    "observational_sign_agreement_on_conflict": 21,
+    "by_order_and_conflict": {
+      "historical_first:False": {
+        "n": 10,
+        "correct": 10,
+        "activate": 5
+      },
+      "historical_first:True": {
+        "n": 10,
+        "correct": 0,
+        "activate": 5
+      },
+      "randomized_first:False": {
+        "n": 22,
+        "correct": 18,
+        "activate": 15
+      },
+      "randomized_first:True": {
+        "n": 22,
+        "correct": 11,
+        "activate": 22
+      }
+    }
+  },
+  "q4_k_m": {
+    "activation_additivity_residual": -0.1875,
+    "residual_95pct_paired_family_percentile_interval": [
+      -0.375,
+      0.0
+    ],
+    "residual_definition": "p11 - p10 - p01 + p00, required to be 0 by the homogeneous processing tree",
+    "observational_sign_agreement_on_conflict": 16,
+    "by_order_and_conflict": {
+      "historical_first:False": {
+        "n": 10,
+        "correct": 5,
+        "activate": 10
+      },
+      "historical_first:True": {
+        "n": 10,
+        "correct": 5,
+        "activate": 10
+      },
+      "randomized_first:False": {
+        "n": 22,
+        "correct": 14,
+        "activate": 19
+      },
+      "randomized_first:True": {
+        "n": 22,
+        "correct": 11,
+        "activate": 22
+      }
+    }
+  }
+}

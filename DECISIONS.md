@@ -61,3 +61,7 @@ Create a fresh 12-family replication of the 3B F16 versus Q4_K_M estimate-sign r
 ## 2026-11-10 14:07 PKT
 
 Close the 7B screen at the F16 reference because 17/32 correct fails the predeclared 22/32 threshold. Both validity and the conflict minimum were met. Correct adjustment labels on all 32 items did not translate to competent decisions. Allocate remaining runtime to the source-selection diagnostic and the formula-sign follow-ups.
+
+## 2026-11-10 14:13 PKT
+
+Treat the source-selection penalty as sensitive to default actions and task presentation. Q4_K_M reduced the penalty while losing overall accuracy and activating on 61/64. F16 followed historical evidence on all 10 conflict items with historical rates first, but those items come from different families than the other order. Plan a controlled within-item reversal of the two source lines. Preserve scores, labels and evidence, and compare the shift toward following the historical direction on conflict items. Do not report C, A and B as latent route estimates given the observed additivity residual and small development set.
