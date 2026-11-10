@@ -57,6 +57,7 @@ def arm(directory, truth):
     diagnostics = {"syntax": syntax, "finish_reasons": finishes,
                    "median_seconds_per_response": median(durations),
                    "mean_completion_tokens": mean(completion_tokens)}
+    oracle = {r["task_id"]: r["optimal_action"] for r in truth}
     estimates = {
         "strict": {row["task_id"]: row["prediction"].get("ate_estimate") for row in raw},
         "single_fence": {row["task_id"]: row.get("ate_estimate") for row in predictions},
@@ -68,6 +69,17 @@ def arm(directory, truth):
             r["activate"] != int(estimates[label][r["task_id"]] > 0)
             for r in comparable
         )
+        diagnostics[f"{label}_estimate_sign_by_condition"] = {
+            name: {
+                "n": sum(r["numeric_estimate_valid"] and r["conflict"] == conflict for r in scored),
+                "correct": sum(
+                    r["numeric_estimate_valid"] and r["conflict"] == conflict
+                    and int(estimates[label][r["task_id"]] > 0) == oracle[r["task_id"]]
+                    for r in scored
+                ),
+            }
+            for name, conflict in (("aligned", False), ("conflict", True))
+        }
     return strict, relaxed, diagnostics
 
 

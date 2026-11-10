@@ -13,3 +13,5 @@ Q4_K_M completed the same 64 prompts. All outputs were fenced JSON and stopped n
 The [Q2_K repacking diagnostic](experiments/cohort_003/summary.md) completed 32 requests. All default responses exactly repeated the corresponding earlier responses. Disabling repacking changed the text on every item but did not yield a valid action or prevent length caps on any item. The formula-given control is in progress.
 
 A follow-up GGUF metadata audit found identical tokenizer and embedded chat-template metadata across the 3B F16, Q2_K and Q4_K_M files. The runtime reported matching prompt token counts on all 64 matched prompts. See the [metadata audit](experiments/cohort_001/tokenizer_metadata_audit.json).
+
+The [formula-given control](experiments/cohort_002/summary.md) completed 128 requests. Under fence handling, F16 and Q4_K_M scored 32/64 and 35/64 in their explicit action fields. The sign of the reported numeric estimate was correct on 61/64 and 45/64. The control reversed the models' near-constant preference from activate to decline while improving numeric performance. All control evidence is kept alongside the original direct-response pilot.

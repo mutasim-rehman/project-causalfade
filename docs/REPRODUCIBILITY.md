@@ -61,3 +61,31 @@ These steps validate portions of the experiment and measurement implementation. 
 ## Test coverage
 
 Tests exercise independent sign manipulation, valid probabilities, analytic adjustment, sampled estimation, deterministic export, withholding of oracle labels from prompts, empty strata, constrained-likelihood recovery, boundary identification, equivalent/violating rival generators, invalid-output scoring, and preservation of paired families in analysis. No test downloads a model or calls an API.
+
+## Replaying a live development run
+
+Use the [experiment index](../EXPERIMENTS.md) to select an arm and its config. Download the Ubuntu x64 CPU archive from the [pinned llama.cpp release](https://github.com/ggml-org/llama.cpp/releases/tag/b12176) and check the digest in the [environment record](../experiments/environment_20261110.json). Match the model hash in the run's metadata. The local CAUSALFADE input folder and this Git checkout can be relocated. The public artifacts use `$HOME` for the machine's home path.
+
+For example, replay the 3B F16 direct-response arm into a new directory from the repository root.
+
+```bash
+python3 tools/run_direct_pilot.py \
+  --server .tools/llama-b12176/llama-server \
+  --model "$HOME/Desktop/CAUSALFADE/weights/gguf/qwen2.5-3b-instruct-f16.gguf" \
+  --dataset results/design_validation \
+  --out experiments/replay_f16 --families 16 --seed 20261110 --threads 8 --max-tokens 160
+```
+
+The runner starts a loopback-only inference server, sends each public prompt as a fresh chat, and writes the raw response and parsed decision after each task. It rejects an existing output directory. The archived cohort commands also used a process timeout and captured runner stdout and stderr separately. Preserve the new run directory if replay fails, then use a distinct directory for another attempt.
+
+Run the paired analysis with the two arm directories and the repository's evaluator-only truth file.
+
+```bash
+python tools/analyze_direct_pilot.py \
+  --reference experiments/cohort_001/run_001_f16 \
+  --comparison experiments/cohort_001/run_001_q2_k \
+  --truth results/design_validation/oracle_truth.jsonl \
+  --out path/to/new_comparison.json
+```
+
+Each cohort README states its task, analysis policy and generation procedure. The numeric sign diagnostic evaluates the implication of a reported estimate independently from the explicit action field. The development fixtures overlap across cohorts. Treat the family, rather than an individual completion, as the sampling unit.

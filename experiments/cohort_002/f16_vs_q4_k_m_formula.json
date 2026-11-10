@@ -1,0 +1,306 @@
+{
+  "reference": "experiments/cohort_002/run_001_f16",
+  "comparison": "experiments/cohort_002/run_002_q4_k_m",
+  "diagnostics": {
+    "reference": {
+      "syntax": {
+        "single_fenced_object": 64
+      },
+      "finish_reasons": {
+        "stop": 64
+      },
+      "median_seconds_per_response": 10.752995079000357,
+      "mean_completion_tokens": 50.640625,
+      "strict_sign_comparable": 0,
+      "strict_action_estimate_sign_disagreements": 0,
+      "strict_estimate_sign_by_condition": {
+        "aligned": {
+          "n": 0,
+          "correct": 0
+        },
+        "conflict": {
+          "n": 0,
+          "correct": 0
+        }
+      },
+      "single_fence_sign_comparable": 64,
+      "single_fence_action_estimate_sign_disagreements": 29,
+      "single_fence_estimate_sign_by_condition": {
+        "aligned": {
+          "n": 32,
+          "correct": 29
+        },
+        "conflict": {
+          "n": 32,
+          "correct": 32
+        }
+      }
+    },
+    "comparison": {
+      "syntax": {
+        "single_fenced_object": 64
+      },
+      "finish_reasons": {
+        "stop": 64
+      },
+      "median_seconds_per_response": 4.6920741860003545,
+      "mean_completion_tokens": 50,
+      "strict_sign_comparable": 0,
+      "strict_action_estimate_sign_disagreements": 0,
+      "strict_estimate_sign_by_condition": {
+        "aligned": {
+          "n": 0,
+          "correct": 0
+        },
+        "conflict": {
+          "n": 0,
+          "correct": 0
+        }
+      },
+      "single_fence_sign_comparable": 64,
+      "single_fence_action_estimate_sign_disagreements": 48,
+      "single_fence_estimate_sign_by_condition": {
+        "aligned": {
+          "n": 32,
+          "correct": 22
+        },
+        "conflict": {
+          "n": 32,
+          "correct": 23
+        }
+      }
+    }
+  },
+  "strict": {
+    "contrast": {
+      "evidence_mode": "exact",
+      "families": 16,
+      "tasks_per_configuration": 64,
+      "reference_accuracy_aligned": 0.0,
+      "reference_accuracy_conflict": 0.0,
+      "comparison_accuracy_aligned": 0.0,
+      "comparison_accuracy_conflict": 0.0,
+      "delta_conflict_penalty": 0.0,
+      "paired_family_bootstrap_percentile_95_interval": [
+        0.0,
+        0.0
+      ],
+      "bootstrap_replicates": 10000,
+      "seed": 20261101,
+      "reference_invalid": 64,
+      "comparison_invalid": 64,
+      "inference_scope": "pilot paired-family percentile bootstrap; no calibrated p-value or hierarchical GLMM"
+    },
+    "overall": {
+      "accuracy_change": 0.0,
+      "paired_family_bootstrap_percentile_95_interval": [
+        0.0,
+        0.0
+      ],
+      "item_correctness_transitions": {
+        "0_to_0": 64
+      }
+    },
+    "reference_cells": {
+      "00": {
+        "n": 16,
+        "correct": 0,
+        "activate": 0,
+        "invalid_action": 16,
+        "valid_adjustment": 0,
+        "numeric_estimates": 0,
+        "ate_mae": null,
+        "ate_rmse": null
+      },
+      "01": {
+        "n": 16,
+        "correct": 0,
+        "activate": 0,
+        "invalid_action": 16,
+        "valid_adjustment": 0,
+        "numeric_estimates": 0,
+        "ate_mae": null,
+        "ate_rmse": null
+      },
+      "10": {
+        "n": 16,
+        "correct": 0,
+        "activate": 0,
+        "invalid_action": 16,
+        "valid_adjustment": 0,
+        "numeric_estimates": 0,
+        "ate_mae": null,
+        "ate_rmse": null
+      },
+      "11": {
+        "n": 16,
+        "correct": 0,
+        "activate": 0,
+        "invalid_action": 16,
+        "valid_adjustment": 0,
+        "numeric_estimates": 0,
+        "ate_mae": null,
+        "ate_rmse": null
+      }
+    },
+    "comparison_cells": {
+      "00": {
+        "n": 16,
+        "correct": 0,
+        "activate": 0,
+        "invalid_action": 16,
+        "valid_adjustment": 0,
+        "numeric_estimates": 0,
+        "ate_mae": null,
+        "ate_rmse": null
+      },
+      "01": {
+        "n": 16,
+        "correct": 0,
+        "activate": 0,
+        "invalid_action": 16,
+        "valid_adjustment": 0,
+        "numeric_estimates": 0,
+        "ate_mae": null,
+        "ate_rmse": null
+      },
+      "10": {
+        "n": 16,
+        "correct": 0,
+        "activate": 0,
+        "invalid_action": 16,
+        "valid_adjustment": 0,
+        "numeric_estimates": 0,
+        "ate_mae": null,
+        "ate_rmse": null
+      },
+      "11": {
+        "n": 16,
+        "correct": 0,
+        "activate": 0,
+        "invalid_action": 16,
+        "valid_adjustment": 0,
+        "numeric_estimates": 0,
+        "ate_mae": null,
+        "ate_rmse": null
+      }
+    }
+  },
+  "exploratory_fence_sensitivity": {
+    "contrast": {
+      "evidence_mode": "exact",
+      "families": 16,
+      "tasks_per_configuration": 64,
+      "reference_accuracy_aligned": 0.5,
+      "reference_accuracy_conflict": 0.5,
+      "comparison_accuracy_aligned": 0.5,
+      "comparison_accuracy_conflict": 0.59375,
+      "delta_conflict_penalty": -0.09375,
+      "paired_family_bootstrap_percentile_95_interval": [
+        -0.1875,
+        0.0
+      ],
+      "bootstrap_replicates": 10000,
+      "seed": 20261101,
+      "reference_invalid": 0,
+      "comparison_invalid": 0,
+      "inference_scope": "pilot paired-family percentile bootstrap; no calibrated p-value or hierarchical GLMM"
+    },
+    "overall": {
+      "accuracy_change": 0.046875,
+      "paired_family_bootstrap_percentile_95_interval": [
+        0.0,
+        0.09375
+      ],
+      "item_correctness_transitions": {
+        "1_to_1": 32,
+        "0_to_0": 29,
+        "0_to_1": 3
+      }
+    },
+    "reference_cells": {
+      "00": {
+        "n": 16,
+        "correct": 16,
+        "activate": 0,
+        "invalid_action": 0,
+        "valid_adjustment": 0,
+        "numeric_estimates": 16,
+        "ate_mae": 0.0726047969351443,
+        "ate_rmse": 0.07426125492650795
+      },
+      "01": {
+        "n": 16,
+        "correct": 16,
+        "activate": 0,
+        "invalid_action": 0,
+        "valid_adjustment": 0,
+        "numeric_estimates": 16,
+        "ate_mae": 0.06490187677124006,
+        "ate_rmse": 0.06734385368277813
+      },
+      "10": {
+        "n": 16,
+        "correct": 0,
+        "activate": 0,
+        "invalid_action": 0,
+        "valid_adjustment": 0,
+        "numeric_estimates": 16,
+        "ate_mae": 0.04624992834154179,
+        "ate_rmse": 0.04922815085950143
+      },
+      "11": {
+        "n": 16,
+        "correct": 0,
+        "activate": 0,
+        "invalid_action": 0,
+        "valid_adjustment": 0,
+        "numeric_estimates": 16,
+        "ate_mae": 0.06354867597428071,
+        "ate_rmse": 0.0739980536204736
+      }
+    },
+    "comparison_cells": {
+      "00": {
+        "n": 16,
+        "correct": 16,
+        "activate": 0,
+        "invalid_action": 0,
+        "valid_adjustment": 0,
+        "numeric_estimates": 16,
+        "ate_mae": 0.11469000785355626,
+        "ate_rmse": 0.12164496290341656
+      },
+      "01": {
+        "n": 16,
+        "correct": 16,
+        "activate": 0,
+        "invalid_action": 0,
+        "valid_adjustment": 0,
+        "numeric_estimates": 16,
+        "ate_mae": 0.11570334186371163,
+        "ate_rmse": 0.12356845167154248
+      },
+      "10": {
+        "n": 16,
+        "correct": 3,
+        "activate": 3,
+        "invalid_action": 0,
+        "valid_adjustment": 0,
+        "numeric_estimates": 16,
+        "ate_mae": 0.046769485228956534,
+        "ate_rmse": 0.0478756114386116
+      },
+      "11": {
+        "n": 16,
+        "correct": 0,
+        "activate": 0,
+        "invalid_action": 0,
+        "valid_adjustment": 0,
+        "numeric_estimates": 16,
+        "ate_mae": 0.047292882787751095,
+        "ate_rmse": 0.04851244564757682
+      }
+    }
+  }
+}

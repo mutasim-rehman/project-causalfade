@@ -41,3 +41,11 @@ Check tokenizer and embedded template metadata as possible explanations for the 
 ## 2026-11-10 13:43 PKT
 
 Normalize the absolute home prefix in publishable records after identifying the machine account name in previously pushed configs, server logs and response metadata. Preserve every line and replace only that path prefix with `$HOME/`. Unmodified files are backed up outside Git under `CAUSALFADE/runs/unmodified_paths_20261110`. Prior commits retain the original paths under the no-history-rewrite policy. Apply this check to every remaining cohort before push.
+
+## 2026-11-10 13:50 PKT
+
+Separate the numeric estimate's sign from the model's explicit action in control analyses. In the completed F16 formula arm, the estimate sign implied the correct action on 61/64 items, while the explicit action was always decline and scored 32/64. Preserve explicit action as the outcome and report estimate-sign accuracy as a post hoc diagnostic. The direction of the number and the decision field can diverge even on the same completion.
+
+## 2026-11-10 13:55 PKT
+
+Use both explicit action and estimate sign in future pilot diagnostics. The completed formula controls reveal better estimate signs but near-constant explicit decline at both precisions. Preserve the existing outcome and consider an explicitly separate deterministic sign-to-action policy if numeric competence is the research target. Treat the lower Q4_K_M estimate-sign accuracy as exploratory arithmetic or execution evidence under the scaffold.
