@@ -77,3 +77,7 @@ Treat Q8_0 as a candidate reference-preserving configuration for estimate sign o
 ## 2026-11-10 14:32 PKT
 
 Close the fresh formula replication after both complete 48-task schedules. The prespecified sign direction replicated, with a 31.25-point loss under Q4_K_M. Keep the execution result separate from the unresolved selective-degradation question because both evidence conditions suffered and explicit actions remained biased. Use the independently generated fixtures and paired family interval as the validation evidence.
+
+## 2026-11-10 14:33 PKT
+
+Stop the active F16 reversal and cancel the queued Q4_K_M arm for the requested PC shutdown. Preserve the partial F16 run and exclude incomplete outcomes from the paired comparison. Restart the full F16 schedule under a new run ID when research resumes.
