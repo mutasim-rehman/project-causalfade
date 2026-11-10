@@ -1,6 +1,6 @@
 # November 10, 2026 research session
 
-The session started at revision `ef0fa4e` with local inputs in `/home/i242514/Desktop/CAUSALFADE`. Prior work consists of synthetic design validation and prepared weights. Cohort 001 will assess feasibility of the paired 3B F16/Q2_K direct-response comparison using the existing fixtures.
+The session started at revision `ef0fa4e` with local inputs in `$HOME/Desktop/CAUSALFADE`. Prior work consists of synthetic design validation and prepared weights. Cohort 001 will assess feasibility of the paired 3B F16/Q2_K direct-response comparison using the existing fixtures.
 
 The CPU runtime is llama.cpp b12176 (commit 8820b088d) on the Ubuntu lab machine. The durable runner was pushed as `aec9fd2`. The exploratory fence sensitivity and arithmetic-control generator were pushed as `da4507b`. All 26 repository tests passed after these changes. Cohort 001 is executing F16 followed by Q2_K, with 64 scheduled responses each. Initial F16 output exposed a strict JSON compliance issue. Both unmodified strict scoring and a separately labeled fence-only sensitivity will be reported.
 

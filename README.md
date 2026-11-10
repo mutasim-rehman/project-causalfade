@@ -50,7 +50,7 @@ This is the broader research workflow; the current implementation covers the sim
 
 ## Repository contents
 
-Research code and experiment records live in this Git repository. On the Ubuntu lab PC, use `/home/i242514/Desktop/CAUSALFADE` for weights and local dataset inputs. The `H:\CAUSALFADE` paths in older manifests refer to the earlier Windows setup. Keep model weights and runtime binaries outside Git. Keep per-run logs, configuration, raw responses, and analyses under `experiments/`.
+Research code and experiment records live in this Git repository. On the Ubuntu lab PC, use `$HOME/Desktop/CAUSALFADE` for weights and local dataset inputs. The `H:\CAUSALFADE` paths in older manifests refer to the earlier Windows setup. Keep model weights and runtime binaries outside Git. Keep per-run logs, configuration, raw responses, and analyses under `experiments/`.
 
 The [SSD asset audit](docs/SSD_ASSET_REUSE.md) documents reused models and transfer checks. [The import utility](tools/reuse_ssd_assets.py) enforces a data-only destination allowlist. Record the Git commit and environment versions with each experiment; the SSD is a working data location and still needs a separate backup for irreplaceable results.
 

@@ -37,3 +37,7 @@ Add a source-selection diagnostic after the current control and 7B screen if tim
 ## 2026-11-10 13:42 PKT
 
 Check tokenizer and embedded template metadata as possible explanations for the 3B Q2_K failure. All tokenizer fields, including the template, matched across the three 3B formats. Runtime prompt token counts matched on 64/64 tasks. Keep the runtime and preparation records attached to the result. The matched tokenizer evidence narrows one alternative explanation while leaving kernel and weight effects open.
+
+## 2026-11-10 13:43 PKT
+
+Normalize the absolute home prefix in publishable records after identifying the machine account name in previously pushed configs, server logs and response metadata. Preserve every line and replace only that path prefix with `$HOME/`. Unmodified files are backed up outside Git under `CAUSALFADE/runs/unmodified_paths_20261110`. Prior commits retain the original paths under the no-history-rewrite policy. Apply this check to every remaining cohort before push.
