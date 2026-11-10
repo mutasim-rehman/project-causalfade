@@ -1,0 +1,7 @@
+# Evidence-source selection with outcome rates supplied
+
+This exploratory task asks whether 3B F16 and Q4_K_M can choose the beneficial action when the causal and observational comparisons have already been computed. It presents success rates under randomized assignment and historical operator choice. Both rates are reconstructed from the public exact-evidence strata. No final action or condition label is passed to the model. Rounding to two decimal places in percentages preserves the sign of each comparison, checked during generation. A stable hash of the family ID sets which source appears first. This order is shared across the four cells and both model runs.
+
+Use the same 16 families, schedule, CPU policy and token budget as cohort 001. The prompt requests only the binary action in JSON. The action score with a single fence allowed is the primary descriptive outcome for this exploratory cohort. Strict scores remain visible. Report both direction-specific accuracy and aligned versus conflicting accuracy. A usable contrast here would concern source selection when rates are given. It would not establish successful confounder adjustment on the original task. Omitting adjustment-set and numeric fields also simplifies the response contract.
+
+Generate the input with `python3 tools/make_arithmetic_control.py --variant source-selection --source PATH_TO_DESIGN_VALIDATION --out NEW_DATA_DIRECTORY`.

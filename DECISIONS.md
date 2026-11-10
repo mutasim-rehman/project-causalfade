@@ -29,3 +29,7 @@ Plan an eight-family 7B F16 feasibility screen after the 3B diagnostic and contr
 ## 2026-11-10 13:38 PKT
 
 Close the CPU repacking diagnostic after both arms completed 16/16 requests with zero usable decisions. Disabling repacking altered text on every item while preserving the failure. Use Q2_K as an operational-failure observation for this session and focus on reference competence and the working Q4_K_M format. The evidence rules out disabling repacking as a remedy on these inputs, while other backends remain open.
+
+## 2026-11-10 13:39 PKT
+
+Add a source-selection diagnostic after the current control and 7B screen if time permits. Reconstruct randomized and historical success rates from the public strata and present them without an action label. This removes estimation from strata while retaining the two potentially competing evidence sources. Vary presentation order by family and keep all four family variants and both precision settings matched. Declare single-fence scoring as the descriptive primary outcome before running, given established fencing behavior. A shorter answer contract and the simpler evidence representation change the task, so compare the two precisions within this new cohort and interpret cross-cohort differences as exploratory.
