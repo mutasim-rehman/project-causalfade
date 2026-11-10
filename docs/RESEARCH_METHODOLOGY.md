@@ -1,5 +1,7 @@
 # CausalFade research methodology
 
+> **10 November 2026 update.** The status below describes the original prospective design. The user authorized exploratory inference on the Ubuntu lab PC using local model weights. The [experiment index](../EXPERIMENTS.md) and [session report](../SESSION_REPORT.md) track live progress. Confirmatory choices remain open.
+
 **Version:** 0.3, 7 November 2026. **Status:** documented design, executable synthetic validation and completed weight preparation. No LLM inference, agent evaluation or confirmatory data collection has been performed. This document is not a registered protocol.
 
 The [implementation and research roadmap](STUDY_ROADMAP.md) records completed work, remaining deliverables, dependencies and decisions before collection. The user's current authorization is documentation and setup only; the roadmap does not authorize running research.

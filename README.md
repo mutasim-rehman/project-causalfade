@@ -12,15 +12,15 @@ The motivating idea is that compression might disrupt mechanisms supporting caus
 
 ## Current status
 
-The project now has an **executable simulator and synthetic methodology-validation package**, plus 14 research papers from 2025–2026 and critical summaries. Eight papers were first released or published in 2026. No LLM or quantized-agent experiments have been run. Synthetic parameter-recovery results are not evidence of model degradation.
+The project now has an **executable simulator and synthetic methodology-validation package**, plus 14 research papers from 2025–2026 and critical summaries. Eight papers were first released or published in 2026. Live exploratory direct-response pilots began on 10 November 2026. Follow the [experiment index](EXPERIMENTS.md), [decision log](DECISIONS.md), and [session report](SESSION_REPORT.md) for the latest evidence. The synthetic parameter-recovery package is separate from model evaluation.
 
 Read the [research methodology](docs/RESEARCH_METHODOLOGY.md), [reproduction instructions](docs/REPRODUCIBILITY.md), and [generated validation report](results/design_validation/VALIDATION_REPORT.md). The proposed psychological adaptation separates causal sensitivity, conditional associative influence and residual action bias, with explicit identification and model-fit limitations.
 
-The [implementation and research roadmap](docs/STUDY_ROADMAP.md) defines the lab setup, durable runner, bounded agent, pilot, power analysis, protocol freeze, collection, statistics and reporting phases. Research execution is currently on hold; model preparation and documentation do not constitute LLM experiments.
+The [implementation and research roadmap](docs/STUDY_ROADMAP.md) defines the lab setup, durable runner, bounded agent, pilot, power analysis, protocol freeze, collection, statistics and reporting phases. The roadmap records the original prospective phases. The experiment index tracks the current execution state.
 
 The [methodology adaptation and source evidence](docs/METHODOLOGY_ADAPTATION.md) explains the source papers' findings, why the approach suits this question, the exact CNI-style mapping, and what changes in our application. [BibTeX references](docs/references.bib) are included for the proposal.
 
-The external SSD has all four Qwen2.5-Instruct sizes (0.5B, 1.5B, 3B, 7B) in F16 plus `Q8_0`, `Q4_K_M`, `Q2_K` and `Q1_0` GGUF formats. See the [SSD quantization preparation record](docs/SSD_ASSET_REUSE.md#gguf-quantization-prepared-for-lab-use). These are prepared weights only; no model tasks or research data collection have been run.
+The local lab PC data root has all four Qwen2.5-Instruct sizes (0.5B, 1.5B, 3B, 7B) in F16 plus `Q8_0`, `Q4_K_M`, `Q2_K` and `Q1_0` GGUF formats. See the [SSD quantization preparation record](docs/SSD_ASSET_REUSE.md#gguf-quantization-prepared-for-lab-use). The preparation record describes the earlier Windows transfer and quantization. Each Ubuntu run records the local model digest.
 
 Start with the [executive summary](literature%20review/EXECUTIVE_SUMMARY.md), then use the [reading index](literature%20review/READING_INDEX.md) to browse papers and summaries. Publication status and downloaded versions are documented; reported findings have not been independently reproduced.
 
@@ -50,7 +50,7 @@ This is the broader research workflow; the current implementation covers the sim
 
 ## Repository contents
 
-All research code lives in this Git repository. The external SSD at `H:\CAUSALFADE` holds weights, datasets, runtime logs, results and provenance only. Do not copy scripts, source snapshots, executables or environments onto it. Run commands from the repository checkout; create the Python environment on each PC and point data paths at the SSD. When switching PCs, clone/pull this repository and reconnect the SSD, updating its drive path if needed.
+Research code and experiment records live in this Git repository. On the Ubuntu lab PC, use `/home/i242514/Desktop/CAUSALFADE` for weights and local dataset inputs. The `H:\CAUSALFADE` paths in older manifests refer to the earlier Windows setup. Keep model weights and runtime binaries outside Git. Keep per-run logs, configuration, raw responses, and analyses under `experiments/`.
 
 The [SSD asset audit](docs/SSD_ASSET_REUSE.md) documents reused models and transfer checks. [The import utility](tools/reuse_ssd_assets.py) enforces a data-only destination allowlist. Record the Git commit and environment versions with each experiment; the SSD is a working data location and still needs a separate backup for irreplaceable results.
 
@@ -58,7 +58,8 @@ The [SSD asset audit](docs/SSD_ASSET_REUSE.md) documents reused models and trans
 causalfade/                Simulator, measurement fitting, scoring and paired analysis
 docs/                      Research methodology, data contract and study decisions
 tests/                     Simulator, measurement and scoring checks
-tools/                     Asset import and storage maintenance code (run from this repo)
+tools/                     Inference, pilot analysis and asset management utilities
+experiments/               Live development runs, raw evidence and cohort analyses
 results/design_validation/ Reproducible synthetic tasks and recovery results
 literature review/
   EXECUTIVE_SUMMARY.md    Cross-paper synthesis and proposed study
@@ -84,7 +85,7 @@ python -m causalfade.generate
 python -m causalfade.validate
 ```
 
-The generator exports 24 independent families, each with four causal/association conditions and two evidence layers. The validation study fits 3,600 independent synthetic response datasets; see its report for convergence failures, weak boundary recovery and observational equivalence. The planned hierarchical LLM analyses, power calculations and live model runner remain future work. See [decisions before collection](docs/DECISIONS_BEFORE_COLLECTION.md).
+The generator exports 24 independent families, each with four causal/association conditions and two evidence layers. The validation study fits 3,600 independent synthetic response datasets; see its report for convergence failures, weak boundary recovery and observational equivalence. The direct-response pilot runner is in `tools/run_direct_pilot.py`. The hierarchical analyses and confirmatory power calculations remain prospective. See [decisions before collection](docs/DECISIONS_BEFORE_COLLECTION.md).
 
 For the literature tools:
 

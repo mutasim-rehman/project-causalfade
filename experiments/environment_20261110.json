@@ -1,0 +1,17 @@
+{
+  "hostname_omitted": true,
+  "os": "Ubuntu 26.04.1 LTS",
+  "kernel": "7.0.0-42-generic",
+  "cpu": "Intel Core i7-14700",
+  "logical_cpus": 28,
+  "system_ram_gib": 30,
+  "gpu_detected": "NVIDIA RTX 4000 Ada Generation",
+  "gpu_driver": "nouveau",
+  "inference_device": "CPU only",
+  "server_build": "version: 0.9.0-dev (build 12176, commit 8820b088d)\nbuilt with GNU 11.4.0 for Linux x86_64",
+  "runtime_archive_sha256": "d19cad855c437851b0556c67f08e7ae398f064524ba9e81ed8a9316ffb4218c4",
+  "runtime_release": "https://github.com/ggml-org/llama.cpp/releases/tag/b12176",
+  "runner_python": "3.14.4",
+  "analysis_numpy": "2.5.4",
+  "time_zone": "Asia/Karachi"
+}

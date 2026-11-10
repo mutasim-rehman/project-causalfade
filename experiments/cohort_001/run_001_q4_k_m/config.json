@@ -1,0 +1,40 @@
+{
+  "server": "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-server",
+  "model": "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-3b-instruct-q4_k_m.gguf",
+  "dataset": "/home/i242514/Desktop/CAUSALFADE/datasets/design_validation",
+  "out": "/home/i242514/Desktop/project-causalfade/experiments/cohort_001/run_001_q4_k_m",
+  "families": 16,
+  "threads": 8,
+  "seed": 20261110,
+  "max_tokens": 160,
+  "no_repack": false,
+  "evidence": "exact",
+  "command": [
+    "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-server",
+    "-m",
+    "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-3b-instruct-q4_k_m.gguf",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "52735",
+    "-ngl",
+    "0",
+    "-c",
+    "2048",
+    "-np",
+    "1",
+    "-t",
+    "8",
+    "--cache-type-k",
+    "f16",
+    "--cache-type-v",
+    "f16"
+  ],
+  "sampling": {
+    "temperature": 0,
+    "seed": 20261110,
+    "max_tokens": 160,
+    "cache_prompt": false,
+    "stream": false
+  }
+}

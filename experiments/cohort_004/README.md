@@ -1,0 +1,3 @@
+# 7B exact-evidence reference feasibility
+
+This pilot asks whether a larger F16 checkpoint provides a usable reference for the existing direct-response task. Run the 7B F16 GGUF on eight balanced development families (32 prompts) using the same CPU policy, seed and output budget as the 3B pilot. This is a screening arm, not an estimate of a model-size effect. Inspect the strict scorer and the pre-existing single-fence sensitivity. Compare 7B Q2_K on the same 32 prompts only if the 7B F16 fence-only diagnostic yields at least 28 valid decisions, 22 correct overall and 9 correct among the 16 conflicting items. These are session planning gates, not calibrated statistical thresholds or confirmatory eligibility criteria.

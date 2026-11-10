@@ -1,5 +1,7 @@
 # Decisions required before confirmatory LLM collection
 
+> **10 November 2026 update.** The status below describes the original prospective design. The user authorized exploratory inference on the Ubuntu lab PC using local model weights. The [experiment index](../EXPERIMENTS.md) and [session report](../SESSION_REPORT.md) track live progress. Confirmatory choices remain open.
+
 This is a design record, not an approval gate for writing code. The current implementation is an exploratory validation package. Complete and timestamp these scientific choices before collecting the untouched confirmatory set.
 
 **Updated 7 November 2026:** weights are prepared at four sizes and five formats; live research remains on hold. The [roadmap](STUDY_ROADMAP.md) defines the dependency sequence. Prepared treatments are Qwen2.5-Instruct 0.5B/1.5B/3B/7B at F16, Q8_0, Q4_K_M, Q2_K and Q1_0, with no importance matrix. IQ1_S is not part of the prepared grid. Runtime/offload settings remain to be fixed.

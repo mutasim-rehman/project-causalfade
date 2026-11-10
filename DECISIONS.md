@@ -21,3 +21,7 @@ The completed F16 arm recommended activation 63/64 times and selected the correc
 ## 2026-11-10 13:23 PKT
 
 Add a small matched Q2_K runtime diagnostic with default and disabled CPU repacking. Identical weight digests and settings except for repacking let us check one software explanation for the malformed generations. Compare response text, token-limit finishes and format validity on four complete families. This diagnostic follows the model-format comparison and takes priority over a larger repeat of the failing configuration.
+
+## 2026-11-10 13:30 PKT
+
+Plan an eight-family 7B F16 feasibility screen after the 3B diagnostic and control runs. The 3B F16 reference was near chance after format recovery and showed extreme activation bias. A larger reference could improve competence before further quantization comparisons. Use one CPU-only process and the same prompt and generation policies. Check at least 28/32 valid, 22/32 correct overall and 9/16 correct in conflict under the already defined fence-only rule before allocating a matched Q2_K arm. The gate concerns the next exploratory run and leaves the final confirmatory criteria undecided.

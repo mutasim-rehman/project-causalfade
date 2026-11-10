@@ -1,5 +1,7 @@
 # CausalFade implementation and research roadmap
 
+> **10 November 2026 update.** The status below describes the original prospective design. The user authorized exploratory inference on the Ubuntu lab PC using local model weights. The [experiment index](../EXPERIMENTS.md) and [session report](../SESSION_REPORT.md) track live progress. Confirmatory choices remain open.
+
 **Version 1.0 — 7 November 2026.** This is a prospective work plan. Documentation and model preparation are complete; live LLM work has not started. Research runs remain on hold under the user's instruction. Recording a future phase here does not authorize executing it.
 
 ## Research deliverable and scope
