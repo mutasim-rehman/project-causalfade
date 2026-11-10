@@ -13,3 +13,11 @@ Keep the declared strict JSON scorer. The first visible F16 response wrapped a J
 ## 2026-11-10 13:12 PKT
 
 Prepare a formula-given arithmetic control before the paired cohort completes. It keeps the numeric table, target value, response keys and scheduling fixed and supplies the rule to compute the answer. This provides a same-item execution diagnostic if the initial F16 arm struggles. Prompt wording and length differ, so this is an exploratory scaffold comparison. Keep estimates and action choices separate, since a model can recommend an action inconsistent with its reported estimate.
+
+## 2026-11-10 13:22 PKT
+
+The completed F16 arm recommended activation 63/64 times and selected the correct adjustment set 0/64 times under fence-only scoring. Early Q2_K generations contain repetitive punctuation and hit the token cap. Complete the declared Q2_K arm and add Q4_K_M as an exploratory intermediate arm on the same prompt schedule. This tests whether failure to emit usable decisions extends to moderate compression. No comparison across this grid identifies a pure bit-width effect.
+
+## 2026-11-10 13:23 PKT
+
+Add a small matched Q2_K runtime diagnostic with default and disabled CPU repacking. Identical weight digests and settings except for repacking let us check one software explanation for the malformed generations. Compare response text, token-limit finishes and format validity on four complete families. This diagnostic follows the model-format comparison and takes priority over a larger repeat of the failing configuration.

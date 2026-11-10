@@ -53,6 +53,7 @@ def main():
     parser.add_argument("--threads", type=int, default=8)
     parser.add_argument("--seed", type=int, default=20261110)
     parser.add_argument("--max-tokens", type=int, default=160)
+    parser.add_argument("--no-repack", action="store_true", help="Disable CPU weight repacking")
     parser.add_argument("--evidence", choices=("exact", "sampled"), default="exact")
     args = parser.parse_args()
     signal.signal(signal.SIGTERM, interrupted)
@@ -75,6 +76,8 @@ def main():
                    "--host", "127.0.0.1", "--port", str(port), "-ngl", "0",
                    "-c", "2048", "-np", "1", "-t", str(args.threads),
                    "--cache-type-k", "f16", "--cache-type-v", "f16"]
+        if args.no_repack:
+            command.append("--no-repack")
         sampling = {"temperature": 0, "seed": args.seed, "max_tokens": args.max_tokens,
                     "cache_prompt": False, "stream": False}
         save(args.out / "config.json", {**vars(args), "command": command,

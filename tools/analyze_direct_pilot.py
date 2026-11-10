@@ -55,6 +55,17 @@ def arm(directory, truth):
     diagnostics = {"syntax": syntax, "finish_reasons": finishes,
                    "median_seconds_per_response": median(durations),
                    "mean_completion_tokens": mean(completion_tokens)}
+    estimates = {
+        "strict": {row["task_id"]: row["prediction"].get("ate_estimate") for row in raw},
+        "single_fence": {row["task_id"]: row.get("ate_estimate") for row in predictions},
+    }
+    for label, scored in (("strict", strict), ("single_fence", relaxed)):
+        comparable = [r for r in scored if r["valid_action"] and r["numeric_estimate_valid"]]
+        diagnostics[f"{label}_sign_comparable"] = len(comparable)
+        diagnostics[f"{label}_action_estimate_sign_disagreements"] = sum(
+            r["activate"] != int(estimates[label][r["task_id"]] > 0)
+            for r in comparable
+        )
     return strict, relaxed, diagnostics
 
 
