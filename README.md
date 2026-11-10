@@ -1,5 +1,5 @@
-# CausalFade
-
+# CausalFade 
+<!-- testing -->
 **Does aggressive quantization change how AI agents reason about causes?**
 
 CausalFade is an advanced statistics course research project at the intersection of AI agents, model quantization and causal inference. It investigates whether compressed models become more vulnerable to misleading associations when choosing interventions, and whether this differs from factual recall loss or general reasoning degradation.
