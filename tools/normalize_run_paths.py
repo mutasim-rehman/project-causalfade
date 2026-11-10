@@ -28,9 +28,15 @@ def main():
             archived = archive / file.relative_to(root)
             archived.parent.mkdir(parents=True, exist_ok=True)
             if archived.exists():
-                raise FileExistsError(archived)
-            shutil.copyfile(file, archived)
-            file.write_bytes(original.replace(prefix, b"$HOME/"))
+                if archived.read_bytes() != original:
+                    raise FileExistsError(archived)
+            else:
+                staging = archived.with_name(archived.name + ".tmp")
+                shutil.copyfile(file, staging)
+                staging.replace(archived)
+            staging = file.with_name(file.name + ".normalize.tmp")
+            staging.write_bytes(original.replace(prefix, b"$HOME/"))
+            staging.replace(file)
 
 
 if __name__ == "__main__":

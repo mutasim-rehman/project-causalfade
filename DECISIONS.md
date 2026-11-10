@@ -73,3 +73,7 @@ Freeze the reversal diagnostic before inference. Compare historical-first versus
 ## 2026-11-10 14:19 PKT
 
 Treat Q8_0 as a candidate reference-preserving configuration for estimate sign on the formula control. It tied F16 at 61/64 on the reused sample and exceeded Q4_K_M by 16 correct signs, but matched the F16 explicit decline bias. The observed tie is not an equivalence test. Continue the separate fresh-family F16 versus Q4_K_M replication.
+
+## 2026-11-10 14:32 PKT
+
+Close the fresh formula replication after both complete 48-task schedules. The prespecified sign direction replicated, with a 31.25-point loss under Q4_K_M. Keep the execution result separate from the unresolved selective-degradation question because both evidence conditions suffered and explicit actions remained biased. Use the independently generated fixtures and paired family interval as the validation evidence.
