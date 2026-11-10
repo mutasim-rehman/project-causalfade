@@ -22,7 +22,7 @@ Return only a JSON object with activate equal to 1 if the lab should activate th
 """
 
 
-def source_selection_prompt(task, strata):
+def source_selection_prompt(task, strata, reverse=False):
     """Render rounded success rates without revealing the evaluator's action."""
     cells = {(r["z"], r["x"]): r for r in strata}
     randomized = []
@@ -43,7 +43,8 @@ def source_selection_prompt(task, strata):
         f"Random assignment by the lab: off {rates[0][0]:.2f}%, on {rates[0][1]:.2f}%.",
         f"Historical data where operators chose the setting: off {rates[1][0]:.2f}%, on {rates[1][1]:.2f}%.",
     ]
-    if hashlib.sha256(task["family_id"].encode()).digest()[0] % 2:
+    historical_first = bool(hashlib.sha256(task["family_id"].encode()).digest()[0] % 2)
+    if historical_first != reverse:
         lines.reverse()
     return SOURCE_PROMPT.format(first=lines[0], second=lines[1])
 
@@ -52,7 +53,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
-    parser.add_argument("--variant", choices=("formula", "source-selection"), default="formula")
+    parser.add_argument("--variant", choices=("formula", "source-selection", "source-selection-reversed"),
+                        default="formula")
     args = parser.parse_args()
     source = args.source
     manifest = json.loads((source / "manifest.json").read_text())
@@ -70,7 +72,8 @@ def main():
         if args.variant == "formula":
             task["prompt"] = PROMPT + evidence
         else:
-            task["prompt"] = source_selection_prompt(task, json.loads(evidence)["strata"])
+            task["prompt"] = source_selection_prompt(
+                task, json.loads(evidence)["strata"], reverse=args.variant.endswith("-reversed"))
 
     args.out.mkdir(parents=True, exist_ok=False)
     hashes = {}
@@ -81,7 +84,8 @@ def main():
     manifest.update(evidence_modes=["exact"], tasks=len(data["public_tasks.jsonl"]),
                     file_sha256=hashes, source_file_sha256=manifest["file_sha256"],
                     status={"formula": "exploratory_formula_given_arithmetic_control",
-                            "source-selection": "exploratory_evidence_source_selection"}[args.variant],
+                            "source-selection": "exploratory_evidence_source_selection",
+                            "source-selection-reversed": "exploratory_evidence_source_reversal"}[args.variant],
                     baseline_summary={k: v for k, v in manifest["baseline_summary"].items()
                                       if k.startswith("exact:")})
     (args.out / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
