@@ -1,0 +1,38 @@
+{
+  "seed": 20261113,
+  "families": 12,
+  "tasks": 96,
+  "sampled_rows_per_task": 2000,
+  "evidence_modes": [
+    "exact"
+  ],
+  "status": "interleaved_within_family_order_assignment",
+  "numpy_version": "2.5.4",
+  "file_sha256": {
+    "public_tasks.jsonl": "fa9f26d9a4f915402f034d6b93362278b79203047ceab0c4266add1d517e9a49",
+    "oracle_truth.jsonl": "cc116f1e36c9f4fd18f47766fadc4e41954b7f43daf69641171acd588e3060a1",
+    "baselines.jsonl": "33ad7b9f0035005441d76116b4d2d5b9982cd8869f90290ec9c9bff371bf4e7b"
+  },
+  "baseline_summary": {
+    "exact:backdoor": {
+      "accuracy": 1.0,
+      "invalid_count": 0
+    },
+    "exact:association": {
+      "accuracy": 0.5,
+      "invalid_count": 0
+    },
+    "exact:random": {
+      "accuracy": 0.4166666666666667,
+      "invalid_count": 0
+    }
+  },
+  "source_file_sha256": {
+    "public_tasks.jsonl": "5ced2a46a51256a761f3cd7b6dcd246f9eccee4aedfd67d34294511305a9fca8",
+    "oracle_truth.jsonl": "9fbe727f80034e99d7ac615746d9faa33d170a38ea46f155e35842c39eddeff6",
+    "baselines.jsonl": "719f480a88a5f65c8387dc6586fe5e07f6d5ff19fa5d6138d96d1295d4f659c7"
+  },
+  "source_manifest_sha256": "f942eace81f4511f56c6f7509fae017dcb6a5034615432bec50769452e17ee45",
+  "source_schedule_sha256": "a8764f65a51e2a3a2234dcb4fd812c9ffde6d164dfbb63a2f6f7af512ef0f370",
+  "order_assignment_seed": 20261112
+}

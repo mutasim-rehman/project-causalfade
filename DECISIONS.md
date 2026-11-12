@@ -105,3 +105,7 @@ Run a fresh-family replication of cohort 009's F16 source-order effect. Cohort 0
 ## 2026-11-12 09:40 PKT
 
 Freeze the cohort 010 fixture before inference. The source generator produced 12 fresh families and 48 exact source-selection items, and order expansion produced 96 prompts with balanced assignment. The base schedule is archived. Verification confirms 48 complete twin pairs, 12 families and four first-order assignments per side per family. Run F16 followed by Q4_K_M using identical run seed, resource settings and generation limits. Retain the data as an exploratory independent-family replication selected after viewing cohort 009.
+
+## 2026-11-12 09:47 PKT
+
+Close cohort 010 after complete joins and model hashes. F16 conflict accuracy fell by 25 points with historical evidence first on 12 fresh SCM families. This replicates the direction and approximate size observed in cohort 009. Q4_K_M remained 6/24 in both conflict orders. Treat the independent-family replication as stronger evidence of order sensitivity on this generated task. Keep claims bounded to this task and checkpoint. Future work should balance evidence strength, vary scenarios, and specify a validated reference competence gate before confirmatory collection.

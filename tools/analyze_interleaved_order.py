@@ -19,7 +19,7 @@ def analyze(run, truth, schedule, indices):
         if order in pair:
             raise ValueError(f"Duplicate order for item {task['order_pair_id']}")
         pair[order] = row
-    if len(paired) != 64 or any(set(pair) != {"randomized_first", "historical_first"}
+    if len(paired) != len(schedule) // 2 or any(set(pair) != {"randomized_first", "historical_first"}
                                 for pair in paired.values()):
         raise ValueError("Expected 64 complete prompt-order pairs")
     family_values = defaultdict(lambda: defaultdict(list))
@@ -35,8 +35,8 @@ def analyze(run, truth, schedule, indices):
              random_row["activate"] == 1, historical_row["activate"] == 1)
         )
     families = sorted(family_values)
-    if len(families) != 16:
-        raise ValueError("Expected 16 independent family blocks")
+    if len(families) != len({row["family_id"] for row in schedule}):
+        raise ValueError("Some family blocks are incomplete")
     output = {}
     effects = {}
     for condition in ("aligned", "conflict"):
@@ -76,12 +76,12 @@ def main():
     schedules = [json.loads((run / "schedule.json").read_text()) for run in (args.f16, args.q4)]
     if schedules[0] != schedules[1]:
         raise ValueError("Format runs used different schedules")
-    n = 16
+    n = len({row["family_id"] for row in schedules[0]})
     indices = np.random.default_rng(20261112).integers(n, size=(10000, n))
     f16, f16_effects = analyze(args.f16, truth, schedules[0], indices)
     q4, q4_effects = analyze(args.q4, truth, schedules[0], indices)
     result = {
-        "families": n, "paired_items_per_format": 64,
+        "families": n, "paired_items_per_format": len(schedules[0]) // 2,
         "bootstrap_replicates": 10000, "bootstrap_seed": 20261112,
         "f16": f16, "q4_k_m": q4,
         "q4_k_m_minus_f16_order_interaction": {},
