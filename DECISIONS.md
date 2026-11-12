@@ -1,5 +1,9 @@
 # Research decisions
 
+## 2026-11-12 — overarching research objective
+
+Treat causal inference in language models as a central pillar of CausalFade. Future research framing, study design, and supervisor reporting should foreground causal capabilities—such as identification, effect estimation, intervention choice, and decisions from causal evidence—while using statistical rigor to support valid conclusions and developing agentic, interactive evaluation where feasible. Quantization remains a useful experimental factor, but it does not define the full research objective. Interpret existing cohorts according to the capabilities they actually measure; in particular, prompt-order sensitivity alone is not evidence that a model performs causal inference.
+
 ## 2026-11-10 13:10 PKT
 
 Use the local CAUSALFADE folder for input weights and fixtures, and this repository for run artifacts. Start with the provisional 3B F16/Q2_K contrast on exact evidence. The known graph, exact probabilities and matched families remove sampling error in the evidence and make failures easier to interpret. Reserve the remaining model sizes and formats for later development decisions.

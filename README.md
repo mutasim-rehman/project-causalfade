@@ -4,6 +4,10 @@
 
 CausalFade is an advanced statistics course research project at the intersection of AI agents, model quantization and causal inference. It investigates whether compressed models become more vulnerable to misleading associations when choosing interventions, and whether this differs from factual recall loss or general reasoning degradation.
 
+## Overarching research commitment
+
+**Causal inference in language models is a central pillar of this research.** The project aims to build rigorous evidence about whether and how LLMs identify causal structure, estimate intervention effects, choose informative interventions, and make decisions from causal evidence. Statistical design and inference are essential to evaluating those capabilities; agentic, multi-step interaction is an important evaluation direction. Quantization is one experimental factor through which these capabilities may be studied, not a substitute for the broader causal-inference research objective. Each study must state which causal capability it measures and distinguish causal reasoning evidence from prompt sensitivity, response-format compliance, arithmetic execution, and general task performance.
+
 ## Research question
 
 > Does aggressive post-training quantization increase an AI agent's reliance on misleading associations when choosing interventions, beyond its general effect on task performance?
