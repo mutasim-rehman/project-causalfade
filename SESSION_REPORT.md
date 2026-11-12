@@ -29,3 +29,7 @@ The user requested an immediate stop for PC shutdown. Seven cohorts were complet
 ## Resumed 12 November 2026
 
 The user resumed research and removed the original deadline constraint. Cohort 008 was completed with fresh run IDs to preserve the interrupted attempt. Across 16 matched families, F16 conflict accuracy was 16/32 with randomized evidence first and 7/32 with historical evidence first, a −28.125 point shift (paired family percentile interval −40.625 to −15.625). Q4_K_M scored 16/32 in both conflict orders, activating on all conflict items. See the completed [source-order reversal report](experiments/cohort_008/summary.md) and machine-readable [analysis](experiments/cohort_008/source_order_analysis.json). The initial and reversed orders were collected in separate sessions. Repeat exposure and session timing still limit attribution to line position alone.
+
+## Resumed session, 12 November 2026
+
+Reconstructed the Nov 10–12 experiments from the decision log, experiment index, per-run artifacts and Git history. The paused cohort 008 order reversal is now complete and pushed. Its session timing limitation motivates the current cohort 009. We generated a 128-prompt fixture from 64 matched items, with both orders for each item and balanced first-order assignment within all 16 families. Fixture hashes and family balance were verified before inference. Both arms use the prior CPU build and task interface. F16 is running and Q4_K_M is queued on the exact same task schedule.

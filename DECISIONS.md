@@ -89,3 +89,7 @@ Resume with fresh run IDs for both source-order reversal arms. Keep the interrup
 ## 2026-11-12 09:23 PKT
 
 Continue beyond the completed cohort 008 result with a same-session interleaved reversal. The earlier reversal showed a large F16 order shift, but order and collection session were confounded. Duplicate each of the 64 source-selection prompts with opaque task IDs and assign first-order execution within family, balanced two per order among four base cells. Randomize prompt order using the existing runner and run seed. Run both 3B formats against identical schedules. The conflict accuracy order contrast is primary. Use the established single-fence scorer and cluster resampling on 16 families. This targeted crossover has greater value than adding checkpoints because it resolves a stated limitation in the preceding finding.
+
+## 2026-11-12 09:25 PKT
+
+Freeze cohort 009's fixture and generation configuration before model calls. Verified 64 item twins, unique opaque task IDs, 128 exact prompts, two first-position assignments per four-cell family, and evaluator pair joins. Inference will use the prior seed, CPU runtime, token budget, and single-fence sensitivity. F16 and Q4_K_M will run on the same randomized schedule. If either run fails, retain it and do not infer an order effect from an incomplete arm.
