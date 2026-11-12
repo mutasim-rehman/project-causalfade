@@ -1,0 +1,15 @@
+{
+  "status": "validated",
+  "families": 96,
+  "base_tasks": 384,
+  "expanded_tasks": 768,
+  "matched_prompt_variant_order_pairs": 384,
+  "balanced_family_variant_blocks": 96,
+  "prompt_variants": [
+    "causal_context"
+  ],
+  "shared_rate_lines_across_variants": false,
+  "output_contract": "strict_json",
+  "source_manifest_sha256": "d4428b28a67682686228955ad1db540107041188ad91b0a5e4444ec48cec8f9c",
+  "expanded_manifest_sha256": "dc817fd306dd02df25463d30e5721e859940df6a26e64d86c8640e914b1c7bb3"
+}

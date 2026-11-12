@@ -1,0 +1,187 @@
+{
+  "primary_effect": 0.2,
+  "primary_test": "two-sided one-sample t test of 96 family-level mean paired differences, alpha 0.05",
+  "outcome": "Q4_K_M conflict accuracy, historical-first minus randomized-first",
+  "families_per_block": 2,
+  "discordance_scenarios": [
+    0.5,
+    0.7,
+    0.9
+  ],
+  "within_family_gaussian_copula_correlations": [
+    0.25,
+    0.5
+  ],
+  "replicates_per_design_cell": 100000,
+  "monte_carlo_seed": 20261129,
+  "method": "Generate two paired binary-outcome differences per family from a bivariate Gaussian copula with probabilities P(D=-1)=(d-delta)/2, P(D=0)=1-d, P(D=1)=(d+delta)/2; test family means with a two-sided t statistic.",
+  "power_by_scenario_and_family_count": {
+    "discordance_0.5_within_family_r_0.25": {
+      "48": {
+        "power": 0.72741,
+        "monte_carlo_standard_error": 0.00140813597319293,
+        "t_critical_approximation": 2.0117401847302694
+      },
+      "64": {
+        "power": 0.84531,
+        "monte_carlo_standard_error": 0.0011435077782857449,
+        "t_critical_approximation": 1.9983404408683683
+      },
+      "80": {
+        "power": 0.91445,
+        "monte_carlo_standard_error": 0.0008844840162490219,
+        "t_critical_approximation": 1.9904501691798413
+      },
+      "96": {
+        "power": 0.95477,
+        "monte_carlo_standard_error": 0.0006571472217091083,
+        "t_critical_approximation": 1.9852509838946177
+      },
+      "112": {
+        "power": 0.9774,
+        "monte_carlo_standard_error": 0.0004699919148240739,
+        "t_critical_approximation": 1.9815667465603173
+      }
+    },
+    "discordance_0.5_within_family_r_0.50": {
+      "48": {
+        "power": 0.66063,
+        "monte_carlo_standard_error": 0.0014973242905262708,
+        "t_critical_approximation": 2.0117401847302694
+      },
+      "64": {
+        "power": 0.785,
+        "monte_carlo_standard_error": 0.0012991343271578962,
+        "t_critical_approximation": 1.9983404408683683
+      },
+      "80": {
+        "power": 0.86912,
+        "monte_carlo_standard_error": 0.0010665384456267856,
+        "t_critical_approximation": 1.9904501691798413
+      },
+      "96": {
+        "power": 0.92121,
+        "monte_carlo_standard_error": 0.0008519515003801568,
+        "t_critical_approximation": 1.9852509838946177
+      },
+      "112": {
+        "power": 0.95536,
+        "monte_carlo_standard_error": 0.0006530487761262555,
+        "t_critical_approximation": 1.9815667465603173
+      }
+    },
+    "discordance_0.7_within_family_r_0.25": {
+      "48": {
+        "power": 0.57431,
+        "monte_carlo_standard_error": 0.0015635793037131183,
+        "t_critical_approximation": 2.0117401847302694
+      },
+      "64": {
+        "power": 0.70137,
+        "monte_carlo_standard_error": 0.001447239175464788,
+        "t_critical_approximation": 1.9983404408683683
+      },
+      "80": {
+        "power": 0.79388,
+        "monte_carlo_standard_error": 0.001279197191991915,
+        "t_critical_approximation": 1.9904501691798413
+      },
+      "96": {
+        "power": 0.86491,
+        "monte_carlo_standard_error": 0.0010809287298429995,
+        "t_critical_approximation": 1.9852509838946177
+      },
+      "112": {
+        "power": 0.91003,
+        "monte_carlo_standard_error": 0.0009048502588826507,
+        "t_critical_approximation": 1.9815667465603173
+      }
+    },
+    "discordance_0.7_within_family_r_0.50": {
+      "48": {
+        "power": 0.509,
+        "monte_carlo_standard_error": 0.0015808826648426504,
+        "t_critical_approximation": 2.0117401847302694
+      },
+      "64": {
+        "power": 0.63355,
+        "monte_carlo_standard_error": 0.0015236941868367155,
+        "t_critical_approximation": 1.9983404408683683
+      },
+      "80": {
+        "power": 0.72835,
+        "monte_carlo_standard_error": 0.0014066139395726178,
+        "t_critical_approximation": 1.9904501691798413
+      },
+      "96": {
+        "power": 0.80714,
+        "monte_carlo_standard_error": 0.001247657887403434,
+        "t_critical_approximation": 1.9852509838946177
+      },
+      "112": {
+        "power": 0.86383,
+        "monte_carlo_standard_error": 0.0010845631890304963,
+        "t_critical_approximation": 1.9815667465603173
+      }
+    },
+    "discordance_0.9_within_family_r_0.25": {
+      "48": {
+        "power": 0.47649,
+        "monte_carlo_standard_error": 0.001579390008515946,
+        "t_critical_approximation": 2.0117401847302694
+      },
+      "64": {
+        "power": 0.59511,
+        "monte_carlo_standard_error": 0.0015522695896654035,
+        "t_critical_approximation": 1.9983404408683683
+      },
+      "80": {
+        "power": 0.69349,
+        "monte_carlo_standard_error": 0.0014579493129049444,
+        "t_critical_approximation": 1.9904501691798413
+      },
+      "96": {
+        "power": 0.77517,
+        "monte_carlo_standard_error": 0.0013201570781539596,
+        "t_critical_approximation": 1.9852509838946177
+      },
+      "112": {
+        "power": 0.83362,
+        "monte_carlo_standard_error": 0.0011776998581981744,
+        "t_critical_approximation": 1.9815667465603173
+      }
+    },
+    "discordance_0.9_within_family_r_0.50": {
+      "48": {
+        "power": 0.42639,
+        "monte_carlo_standard_error": 0.0015639103807443698,
+        "t_critical_approximation": 2.0117401847302694
+      },
+      "64": {
+        "power": 0.53421,
+        "monte_carlo_standard_error": 0.00157743359891946,
+        "t_critical_approximation": 1.9983404408683683
+      },
+      "80": {
+        "power": 0.62901,
+        "monte_carlo_standard_error": 0.0015276007983108675,
+        "t_critical_approximation": 1.9904501691798413
+      },
+      "96": {
+        "power": 0.71063,
+        "monte_carlo_standard_error": 0.0014339979187572066,
+        "t_critical_approximation": 1.9852509838946177
+      },
+      "112": {
+        "power": 0.77424,
+        "monte_carlo_standard_error": 0.0013220908531564688,
+        "t_critical_approximation": 1.9815667465603173
+      }
+    }
+  },
+  "limitations": [
+    "Planning simulation, not evidence about model performance.",
+    "The 20-point effect is the prespecified smallest effect of interest; discordance and within-family correlation are design assumptions.",
+    "The independent sampling unit is the SCM family; two conflict task pairs are nested within each family."
+  ]
+}

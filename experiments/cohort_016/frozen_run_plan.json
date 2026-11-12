@@ -1,0 +1,37 @@
+{
+  "status": "frozen_before_inference",
+  "cohort": "016",
+  "classification": "prospective_confirmatory_family_level_order_replication",
+  "git_revision": "79c0ba5",
+  "dataset": "experiments/cohort_016/input",
+  "dataset_manifest_sha256": "dc817fd306dd02df25463d30e5721e859940df6a26e64d86c8640e914b1c7bb3",
+  "source_manifest_sha256": "d4428b28a67682686228955ad1db540107041188ad91b0a5e4444ec48cec8f9c",
+  "families": 96,
+  "family_generation_seed": 20261127,
+  "order_assignment_seed": 20261128,
+  "responses_per_format": 768,
+  "prompt_variant": "causal_context",
+  "model_f16": {
+    "path": "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+    "sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a"
+  },
+  "model_q4_k_m": {
+    "path": "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-q4_k_m.gguf",
+    "sha256": "7ebec3cd0f2d49bd4a8d068dc5f0e335f3647eec6dc4104d81416533a63bc5bc"
+  },
+  "runtime": "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-server",
+  "runtime_sha256": "6d3d7416bf83500c5adda80ee4bb076f6877e38ff0a53ddc81c0b278108b2f24",
+  "runtime_version": "llama.cpp b12176, commit 8820b088d",
+  "inference": "CPU only, -ngl 0, 8 threads, context 2048, one parallel sequence, F16 KV cache",
+  "sampling": {"temperature": 0, "seed": 20261126, "max_tokens": 48, "cache_prompt": false, "stream": false},
+  "schedule_sha256": "bd72af36f62c10dbf7af0ca079b1d49884c60fa23206434a4c0f9bfdaa67d622",
+  "primary_hypothesis": "On Q4_K_M conflict prompts, mean strict action accuracy with historical evidence first differs from accuracy with randomized evidence first.",
+  "primary_outcome": "Per-family mean Q4_K_M conflict accuracy with historical-first evidence minus mean accuracy with randomized-first evidence; average across 96 families.",
+  "primary_test": {"test": "one-sample t test on family-level differences", "alternative": "two-sided", "alpha": 0.05, "smallest_effect_of_interest": 0.20},
+  "primary_uncertainty": "95% t interval and 10,000-replicate family bootstrap percentile interval; bootstrap seed 20261130",
+  "secondary_outcomes": ["F16 conflict evidence-order effect", "format-by-order interaction on conflict items", "evidence-order effects on aligned items", "overall and condition-specific accuracy and strict validity"],
+  "invalid_output_policy": "Invalid JSON or invalid action counts as incorrect; retain every scheduled response in the analysis.",
+  "stopping_and_exclusion": "No interim stopping or outcome-based exclusions. Preserve incomplete runs; do not infer the primary result unless both format schedules complete.",
+  "analysis_seed": 20261130,
+  "inference_started": false
+}

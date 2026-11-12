@@ -1,0 +1,19 @@
+{
+  "status": "validated",
+  "families": 96,
+  "base_tasks": 384,
+  "expanded_tasks": 768,
+  "complete_order_twins": 384,
+  "balanced_families": 96,
+  "bounds_and_formula_errors": {
+    "min_outcome_probability": 0.04356822040447467,
+    "max_outcome_probability": 0.9564317795955253,
+    "min_treatment_probability": 0.09907716821847024,
+    "max_treatment_probability": 0.9009228317815298,
+    "max_randomized_difference_error": 1.1102230246251565e-16,
+    "max_observational_difference_error": 0.0
+  },
+  "max_rendered_rate_difference_error": 9.968343836302962e-05,
+  "base_manifest_sha256": "d4428b28a67682686228955ad1db540107041188ad91b0a5e4444ec48cec8f9c",
+  "expanded_manifest_sha256": "dc817fd306dd02df25463d30e5721e859940df6a26e64d86c8640e914b1c7bb3"
+}
