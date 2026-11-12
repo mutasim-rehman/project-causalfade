@@ -28,4 +28,6 @@ Cohort 001 tests the provisional 3B quantization contrast on exact evidence from
 | cohort_011 / run_001_q4_k_m | Matched observational-strength development pilot | [Config](experiments/cohort_011/run_001_q4_k_m/config.json) | Complete, 128/128 | [Run](experiments/cohort_011/run_001_q4_k_m/) |
 
 See the [cohort 011 protocol and summary](experiments/cohort_011/summary.md); it is a development pilot, not a confirmatory cohort.
-| cohort_012 / run_001_7b_f16 | Matched-strength reference-competence feasibility screen | [Config](experiments/cohort_012/run_001_7b_f16/config.json) | Frozen, not started; 56/64 validity, 44/64 overall, 9/16 conflict in each order gate | [Run](experiments/cohort_012/run_001_7b_f16/) |
+| cohort_012 / run_001_7b_f16 | Matched-strength reference-competence feasibility screen | [Config](experiments/cohort_012/run_001_7b_f16/config.json) | Complete, 64/64; gate failed at 8/16 and 7/16 conflict accuracy by order | [Run](experiments/cohort_012/run_001_7b_f16/) |
+
+See the [cohort 012 feasibility summary](experiments/cohort_012/summary.md). The frozen stopping rule prevented the paired 7B Q4_K_M arm after the F16 gate failed.

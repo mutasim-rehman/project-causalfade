@@ -1,0 +1,578 @@
+[
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0006",
+    "order_pair_id": "67119e26fc471999d6a0",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 53.60%, on 46.40%.\nHistorical data where operators chose the setting: off 70.67%, on 29.33%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "3042de706aa603328e71"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0003",
+    "order_pair_id": "b1219ec8373dc315406c",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 72.50%, on 27.50%.\nRandom assignment by the lab: off 53.93%, on 46.07%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "05a99cecc75821694a73"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0009",
+    "order_pair_id": "cf2ebb0c55acf3bb17fd",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 72.83%, on 27.17%.\nRandom assignment by the lab: off 45.01%, on 54.99%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "28b90a17e49b64bd01d5"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0015",
+    "order_pair_id": "5d388aec2fe7d87fa23a",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 70.88%, on 29.12%.\nRandom assignment by the lab: off 46.88%, on 53.12%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "07bcf69587fce5fbe466"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0008",
+    "order_pair_id": "e8209d61519397ca38c9",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 70.54%, on 29.46%.\nRandom assignment by the lab: off 54.43%, on 45.57%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "449df1c1fa5d30297521"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0012",
+    "order_pair_id": "82262f6f3e00bfa5f882",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 69.95%, on 30.05%.\nRandom assignment by the lab: off 45.66%, on 54.34%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "6166c2635b3a62bb5b67"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0014",
+    "order_pair_id": "76d14879a92fc0e15129",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 28.67%, on 71.33%.\nRandom assignment by the lab: off 46.97%, on 53.03%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "20cfa9e55ae1347baecd"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0008",
+    "order_pair_id": "c73a9777dc8f4d1a59d2",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 70.54%, on 29.46%.\nRandom assignment by the lab: off 45.57%, on 54.43%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "d562fbe95b8f285ad649"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0012",
+    "order_pair_id": "386a5be03894fee6e4ab",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 54.34%, on 45.66%.\nHistorical data where operators chose the setting: off 69.95%, on 30.05%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "87f2fc1455da4c079483"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0001",
+    "order_pair_id": "e8460b595fce9a803a2c",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 53.59%, on 46.41%.\nHistorical data where operators chose the setting: off 72.75%, on 27.25%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "70feb421ea1a21d7dc0f"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0014",
+    "order_pair_id": "417276f600328419dca2",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 71.33%, on 28.67%.\nRandom assignment by the lab: off 53.03%, on 46.97%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "9454831d6a08706a8ec0"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0012",
+    "order_pair_id": "386a5be03894fee6e4ab",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 69.95%, on 30.05%.\nRandom assignment by the lab: off 54.34%, on 45.66%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "51587a1f312219bb8d92"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0015",
+    "order_pair_id": "5d388aec2fe7d87fa23a",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 46.88%, on 53.12%.\nHistorical data where operators chose the setting: off 70.88%, on 29.12%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "0627e64dd6cf61857ecc"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0009",
+    "order_pair_id": "d94d561f0d7429ea2943",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 54.99%, on 45.01%.\nHistorical data where operators chose the setting: off 72.83%, on 27.17%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "652468f1c87d1053aaab"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0001",
+    "order_pair_id": "00887d0443aa0a28ee98",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 46.41%, on 53.59%.\nHistorical data where operators chose the setting: off 72.75%, on 27.25%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "3552bcb2b0de22b3943d"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0012",
+    "order_pair_id": "d5b7fda63b7952a8743a",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 30.05%, on 69.95%.\nRandom assignment by the lab: off 54.34%, on 45.66%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "0622fa98984d061c6f9c"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0014",
+    "order_pair_id": "76d14879a92fc0e15129",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 46.97%, on 53.03%.\nHistorical data where operators chose the setting: off 28.67%, on 71.33%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "bab406ea3695f97843d4"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0009",
+    "order_pair_id": "1e8ecdad3a6c58ede7a3",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 27.17%, on 72.83%.\nRandom assignment by the lab: off 54.99%, on 45.01%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "4796e0b483383ce52434"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0003",
+    "order_pair_id": "4499766209eecd5f0655",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 53.93%, on 46.07%.\nHistorical data where operators chose the setting: off 27.50%, on 72.50%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "b084f1a29017fe2acea3"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0015",
+    "order_pair_id": "73f08dd388900df38714",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 53.12%, on 46.88%.\nHistorical data where operators chose the setting: off 29.12%, on 70.88%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "401dab00501c1c369530"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0006",
+    "order_pair_id": "67119e26fc471999d6a0",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 70.67%, on 29.33%.\nRandom assignment by the lab: off 53.60%, on 46.40%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "f7ff34c87f8f7bdb70df"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0014",
+    "order_pair_id": "593d174743ae8d042b77",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 46.97%, on 53.03%.\nHistorical data where operators chose the setting: off 71.33%, on 28.67%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "c0d4126ac468e3e63ede"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0009",
+    "order_pair_id": "be2e8056eb2ac1f88102",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 27.17%, on 72.83%.\nRandom assignment by the lab: off 45.01%, on 54.99%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "c46159cb5dcf9c0afdd0"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0001",
+    "order_pair_id": "f4959da84c34de5e4c52",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 53.59%, on 46.41%.\nHistorical data where operators chose the setting: off 27.25%, on 72.75%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "af796d455f735bb2ac9f"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0015",
+    "order_pair_id": "135a7ec3cacb7c34e177",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 53.12%, on 46.88%.\nHistorical data where operators chose the setting: off 70.88%, on 29.12%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "7e3835d1731de6bb455e"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0014",
+    "order_pair_id": "417276f600328419dca2",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 53.03%, on 46.97%.\nHistorical data where operators chose the setting: off 71.33%, on 28.67%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "c3b0c4221c78716c04ef"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0003",
+    "order_pair_id": "b1219ec8373dc315406c",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 53.93%, on 46.07%.\nHistorical data where operators chose the setting: off 72.50%, on 27.50%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "c20ee6289969bea91ea4"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0012",
+    "order_pair_id": "cde4ad2cad8f02cd6365",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 45.66%, on 54.34%.\nHistorical data where operators chose the setting: off 30.05%, on 69.95%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "a1e5aa99d938e6904dfd"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0009",
+    "order_pair_id": "be2e8056eb2ac1f88102",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 45.01%, on 54.99%.\nHistorical data where operators chose the setting: off 27.17%, on 72.83%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "f906b54488e869ac4ca7"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0008",
+    "order_pair_id": "c73a9777dc8f4d1a59d2",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 45.57%, on 54.43%.\nHistorical data where operators chose the setting: off 70.54%, on 29.46%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "a574d392aaeb4a5f4725"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0006",
+    "order_pair_id": "6be6270c245c314d093b",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 29.33%, on 70.67%.\nRandom assignment by the lab: off 46.40%, on 53.60%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "b1b34da40d9d484fc034"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0009",
+    "order_pair_id": "cf2ebb0c55acf3bb17fd",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 45.01%, on 54.99%.\nHistorical data where operators chose the setting: off 72.83%, on 27.17%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "0ee789a03f1f9afb071b"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0012",
+    "order_pair_id": "cde4ad2cad8f02cd6365",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 30.05%, on 69.95%.\nRandom assignment by the lab: off 45.66%, on 54.34%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "4060d3037e4c274ea45b"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0001",
+    "order_pair_id": "f4959da84c34de5e4c52",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 27.25%, on 72.75%.\nRandom assignment by the lab: off 53.59%, on 46.41%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "d61ded55b67279839c8f"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0006",
+    "order_pair_id": "d9cd5defaede1a0b251d",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 53.60%, on 46.40%.\nHistorical data where operators chose the setting: off 29.33%, on 70.67%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "8b7e97b0845fdd918fef"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0008",
+    "order_pair_id": "e8209d61519397ca38c9",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 54.43%, on 45.57%.\nHistorical data where operators chose the setting: off 70.54%, on 29.46%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "9e6cd0b471467ee9a271"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0008",
+    "order_pair_id": "8c15aa3eba3cd4e6e5c4",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 54.43%, on 45.57%.\nHistorical data where operators chose the setting: off 29.46%, on 70.54%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "1e0fbb6519ae06a14ca3"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0003",
+    "order_pair_id": "a48d39679ae7071264c1",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 46.07%, on 53.93%.\nHistorical data where operators chose the setting: off 72.50%, on 27.50%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "1793283d78365ef1ab63"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0006",
+    "order_pair_id": "c51f906fee744f9823a7",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 46.40%, on 53.60%.\nHistorical data where operators chose the setting: off 70.67%, on 29.33%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "0201aa0a5d9ed1c9bb78"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0001",
+    "order_pair_id": "e9c13bf78f2e91fe44eb",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 46.41%, on 53.59%.\nHistorical data where operators chose the setting: off 27.25%, on 72.75%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "68446fe6bb5caec44a20"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0014",
+    "order_pair_id": "3b67c4886b26004bd35f",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 28.67%, on 71.33%.\nRandom assignment by the lab: off 53.03%, on 46.97%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "cbaf199e8bd52ee98c3a"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0015",
+    "order_pair_id": "135a7ec3cacb7c34e177",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 70.88%, on 29.12%.\nRandom assignment by the lab: off 53.12%, on 46.88%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "ddcbc3c22b02c1ee7cd8"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0006",
+    "order_pair_id": "c51f906fee744f9823a7",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 70.67%, on 29.33%.\nRandom assignment by the lab: off 46.40%, on 53.60%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "7bf8a7e6350cad47280d"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0001",
+    "order_pair_id": "e9c13bf78f2e91fe44eb",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 27.25%, on 72.75%.\nRandom assignment by the lab: off 46.41%, on 53.59%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "53b00bcbef9f03337141"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0012",
+    "order_pair_id": "d5b7fda63b7952a8743a",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 54.34%, on 45.66%.\nHistorical data where operators chose the setting: off 30.05%, on 69.95%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "2591a0acdbf897d1f517"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0003",
+    "order_pair_id": "f38f04b1fd9841664c15",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 27.50%, on 72.50%.\nRandom assignment by the lab: off 46.07%, on 53.93%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "a876a946538f671578f4"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0012",
+    "order_pair_id": "82262f6f3e00bfa5f882",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 45.66%, on 54.34%.\nHistorical data where operators chose the setting: off 69.95%, on 30.05%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "0be9531cb80f314108c6"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0015",
+    "order_pair_id": "73f08dd388900df38714",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 29.12%, on 70.88%.\nRandom assignment by the lab: off 53.12%, on 46.88%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "160e268f1a5402d1ce99"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0001",
+    "order_pair_id": "00887d0443aa0a28ee98",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 72.75%, on 27.25%.\nRandom assignment by the lab: off 46.41%, on 53.59%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "9fc2452a4b0ce83fe8a8"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0006",
+    "order_pair_id": "d9cd5defaede1a0b251d",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 29.33%, on 70.67%.\nRandom assignment by the lab: off 53.60%, on 46.40%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "5cb0d8b86c3d07a90318"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0009",
+    "order_pair_id": "d94d561f0d7429ea2943",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 72.83%, on 27.17%.\nRandom assignment by the lab: off 54.99%, on 45.01%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "20e7704efae6c9b22879"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0001",
+    "order_pair_id": "e8460b595fce9a803a2c",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 72.75%, on 27.25%.\nRandom assignment by the lab: off 53.59%, on 46.41%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "d92e23c9b9f051481f99"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0014",
+    "order_pair_id": "593d174743ae8d042b77",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 71.33%, on 28.67%.\nRandom assignment by the lab: off 46.97%, on 53.03%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "2ad287ec9fd9c737f4f2"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0015",
+    "order_pair_id": "8c0917293969626190c7",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 46.88%, on 53.12%.\nHistorical data where operators chose the setting: off 29.12%, on 70.88%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "d86fd04719384deeb221"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0015",
+    "order_pair_id": "8c0917293969626190c7",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 29.12%, on 70.88%.\nRandom assignment by the lab: off 46.88%, on 53.12%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "21617f0e09a3fca6e633"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0003",
+    "order_pair_id": "f38f04b1fd9841664c15",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 46.07%, on 53.93%.\nHistorical data where operators chose the setting: off 27.50%, on 72.50%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "59906ab22e85cd39cc4a"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0003",
+    "order_pair_id": "a48d39679ae7071264c1",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 72.50%, on 27.50%.\nRandom assignment by the lab: off 46.07%, on 53.93%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "c480dc2437c133aed0f8"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0009",
+    "order_pair_id": "1e8ecdad3a6c58ede7a3",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 54.99%, on 45.01%.\nHistorical data where operators chose the setting: off 27.17%, on 72.83%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "270354eb586260e6f602"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0008",
+    "order_pair_id": "5b403572aac9b6d5c8e3",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 45.57%, on 54.43%.\nHistorical data where operators chose the setting: off 29.46%, on 70.54%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "a1e55a948dbb3ed7e410"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0014",
+    "order_pair_id": "3b67c4886b26004bd35f",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 53.03%, on 46.97%.\nHistorical data where operators chose the setting: off 28.67%, on 71.33%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "df72cc6a3a97790acb35"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0003",
+    "order_pair_id": "4499766209eecd5f0655",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 27.50%, on 72.50%.\nRandom assignment by the lab: off 53.93%, on 46.07%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "bd58dab293899ca411d3"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0006",
+    "order_pair_id": "6be6270c245c314d093b",
+    "presentation_order": "randomized_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nRandom assignment by the lab: off 46.40%, on 53.60%.\nHistorical data where operators chose the setting: off 29.33%, on 70.67%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "historical_first",
+    "task_id": "182079a4b4a189e9ea6b"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0008",
+    "order_pair_id": "8c15aa3eba3cd4e6e5c4",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 29.46%, on 70.54%.\nRandom assignment by the lab: off 54.43%, on 45.57%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "1686247b4e0967cf6cc9"
+  },
+  {
+    "evidence_mode": "exact",
+    "family_id": "world-0008",
+    "order_pair_id": "5b403572aac9b6d5c8e3",
+    "presentation_order": "historical_first",
+    "prompt": "A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:\nHistorical data where operators chose the setting: off 29.46%, on 70.54%.\nRandom assignment by the lab: off 45.57%, on 54.43%.\nReturn only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+    "randomized_in_family_first_order": "randomized_first",
+    "task_id": "26474fba6df0f548dcc2"
+  }
+]
