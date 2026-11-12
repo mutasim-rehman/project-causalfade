@@ -1,0 +1,96 @@
+{
+  "contrast": "historical-first minus randomized-first, single-fence action accuracy",
+  "families": 16,
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 20261101,
+  "aligned": {
+    "f16": {
+      "historical_first": {
+        "correct": 32,
+        "valid": 32,
+        "activate": 16
+      },
+      "randomized_first": {
+        "correct": 26,
+        "valid": 32,
+        "activate": 22
+      },
+      "tasks_per_order": 32,
+      "change_in_accuracy": 0.1875,
+      "family_percentile_95_interval": [
+        0.0625,
+        0.3125
+      ]
+    },
+    "q4_k_m": {
+      "historical_first": {
+        "correct": 16,
+        "valid": 32,
+        "activate": 32
+      },
+      "randomized_first": {
+        "correct": 20,
+        "valid": 32,
+        "activate": 28
+      },
+      "tasks_per_order": 32,
+      "change_in_accuracy": -0.125,
+      "family_percentile_95_interval": [
+        -0.25,
+        -0.03125
+      ]
+    },
+    "q4_k_m_minus_f16_order_effect": {
+      "change_in_accuracy": -0.3125,
+      "family_percentile_95_interval": [
+        -0.4375,
+        -0.1875
+      ]
+    }
+  },
+  "conflict": {
+    "f16": {
+      "historical_first": {
+        "correct": 7,
+        "valid": 32,
+        "activate": 23
+      },
+      "randomized_first": {
+        "correct": 16,
+        "valid": 32,
+        "activate": 32
+      },
+      "tasks_per_order": 32,
+      "change_in_accuracy": -0.28125,
+      "family_percentile_95_interval": [
+        -0.40625,
+        -0.15625
+      ]
+    },
+    "q4_k_m": {
+      "historical_first": {
+        "correct": 16,
+        "valid": 32,
+        "activate": 32
+      },
+      "randomized_first": {
+        "correct": 16,
+        "valid": 32,
+        "activate": 32
+      },
+      "tasks_per_order": 32,
+      "change_in_accuracy": 0.0,
+      "family_percentile_95_interval": [
+        0.0,
+        0.0
+      ]
+    },
+    "q4_k_m_minus_f16_order_effect": {
+      "change_in_accuracy": 0.28125,
+      "family_percentile_95_interval": [
+        0.15625,
+        0.40625
+      ]
+    }
+  }
+}

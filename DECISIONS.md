@@ -81,3 +81,7 @@ Close the fresh formula replication after both complete 48-task schedules. The p
 ## 2026-11-10 14:33 PKT
 
 Stop the active F16 reversal and cancel the queued Q4_K_M arm for the requested PC shutdown. Preserve the partial F16 run and exclude incomplete outcomes from the paired comparison. Restart the full F16 schedule under a new run ID when research resumes.
+
+## 2026-11-12 09:20 PKT
+
+Resume with fresh run IDs for both source-order reversal arms. Keep the interrupted Nov 10 F16 attempt as an archived partial run. Run F16 then Q4_K_M on the frozen reversed schedule and analyze against the frozen first-order cohort. This completes the authorized interrupted diagnostic. Interpret within-item changes with the family as the inference unit, while acknowledging that source order is also separated by collection session.
