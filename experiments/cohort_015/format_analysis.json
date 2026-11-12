@@ -1,0 +1,154 @@
+{
+  "families": 16,
+  "responses_per_format": 128,
+  "scoring": "runner-parsed JSON action; all observed outputs were bare JSON",
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 20261124,
+  "format_outcomes": {
+    "f16": {
+      "aligned": {
+        "correct": 48,
+        "n": 64,
+        "accuracy": 0.75,
+        "activate": 48,
+        "invalid_action": 0
+      },
+      "conflict": {
+        "correct": 41,
+        "n": 64,
+        "accuracy": 0.640625,
+        "activate": 39,
+        "invalid_action": 0
+      }
+    },
+    "q4_k_m": {
+      "aligned": {
+        "correct": 55,
+        "n": 64,
+        "accuracy": 0.859375,
+        "activate": 37,
+        "invalid_action": 0
+      },
+      "conflict": {
+        "correct": 43,
+        "n": 64,
+        "accuracy": 0.671875,
+        "activate": 21,
+        "invalid_action": 0
+      }
+    }
+  },
+  "strict_valid_actions": {
+    "f16": 128,
+    "q4_k_m": 128
+  },
+  "diagnostics": {
+    "f16": {
+      "syntax": {
+        "object": 128
+      },
+      "finish_reasons": {
+        "stop": 128
+      },
+      "median_seconds_per_response": 8.361453948000417,
+      "mean_completion_tokens": 7,
+      "strict_sign_comparable": 0,
+      "strict_action_estimate_sign_disagreements": 0,
+      "strict_estimate_sign_by_condition": {
+        "aligned": {
+          "n": 0,
+          "correct": 0
+        },
+        "conflict": {
+          "n": 0,
+          "correct": 0
+        }
+      },
+      "single_fence_sign_comparable": 0,
+      "single_fence_action_estimate_sign_disagreements": 0,
+      "single_fence_estimate_sign_by_condition": {
+        "aligned": {
+          "n": 0,
+          "correct": 0
+        },
+        "conflict": {
+          "n": 0,
+          "correct": 0
+        }
+      }
+    },
+    "q4_k_m": {
+      "syntax": {
+        "object": 128
+      },
+      "finish_reasons": {
+        "stop": 128
+      },
+      "median_seconds_per_response": 3.5607456749994526,
+      "mean_completion_tokens": 7,
+      "strict_sign_comparable": 0,
+      "strict_action_estimate_sign_disagreements": 0,
+      "strict_estimate_sign_by_condition": {
+        "aligned": {
+          "n": 0,
+          "correct": 0
+        },
+        "conflict": {
+          "n": 0,
+          "correct": 0
+        }
+      },
+      "single_fence_sign_comparable": 0,
+      "single_fence_action_estimate_sign_disagreements": 0,
+      "single_fence_estimate_sign_by_condition": {
+        "aligned": {
+          "n": 0,
+          "correct": 0
+        },
+        "conflict": {
+          "n": 0,
+          "correct": 0
+        }
+      }
+    }
+  },
+  "q4_k_m_minus_f16_conflict_penalty": {
+    "estimate": 0.078125,
+    "family_percentile_95_interval": [
+      -0.078125,
+      0.234375
+    ],
+    "q4_k_m_conflict_penalty": 0.1875,
+    "f16_conflict_penalty": 0.109375,
+    "interpretation": "positive values indicate a larger aligned-minus-conflict accuracy penalty under Q4_K_M"
+  },
+  "paired_family_accuracy_change_q4_k_m_minus_f16": {
+    "overall": {
+      "estimate": 0.0703125,
+      "family_percentile_95_interval": [
+        0.0078125,
+        0.125
+      ]
+    },
+    "aligned": {
+      "estimate": 0.109375,
+      "family_percentile_95_interval": [
+        0.046875,
+        0.171875
+      ]
+    },
+    "conflict": {
+      "estimate": 0.03125,
+      "family_percentile_95_interval": [
+        -0.09375,
+        0.15625
+      ]
+    }
+  },
+  "limitations": [
+    "Exploratory development cohort selected after prior outcomes; it is not confirmatory.",
+    "One 7B checkpoint family, one synthetic source-selection task and 16 SCM families.",
+    "The causal-context prompt supplies mechanism information and is a scaffolded condition.",
+    "The Q4_K_M conflict results differ sharply by evidence order; the aggregate format contrast alone hides this pattern."
+  ]
+}

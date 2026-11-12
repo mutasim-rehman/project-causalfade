@@ -53,7 +53,7 @@ def main():
         len(families), size=(10000, len(families)))
     family_acc = {}
     for name in rows:
-        family_acc[name] = {
+        condition_acc = {
             condition: np.array([
                 np.mean([row["correct"] for row in
                          by_family[name][(family, condition)]])
@@ -61,13 +61,19 @@ def main():
             ])
             for condition in (False, True)
         }
+        overall_acc = np.array([
+            np.mean([row["correct"] for conflict in (False, True)
+                     for row in by_family[name][(family, conflict)]])
+            for family in families
+        ])
+        family_acc[name] = {**condition_acc, "overall": overall_acc}
     q4_penalty = family_acc["q4_k_m"][False] - family_acc["q4_k_m"][True]
     f16_penalty = family_acc["f16"][False] - family_acc["f16"][True]
     penalty_delta = q4_penalty - f16_penalty
     boot = penalty_delta[indices].mean(axis=1)
     output = {
         "families": len(families), "responses_per_format": len(rows["f16"]),
-        "scoring": "single_fence_action_accuracy",
+        "scoring": "runner-parsed JSON action; all observed outputs were bare JSON",
         "bootstrap_replicates": 10000, "bootstrap_seed": args.seed,
         "format_outcomes": {name: describe(arm_rows)
                             for name, arm_rows in rows.items()},
@@ -91,18 +97,19 @@ def main():
                      family_acc["f16"][condition])[indices].mean(axis=1),
                     [.025, .975]).tolist(),
             }
-            for condition, label in ((False, "aligned"), (True, "conflict"))
+            for condition in ("overall", False, True)
         },
         "limitations": [
-            "Exploratory development cohort designed after prior outcome inspection.",
-            "One 3B checkpoint family, one exact source-selection framing and 16 families.",
-            "Single-fence results are a sensitivity because every strict response may be fenced.",
-            "Low absolute task performance limits interpretation of the conflict-penalty contrast.",
+            "Exploratory development cohort selected after prior outcomes; it is not confirmatory.",
+            "One 7B checkpoint family, one synthetic source-selection task and 16 SCM families.",
+            "The causal-context prompt supplies mechanism information and is a scaffolded condition.",
+            "The Q4_K_M conflict results differ sharply by evidence order; the aggregate format contrast alone hides this pattern.",
         ],
     }
     # JSON keys need condition labels rather than Python booleans.
     output["paired_family_accuracy_change_q4_k_m_minus_f16"] = {
-        ("aligned" if key is False else "conflict"): value
+        ("overall" if key == "overall" else
+         "aligned" if key is False else "conflict"): value
         for key, value in output["paired_family_accuracy_change_q4_k_m_minus_f16"].items()
     }
     args.out.write_text(json.dumps(output, indent=2, allow_nan=False) + "\n")

@@ -1,0 +1,94 @@
+{
+  "families": 16,
+  "paired_items_per_format": 64,
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 20261124,
+  "f16": {
+    "aligned": {
+      "randomized_first": {
+        "correct": 32,
+        "n": 32,
+        "activate": 16
+      },
+      "historical_first": {
+        "correct": 16,
+        "n": 32,
+        "activate": 32
+      },
+      "historical_first_minus_randomized_first_accuracy": -0.5,
+      "family_percentile_95_interval": [
+        -0.5,
+        -0.5
+      ]
+    },
+    "conflict": {
+      "randomized_first": {
+        "correct": 19,
+        "n": 32,
+        "activate": 13
+      },
+      "historical_first": {
+        "correct": 22,
+        "n": 32,
+        "activate": 26
+      },
+      "historical_first_minus_randomized_first_accuracy": 0.09375,
+      "family_percentile_95_interval": [
+        0.0,
+        0.1875
+      ]
+    }
+  },
+  "q4_k_m": {
+    "aligned": {
+      "randomized_first": {
+        "correct": 32,
+        "n": 32,
+        "activate": 16
+      },
+      "historical_first": {
+        "correct": 23,
+        "n": 32,
+        "activate": 21
+      },
+      "historical_first_minus_randomized_first_accuracy": -0.28125,
+      "family_percentile_95_interval": [
+        -0.40625,
+        -0.15625
+      ]
+    },
+    "conflict": {
+      "randomized_first": {
+        "correct": 11,
+        "n": 32,
+        "activate": 5
+      },
+      "historical_first": {
+        "correct": 32,
+        "n": 32,
+        "activate": 16
+      },
+      "historical_first_minus_randomized_first_accuracy": 0.65625,
+      "family_percentile_95_interval": [
+        0.5625,
+        0.78125
+      ]
+    }
+  },
+  "q4_k_m_minus_f16_order_interaction": {
+    "aligned": {
+      "historical_first_effect_difference": 0.21875,
+      "family_percentile_95_interval": [
+        0.09375,
+        0.34375
+      ]
+    },
+    "conflict": {
+      "historical_first_effect_difference": 0.5625,
+      "family_percentile_95_interval": [
+        0.40625,
+        0.71875
+      ]
+    }
+  }
+}

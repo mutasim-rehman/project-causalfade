@@ -75,18 +75,19 @@ def main():
     parser.add_argument("--q4", type=Path, required=True)
     parser.add_argument("--truth", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--seed", type=int, default=20261112)
     args = parser.parse_args()
     truth = [json.loads(line) for line in args.truth.read_text().splitlines()]
     schedules = [json.loads((run / "schedule.json").read_text()) for run in (args.f16, args.q4)]
     if schedules[0] != schedules[1]:
         raise ValueError("Format runs used different schedules")
     n = len({row["family_id"] for row in schedules[0]})
-    indices = np.random.default_rng(20261112).integers(n, size=(10000, n))
+    indices = np.random.default_rng(args.seed).integers(n, size=(10000, n))
     f16, f16_effects = analyze(args.f16, truth, schedules[0], indices)
     q4, q4_effects = analyze(args.q4, truth, schedules[0], indices)
     result = {
         "families": n, "paired_items_per_format": len(schedules[0]) // 2,
-        "bootstrap_replicates": 10000, "bootstrap_seed": 20261112,
+        "bootstrap_replicates": 10000, "bootstrap_seed": args.seed,
         "f16": f16, "q4_k_m": q4,
         "q4_k_m_minus_f16_order_interaction": {},
     }

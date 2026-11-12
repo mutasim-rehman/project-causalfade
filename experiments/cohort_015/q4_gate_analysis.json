@@ -1,0 +1,98 @@
+{
+  "cohort": "015",
+  "families": 16,
+  "responses": 128,
+  "scoring": "strict JSON action; invalid output incorrect",
+  "outcomes": {
+    "causal_context": {
+      "strict_valid_actions": 128,
+      "n": 128,
+      "correct_overall": 98,
+      "accuracy": 0.765625,
+      "cells": {
+        "aligned": {
+          "correct": 55,
+          "valid_actions": 64,
+          "n": 64,
+          "by_order": {
+            "randomized_first": {
+              "correct": 32,
+              "valid_actions": 32,
+              "n": 32
+            },
+            "historical_first": {
+              "correct": 23,
+              "valid_actions": 32,
+              "n": 32
+            }
+          }
+        },
+        "conflict": {
+          "correct": 43,
+          "valid_actions": 64,
+          "n": 64,
+          "by_order": {
+            "randomized_first": {
+              "correct": 11,
+              "valid_actions": 32,
+              "n": 32
+            },
+            "historical_first": {
+              "correct": 32,
+              "valid_actions": 32,
+              "n": 32
+            }
+          }
+        }
+      }
+    }
+  },
+  "gates": {
+    "causal_context": {
+      "passed": false,
+      "checks": {
+        "strict_valid_actions": true,
+        "overall_accuracy": true,
+        "conflict_randomized_first": false,
+        "conflict_historical_first": true
+      },
+      "failed_criteria": [
+        "conflict_randomized_first"
+      ]
+    }
+  },
+  "response_diagnostics": {
+    "syntax": {
+      "object": 128
+    },
+    "finish_reasons": {
+      "stop": 128
+    },
+    "median_seconds_per_response": 3.5607456749994526,
+    "mean_completion_tokens": 7,
+    "strict_sign_comparable": 0,
+    "strict_action_estimate_sign_disagreements": 0,
+    "strict_estimate_sign_by_condition": {
+      "aligned": {
+        "n": 0,
+        "correct": 0
+      },
+      "conflict": {
+        "n": 0,
+        "correct": 0
+      }
+    },
+    "single_fence_sign_comparable": 0,
+    "single_fence_action_estimate_sign_disagreements": 0,
+    "single_fence_estimate_sign_by_condition": {
+      "aligned": {
+        "n": 0,
+        "correct": 0
+      },
+      "conflict": {
+        "n": 0,
+        "correct": 0
+      }
+    }
+  }
+}
