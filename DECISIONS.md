@@ -85,3 +85,7 @@ Stop the active F16 reversal and cancel the queued Q4_K_M arm for the requested 
 ## 2026-11-12 09:20 PKT
 
 Resume with fresh run IDs for both source-order reversal arms. Keep the interrupted Nov 10 F16 attempt as an archived partial run. Run F16 then Q4_K_M on the frozen reversed schedule and analyze against the frozen first-order cohort. This completes the authorized interrupted diagnostic. Interpret within-item changes with the family as the inference unit, while acknowledging that source order is also separated by collection session.
+
+## 2026-11-12 09:23 PKT
+
+Continue beyond the completed cohort 008 result with a same-session interleaved reversal. The earlier reversal showed a large F16 order shift, but order and collection session were confounded. Duplicate each of the 64 source-selection prompts with opaque task IDs and assign first-order execution within family, balanced two per order among four base cells. Randomize prompt order using the existing runner and run seed. Run both 3B formats against identical schedules. The conflict accuracy order contrast is primary. Use the established single-fence scorer and cluster resampling on 16 families. This targeted crossover has greater value than adding checkpoints because it resolves a stated limitation in the preceding finding.
