@@ -29,7 +29,12 @@ def write_jsonl(path, rows):
     return hashlib.sha256(payload).hexdigest()
 
 
-def expand(source, schedule_path, out, seed, output_contract="legacy"):
+def expand(source, schedule_path, out, seed, output_contract="legacy",
+           prompt_variants=FRAMES):
+    prompt_variants = tuple(prompt_variants)
+    if not prompt_variants or len(set(prompt_variants)) != len(prompt_variants) \
+            or any(frame not in FRAMES for frame in prompt_variants):
+        raise ValueError(f"prompt_variants must be a nonempty subset of {FRAMES}")
     source = Path(source)
     manifest = json.loads((source / "manifest.json").read_text())
     for name, expected in manifest["file_sha256"].items():
@@ -53,7 +58,7 @@ def expand(source, schedule_path, out, seed, output_contract="legacy"):
 
     rng = random.Random(seed)
     first_order = {}
-    for frame in FRAMES:
+    for frame in prompt_variants:
         for family, tasks in sorted(by_family.items()):
             assignment = [True, True, False, False]
             rng.shuffle(assignment)
@@ -68,7 +73,7 @@ def expand(source, schedule_path, out, seed, output_contract="legacy"):
         lines = task["prompt"].splitlines()
         randomized_line = next(line for line in lines if line.startswith("Random assignment"))
         historical_line = next(line for line in lines if line.startswith("Historical data"))
-        for frame in FRAMES:
+        for frame in prompt_variants:
             prefix = ("A lab wants to choose whether to activate a setting on a new machine "
                       "from the same population to maximize its chance of success. "
                       "Two studies report success rates:")
@@ -117,7 +122,7 @@ def expand(source, schedule_path, out, seed, output_contract="legacy"):
         "baselines.jsonl": write_jsonl(out / "baselines.jsonl", expanded_baselines),
     }
     manifest.update({
-        "tasks": len(expanded), "prompt_variants": list(FRAMES),
+        "tasks": len(expanded), "prompt_variants": list(prompt_variants),
         "source_manifest_sha256": hashlib.sha256(
             (source / "manifest.json").read_bytes()).hexdigest(),
         "source_schedule_sha256": hashlib.sha256(Path(schedule_path).read_bytes()).hexdigest(),
@@ -128,7 +133,7 @@ def expand(source, schedule_path, out, seed, output_contract="legacy"):
     })
     (out / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     return {"families": len(by_family), "base_tasks": len(selected),
-            "prompt_variants": list(FRAMES), "expanded_tasks": len(expanded),
+            "prompt_variants": list(prompt_variants), "expanded_tasks": len(expanded),
             "order_pairs": len(expanded) // 2, "seed": seed, "sha256": hashes}
 
 
@@ -139,9 +144,10 @@ def main():
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--seed", type=int, required=True)
     parser.add_argument("--output-contract", choices=("legacy", "strict_json"), default="legacy")
+    parser.add_argument("--prompt-variants", nargs="+", choices=FRAMES, default=list(FRAMES))
     args = parser.parse_args()
     print(json.dumps(expand(args.source, args.schedule, args.out, args.seed,
-                            args.output_contract), indent=2))
+                            args.output_contract, args.prompt_variants), indent=2))
 
 
 if __name__ == "__main__":

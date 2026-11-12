@@ -1,0 +1,15 @@
+{
+  "families": 16,
+  "base_tasks": 64,
+  "prompt_variants": [
+    "causal_context"
+  ],
+  "expanded_tasks": 128,
+  "order_pairs": 64,
+  "seed": 20261123,
+  "sha256": {
+    "public_tasks.jsonl": "9f919e328a88ac7d01b84506f4683114d1e1d54ee60e5e1c2c4765c3e66ebabf",
+    "oracle_truth.jsonl": "574a674d3286358a31f400654f53a9e8947e6899708602226506939014c64023",
+    "baselines.jsonl": "973c01e68dd992c6d92d1a5052ac1cee4c8cace9f6934c822f203e1c3d4e3b6f"
+  }
+}

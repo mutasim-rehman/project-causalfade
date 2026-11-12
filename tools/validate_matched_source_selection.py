@@ -96,20 +96,24 @@ def main():
         if max(aligned + conflict) - min(aligned + conflict) > 1e-10:
             raise ValueError(f"Observational magnitude not matched in {family}")
     expanded = read_jsonl(args.expanded / "public_tasks.jsonl")
+    prompt_variants = tuple(json.loads((args.expanded / "manifest.json").read_text())
+                            .get("prompt_variants", [None]))
     twins = defaultdict(list)
     for task in expanded:
         twins[task["order_pair_id"]].append(task)
-    if len(expanded) != 2 * len(base_tasks) or any(
+    if len(expanded) != 2 * len(base_tasks) * len(prompt_variants) or any(
             len(group) != 2 or {row["presentation_order"] for row in group} !=
             {"randomized_first", "historical_first"} for group in twins.values()):
         raise ValueError("Expanded paired orders are incomplete")
     first_counts = defaultdict(lambda: defaultdict(int))
     for task in base_tasks:
-        twin = twins[task["task_id"]]
-        if len(twin) != 2:
-            raise ValueError(f"Missing order twins: {task['task_id']}")
-        assigned = twin[0]["randomized_in_family_first_order"]
-        first_counts[task["family_id"]][assigned] += 1
+        for variant in prompt_variants:
+            pair_id = f"{task['task_id']}:{variant}" if variant else task["task_id"]
+            twin = twins[pair_id]
+            if len(twin) != 2:
+                raise ValueError(f"Missing order twins: {pair_id}")
+            assigned = twin[0]["randomized_in_family_first_order"]
+            first_counts[(task["family_id"], variant)][assigned] += 1
     if any(counts != {"randomized_first": 2, "historical_first": 2}
            for counts in first_counts.values()):
         raise ValueError("First-position assignment is not balanced within family")

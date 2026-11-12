@@ -1,0 +1,32 @@
+{
+  "status": "frozen_before_inference",
+  "cohort": "015",
+  "classification": "exploratory_strict_output_reference_screen_with_conditional_format_arm",
+  "git_revision": "baa573b",
+  "dataset": "experiments/cohort_015/input",
+  "dataset_manifest_sha256": "dc2ecb2a64363c29e092c6380db9433e0342ff693bbf3aaac57f4329eddb8bd1",
+  "source_manifest_sha256": "cb613d652ceb656bba0b5c74696f6a21392b54f94f093d6c1f3f930071f538b7",
+  "families": ["world-0000", "world-0001", "world-0002", "world-0003", "world-0004", "world-0005", "world-0006", "world-0007", "world-0008", "world-0009", "world-0010", "world-0011", "world-0012", "world-0013", "world-0014", "world-0015"],
+  "family_generation_seed": 20261122,
+  "order_assignment_seed": 20261123,
+  "responses": 128,
+  "prompt_variant": "causal_context",
+  "model_f16": {
+    "path": "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+    "sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a"
+  },
+  "model_q4_k_m_conditional": {
+    "path": "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-q4_k_m.gguf",
+    "sha256": "7ebec3cd0f2d49bd4a8d068dc5f0e335f3647eec6dc4104d81416533a63bc5bc"
+  },
+  "runtime": "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-server",
+  "runtime_sha256": "6d3d7416bf83500c5adda80ee4bb076f6877e38ff0a53ddc81c0b278108b2f24",
+  "runtime_version": "llama.cpp b12176, commit 8820b088d",
+  "inference": "CPU only, -ngl 0, 8 threads, context 2048, one parallel sequence, F16 KV cache",
+  "sampling": {"temperature": 0, "seed": 20261112, "max_tokens": 48, "cache_prompt": false, "stream": false},
+  "gate": {"strict_valid_actions_min": 112, "overall_correct_min": 88, "conflict_correct_per_order_min": 18},
+  "schedule_sha256": "bc9609fd23717f816a6e4d133d70afcf9fb7cc1fb75784ec8e7ef5846ae85bab",
+  "analysis_seed": 20261124,
+  "conditional_action": "Run Q4_K_M on the identical 128-task schedule only if F16 passes strict validity, overall accuracy, and both conflict-by-order minima. Otherwise stop the format comparison without Q4 inference.",
+  "inference_started": false
+}
