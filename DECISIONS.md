@@ -97,3 +97,11 @@ Freeze cohort 009's fixture and generation configuration before model calls. Ver
 ## 2026-11-12 09:37 PKT
 
 Close cohort 009 after all 256 scheduled responses and paired joins verified. F16 conflict accuracy fell by 21.875 points when historical evidence was first in the same session. Q4_K_M conflict accuracy was unchanged at 8/32 in both orders. The earlier reversal direction replicated under balanced within-family assignment and shuffled prompt order. The result supports an order sensitivity in F16 on these prompts, while both model conditions remain weak. Do not infer general model or quantization effects from this 16-family development cohort.
+
+## 2026-11-12 09:38 PKT
+
+Run a fresh-family replication of cohort 009's F16 source-order effect. Cohort 009 reused the original 16 families, so a new draw directly checks whether the effect persists beyond those items. Freeze SCM seed 20261113 before generation and order seed 20261112 before inference. Use 12 independent families, exact evidence, both orders per item, within-family balanced order assignment and the existing two formats. Primary outcome is the order change in F16 conflict accuracy. The format interaction is secondary. Record that this follow-up was chosen after viewing cohort 009 and remains exploratory.
+
+## 2026-11-12 09:40 PKT
+
+Freeze the cohort 010 fixture before inference. The source generator produced 12 fresh families and 48 exact source-selection items, and order expansion produced 96 prompts with balanced assignment. The base schedule is archived. Verification confirms 48 complete twin pairs, 12 families and four first-order assignments per side per family. Run F16 followed by Q4_K_M using identical run seed, resource settings and generation limits. Retain the data as an exploratory independent-family replication selected after viewing cohort 009.

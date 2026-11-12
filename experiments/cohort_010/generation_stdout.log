@@ -1,0 +1,43 @@
+{
+  "seed": 20261113,
+  "families": 12,
+  "tasks": 96,
+  "sampled_rows_per_task": 2000,
+  "evidence_modes": [
+    "exact",
+    "sampled"
+  ],
+  "status": "synthetic_design_validation_not_LLM_results",
+  "numpy_version": "2.5.4",
+  "file_sha256": {
+    "public_tasks.jsonl": "5ced2a46a51256a761f3cd7b6dcd246f9eccee4aedfd67d34294511305a9fca8",
+    "oracle_truth.jsonl": "9fbe727f80034e99d7ac615746d9faa33d170a38ea46f155e35842c39eddeff6",
+    "baselines.jsonl": "719f480a88a5f65c8387dc6586fe5e07f6d5ff19fa5d6138d96d1295d4f659c7"
+  },
+  "baseline_summary": {
+    "exact:backdoor": {
+      "accuracy": 1.0,
+      "invalid_count": 0
+    },
+    "exact:association": {
+      "accuracy": 0.5,
+      "invalid_count": 0
+    },
+    "exact:random": {
+      "accuracy": 0.4166666666666667,
+      "invalid_count": 0
+    },
+    "sampled:backdoor": {
+      "accuracy": 1.0,
+      "invalid_count": 0
+    },
+    "sampled:association": {
+      "accuracy": 0.5,
+      "invalid_count": 0
+    },
+    "sampled:random": {
+      "accuracy": 0.5625,
+      "invalid_count": 0
+    }
+  }
+}

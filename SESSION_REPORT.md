@@ -32,6 +32,11 @@ The user resumed research and removed the original deadline constraint. Cohort 0
 
 ## Resumed session, 12 November 2026
 
-Reconstructed the Nov 10–12 experiments from the decision log, experiment index, per-run artifacts and Git history. The paused cohort 008 order reversal is now complete and pushed. Its session timing limitation motivates the current cohort 009. We generated a 128-prompt fixture from 64 matched items, with both orders for each item and balanced first-order assignment within all 16 families. Fixture hashes and family balance were verified before inference. Both arms use the prior CPU build and task interface. F16 is running and Q4_K_M is queued on the exact same task schedule.
+Reconstructed the Nov 10–12 experiments from the decision log, experiment index, per-run artifacts and Git history. The paused cohort 008 order reversal was completed and pushed with fresh run IDs. Its session timing limitation motivated cohort 009, a same-session interleaved crossover using 64 items across 16 families. Both model formats received the same shuffled schedule and ran on the prior CPU build.
 
 Cohort 009 completed 256 responses in the interleaved same-session order design. With historical evidence first, F16 conflict accuracy fell from 8/32 to 4/32, a −21.875 percentage point change (16-family bootstrap interval −34.375 to −9.375). Q4_K_M was 8/32 under both orders. Its format interaction with the F16 order shift was +21.875 points (interval +9.375 to +34.375). The within-family balanced assignment and shuffled prompt schedule address the prior collection-session confound. Both conditions remain weak, and this result is limited to the tested 3B checkpoint, task prompts and world families. The [cohort summary](experiments/cohort_009/summary.md) reports the aligned-cell effects and limitations.
+
+
+This session's next research action is a fresh-family replication of cohort 009. It uses the same source-selection task and order manipulation on newly generated SCM families, with the family seed fixed before model calls.
+
+Cohort 010 is a fresh-family replication of the within-session order effect. It uses 12 new SCM families from seed 20261113 and 48 source-selection items, each presented in both orders. Order assignment is balanced four per order within each family. This is an exploratory follow-up selected after viewing cohort 009. The fixture and configuration are frozen. The F16 arm is running.
