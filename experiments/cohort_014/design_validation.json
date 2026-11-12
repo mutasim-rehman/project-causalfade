@@ -1,0 +1,11 @@
+{
+  "status": "validated",
+  "families": 8,
+  "base_tasks": 32,
+  "expanded_tasks": 128,
+  "matched_prompt_variant_order_pairs": 64,
+  "balanced_family_variant_blocks": 16,
+  "shared_rate_lines_across_variants": true,
+  "source_manifest_sha256": "0438f310d6850d8a36d51d494c8d0f1c146afbcaa31a57ba5ef73b7e9bffdd32",
+  "expanded_manifest_sha256": "458274b080d3f1224b6f76b541d90bbcb40a94ec61302d62837390242448c7f5"
+}

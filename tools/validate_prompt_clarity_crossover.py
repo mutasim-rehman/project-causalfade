@@ -23,6 +23,12 @@ def main():
             if hashlib.sha256((folder / name).read_bytes()).hexdigest() != digest:
                 raise ValueError(f"Hash mismatch: {folder / name}")
     tasks = read_jsonl(args.expanded / "public_tasks.jsonl")
+    output_contract = expanded_manifest.get("output_contract", "legacy")
+    strict_instruction = (
+        'Return exactly one JSON object with one key, activate, whose value is 0 or 1. '
+        'The entire response must be exactly one of: {"activate": 0} or {"activate": 1}. '
+        'Do not include a Markdown fence, explanation, or any other text.'
+    )
     truth = {r["task_id"]: r for r in read_jsonl(args.expanded / "oracle_truth.jsonl")}
     grouped = defaultdict(list)
     for task in tasks:
@@ -55,12 +61,16 @@ def main():
                 numerical.append(tuple(rate_lines))
             if numerical[0] != numerical[1]:
                 raise ValueError(f"Source rates/order changed across prompt variants: {base_id}")
+    if output_contract == "strict_json" and any(
+            not row["prompt"].endswith(strict_instruction) for row in tasks):
+        raise ValueError("The strict JSON response instruction differs across prompts")
     report = {
         "status": "validated", "families": len(families),
         "base_tasks": 32, "expanded_tasks": len(tasks),
         "matched_prompt_variant_order_pairs": len(grouped),
         "balanced_family_variant_blocks": len(balanced),
         "shared_rate_lines_across_variants": True,
+        "output_contract": output_contract,
         "source_manifest_sha256": hashlib.sha256(
             (args.source / "manifest.json").read_bytes()).hexdigest(),
         "expanded_manifest_sha256": hashlib.sha256(

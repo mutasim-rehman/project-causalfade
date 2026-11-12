@@ -1,0 +1,43 @@
+{
+  "status": "frozen_before_inference",
+  "cohort": "014",
+  "classification": "exploratory_strict_output_reference_screen",
+  "git_revision": "0f55a790295e63be67503c5c53c2ad53c5b6a863",
+  "dataset": "experiments/cohort_014/input",
+  "dataset_manifest_sha256": "458274b080d3f1224b6f76b541d90bbcb40a94ec61302d62837390242448c7f5",
+  "families": [
+    "world-0000",
+    "world-0001",
+    "world-0002",
+    "world-0003",
+    "world-0004",
+    "world-0005",
+    "world-0006",
+    "world-0007"
+  ],
+  "family_selection_and_shuffle_seed": 20261112,
+  "responses": 128,
+  "responses_per_prompt_variant": 64,
+  "model": {
+    "path": "$HOME/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+    "sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a"
+  },
+  "runtime": "$HOME/Desktop/project-causalfade/.tools/llama-b12176/llama-server",
+  "runtime_version": "llama.cpp b12176, commit 8820b088d",
+  "inference": "CPU only, -ngl 0, 8 threads, context 2048, one parallel sequence, F16 KV cache",
+  "sampling": {
+    "temperature": 0,
+    "seed": 20261112,
+    "max_tokens": 48,
+    "cache_prompt": false,
+    "stream": false
+  },
+  "gate_each_framing": {
+    "valid_actions_min": 56,
+    "overall_correct_min": 44,
+    "conflict_correct_per_order_min": 9
+  },
+  "analysis_seed": 20261121,
+  "schedule_sha256": "80f494c09ccfb2b4bb89b5b4a6bfbeac00ee23a68e4cf2feafc0ae0403e0464a",
+  "conditional_actions": "7B F16 only; no quantized arm in this feasibility cohort"
+}

@@ -29,7 +29,7 @@ def write_jsonl(path, rows):
     return hashlib.sha256(payload).hexdigest()
 
 
-def expand(source, schedule_path, out, seed):
+def expand(source, schedule_path, out, seed, output_contract="legacy"):
     source = Path(source)
     manifest = json.loads((source / "manifest.json").read_text())
     for name, expected in manifest["file_sha256"].items():
@@ -80,6 +80,13 @@ def expand(source, schedule_path, out, seed):
                 expanded_id = hashlib.sha256(
                     f"{task_id}:{frame}:{order}".encode()).hexdigest()[:20]
                 pair_id = f"{task_id}:{frame}"
+                instruction = (
+                    "Return exactly one JSON object with one key, activate, whose value is 0 or 1. "
+                    'The entire response must be exactly one of: {"activate": 0} or {"activate": 1}. '
+                    "Do not include a Markdown fence, explanation, or any other text."
+                    if output_contract == "strict_json" else
+                    "Return only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off."
+                )
                 expanded.append({
                     "task_id": expanded_id, "family_id": task["family_id"],
                     "evidence_mode": "exact", "base_task_id": task_id,
@@ -88,7 +95,7 @@ def expand(source, schedule_path, out, seed):
                     "randomized_in_family_first_order": first_order[(frame, task_id)],
                     "prompt": "\n".join([
                         prefix, *source_lines,
-                        "Return only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.",
+                        instruction,
                     ]),
                 })
                 expanded_truth.append({
@@ -115,6 +122,7 @@ def expand(source, schedule_path, out, seed):
             (source / "manifest.json").read_bytes()).hexdigest(),
         "source_schedule_sha256": hashlib.sha256(Path(schedule_path).read_bytes()).hexdigest(),
         "order_and_prompt_assignment_seed": seed,
+        "output_contract": output_contract,
         "status": "paired_prompt_clarity_development_crossover",
         "file_sha256": hashes,
     })
@@ -130,8 +138,10 @@ def main():
     parser.add_argument("--schedule", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--seed", type=int, required=True)
+    parser.add_argument("--output-contract", choices=("legacy", "strict_json"), default="legacy")
     args = parser.parse_args()
-    print(json.dumps(expand(args.source, args.schedule, args.out, args.seed), indent=2))
+    print(json.dumps(expand(args.source, args.schedule, args.out, args.seed,
+                            args.output_contract), indent=2))
 
 
 if __name__ == "__main__":
