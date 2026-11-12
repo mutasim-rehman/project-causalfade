@@ -93,3 +93,7 @@ Continue beyond the completed cohort 008 result with a same-session interleaved 
 ## 2026-11-12 09:25 PKT
 
 Freeze cohort 009's fixture and generation configuration before model calls. Verified 64 item twins, unique opaque task IDs, 128 exact prompts, two first-position assignments per four-cell family, and evaluator pair joins. Inference will use the prior seed, CPU runtime, token budget, and single-fence sensitivity. F16 and Q4_K_M will run on the same randomized schedule. If either run fails, retain it and do not infer an order effect from an incomplete arm.
+
+## 2026-11-12 09:37 PKT
+
+Close cohort 009 after all 256 scheduled responses and paired joins verified. F16 conflict accuracy fell by 21.875 points when historical evidence was first in the same session. Q4_K_M conflict accuracy was unchanged at 8/32 in both orders. The earlier reversal direction replicated under balanced within-family assignment and shuffled prompt order. The result supports an order sensitivity in F16 on these prompts, while both model conditions remain weak. Do not infer general model or quantization effects from this 16-family development cohort.
