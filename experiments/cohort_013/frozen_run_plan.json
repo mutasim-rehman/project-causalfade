@@ -1,0 +1,48 @@
+{
+  "status": "frozen_before_inference",
+  "cohort": "013",
+  "classification": "exploratory_prompt_clarity_development_screen",
+  "git_revision": "fc7dcc168394ccf87e8d5dd3ee862c257f6e416c",
+  "dataset": "experiments/cohort_013/input",
+  "dataset_manifest_sha256": "b0d6384744bf00b9ea7c3eb9d96668dbe927f219ef80069e1b2bc99d6627ed56",
+  "families": [
+    "world-0000",
+    "world-0001",
+    "world-0002",
+    "world-0003",
+    "world-0004",
+    "world-0005",
+    "world-0006",
+    "world-0007"
+  ],
+  "family_selection_and_shuffle_seed": 20261112,
+  "responses": 128,
+  "responses_per_prompt_variant": 64,
+  "model": {
+    "path": "$HOME/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+    "sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a"
+  },
+  "runtime": "$HOME/Desktop/project-causalfade/.tools/llama-b12176/llama-server",
+  "runtime_version": "llama.cpp b12176, commit 8820b088d",
+  "inference": "CPU only, -ngl 0, 8 threads, context 2048, one parallel sequence, F16 KV cache",
+  "sampling": {
+    "temperature": 0,
+    "seed": 20261112,
+    "max_tokens": 160,
+    "cache_prompt": false,
+    "stream": false
+  },
+  "prompt_hypotheses": {
+    "minimal": "Original two-source prompt without an explicit description of severity confounding.",
+    "causal_context": "Adds the true mechanism that severity affects operator treatment choice and success; it does not identify the correct action or prescribe a source."
+  },
+  "gate_each_framing": {
+    "valid_actions_min": 56,
+    "overall_correct_min": 44,
+    "conflict_correct_per_order_min": 9
+  },
+  "gate_rule": "assess each framing independently; the screen diagnoses prompt-development feasibility and does not authorize confirmatory claims",
+  "primary_development_contrast": "causal_context minus minimal prompt accuracy on paired items, with conflict accuracy emphasized",
+  "analysis_seed": 20261118,
+  "schedule_sha256": "0cc6bfe7add0f068d0928d5dba4d04cbd7732864915891a1fcbfdbb57f77f086"
+}

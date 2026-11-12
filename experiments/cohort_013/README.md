@@ -1,0 +1,9 @@
+# 7B prompt-clarity development crossover
+
+The cohort 012 F16 reference was accurate on all aligned items but missed the predeclared conflict threshold in both evidence orders. Cohort 013 checks whether that gap reflects an underexplained evidence-generating process. It compares the original minimal prompt with a causal-context prompt that states: initial severity affects both operator treatment choice and success; the lab study randomized treatment; and its target matches the study population. It does not label the correct action or tell the model which rate to select.
+
+Generate eight fresh matched-strength SCM families (seed 20261116). For every one of 32 causal/association cells, show both evidence orders under both prompt frames, yielding 128 responses. Numerical source rates, causal ground truth, task order pairing and model are matched. This is a development-only scaffold/comprehension control; the causal-context frame supplies mechanism information and must not be interpreted as equivalent to unscaffolded causal reasoning.
+
+Run only 7B F16. Apply the prior reference screen to each frame separately: at least 56/64 fence-valid actions, 44/64 correct overall, and 9/16 conflict correct in each evidence order. If minimal fails but causal-context passes, the result supports developing a better-defined task and does not authorize using the scaffold as a confirmatory prompt without a new protocol freeze. If both fail, redesign the task. If minimal passes, still keep this fresh-family screen exploratory and design a separate confirmatory cohort. The two prompt frames are paired within family and item; family is the bootstrap unit.
+
+Seeds, model hash, CPU limits, schedule, gate and analysis are frozen in `frozen_run_plan.json`. The source generator and order/framing expansion are reproducible from the archived `base_source/` and `base_schedule.json`.

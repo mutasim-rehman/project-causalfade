@@ -1,0 +1,40 @@
+{
+  "seed": 20261116,
+  "families": 8,
+  "tasks": 32,
+  "evidence_modes": [
+    "exact"
+  ],
+  "design": "matched_observational_magnitude_source_selection",
+  "design_parameters": {
+    "effect_size_uniform": [
+      0.06,
+      0.12
+    ],
+    "severity_gap_uniform": [
+      0.68,
+      0.8
+    ],
+    "target_observational_magnitude_uniform": [
+      0.38,
+      0.46
+    ],
+    "assignment_strength_formula": "(target magnitude - effect_size if aligned, + effect_size if conflict) / severity_gap"
+  },
+  "source_strength_summary": {
+    "randomized_absolute_difference_min": 0.06453991515234798,
+    "randomized_absolute_difference_max": 0.11761159160741358,
+    "observational_absolute_difference_min": 0.38972357438401417,
+    "observational_absolute_difference_max": 0.45240717065473257,
+    "backdoor_accuracy": 1.0,
+    "association_accuracy": 0.5
+  },
+  "numpy_version": "2.5.4",
+  "file_sha256": {
+    "public_tasks.jsonl": "3585d790ee52c0d1302f19167fe0eed745d65f0ecc84db75f0631e9297088fdc",
+    "oracle_truth.jsonl": "6e60f4d86282e91f662286561853db8b575aaca00a4a2a89f67fac446d0761a6",
+    "baselines.jsonl": "8e51b71e31cc946731a6cf90d4c6503672ac98f348e5df32b7c7f68f6bf520e4",
+    "evaluator_exact_evidence.jsonl": "05e45678f05572c08715a5d66cd69a1b57eb6cd90f567757dbb5ee757ee99022"
+  },
+  "status": "development_fixture_frozen_before_model_inference"
+}
