@@ -3,6 +3,7 @@ import argparse
 from collections import defaultdict
 import json
 from pathlib import Path
+import re
 import sys
 
 import numpy as np
@@ -10,6 +11,8 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from analyze_direct_pilot import arm
+
+LEADING_FENCE = re.compile(r"^\s*```(?:json)?\s*\r?\n(.*?)\r?\n\s*```", re.I | re.S)
 
 
 def main():
@@ -31,6 +34,39 @@ def main():
         task = schedule[row["task_id"]]
         records[task["prompt_variant"]].append({**row, **task})
     outcomes, gate_checks, family_scores = {}, {}, {}
+    raw_by_id = {row["task_id"]: row for row in (
+        json.loads(line) for line in
+        (args.run / "raw_responses.jsonl").read_text().splitlines())}
+    leading = defaultdict(list)
+    prefix_syntax = defaultdict(lambda: defaultdict(int))
+    truth_by_id = {row["task_id"]: row for row in truth}
+    for task_id, task in schedule.items():
+        record = raw_by_id[task_id]
+        content = record["response"]["choices"][0]["message"].get("content", "")
+        match = LEADING_FENCE.match(content)
+        action = None
+        if match:
+            try:
+                value = json.loads(match.group(1))
+                if isinstance(value, dict) and type(value.get("activate")) is int \
+                        and value["activate"] in (0, 1):
+                    action = value["activate"]
+                    suffix = content[match.end():].strip()
+                    prefix_syntax[task["prompt_variant"]][
+                        "leading_fenced_action_with_trailing_prose" if suffix
+                        else "single_leading_fence_only"] += 1
+            except (TypeError, ValueError):
+                pass
+        if action is None:
+            prefix_syntax[task["prompt_variant"]]["no_recoverable_leading_action"] += 1
+        leading[task["prompt_variant"]].append({
+            "task_id": task_id, "family_id": task["family_id"],
+            "conflict": truth_by_id[task_id]["conflict"],
+            "presentation_order": task["presentation_order"],
+            "action": action,
+            "correct": (action == truth_by_id[task_id]["optimal_action"])
+                       if action is not None else False,
+        })
     thresholds = plan["gate_each_framing"]
     for variant in ("minimal", "causal_context"):
         rows = records[variant]
@@ -113,6 +149,36 @@ def main():
         "single_fence_scoring": True,
         "bootstrap_replicates": 10000, "bootstrap_seed": seed,
         "outcomes": outcomes, "gates": gate_checks,
+        "posthoc_leading_json_fence_diagnostic": {
+            "policy": "extract only a complete leading fenced JSON action and ignore trailing prose; malformed response remains invalid for all primary metrics and gates",
+            "syntax_by_variant": {k: dict(v) for k, v in prefix_syntax.items()},
+            "actions_by_variant": {
+                variant: {
+                    "recoverable_actions": sum(row["action"] is not None for row in variant_rows),
+                    "correct_overall": sum(row["correct"] for row in variant_rows),
+                    "accuracy_if_leading_action_recovered": (
+                        float(np.mean([row["correct"] for row in variant_rows
+                                       if row["action"] is not None]))
+                        if any(row["action"] is not None for row in variant_rows) else None),
+                    "by_cell_and_order": {
+                        f"{condition}_{order}": {
+                            "correct": sum(row["correct"] for row in variant_rows
+                                           if row["conflict"] == conflict and
+                                           row["presentation_order"] == order),
+                            "n": sum(row["action"] is not None for row in variant_rows
+                                     if row["conflict"] == conflict and
+                                     row["presentation_order"] == order),
+                            "actions": sum(row["action"] == 1 for row in variant_rows
+                                           if row["conflict"] == conflict and
+                                           row["presentation_order"] == order),
+                        }
+                        for condition, conflict in (("aligned", False), ("conflict", True))
+                        for order in ("randomized_first", "historical_first")
+                    },
+                }
+                for variant, variant_rows in leading.items()
+            },
+        },
         "paired_prompt_variant_transitions": dict(transitions),
         "family_blocked_prompt_variant_gains": gains,
         "diagnostics": diagnostics,

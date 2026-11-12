@@ -1,0 +1,260 @@
+{
+  "families": 8,
+  "responses": 128,
+  "single_fence_scoring": true,
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 20261118,
+  "outcomes": {
+    "minimal": {
+      "valid_actions": 64,
+      "strict_valid_actions": 0,
+      "correct_overall": 48,
+      "n": 64,
+      "accuracy": 0.75,
+      "cells": {
+        "aligned": {
+          "correct": 32,
+          "n": 32,
+          "accuracy": 1.0,
+          "activate": 16,
+          "by_order": {
+            "randomized_first": {
+              "correct": 16,
+              "n": 16,
+              "activate": 8
+            },
+            "historical_first": {
+              "correct": 16,
+              "n": 16,
+              "activate": 8
+            }
+          }
+        },
+        "conflict": {
+          "correct": 16,
+          "n": 32,
+          "accuracy": 0.5,
+          "activate": 32,
+          "by_order": {
+            "randomized_first": {
+              "correct": 8,
+              "n": 16,
+              "activate": 16
+            },
+            "historical_first": {
+              "correct": 8,
+              "n": 16,
+              "activate": 16
+            }
+          }
+        }
+      }
+    },
+    "causal_context": {
+      "valid_actions": 0,
+      "strict_valid_actions": 0,
+      "correct_overall": 0,
+      "n": 64,
+      "accuracy": 0.0,
+      "cells": {
+        "aligned": {
+          "correct": 0,
+          "n": 32,
+          "accuracy": 0.0,
+          "activate": 0,
+          "by_order": {
+            "randomized_first": {
+              "correct": 0,
+              "n": 16,
+              "activate": 0
+            },
+            "historical_first": {
+              "correct": 0,
+              "n": 16,
+              "activate": 0
+            }
+          }
+        },
+        "conflict": {
+          "correct": 0,
+          "n": 32,
+          "accuracy": 0.0,
+          "activate": 0,
+          "by_order": {
+            "randomized_first": {
+              "correct": 0,
+              "n": 16,
+              "activate": 0
+            },
+            "historical_first": {
+              "correct": 0,
+              "n": 16,
+              "activate": 0
+            }
+          }
+        }
+      }
+    }
+  },
+  "gates": {
+    "minimal": {
+      "passed": false,
+      "checks": {
+        "valid_actions": true,
+        "overall_accuracy": true,
+        "conflict_randomized_first": false,
+        "conflict_historical_first": false
+      },
+      "failed_criteria": [
+        "conflict_randomized_first",
+        "conflict_historical_first"
+      ]
+    },
+    "causal_context": {
+      "passed": false,
+      "checks": {
+        "valid_actions": false,
+        "overall_accuracy": false,
+        "conflict_randomized_first": false,
+        "conflict_historical_first": false
+      },
+      "failed_criteria": [
+        "valid_actions",
+        "overall_accuracy",
+        "conflict_randomized_first",
+        "conflict_historical_first"
+      ]
+    }
+  },
+  "posthoc_leading_json_fence_diagnostic": {
+    "policy": "extract only a complete leading fenced JSON action and ignore trailing prose; malformed response remains invalid for all primary metrics and gates",
+    "syntax_by_variant": {
+      "minimal": {
+        "single_leading_fence_only": 64
+      },
+      "causal_context": {
+        "leading_fenced_action_with_trailing_prose": 64
+      }
+    },
+    "actions_by_variant": {
+      "minimal": {
+        "recoverable_actions": 64,
+        "correct_overall": 48,
+        "accuracy_if_leading_action_recovered": 0.75,
+        "by_cell_and_order": {
+          "aligned_randomized_first": {
+            "correct": 16,
+            "n": 16,
+            "actions": 8
+          },
+          "aligned_historical_first": {
+            "correct": 16,
+            "n": 16,
+            "actions": 8
+          },
+          "conflict_randomized_first": {
+            "correct": 8,
+            "n": 16,
+            "actions": 16
+          },
+          "conflict_historical_first": {
+            "correct": 8,
+            "n": 16,
+            "actions": 16
+          }
+        }
+      },
+      "causal_context": {
+        "recoverable_actions": 64,
+        "correct_overall": 45,
+        "accuracy_if_leading_action_recovered": 0.703125,
+        "by_cell_and_order": {
+          "aligned_randomized_first": {
+            "correct": 16,
+            "n": 16,
+            "actions": 8
+          },
+          "aligned_historical_first": {
+            "correct": 5,
+            "n": 16,
+            "actions": 9
+          },
+          "conflict_randomized_first": {
+            "correct": 8,
+            "n": 16,
+            "actions": 16
+          },
+          "conflict_historical_first": {
+            "correct": 16,
+            "n": 16,
+            "actions": 8
+          }
+        }
+      }
+    }
+  },
+  "paired_prompt_variant_transitions": {
+    "1_to_0": 48,
+    "0_to_0": 16
+  },
+  "family_blocked_prompt_variant_gains": {
+    "overall": {
+      "causal_context_minus_minimal": -0.75,
+      "family_percentile_95_interval": [
+        -0.75,
+        -0.75
+      ]
+    },
+    "aligned": {
+      "causal_context_minus_minimal": -1.0,
+      "family_percentile_95_interval": [
+        -1.0,
+        -1.0
+      ]
+    },
+    "conflict": {
+      "causal_context_minus_minimal": -0.5,
+      "family_percentile_95_interval": [
+        -0.5,
+        -0.5
+      ]
+    }
+  },
+  "diagnostics": {
+    "syntax": {
+      "single_fenced_object": 64,
+      "invalid_json_or_response": 64
+    },
+    "finish_reasons": {
+      "stop": 64,
+      "length": 64
+    },
+    "median_seconds_per_response": 23.83237087549969,
+    "mean_completion_tokens": 87,
+    "strict_sign_comparable": 0,
+    "strict_action_estimate_sign_disagreements": 0,
+    "strict_estimate_sign_by_condition": {
+      "aligned": {
+        "n": 0,
+        "correct": 0
+      },
+      "conflict": {
+        "n": 0,
+        "correct": 0
+      }
+    },
+    "single_fence_sign_comparable": 0,
+    "single_fence_action_estimate_sign_disagreements": 0,
+    "single_fence_estimate_sign_by_condition": {
+      "aligned": {
+        "n": 0,
+        "correct": 0
+      },
+      "conflict": {
+        "n": 0,
+        "correct": 0
+      }
+    }
+  },
+  "interpretation": "development-only prompt clarity control; the causal_context variant supplies mechanism information and is not equivalent to the minimal reasoning task"
+}
