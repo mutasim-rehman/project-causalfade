@@ -40,6 +40,8 @@ def analyze(run, truth, schedule, indices):
     output = {}
     effects = {}
     for condition in ("aligned", "conflict"):
+        if any(len(family_values[family][condition]) != 2 for family in families):
+            raise ValueError(f"Expected two matched items per family in {condition}")
         per_family = np.array([
             [np.mean([row[index] for row in family_values[f][condition]])
              for index in range(4)]
@@ -49,10 +51,12 @@ def analyze(run, truth, schedule, indices):
         draws = per_family[indices]
         values = {}
         for label, column in (("randomized_first", 0), ("historical_first", 1)):
+            records = [row for family in families
+                       for row in family_values[family][condition]]
             values[label] = {
-                "correct": int(per_family[:, column].sum()),
-                "n": int(len(families) * 2),
-                "activate": int(per_family[:, column + 2].sum()),
+                "correct": int(sum(row[column] for row in records)),
+                "n": len(records),
+                "activate": int(sum(row[column + 2] for row in records)),
             }
         delta = per_family[:, 1] - per_family[:, 0]
         boot_delta = draws[:, :, 1].mean(axis=1) - draws[:, :, 0].mean(axis=1)

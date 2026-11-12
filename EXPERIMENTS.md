@@ -24,5 +24,7 @@ Cohort 001 tests the provisional 3B quantization contrast on exact evidence from
 | cohort_009 / run_001_q4_k_m | Interleaved randomized-first/historical-first crossover | [Config](experiments/cohort_009/run_001_q4_k_m/config.json) | Complete, 128/128 | [Run](experiments/cohort_009/run_001_q4_k_m/) |
 | cohort_010 / run_001_f16 | Fresh-family interleaved source-order replication | [Config](experiments/cohort_010/run_001_f16/config.json) | Complete, 96/96 | [Run](experiments/cohort_010/run_001_f16/) |
 | cohort_010 / run_001_q4_k_m | Fresh-family interleaved source-order replication | [Config](experiments/cohort_010/run_001_q4_k_m/config.json) | Complete, 96/96 | [Run](experiments/cohort_010/run_001_q4_k_m/) |
-| cohort_011 / run_001_f16 | Matched observational-strength development pilot | [Config](experiments/cohort_011/run_001_f16/config.json) | Frozen, not started | [Run](experiments/cohort_011/run_001_f16/) |
-| cohort_011 / run_001_q4_k_m | Matched observational-strength development pilot | [Config](experiments/cohort_011/run_001_q4_k_m/config.json) | Frozen, not started | [Run](experiments/cohort_011/run_001_q4_k_m/) |
+| cohort_011 / run_001_f16 | Matched observational-strength development pilot | [Config](experiments/cohort_011/run_001_f16/config.json) | Complete, 128/128 | [Run](experiments/cohort_011/run_001_f16/) |
+| cohort_011 / run_001_q4_k_m | Matched observational-strength development pilot | [Config](experiments/cohort_011/run_001_q4_k_m/config.json) | Complete, 128/128 | [Run](experiments/cohort_011/run_001_q4_k_m/) |
+
+See the [cohort 011 protocol and summary](experiments/cohort_011/summary.md); it is a development pilot, not a confirmatory cohort.

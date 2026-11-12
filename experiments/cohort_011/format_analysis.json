@@ -1,0 +1,147 @@
+{
+  "families": 16,
+  "responses_per_format": 128,
+  "scoring": "single_fence_action_accuracy",
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 20261112,
+  "format_outcomes": {
+    "f16": {
+      "aligned": {
+        "correct": 50,
+        "n": 64,
+        "accuracy": 0.78125,
+        "activate": 46,
+        "invalid_action": 0
+      },
+      "conflict": {
+        "correct": 24,
+        "n": 64,
+        "accuracy": 0.375,
+        "activate": 56,
+        "invalid_action": 0
+      }
+    },
+    "q4_k_m": {
+      "aligned": {
+        "correct": 33,
+        "n": 64,
+        "accuracy": 0.515625,
+        "activate": 63,
+        "invalid_action": 0
+      },
+      "conflict": {
+        "correct": 32,
+        "n": 64,
+        "accuracy": 0.5,
+        "activate": 64,
+        "invalid_action": 0
+      }
+    }
+  },
+  "strict_valid_actions": {
+    "f16": 0,
+    "q4_k_m": 0
+  },
+  "diagnostics": {
+    "f16": {
+      "syntax": {
+        "single_fenced_object": 128
+      },
+      "finish_reasons": {
+        "stop": 128
+      },
+      "median_seconds_per_response": 2.998659515500094,
+      "mean_completion_tokens": 14,
+      "strict_sign_comparable": 0,
+      "strict_action_estimate_sign_disagreements": 0,
+      "strict_estimate_sign_by_condition": {
+        "aligned": {
+          "n": 0,
+          "correct": 0
+        },
+        "conflict": {
+          "n": 0,
+          "correct": 0
+        }
+      },
+      "single_fence_sign_comparable": 0,
+      "single_fence_action_estimate_sign_disagreements": 0,
+      "single_fence_estimate_sign_by_condition": {
+        "aligned": {
+          "n": 0,
+          "correct": 0
+        },
+        "conflict": {
+          "n": 0,
+          "correct": 0
+        }
+      }
+    },
+    "q4_k_m": {
+      "syntax": {
+        "single_fenced_object": 128
+      },
+      "finish_reasons": {
+        "stop": 128
+      },
+      "median_seconds_per_response": 1.3138427174999379,
+      "mean_completion_tokens": 14,
+      "strict_sign_comparable": 0,
+      "strict_action_estimate_sign_disagreements": 0,
+      "strict_estimate_sign_by_condition": {
+        "aligned": {
+          "n": 0,
+          "correct": 0
+        },
+        "conflict": {
+          "n": 0,
+          "correct": 0
+        }
+      },
+      "single_fence_sign_comparable": 0,
+      "single_fence_action_estimate_sign_disagreements": 0,
+      "single_fence_estimate_sign_by_condition": {
+        "aligned": {
+          "n": 0,
+          "correct": 0
+        },
+        "conflict": {
+          "n": 0,
+          "correct": 0
+        }
+      }
+    }
+  },
+  "q4_k_m_minus_f16_conflict_penalty": {
+    "estimate": -0.390625,
+    "family_percentile_95_interval": [
+      -0.453125,
+      -0.328125
+    ],
+    "q4_k_m_conflict_penalty": 0.015625,
+    "f16_conflict_penalty": 0.40625,
+    "interpretation": "positive values indicate a larger aligned-minus-conflict accuracy penalty under Q4_K_M"
+  },
+  "paired_family_accuracy_change_q4_k_m_minus_f16": {
+    "aligned": {
+      "estimate": -0.265625,
+      "family_percentile_95_interval": [
+        -0.3125,
+        -0.21875
+      ]
+    },
+    "conflict": {
+      "estimate": 0.125,
+      "family_percentile_95_interval": [
+        0.0625,
+        0.1875
+      ]
+    }
+  },
+  "limitations": [
+    "Exploratory development cohort designed after prior outcome inspection.",
+    "One 3B checkpoint family, one exact source-selection framing and 16 families.",
+    "Single-fence results are a sensitivity because every strict response may be fenced.",
+    "Low absolute task performance limits interpretation of the conflict-penalty contrast."
+  ]
+}
