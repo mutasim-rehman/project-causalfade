@@ -85,6 +85,31 @@ def make_families(n, seed):
             yield World(causal_positive=t, association_positive=s, **params)
 
 
+def make_matched_signal_families(n, seed):
+    """Generate 2x2 families with equal-magnitude observational contrasts.
+
+    The causal effect and outcome severity gap are shared within each family.
+    Assignment strength varies across cells so the observational contrast has
+    magnitude ``target_observational_magnitude`` in all four cells.
+    """
+    if n < 1:
+        raise ValueError('At least one world family is required.')
+    rng = np.random.default_rng(seed)
+    for family in range(n):
+        effect_size = float(rng.uniform(.06, .12))
+        severity_gap = float(rng.uniform(.68, .80))
+        target = float(rng.uniform(.38, .46))
+        family_id = f'world-{family:04d}'
+        for causal_positive, association_positive in ((0, 0), (0, 1), (1, 0), (1, 1)):
+            aligned = causal_positive == association_positive
+            confounding_gap = target - effect_size if aligned else target + effect_size
+            assignment_strength = confounding_gap / severity_gap
+            yield World(family_id=family_id, causal_positive=causal_positive,
+                        association_positive=association_positive,
+                        effect_size=effect_size, severity_gap=severity_gap,
+                        assignment_strength=assignment_strength)
+
+
 def opaque_id(world, seed, mode):
     raw = f'{seed}:{world.family_id}:{world.causal_positive}:{world.association_positive}:{mode}'
     return hashlib.sha256(raw.encode()).hexdigest()[:20]

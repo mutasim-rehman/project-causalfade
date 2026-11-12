@@ -20,7 +20,7 @@ The [implementation and research roadmap](docs/STUDY_ROADMAP.md) defines the lab
 
 The [methodology adaptation and source evidence](docs/METHODOLOGY_ADAPTATION.md) explains the source papers' findings, why the approach suits this question, the exact CNI-style mapping, and what changes in our application. [BibTeX references](docs/references.bib) are included for the proposal.
 
-The local lab PC data root has all four Qwen2.5-Instruct sizes (0.5B, 1.5B, 3B, 7B) in F16 plus `Q8_0`, `Q4_K_M`, `Q2_K` and `Q1_0` GGUF formats. See the [SSD quantization preparation record](docs/SSD_ASSET_REUSE.md#gguf-quantization-prepared-for-lab-use). The preparation record describes the earlier Windows transfer and quantization. Each Ubuntu run records the local model digest.
+The current Ubuntu PC stores model weights and local datasets at `$HOME/Desktop/CAUSALFADE`; current research runs do not use an external SSD. The folder contains all four Qwen2.5-Instruct sizes (0.5B, 1.5B, 3B, 7B) in F16 plus `Q8_0`, `Q4_K_M`, `Q2_K` and `Q1_0` GGUF formats. The [SSD quantization preparation record](docs/SSD_ASSET_REUSE.md#gguf-quantization-prepared-for-lab-use) is historical provenance from the earlier transfer. Each Ubuntu run records the local model digest.
 
 Start with the [executive summary](literature%20review/EXECUTIVE_SUMMARY.md), then use the [reading index](literature%20review/READING_INDEX.md) to browse papers and summaries. Publication status and downloaded versions are documented; reported findings have not been independently reproduced.
 
@@ -50,9 +50,9 @@ This is the broader research workflow; the current implementation covers the sim
 
 ## Repository contents
 
-Research code and experiment records live in this Git repository. On the Ubuntu lab PC, use `$HOME/Desktop/CAUSALFADE` for weights and local dataset inputs. The `H:\CAUSALFADE` paths in older manifests refer to the earlier Windows setup. Keep model weights and runtime binaries outside Git. Keep per-run logs, configuration, raw responses, and analyses under `experiments/`.
+Research code and experiment records live in this Git repository. On this Ubuntu PC, use `$HOME/Desktop/CAUSALFADE` for model weights and local dataset inputs. The `H:\CAUSALFADE` paths in older manifests refer to the earlier Windows setup. Keep model weights and runtime binaries outside Git. Keep per-run logs, configuration, raw responses, and analyses under `experiments/`.
 
-The [SSD asset audit](docs/SSD_ASSET_REUSE.md) documents reused models and transfer checks. [The import utility](tools/reuse_ssd_assets.py) enforces a data-only destination allowlist. Record the Git commit and environment versions with each experiment; the SSD is a working data location and still needs a separate backup for irreplaceable results.
+The [historical SSD asset audit](docs/SSD_ASSET_REUSE.md) documents model reuse and earlier transfer checks. Current experiments read the PC-local model/data folder directly. Record the Git commit and environment versions with each experiment; keep a separate backup of irreplaceable results.
 
 ```text
 causalfade/                Simulator, measurement fitting, scoring and paired analysis

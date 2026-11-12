@@ -1,0 +1,11 @@
+{
+  "families": 16,
+  "base_tasks": 64,
+  "expanded_tasks": 128,
+  "seed": 20261115,
+  "sha256": {
+    "public_tasks.jsonl": "26655839fe2e13ec95d35604e4829aa4e147e04a83ccb83d76f77c13b51b4c98",
+    "oracle_truth.jsonl": "3ee8ed37103002da19d0a9cf83963f46432bc501b78a07a64d305dccffee98bc",
+    "baselines.jsonl": "35d048c842c36d069c9d1b9df99e17e3a5ba0d488ace3faf419298f13451c58f"
+  }
+}

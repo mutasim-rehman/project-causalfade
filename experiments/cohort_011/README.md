@@ -1,0 +1,11 @@
+# Matched observational-strength source-selection development pilot
+
+This cohort repairs a known design imbalance in cohorts 005 and 008–010. The original generator held confounding strength fixed across the 2×2 family. Consequently, the absolute observational risk difference was `confounding + causal effect` in aligned cells and `confounding − causal effect` in conflict cells. The new development generator preserves each family's causal-effect magnitude and matches the absolute observational difference across all four cells.
+
+For each family, draw `e ∈ [0.06, 0.12)`, severity gap `g ∈ [0.68, 0.80)`, and target observational magnitude `m ∈ [0.38, 0.46)`. Set confounding magnitude to `m − e` in aligned cells and `m + e` in conflict cells, then set assignment strength to confounding magnitude divided by `g`. This gives randomized evidence difference `±e`, observational evidence difference `±m`, preserves the signs and keeps all outcome probabilities and treatment propensities interior. The target range overlaps the old conflict-signal range, reducing aligned task difficulty to match the established conflict task rather than strengthening conflict evidence.
+
+Cohort 011 is explicitly developmental and exploratory: it was designed after viewing prior results. Use 16 new families (seed 20261114), create a paired evidence-order crossover balanced within family (seed 20261115), and run the 3B F16 and Q4_K_M configurations on the same frozen schedule. Primary descriptive outcome is source-order change in F16 conflict accuracy; precision-by-conflict comparisons are exploratory. Single-fence action scoring is retained. No cohort 011 family enters a later confirmatory sample.
+
+Before inference, verify the analytic observational differences against rendered source rates, signs, probability bounds, propensity positivity, and exact twin joins. The data fixture and hashes are frozen in `input/` and `base_source/`. Run metadata, model hashes, schedules, full logs, raw responses, status, metrics and analyses remain under each run directory.
+
+`input_prevalidation/` preserves the first expanded fixture generated before the evaluator-only exact evidence file was added to the base-source manifest. It was never used for model inference and is not the frozen cohort input. The final, hash-verified fixture is `input/`.
