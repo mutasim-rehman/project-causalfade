@@ -1,0 +1,39 @@
+{
+  "status": "frozen_before_inference",
+  "cohort": "011",
+  "classification": "developmental_exploratory_not_confirmatory",
+  "git_revision": "cd3f66d5ec87aff979cdbc072815506fc571db87",
+  "dataset": "experiments/cohort_011/input",
+  "dataset_manifest_sha256": "a681e0979f3e506cff037ba3bf0daa29d5659020f377a154991674b12ec611d9",
+  "schedule_seed": 20261112,
+  "order_assignment_seed": 20261115,
+  "families": 16,
+  "task_responses_per_format": 128,
+  "evidence": "exact",
+  "runtime": "$HOME/Desktop/project-causalfade/.tools/llama-b12176/llama-server",
+  "runtime_version": "llama.cpp b12176, commit 8820b088d",
+  "inference": "CPU only, -ngl 0, 8 threads, context 2048, one parallel sequence, F16 KV cache",
+  "sampling": {
+    "temperature": 0,
+    "seed": 20261112,
+    "max_tokens": 160,
+    "cache_prompt": false,
+    "stream": false
+  },
+  "scoring": "single-fence action accuracy primary descriptive; strict JSON retained",
+  "analysis": "paired item order contrast, family as bootstrap block, 10000 replicates, seed 20261112",
+  "run_sequence": [
+    "f16",
+    "q4_k_m"
+  ],
+  "models": {
+    "f16": {
+      "path": "$HOME/Desktop/CAUSALFADE/weights/gguf/qwen2.5-3b-instruct-f16.gguf",
+      "sha256": "7861b68729de6c1c00828a54688b76a7dbdd20f8f87b4147de222554a70708d4"
+    },
+    "q4_k_m": {
+      "path": "$HOME/Desktop/CAUSALFADE/weights/gguf/qwen2.5-3b-instruct-q4_k_m.gguf",
+      "sha256": "1680982035e7d3311e02546afdf1a80486cdd9a05479ec4169bd4f0f98c20a82"
+    }
+  }
+}
