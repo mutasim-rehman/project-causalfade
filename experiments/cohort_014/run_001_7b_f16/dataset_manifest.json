@@ -1,0 +1,47 @@
+{
+  "seed": 20261119,
+  "families": 8,
+  "tasks": 128,
+  "evidence_modes": [
+    "exact"
+  ],
+  "design": "matched_observational_magnitude_source_selection",
+  "design_parameters": {
+    "effect_size_uniform": [
+      0.06,
+      0.12
+    ],
+    "severity_gap_uniform": [
+      0.68,
+      0.8
+    ],
+    "target_observational_magnitude_uniform": [
+      0.38,
+      0.46
+    ],
+    "assignment_strength_formula": "(target magnitude - effect_size if aligned, + effect_size if conflict) / severity_gap"
+  },
+  "source_strength_summary": {
+    "randomized_absolute_difference_min": 0.06547943435471253,
+    "randomized_absolute_difference_max": 0.1195102552832999,
+    "observational_absolute_difference_min": 0.3956494197747105,
+    "observational_absolute_difference_max": 0.4586652925155634,
+    "backdoor_accuracy": 1.0,
+    "association_accuracy": 0.5
+  },
+  "numpy_version": "2.5.4",
+  "file_sha256": {
+    "public_tasks.jsonl": "c3d07b017f05394b10ec75cefad41f6ff403a55311c3881ab604e56fa62c9b80",
+    "oracle_truth.jsonl": "cc159d24714357b273698604f2af5221bb8ac8362f9ae7b5f4b7c6657d207268",
+    "baselines.jsonl": "1aa26757d94129a1f741620776125fd00bf7bb32ff99264cffbe1f82fe19065e"
+  },
+  "status": "paired_prompt_clarity_development_crossover",
+  "prompt_variants": [
+    "minimal",
+    "causal_context"
+  ],
+  "source_manifest_sha256": "0438f310d6850d8a36d51d494c8d0f1c146afbcaa31a57ba5ef73b7e9bffdd32",
+  "source_schedule_sha256": "87a64b96cee5cafd442e584206b8989be11818a9368902254c612f736d8bc9db",
+  "order_and_prompt_assignment_seed": 20261120,
+  "output_contract": "strict_json"
+}

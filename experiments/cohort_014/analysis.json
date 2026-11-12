@@ -1,0 +1,268 @@
+{
+  "families": 8,
+  "responses": 128,
+  "primary_scoring": "strict single JSON object; invalid outputs fail accuracy and validity",
+  "strict_outcomes": {
+    "minimal": {
+      "correct": 48,
+      "n": 64,
+      "valid_actions": 64,
+      "accuracy": 0.75,
+      "cells": {
+        "aligned": {
+          "correct": 32,
+          "n": 32,
+          "valid_actions": 32,
+          "by_order": {
+            "randomized_first": {
+              "correct": 16,
+              "n": 16,
+              "valid_actions": 16
+            },
+            "historical_first": {
+              "correct": 16,
+              "n": 16,
+              "valid_actions": 16
+            }
+          }
+        },
+        "conflict": {
+          "correct": 16,
+          "n": 32,
+          "valid_actions": 32,
+          "by_order": {
+            "randomized_first": {
+              "correct": 8,
+              "n": 16,
+              "valid_actions": 16
+            },
+            "historical_first": {
+              "correct": 8,
+              "n": 16,
+              "valid_actions": 16
+            }
+          }
+        }
+      }
+    },
+    "causal_context": {
+      "correct": 42,
+      "n": 64,
+      "valid_actions": 64,
+      "accuracy": 0.65625,
+      "cells": {
+        "aligned": {
+          "correct": 24,
+          "n": 32,
+          "valid_actions": 32,
+          "by_order": {
+            "randomized_first": {
+              "correct": 16,
+              "n": 16,
+              "valid_actions": 16
+            },
+            "historical_first": {
+              "correct": 8,
+              "n": 16,
+              "valid_actions": 16
+            }
+          }
+        },
+        "conflict": {
+          "correct": 18,
+          "n": 32,
+          "valid_actions": 32,
+          "by_order": {
+            "randomized_first": {
+              "correct": 9,
+              "n": 16,
+              "valid_actions": 16
+            },
+            "historical_first": {
+              "correct": 9,
+              "n": 16,
+              "valid_actions": 16
+            }
+          }
+        }
+      }
+    }
+  },
+  "single_fence_sensitivity": {
+    "minimal": {
+      "correct": 48,
+      "n": 64,
+      "valid_actions": 64,
+      "accuracy": 0.75,
+      "cells": {
+        "aligned": {
+          "correct": 32,
+          "n": 32,
+          "valid_actions": 32,
+          "by_order": {
+            "randomized_first": {
+              "correct": 16,
+              "n": 16,
+              "valid_actions": 16
+            },
+            "historical_first": {
+              "correct": 16,
+              "n": 16,
+              "valid_actions": 16
+            }
+          }
+        },
+        "conflict": {
+          "correct": 16,
+          "n": 32,
+          "valid_actions": 32,
+          "by_order": {
+            "randomized_first": {
+              "correct": 8,
+              "n": 16,
+              "valid_actions": 16
+            },
+            "historical_first": {
+              "correct": 8,
+              "n": 16,
+              "valid_actions": 16
+            }
+          }
+        }
+      }
+    },
+    "causal_context": {
+      "correct": 42,
+      "n": 64,
+      "valid_actions": 64,
+      "accuracy": 0.65625,
+      "cells": {
+        "aligned": {
+          "correct": 24,
+          "n": 32,
+          "valid_actions": 32,
+          "by_order": {
+            "randomized_first": {
+              "correct": 16,
+              "n": 16,
+              "valid_actions": 16
+            },
+            "historical_first": {
+              "correct": 8,
+              "n": 16,
+              "valid_actions": 16
+            }
+          }
+        },
+        "conflict": {
+          "correct": 18,
+          "n": 32,
+          "valid_actions": 32,
+          "by_order": {
+            "randomized_first": {
+              "correct": 9,
+              "n": 16,
+              "valid_actions": 16
+            },
+            "historical_first": {
+              "correct": 9,
+              "n": 16,
+              "valid_actions": 16
+            }
+          }
+        }
+      }
+    }
+  },
+  "reference_gates": {
+    "minimal": {
+      "passed": false,
+      "checks": {
+        "strict_valid_actions": true,
+        "overall_accuracy": true,
+        "conflict_randomized_first": false,
+        "conflict_historical_first": false
+      },
+      "failed_criteria": [
+        "conflict_randomized_first",
+        "conflict_historical_first"
+      ]
+    },
+    "causal_context": {
+      "passed": false,
+      "checks": {
+        "strict_valid_actions": true,
+        "overall_accuracy": false,
+        "conflict_randomized_first": true,
+        "conflict_historical_first": true
+      },
+      "failed_criteria": [
+        "overall_accuracy"
+      ]
+    }
+  },
+  "paired_family_gains_strict": {
+    "overall": {
+      "causal_context_minus_minimal": -0.09375,
+      "family_percentile_95_interval": [
+        -0.15625,
+        -0.03125
+      ]
+    },
+    "aligned": {
+      "causal_context_minus_minimal": -0.25,
+      "family_percentile_95_interval": [
+        -0.25,
+        -0.25
+      ]
+    },
+    "conflict": {
+      "causal_context_minus_minimal": 0.0625,
+      "family_percentile_95_interval": [
+        -0.0625,
+        0.1875
+      ]
+    }
+  },
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 20261121,
+  "response_diagnostics": {
+    "syntax": {
+      "object": 128
+    },
+    "finish_reasons": {
+      "stop": 128
+    },
+    "median_seconds_per_response": 6.584335530500539,
+    "mean_completion_tokens": 7,
+    "strict_sign_comparable": 0,
+    "strict_action_estimate_sign_disagreements": 0,
+    "strict_estimate_sign_by_condition": {
+      "aligned": {
+        "n": 0,
+        "correct": 0
+      },
+      "conflict": {
+        "n": 0,
+        "correct": 0
+      }
+    },
+    "single_fence_sign_comparable": 0,
+    "single_fence_action_estimate_sign_disagreements": 0,
+    "single_fence_estimate_sign_by_condition": {
+      "aligned": {
+        "n": 0,
+        "correct": 0
+      },
+      "conflict": {
+        "n": 0,
+        "correct": 0
+      }
+    }
+  },
+  "limitations": [
+    "Development cohort selected after prior prompt and output-format results.",
+    "Eight fresh families, one model checkpoint, and one synthetic task domain.",
+    "Causal-context frame provides mechanism information and is scaffolded."
+  ]
+}
