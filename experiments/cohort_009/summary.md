@@ -11,7 +11,7 @@ Both formats completed 128 responses. Each of 64 matched source-selection items 
 
 F16's conflict accuracy fell when the historical rates appeared first, repeating the direction of the earlier reversal collected two days apart. In this simultaneous crossover, prompt order was randomized within family and execution order was shuffled across all 128 prompts. That removes collection date as the explanation for the order contrast on these items.
 
-The order effect differed by format. Q4_K_M minus F16 was +21.875 points on conflict accuracy change (family interval +9.375 to +34.375) and −40.625 points on aligned accuracy change (−56.25 to −25). Q4_K_M showed no conflict order response because it made the same number of correct choices in both orders. Its result does not imply stronger causal evidence use. The Q4 format remained near chance in each conflict order.
+The order effect differed by format. Q4_K_M minus F16 was +21.875 points on conflict accuracy change (family interval +9.375 to +34.375) and −40.625 points on aligned accuracy change (−56.25 to −25). Q4_K_M showed no conflict order response because it made the same number of correct choices in both orders. Its result does not imply stronger causal evidence use. Q4_K_M scored 8/32 in each conflict order, below the always-action baseline of 16/32.
 
 The primary result supports sensitivity of F16 decisions to which evidence source appears first in this task. Both formats remain weak on the task, and F16 performs unusually poorly on conflict items. The experiment uses one checkpoint family, 16 reused world families, one prompt wording, one CPU runtime, and an exploratory family percentile bootstrap. It does not establish a general quantization effect or identify a cognitive route.
 

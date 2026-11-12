@@ -109,3 +109,7 @@ Freeze the cohort 010 fixture before inference. The source generator produced 12
 ## 2026-11-12 09:47 PKT
 
 Close cohort 010 after complete joins and model hashes. F16 conflict accuracy fell by 25 points with historical evidence first on 12 fresh SCM families. This replicates the direction and approximate size observed in cohort 009. Q4_K_M remained 6/24 in both conflict orders. Treat the independent-family replication as stronger evidence of order sensitivity on this generated task. Keep claims bounded to this task and checkpoint. Future work should balance evidence strength, vary scenarios, and specify a validated reference competence gate before confirmatory collection.
+
+## 2026-11-12 09:47 PKT
+
+Following replication of the interleaved order effect on 12 new families, prioritize a confirmatory design with matched observational signal strength in aligned and conflict cells. The existing generator produces stronger observational magnitudes in aligned cells. Adjust the design while preserving causal effect magnitudes, validate probability constraints and signs, and document the target population. Freeze prompts, family split, competence thresholds and analysis before confirmatory inference. Do not pool the current exploratory families into a confirmatory estimate. These results justify the design work, but do not by themselves establish a general quantization effect.
