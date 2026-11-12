@@ -10,6 +10,7 @@
   "family_generation_seed": 20261127,
   "order_assignment_seed": 20261128,
   "responses_per_format": 768,
+  "tasks_per_family_condition_per_order": 2,
   "prompt_variant": "causal_context",
   "model_f16": {
     "path": "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",

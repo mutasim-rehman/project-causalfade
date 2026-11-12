@@ -1,0 +1,7 @@
+{
+  "scheduled": 768,
+  "completed": 768,
+  "valid_actions": 768,
+  "aligned_accuracy": 0.7734375,
+  "conflict_accuracy": 0.5989583333333334
+}

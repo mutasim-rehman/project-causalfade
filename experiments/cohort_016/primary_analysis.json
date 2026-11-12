@@ -1,0 +1,118 @@
+{
+  "cohort": "016",
+  "classification": "prospective_confirmatory_family_level_order_replication",
+  "families": 96,
+  "responses_per_format": 768,
+  "strict_valid_actions": {
+    "f16": 768,
+    "q4_k_m": 768
+  },
+  "primary_hypothesis": "On Q4_K_M conflict prompts, mean strict action accuracy with historical evidence first differs from accuracy with randomized evidence first.",
+  "primary_q4_conflict_order_effect": {
+    "families": 96,
+    "mean_difference": 0.625,
+    "family_level_sd": 0.29019050004400465,
+    "standard_error": 0.02961744388795462,
+    "t_statistic": 21.102428770167663,
+    "degrees_of_freedom": 95,
+    "two_sided_p_value": 1.2422483474709549e-37,
+    "t_critical_975_approximation": 1.9852509838946182,
+    "t_interval_95": [
+      0.5662019403809945,
+      0.6837980596190055
+    ],
+    "family_percentile_bootstrap_95_interval": [
+      0.5677083333333334,
+      0.6822916666666666
+    ]
+  },
+  "secondary_order_results": {
+    "f16": {
+      "aligned": {
+        "by_order": {
+          "randomized_first": {
+            "correct": 192,
+            "n": 192,
+            "valid_actions": 192,
+            "activate": 96
+          },
+          "historical_first": {
+            "correct": 96,
+            "n": 192,
+            "valid_actions": 192,
+            "activate": 192
+          }
+        },
+        "historical_first_minus_randomized_first": -0.5
+      },
+      "conflict": {
+        "by_order": {
+          "randomized_first": {
+            "correct": 76,
+            "n": 192,
+            "valid_actions": 192,
+            "activate": 86
+          },
+          "historical_first": {
+            "correct": 109,
+            "n": 192,
+            "valid_actions": 192,
+            "activate": 179
+          }
+        },
+        "historical_first_minus_randomized_first": 0.171875
+      }
+    },
+    "q4_k_m": {
+      "aligned": {
+        "by_order": {
+          "randomized_first": {
+            "correct": 192,
+            "n": 192,
+            "valid_actions": 192,
+            "activate": 96
+          },
+          "historical_first": {
+            "correct": 105,
+            "n": 192,
+            "valid_actions": 192,
+            "activate": 153
+          }
+        },
+        "historical_first_minus_randomized_first": -0.453125
+      },
+      "conflict": {
+        "by_order": {
+          "randomized_first": {
+            "correct": 55,
+            "n": 192,
+            "valid_actions": 192,
+            "activate": 41
+          },
+          "historical_first": {
+            "correct": 175,
+            "n": 192,
+            "valid_actions": 192,
+            "activate": 113
+          }
+        },
+        "historical_first_minus_randomized_first": 0.625
+      }
+    }
+  },
+  "secondary_format_by_conflict_order_interaction": {
+    "estimate_q4_minus_f16": 0.453125,
+    "family_percentile_bootstrap_95_interval": [
+      0.3802083333333333,
+      0.5260416666666666
+    ]
+  },
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 20261130,
+  "scoring": "strict JSON accuracy; invalid output is incorrect",
+  "limitations": [
+    "The confirmatory claim is limited to these model checkpoints, prompt scaffold, synthetic generator and target rates.",
+    "The replication was designed after cohort 015 exposed the order pattern; cohort 015 remains development evidence.",
+    "Secondary format interactions and aligned-item order effects are descriptive."
+  ]
+}

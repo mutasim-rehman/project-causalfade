@@ -84,7 +84,7 @@ def one_sample_t(values):
     }
 
 
-def accuracy_by_order(rows, schedule, conflict_value):
+def accuracy_by_order(rows, schedule, conflict_value, expected_per_family):
     cells = {}
     family_differences = {}
     for family in sorted({r["family_id"] for r in rows}):
@@ -95,12 +95,17 @@ def accuracy_by_order(rows, schedule, conflict_value):
         cells[order] = {
             "correct": sum(r["correct"] for r in subset), "n": len(subset),
             "valid_actions": sum(r["valid_action"] for r in subset),
+            "activate": sum(r["activate"] == 1 for r in subset),
         }
         by_family = defaultdict(list)
         for row in subset:
-            by_family[row["family_id"]].append(row["correct"])
+            by_family[row["family_id"]].append(row)
+        if set(by_family) != set(family_differences) or any(
+                len(outcomes) != expected_per_family for outcomes in by_family.values()):
+            raise ValueError(f"Incomplete family/order cell for {order}")
         for family, outcomes in by_family.items():
-            family_differences[family][order] = float(np.mean(outcomes))
+            family_differences[family][order] = float(
+                np.mean([row["correct"] for row in outcomes]))
     deltas = []
     for family, orders in family_differences.items():
         if set(orders) != {"randomized_first", "historical_first"}:
@@ -140,7 +145,9 @@ def main():
     for name, rows in strict_rows.items():
         by_condition = {}
         for condition, conflict_value in (("aligned", False), ("conflict", True)):
-            cells, deltas = accuracy_by_order(rows, schedules, conflict_value)
+            cells, deltas = accuracy_by_order(
+                rows, schedules, conflict_value,
+                plan["tasks_per_family_condition_per_order"])
             by_condition[condition] = {
                 "by_order": cells,
                 "historical_first_minus_randomized_first": float(deltas.mean()),
