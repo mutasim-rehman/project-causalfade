@@ -9,6 +9,19 @@ from analyze_direct_pilot import arm
 from analyze_order_replication import accuracy_by_order, one_sample_t
 
 
+def describe_difference(delta):
+    # A constant family contrast has no estimated sampling variance. Do not
+    # serialize an infinite statistic or pretend the degenerate t test is valid.
+    if len(delta) < 2 or float(np.std(delta, ddof=1)) == 0:
+        return {"families": len(delta), "mean_difference": float(np.mean(delta)),
+                "family_level_sd": 0.0 if len(delta) > 1 else None,
+                "standard_error": 0.0 if len(delta) > 1 else None,
+                "t_statistic": None, "two_sided_p_value": None,
+                "t_interval_95": None,
+                "note": "No t inference: fewer than two families or zero empirical family variance."}
+    return one_sample_t(delta)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--q8", type=Path, required=True)
@@ -33,7 +46,7 @@ def main():
         for condition, flag in (("conflict", True), ("aligned", False)):
             cells, delta = accuracy_by_order(strict, schedule, flag, 2)
             results[name][condition] = {"order_cells": cells,
-                                        "historical_first_minus_randomized_first": one_sample_t(delta)}
+                                        "historical_first_minus_randomized_first": describe_difference(delta)}
             differences[(name, condition)] = delta
     rng = np.random.default_rng(20261113)
     idx = rng.integers(96, size=(10000, 96))
@@ -46,7 +59,7 @@ def main():
               "limitations": ["Cohort 016 families were previously used and are not fresh confirmation.",
                               "Q8_0 is a quantized reference, not full precision.",
                               "This tests prompt-conditioned actions, not autonomous causal discovery."]}
-    args.out.write_text(json.dumps(output, indent=2, allow_nan=False) + "\n")
+    args.out.write_text(json.dumps(output, indent=2, allow_nan=False) + "\n", encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,7 @@
 # Reproducing the design-validation package
 
+For the prepared sensitivity/bias development pilot, follow the [lab runbook](LAB_FOLLOWUP_RUNBOOK.md). `tools/sensitivity_pilot.py` supplies `prepare`, `validate`, `run`/`--resume` and `analyze` commands. The committed cohort 018 fixture contains 288 tasks per format, with a conditional reference gate. It requires its own semantic-mapping scorer, not the original scorer below. Archived cohort 017 14B analysis was recovered locally; see its [report and provenance](../experiments/cohort_017/summary.md).
+
 This package runs locally with Python 3.10+ and NumPy. The separate literature downloader also needs pypdf and network access. No model weights, API credentials or GPU are required for synthetic validation.
 
 ## Install and verify

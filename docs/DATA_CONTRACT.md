@@ -1,5 +1,17 @@
 # Task, response and scoring contract
 
+## Sensitivity pilot v1 amendment (13 November 2026)
+
+Cohort 018 uses a separate versioned contract implemented by `causalfade/sensitivity.py` and `tools/sensitivity_pilot.py`. The original contract below continues to govern older fixtures.
+
+Public rows contain only `task_id`, `family_id`, `evidence_mode` and `prompt`; send only `prompt` to a fresh context. Evaluator truth adds task type, signed/absolute evidence strengths, order, neutral source identifiers, family baseline offset and an explicit binary `mapping`. Decision tasks are `causal` or `noncausal`; `mapping_check` and `source_check` are comprehension tasks and do not enter causal SDT summaries.
+
+The response is exactly a JSON object with one key `activate` and integer 0 or 1. Here the integer is an output token: the semantic action is `token XOR mapping`. The mapping is stated in each prompt. Duplicate/extra keys, booleans, floats, fences, prose, non-object JSON and length-capped responses are invalid. The original scorer must not be used for this fixture because it assumes the token directly means the action.
+
+Raw attempt records retain task ID, full server response or execution error, timestamps and elapsed time. Each task has at most one persisted attempt per run. Missing/invalid outputs count as wrong in scheduled-task accuracy. Infrastructure-failed attempts are preserved and not automatically replaced. SDT and action-propensity summaries explicitly condition on valid semantic actions and disclose denominators. Analysis re-scores raw records and rejects duplicate/unknown IDs or mismatched fixture/schedule provenance.
+
+The fixture manifest hashes public and oracle files and declares version, generator parameters, developmental gate and counterbalancing limits. JSON/JSONL writes use UTF-8 and canonical LF line endings so Windows-to-Ubuntu Git transfer preserves fixture hashes. Output mappings and source names are between-family counterbalances in the shipped fixture, not independent within-world interventions. See the [cohort protocol](../experiments/cohort_018/README.md) and [lab runbook](LAB_FOLLOWUP_RUNBOOK.md).
+
 ## Public task
 
 One UTF-8 JSON object per JSONL line:

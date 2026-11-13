@@ -1,6 +1,6 @@
 # Methodology adaptation: origins, source findings and rationale
 
-**Updated:** 1 November 2026. Source findings below are the authors' reports, not independently reproduced results. The adaptation and its suitability are our research proposals.
+**Updated:** 13 November 2026. Source findings below are the authors' reports, not independently reproduced results. Sections 1–9 retain the original processing-tree rationale. Section 10 records its contribution and limits after live experiments; section 11 extends the proposed methodology without claiming completed implementation.
 
 ## 1. Where the approach comes from
 
@@ -98,8 +98,30 @@ Our [synthetic report](../results/design_validation/VALIDATION_REPORT.md) illust
 
 Before strong substantive claims, we need dependence-aware recovery/power simulations, real LLM data, rival-model discrimination, matched noncausal controls and an untouched confirmatory set. Route-order and evidence-strength manipulations are useful sensitivity analyses, not guaranteed solutions to observational equivalence.
 
+As of 13 November, real LLM data and the cohort 016 fresh-family order replication exist. They do not supply the missing C/A/B construct validation, matched-control specificity analysis or rival-model discrimination. The preceding requirements remain applicable to latent-component claims.
+
 ## 9. Proposal-ready rationale
 
 > We adapt the agreement/conflict logic of process dissociation and a CNI-style processing-tree framework from cognitive and moral psychology to causal decisions under quantization. An existing LLM moral-judgment application motivates feasibility but does not validate our causal/associative constructs. We replace norm/consequence dilemmas with SCM-generated intervention problems and independently manipulated observational cues. Matched precision configurations receive the same evidence, with residual action preference modeled separately. Recovery, boundary checks and rival-model comparisons precede interpretation. Estimated components describe behavior conditional on the measurement model, rather than directly measuring neural causal circuits.
 
 Source methods/results were checked on 1 November 2026. This is a selective methodological review, not a systematic review. No moral-psychology effect size is imported into our power calculation. See [the full design](RESEARCH_METHODOLOGY.md), [remaining decisions](DECISIONS_BEFORE_COLLECTION.md) and [BibTeX entries](references.bib).
+
+## 10. What the adaptation contributed in the live studies
+
+Its demonstrated contribution is to design and interpretation, not validated psychological-route estimation. Crossing causal and associative directions and recording activation helped reveal that a smaller conflict penalty can coincide with a near-constant action policy and lower accuracy. In cohort 005, Q4_K_M activated on 61/64 prompts. The F16 additivity residual was −43.75 points (descriptive family interval −68.75 to −18.75), inconsistent with the homogeneous tree's required equality. Accordingly, the decision log withheld C/A/B latent-route estimates.
+
+The agreement conditions also became important controls: cohort 016 reproduced large order changes even when both studies supported the same action. That limits a conflict-only explanation. The psychology-inspired framework helped motivate diagnostics, while the later order crossover and frozen replication provide their own experimental evidence. There is no controlled comparison quantifying how much research progress was caused by adopting the framework; assigning a percentage contribution would be unsupported.
+
+The current defensible statement is: **the adaptation helped distinguish apparent conflict robustness from action bias and motivated presentation diagnostics; its latent decomposition remains unvalidated.** See [cohort 005](../experiments/cohort_005/summary.md), [cohort 016](../experiments/cohort_016/summary.md), and [synthetic validation](../results/design_validation/VALIDATION_REPORT.md).
+
+## 11. Complementary adaptation for the next study
+
+Retain process dissociation and add a focused signal-detection/psychophysics study, with psychometric construct validation and competing decision strategies. The [interdisciplinary follow-up specification](INTERDISCIPLINARY_FOLLOWUP.md) is the operational design and records all unresolved choices.
+
+Jones (2016), [cue combination and Signal Detection Theory](https://discovery.ucl.ac.uk/id/eprint/1504279/), supplies a measurement approach for distinguishing discrimination from response criterion and comparing cue-combination predictions. We propose graded causal and observational evidence, crossed with presentation, to test whether precision changes evidence sensitivity or action propensity. The transfer does not imply Gaussian neural evidence, a human perceptual mechanism or unique route identification. Different integration models can predict similar sensitivities.
+
+Löhn et al. (2024), [requirements for psychological testing of LLMs](https://aclanthology.org/2024.inlg-main.19/), motivates explicit reliability and construct-validity checks. Test meaning-preserving paraphrases, source identifiers and output mappings; add matched noncausal controls and independent task forms. Formal measurement-invariance claims require additional modeling and identification, not simply a nonsignificant wording interaction.
+
+The judgment-and-decision component consists of independently counterbalanced source position, truthful source descriptions and action-response mappings, with held-out comparison of causal, historical, positional and constant-action strategies. These manipulations must produce distinguishable predictions before collection. Better prediction supports a behavioral model, not proof of a psychological or neural process.
+
+The bounded [cohort 018 implementation](../experiments/cohort_018/README.md) now provides graded-evidence development tasks, SDT summaries, controls and fixed-strategy diagnostics; no model inference has run. Formal validation, psychophysical model fitting and confirmatory registration remain prospective. Established methods do not become novel merely through combination; the publication contribution must be a validated measure and new discriminating evidence. Adding further disciplinary frameworks is lower priority than controls, adequate reference competence and independent model-family replication. New source records were checked on 13 November 2026.

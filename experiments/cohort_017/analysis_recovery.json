@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-13",
+  "classification": "local exploratory analysis recovery; no new inference",
+  "python": "3.13.5",
+  "numpy": "2.3.5",
+  "command": "python tools/analyze_14b_followup.py --q8 experiments/cohort_017/run_001_14b_q8_0 --q4 experiments/cohort_017/run_002_14b_q4_k_m --truth experiments/cohort_016/input/oracle_truth.jsonl --out experiments/cohort_017/analysis.json",
+  "original_failure_preserved": "experiments/cohort_017/analysis.log",
+  "amendment": "Zero-variance/fewer-than-two-family t quantities are null; descriptive contrasts retained.",
+  "source_and_input_sha256": {
+    "tools/analyze_14b_followup.py": "a204757c47228ecb2986d74feee5a27377510cfba5bf59f58cf815616ed83011",
+    "tools/analyze_order_replication.py": "12d594b3afebcf3cadcc0c0288f586f6e1100ffde11cd34731509843344531e7",
+    "tools/analyze_direct_pilot.py": "1eb76ee769e76ad9152cae26eeda1c6ed761f61b94d72f75aeeeec24489ca41a",
+    "causalfade/score.py": "95d8f60799cc60c2917786dfa757d683179db39a4c50f6e77a3b18f0426a5483",
+    "experiments/cohort_016/input/oracle_truth.jsonl": "ee1ccf95e552b06ce44407f10212b09df207e4b2895569c1cccfb008faac4976",
+    "experiments/cohort_017/run_001_14b_q8_0/status.json": "36f579d4c4606f9ff3c022585bab9c993c9fb9f0aec51523d0a81a7065d0eb31",
+    "experiments/cohort_017/run_001_14b_q8_0/schedule.json": "bd72af36f62c10dbf7af0ca079b1d49884c60fa23206434a4c0f9bfdaa67d622",
+    "experiments/cohort_017/run_001_14b_q8_0/raw_responses.jsonl": "8e6e7a9ae1d8503209d7d30e3c9525735eca676e6fb316e20771601ba6970563",
+    "experiments/cohort_017/run_001_14b_q8_0/results.json": "4a57d4271311a06f901f1ae86d93433e16b285b49fd0978a38bf72867d8b6d44",
+    "experiments/cohort_017/run_002_14b_q4_k_m/status.json": "36f579d4c4606f9ff3c022585bab9c993c9fb9f0aec51523d0a81a7065d0eb31",
+    "experiments/cohort_017/run_002_14b_q4_k_m/schedule.json": "bd72af36f62c10dbf7af0ca079b1d49884c60fa23206434a4c0f9bfdaa67d622",
+    "experiments/cohort_017/run_002_14b_q4_k_m/raw_responses.jsonl": "055c8effe4c7d2555e53a3a53096d08682da0e16982864e832a56e263d5cf5b0",
+    "experiments/cohort_017/run_002_14b_q4_k_m/results.json": "a68ceabe77710296b4a373048f7561411e26f358a22b166a03f704d5071b2f45"
+  },
+  "analysis_sha256": "00f22f98e13baec9be40263c47be19940e1f8109b9c3cd17ab72980b445a8772"
+}

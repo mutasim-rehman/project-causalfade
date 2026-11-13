@@ -16,13 +16,13 @@ The motivating idea is that compression might disrupt mechanisms supporting caus
 
 ## Current status
 
-The project now has an **executable simulator and synthetic methodology-validation package**, plus 14 research papers from 2025–2026 and critical summaries. Eight papers were first released or published in 2026. Live exploratory direct-response pilots began on 10 November 2026. Follow the [experiment index](EXPERIMENTS.md), [decision log](DECISIONS.md), and [session report](SESSION_REPORT.md) for the latest evidence. The synthetic parameter-recovery package is separate from model evaluation.
+As of **13 November 2026**, the project has an executable simulator, synthetic methodology validation and analyzed direct-response cohorts 001–017. Cohort 016 replicated a large 7B Q4_K_M evidence-order effect on 96 fresh families; this does not establish selective causal degradation or validate psychological latent routes. The [14B report](experiments/cohort_017/summary.md) was recovered locally after the lab analysis dependency failure and does not reproduce that large conflict-order effect. [Cohort 018](experiments/cohort_018/README.md) has a prepared development fixture and tested execution/analysis tools, with no inference yet. The literature collection contains 14 papers from 2025–2026 plus methodological source records. Follow the [experiment index](EXPERIMENTS.md), [decision log](DECISIONS.md), and [session report](SESSION_REPORT.md) for evidence and limitations.
 
 Read the [research methodology](docs/RESEARCH_METHODOLOGY.md), [reproduction instructions](docs/REPRODUCIBILITY.md), and [generated validation report](results/design_validation/VALIDATION_REPORT.md). The proposed psychological adaptation separates causal sensitivity, conditional associative influence and residual action bias, with explicit identification and model-fit limitations.
 
 The [implementation and research roadmap](docs/STUDY_ROADMAP.md) defines the lab setup, durable runner, bounded agent, pilot, power analysis, protocol freeze, collection, statistics and reporting phases. The roadmap records the original prospective phases. The experiment index tracks the current execution state.
 
-The [methodology adaptation and source evidence](docs/METHODOLOGY_ADAPTATION.md) explains the source papers' findings, why the approach suits this question, the exact CNI-style mapping, and what changes in our application. [BibTeX references](docs/references.bib) are included for the proposal.
+The [methodology adaptation and source evidence](docs/METHODOLOGY_ADAPTATION.md) explains the CNI-style mapping, its actual contribution and its limits. The [interdisciplinary follow-up](docs/INTERDISCIPLINARY_FOLLOWUP.md) asks whether precision changes causal-evidence sensitivity, action bias or presentation susceptibility. Its bounded development implementation is ready; formal validation and confirmation remain prospective. The [lab runbook](docs/LAB_FOLLOWUP_RUNBOOK.md) provides copyable commands. [BibTeX references](docs/references.bib) record the source lineage.
 
 The current Ubuntu PC stores model weights and local datasets at `$HOME/Desktop/CAUSALFADE`; current research runs do not use an external SSD. The folder contains all four Qwen2.5-Instruct sizes (0.5B, 1.5B, 3B, 7B) in F16 plus `Q8_0`, `Q4_K_M`, `Q2_K` and `Q1_0` GGUF formats. The [SSD quantization preparation record](docs/SSD_ASSET_REUSE.md#gguf-quantization-prepared-for-lab-use) is historical provenance from the earlier transfer. Each Ubuntu run records the local model digest.
 
@@ -50,7 +50,7 @@ The directional contrast must be prespecified. A positive result supports increa
 4. **Estimate causal effects.** Prespecify the primary precision contrast and task population. Use a hierarchical binomial model with precision-by-conflict terms and world-level dependence, report probability-scale contrasts, and check robustness with paired world-level resampling. Choose sample sizes through pilot-based simulation.
 5. **Investigate mechanisms if warranted.** Consider targeted component precision restoration after establishing a robust behavioral effect. Treat fine-tuning and high-precision assistance as separate experimental treatments.
 
-This is the broader research workflow; the current implementation covers the simulator and synthetic validation described above. The simulator's true graph, the agent's reported graph and the model's internal computational mechanisms are distinct objects.
+This is the broader research workflow. Completed model studies use direct responses; the bounded tool-agent and new interdisciplinary measurement study remain prospective. The simulator's true graph, an agent's reported graph and the model's internal computational mechanisms are distinct objects.
 
 ## Repository contents
 
@@ -89,7 +89,7 @@ python -m causalfade.generate
 python -m causalfade.validate
 ```
 
-The generator exports 24 independent families, each with four causal/association conditions and two evidence layers. The validation study fits 3,600 independent synthetic response datasets; see its report for convergence failures, weak boundary recovery and observational equivalence. The direct-response pilot runner is in `tools/run_direct_pilot.py`. The hierarchical analyses and confirmatory power calculations remain prospective. See [decisions before collection](docs/DECISIONS_BEFORE_COLLECTION.md).
+The original generator exports 24 independent families, each with four causal/association conditions and two evidence layers. The validation study fits 3,600 independent synthetic response datasets; see its report for convergence failures, weak boundary recovery and observational equivalence. The direct-response pilot runner is in `tools/run_direct_pilot.py`. Cohort 016 has a completed family-level power plan and frozen order analysis; hierarchical latent modeling and power/coverage calculations for the new follow-up remain prospective. See [decisions before collection](docs/DECISIONS_BEFORE_COLLECTION.md).
 
 For the literature tools:
 

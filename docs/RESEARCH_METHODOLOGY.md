@@ -1,10 +1,10 @@
 # CausalFade research methodology
 
-> **10 November 2026 update.** The status below describes the original prospective design. The user authorized exploratory inference on the Ubuntu lab PC using local model weights. The [experiment index](../EXPERIMENTS.md) and [session report](../SESSION_REPORT.md) track live progress. Confirmatory choices remain open.
+> **13 November 2026 update.** Cohorts 001–017 have been analyzed, including cohort 016's frozen fresh-family replication and cohort 017's locally recovered exploratory report. Cohort 018 has a prepared, validated development fixture and execution/analysis tools, but no inference yet. Broader interdisciplinary validation, power analysis and confirmatory freezing remain prospective. The [experiment index](../EXPERIMENTS.md) and [session report](../SESSION_REPORT.md) preserve experiment-specific status.
 
-**Version:** 0.3, 7 November 2026. **Status:** documented design, executable synthetic validation and completed weight preparation. No LLM inference, agent evaluation or confirmatory data collection has been performed. This document is not a registered protocol.
+**Version:** 0.4, 13 November 2026. **Status:** implemented simulator and direct-response research, synthetic measurement validation, and a completed prospectively frozen replication of one evidence-order endpoint. This evolving methodology is not itself a registered protocol; cohort-specific frozen plans govern existing experiments.
 
-The [implementation and research roadmap](STUDY_ROADMAP.md) records completed work, remaining deliverables, dependencies and decisions before collection. The user's current authorization is documentation and setup only; the roadmap does not authorize running research.
+The [implementation and research roadmap](STUDY_ROADMAP.md) records completed work and remaining dependencies. This revision documents the next study; it does not start new inference or retrospectively change frozen analyses.
 
 For source findings, the exact CNI-style mathematical mapping, the rationale for transfer and its limits, read [Methodology adaptation and source evidence](METHODOLOGY_ADAPTATION.md).
 
@@ -13,6 +13,8 @@ For source findings, the exact CNI-style mathematical mapping, the rationale for
 Research question: **Does post-training quantization change causal sensitivity, conditional associative influence, or baseline action preference when an agent interprets the same causal evidence?**
 
 The proposed contribution adapts process-dissociation measurement from cognitive psychology to a controlled quantization experiment. A factorial task design separates a correct causal answer from a potentially misleading observational association. A behavioral processing tree attempts to explain the response pattern. The experiment identifies precision-configuration effects within the tested checkpoint, task population and serving stack; the tree provides a model-dependent decomposition of those effects.
+
+The next study asks: **Does quantization alter sensitivity to causal evidence, or primarily shift response bias and susceptibility to presentation?** Retain process dissociation, add a signal-detection/psychophysics experiment, and test construct validity and competing decision strategies. See the [interdisciplinary follow-up specification](INTERDISCIPLINARY_FOLLOWUP.md) for hypotheses, design constraints, analysis and freeze requirements. Additional disciplinary frameworks must resolve an identified uncertainty; their number is not a novelty criterion.
 
 Neither a significant accuracy difference nor a fitted tree proves that internal causal graphs have been severed. The world's true graph, an agent's reported graph and the neural network's computational mechanisms are different objects.
 
@@ -26,13 +28,17 @@ Neither a significant accuracy difference nor a fitted tree proves that internal
 - Structured response scorer preserving missing/invalid predictions.
 - Paired family-block bootstrap utility for the probability-scale conflict-penalty contrast.
 - Reproducible synthetic outputs and unit tests.
-- SSD model preparation: four Qwen2.5-Instruct sizes, each with F16, Q8_0, Q4_K_M, Q2_K and Q1_0 GGUF files. Quantization logs and hashes are retained; inference compatibility is not yet established.
+- Historical SSD model preparation: four Qwen2.5-Instruct sizes, each with F16, Q8_0, Q4_K_M, Q2_K and Q1_0 GGUF files. Current lab inputs are PC-local; per-run records establish compatibility only for configurations actually evaluated.
+- Durable direct-response runner, raw-output/provenance records, matched-strength source tasks, order crossovers and strict-output follow-ups.
+- Cohort 016: replicated 7B Q4_K_M conflict order effect of +62.5 percentage points on 96 fresh families; this confirms that endpoint, not selective causal degradation or the C/A/B mechanism.
+- Cohort 018 development tools: graded-evidence generation, counterbalance/oracle validators, strict semantic response mapping, time-budgeted resumable CPU inference, reference-gated comparison, SDT/response summaries, fixed-strategy diagnostics and family-level contrasts. See the [lab runbook](LAB_FOLLOWUP_RUNBOOK.md).
 
 ### Planned, not implemented or established
 
-- Live LLM/tool-agent runner, inference compatibility checks and runtime measurements. Importance-matrix calibration is absent from the prepared configurations; adding it would define another treatment.
+- Bounded tool-agent interface and broader configuration compatibility checks. Importance-matrix calibration is absent from the prepared configurations; adding it would define another treatment.
 - Hierarchical logistic experimental analysis and hierarchical Bayesian processing-tree inference.
-- Power/precision simulations for the final design, interval-coverage study and confirmatory collection.
+- Power/precision and interval-coverage simulations for the new sensitivity/bias design. Cohort 016 has its own completed power plan and frozen primary order test.
+- Formal psychometric validity evaluation, hierarchical psychophysical fitting and held-out fitted-strategy comparison. Development SDT summaries and empirical response-curve points are implemented; they do not establish those stronger claims.
 - Active experiment selection and investigator/analyst precision crossing.
 
 The supplied synthetic response generator is **not fake quantization** and does not represent any real model. Its parameter settings are hypothetical measurement-validation cases.
@@ -98,6 +104,8 @@ Require `assignment_strength * gap > effect_size`. Therefore S determines the ob
 
 The validation generator draws effect magnitude 0.06-0.12, severity gap 0.50-0.70 and assignment strength 0.65-0.90. These are pilot ranges, not final population definitions. Absolute observational magnitudes differ between aligned and conflict cells; an analysis must acknowledge that and investigate evidence-strength matching rather than claim perfect difficulty matching.
 
+This describes the original validation generator. Cohorts 011 onward use a matched-strength source-selection construction that preserves causal magnitude while matching absolute historical gaps across aligned/conflict cells. The follow-up must validate every proposed causal/observational strength combination for feasibility and rendered-rate precision; do not silently discard infeasible cells or pool the two generator populations.
+
 ## 4. Four conditions and psychological adaptation
 
 Each family has T,S = (0,0), (0,1), (1,0), (1,1), where 1 favors activating X and 0 favors declining it. T=S is aligned; T!=S is conflict. All four share effect magnitude, severity gap and assignment-strength magnitude. Two causal directions and two association directions prevent a simple yes/no preference from masquerading as evidence sensitivity.
@@ -117,7 +125,7 @@ Missing sample strata produce an undefined adjusted reference estimate rather th
 
 Only `prompt` from public_tasks.jsonl should enter a fresh model context. Opaque task IDs contain no readable condition labels. `oracle_truth.jsonl`, baseline answers and evaluator fields must stay outside the model's context, retrieval and tools. They are not secrets from researchers; they are withheld evaluation labels. Reset conversation state between tasks. Do not send multiple family variants together in a conversational batch.
 
-The current prompt requests `ate_estimate`, binary integer `activate`, and `adjustment_set`. For this graph the minimal valid adjustment set is [Z]. A future runner may permit a bounded calculator/data-analysis tool, but its permissions, interaction budget and error policy must be fixed before collection. Exact and sampled conditions must use the same answer contract.
+The original simulator prompt requests `ate_estimate`, binary integer `activate`, and `adjustment_set`; for this graph the minimal valid adjustment set is [Z]. Later source-selection cohorts use an action-only contract, with strict one-key JSON in cohorts 014–017. Scoring must follow each frozen contract. The follow-up must choose and freeze its response contract and label-to-action mapping. A future bounded calculator/data-analysis interface is a separate treatment.
 
 Control and record base checkpoint revision/hash, quantized weight hash, quantizer and group size, calibration data and seed, activation/cache precision, compute dtype, tokenizer and chat template, serving backend/version, hardware, decoding policy, output budget, tool configuration, prompt hash, run order, random seed and stopping reason. Include same-bit calibration replicates when feasible to estimate configuration instability.
 
@@ -135,7 +143,7 @@ Confirmatory gates include above-chance full-precision task competence, low prot
 
 **Decision accuracy:** agreement with T. Missing or invalid actions are failures in the primary intention-to-evaluate accuracy denominator. Report their rate separately. The scorer rejects duplicate and unknown IDs rather than silently choosing a response.
 
-**Conflict penalty:** `accuracy_aligned - accuracy_conflict`, averaged with equal weighting over the two causal directions. Its change under compression is the primary proposed behavioral contrast.
+**Conflict penalty:** `accuracy_aligned - accuracy_conflict`, averaged with equal weighting over the two causal directions. Its change under compression is the original proposed behavioral contrast. Cohort 016 instead froze the Q4_K_M conflict order effect as primary. The next study must designate one primary estimand before collection; neither historical endpoint automatically becomes its primary test.
 
 **Effect error:** signed `ate_estimate - tau`, summarized by bias, MAE and RMSE. Non-numeric estimates are missing; report their count and denominator. Avoid implying that valid-only numeric performance represents every attempted task.
 
@@ -215,7 +223,7 @@ H1: Delta > 0
 
 Select one primary precision contrast and practical effect threshold before confirmatory collection. Full precision is a reference configuration, not an assumed perfect or superior agent.
 
-The working recommendation for planning is 3B Q2_K versus matched 3B F16 on exact evidence, because it includes substantial compression while keeping the reference model smaller than 7B. This is a proposed choice, not a registered primary comparison. Pilot feasibility and competence checks may change it before the plan is frozen; any change must be documented without consulting confirmatory outcomes. Keep evidence layer and agent mode explicit in the final estimand.
+The original 3B Q2_K versus F16 planning recommendation is superseded: Q2_K had pervasive output failures and the early F16 reference was weak. Choose a checkpoint-specific contrast for the new study using separate development competence and feasibility checks. A Q4_K_M versus Q8_0 contrast estimates a difference between two quantized configurations, not a full-precision effect. Keep evidence layer, source scaffold and interface mode explicit in the final estimand.
 
 Fit a hierarchical logistic model for correctness with precision, conflict, causal direction and prespecified interactions, accounting for family dependence. Treat a small set of checkpoints as fixed effects or report checkpoint-specific contrasts rather than estimating a broad LLM population from two examples. Include evidence layer as a separate stratum initially. Standardize predictions over the balanced task population to obtain Delta on the probability scale: a logistic interaction coefficient is not Delta.
 
@@ -228,6 +236,8 @@ The proposed primary test uses a one-sided alpha of .05 for Delta>0. Report the 
 Use family-level paired bootstrap intervals as a robustness analysis, resampling complete families with all conditions/configurations together. Clarify inference is over the synthetic-world population. If randomized prompt/assignment schedules are used for randomization inference, permutations must follow that actual design; arbitrary swaps of deterministic precision labels are not automatically a valid randomization test.
 
 ### Explanatory parameters
+
+The C/A/B tree remains a candidate measurement model. Cohort 005's descriptive F16 additivity residual was −43.75 points (family percentile interval −68.75 to −18.75), conflicting with the homogeneous tree restriction. Subsequent order findings do not validate that tree. Do not report latent-route estimates from these cohorts. The [follow-up](INTERDISCIPLINARY_FOLLOWUP.md) specifies alternative sensitivity/bias summaries and prediction comparisons; these too require assumption checks.
 
 Fit the hierarchical tree only after parameter-recovery, fit and identifiability diagnostics are adequate. Model precision-specific C,A,B with prespecified weakly informative priors and sensitivity checks. Item-family heterogeneity requires repeated structure and sufficient data; do not introduce freely varying parameters per item that the design cannot identify.
 
@@ -259,17 +269,17 @@ For one illustrative interior fit, 500 model-based bootstrap samples give percen
 
 The initial symmetric logistic comparison exposed observational equivalence. An asymmetric violating generator was added afterward and is labeled exploratory in the report. Do not describe these development checks as preregistered evidence or a power analysis.
 
-Before real confirmatory collection, expand simulations to evaluate estimator coverage, fit-test size/power, family heterogeneity, invalid outputs, plausible effect sizes and dependence. Determine the number of independent families from the desired precision/power for Delta, not from the 24-family demonstration export or the number of synthetic binomial responses. Fit tests, parameter intervals and power under real LLM variation remain open validation work.
+Before new measurement-model confirmation, expand simulations to evaluate estimator coverage, fit-test size/power, family heterogeneity, invalid outputs, plausible effect sizes and dependence. Determine the number of independent families from the chosen new endpoint's precision/power requirements, not from the 24-family demonstration export, synthetic response count or cohort 016's different endpoint. C/A/B fit-test calibration and component-interval validation under real LLM variation remain open work.
 
-Use development-only data for choosing prompts and thresholds. Split by whole family, including every evidence layer, label direction and paraphrase. Freeze the generator/configuration, analysis script and primary contrast, then register or timestamp the final plan before collecting the untouched test set. Version 0.3 is not that registration.
+Use development-only data for choosing prompts and thresholds. Split by whole family, including every evidence layer, label direction and paraphrase. Freeze the generator/configuration, analysis script and primary contrast, then register or timestamp the final plan before collecting the untouched test set. This version 0.4 amendment is not that registration.
 
 ## 9a. Portable execution, resumption and analysis deliverables
 
-All source code, prompts/templates, analysis scripts and dependency specifications belong in the Git repository. The external SSD holds weights, generated datasets, raw trajectories, runtime logs, scored results and provenance. Installed environments and executables stay on the current PC. Git commit plus model/task hashes identify an experiment across machines; the drive letter is not an experiment identifier.
+All source code, prompts/templates, analysis scripts, dependency specifications and experiment records belong in the Git repository. Current Ubuntu model weights and local dataset inputs are under `$HOME/Desktop/CAUSALFADE`; no external SSD is required for current runs. Keep weights and runtime binaries outside Git. Historical SSD paths remain provenance only. Git commit plus model/task hashes identify an experiment across machines; the drive letter is not an experiment identifier.
 
-The future runner must create a durable run manifest and write a completed task record before advancing its checkpoint. Use stable keys including run ID, configuration, task ID and repetition. Resume only missing records under the identical frozen configuration; reject conflicting duplicates and preserve raw failed attempts. A retry policy must not replace an incorrect valid answer with a later preferred answer. If a process fails mid-task, retain the interruption and apply the same predefined infrastructure-retry policy across formats.
+The implemented direct-response runner records durable task progress; preserve this behavior in new interfaces. Use stable keys including run ID, configuration, task ID and repetition. Resume only missing records under the identical frozen configuration; reject conflicting duplicates and preserve raw failed attempts. A retry policy must not replace an incorrect valid answer with a later preferred answer. If a process fails mid-task, retain the interruption and apply the same predefined infrastructure-retry policy across formats.
 
-When changing PCs, record machine/driver/backend versions and use a separate development overlap set to detect drift. Do not introduce a new machine silently halfway through a format condition. Balance run order in complete family blocks where feasible, and account for unavoidable machine blocks in the analysis. Capture interruptions and missingness rather than silently discarding incomplete difficult configurations. Maintain a second backup of irreplaceable trajectories; the external SSD alone does not guarantee progress preservation.
+When changing PCs, record machine/driver/backend versions and use a separate development overlap set to detect drift. Do not introduce a new machine silently halfway through a format condition. Balance run order in complete family blocks where feasible, and account for unavoidable machine blocks in the analysis. Capture interruptions and missingness rather than silently discarding incomplete difficult configurations. Maintain a second backup of irreplaceable trajectories.
 
 Planned figures are accuracy by format and conflict, probability-scale paired contrast forest plots, effect-error/regret distributions, invalid-output and tool-failure rates, model-fit/recovery diagnostics, and C/A/B intervals only when the measurement model is supported. Facet by checkpoint and keep exact/sampled and direct/tool modes distinct. Export publication figures as PDF/SVG plus PNG previews using repository plotting code; archive the numeric estimates behind every figure. No actual research figures have been produced by documenting this plan.
 

@@ -1,0 +1,208 @@
+{
+  "classification": "exploratory 14B matched-quantization follow-up on reused cohort 016 families",
+  "families": 96,
+  "results": {
+    "q8_0": {
+      "n": 768,
+      "correct": 488,
+      "valid_actions": 768,
+      "diagnostics": {
+        "syntax": {
+          "object": 768
+        },
+        "finish_reasons": {
+          "stop": 768
+        },
+        "median_seconds_per_response": 10.1093397464997,
+        "mean_completion_tokens": 7,
+        "strict_sign_comparable": 0,
+        "strict_action_estimate_sign_disagreements": 0,
+        "strict_estimate_sign_by_condition": {
+          "aligned": {
+            "n": 0,
+            "correct": 0
+          },
+          "conflict": {
+            "n": 0,
+            "correct": 0
+          }
+        },
+        "single_fence_sign_comparable": 0,
+        "single_fence_action_estimate_sign_disagreements": 0,
+        "single_fence_estimate_sign_by_condition": {
+          "aligned": {
+            "n": 0,
+            "correct": 0
+          },
+          "conflict": {
+            "n": 0,
+            "correct": 0
+          }
+        }
+      },
+      "conflict": {
+        "order_cells": {
+          "randomized_first": {
+            "correct": 104,
+            "n": 192,
+            "valid_actions": 192,
+            "activate": 184
+          },
+          "historical_first": {
+            "correct": 96,
+            "n": 192,
+            "valid_actions": 192,
+            "activate": 192
+          }
+        },
+        "historical_first_minus_randomized_first": {
+          "families": 96,
+          "mean_difference": -0.041666666666666664,
+          "family_level_sd": 0.13891812557774844,
+          "standard_error": 0.014178271820390012,
+          "t_statistic": -2.9387690682262932,
+          "degrees_of_freedom": 95,
+          "two_sided_p_value": 0.004136263692876513,
+          "t_critical_975_approximation": 1.9852509838946182,
+          "t_interval_95": [
+            -0.06981409474802128,
+            -0.013519238585312055
+          ]
+        }
+      },
+      "aligned": {
+        "order_cells": {
+          "randomized_first": {
+            "correct": 192,
+            "n": 192,
+            "valid_actions": 192,
+            "activate": 96
+          },
+          "historical_first": {
+            "correct": 96,
+            "n": 192,
+            "valid_actions": 192,
+            "activate": 192
+          }
+        },
+        "historical_first_minus_randomized_first": {
+          "families": 96,
+          "mean_difference": -0.5,
+          "family_level_sd": 0.0,
+          "standard_error": 0.0,
+          "t_statistic": null,
+          "two_sided_p_value": null,
+          "t_interval_95": null,
+          "note": "No t inference: fewer than two families or zero empirical family variance."
+        }
+      }
+    },
+    "q4_k_m": {
+      "n": 768,
+      "correct": 440,
+      "valid_actions": 768,
+      "diagnostics": {
+        "syntax": {
+          "object": 768
+        },
+        "finish_reasons": {
+          "stop": 768
+        },
+        "median_seconds_per_response": 6.971009550500639,
+        "mean_completion_tokens": 7,
+        "strict_sign_comparable": 0,
+        "strict_action_estimate_sign_disagreements": 0,
+        "strict_estimate_sign_by_condition": {
+          "aligned": {
+            "n": 0,
+            "correct": 0
+          },
+          "conflict": {
+            "n": 0,
+            "correct": 0
+          }
+        },
+        "single_fence_sign_comparable": 0,
+        "single_fence_action_estimate_sign_disagreements": 0,
+        "single_fence_estimate_sign_by_condition": {
+          "aligned": {
+            "n": 0,
+            "correct": 0
+          },
+          "conflict": {
+            "n": 0,
+            "correct": 0
+          }
+        }
+      },
+      "conflict": {
+        "order_cells": {
+          "randomized_first": {
+            "correct": 96,
+            "n": 192,
+            "valid_actions": 192,
+            "activate": 192
+          },
+          "historical_first": {
+            "correct": 96,
+            "n": 192,
+            "valid_actions": 192,
+            "activate": 192
+          }
+        },
+        "historical_first_minus_randomized_first": {
+          "families": 96,
+          "mean_difference": 0.0,
+          "family_level_sd": 0.0,
+          "standard_error": 0.0,
+          "t_statistic": null,
+          "two_sided_p_value": null,
+          "t_interval_95": null,
+          "note": "No t inference: fewer than two families or zero empirical family variance."
+        }
+      },
+      "aligned": {
+        "order_cells": {
+          "randomized_first": {
+            "correct": 152,
+            "n": 192,
+            "valid_actions": 192,
+            "activate": 136
+          },
+          "historical_first": {
+            "correct": 96,
+            "n": 192,
+            "valid_actions": 192,
+            "activate": 192
+          }
+        },
+        "historical_first_minus_randomized_first": {
+          "families": 96,
+          "mean_difference": -0.2916666666666667,
+          "family_level_sd": 0.24779731389167606,
+          "standard_error": 0.025290707444453504,
+          "t_statistic": -11.532562594670795,
+          "degrees_of_freedom": 95,
+          "two_sided_p_value": 9.242735409332774e-20,
+          "t_critical_975_approximation": 1.9852509838946182,
+          "t_interval_95": [
+            -0.34187506850415894,
+            -0.24145826482917443
+          ]
+        }
+      }
+    }
+  },
+  "q4_minus_q8_conflict_order_interaction": {
+    "estimate": 0.041666666666666664,
+    "family_bootstrap_95": [
+      0.015625,
+      0.07291666666666667
+    ]
+  },
+  "limitations": [
+    "Cohort 016 families were previously used and are not fresh confirmation.",
+    "Q8_0 is a quantized reference, not full precision.",
+    "This tests prompt-conditioned actions, not autonomous causal discovery."
+  ]
+}
