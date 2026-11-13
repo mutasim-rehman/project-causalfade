@@ -1,0 +1,11 @@
+# Cohort 017: unattended 14B causal-task follow-up
+
+This exploratory follow-up evaluates Qwen2.5-14B-Instruct on the **existing cohort 016** 96-family, 768-prompt source-order schedule. The two 14B arms use Q8_0 and Q4_K_M quantizations produced locally from the same F16 GGUF. Model weights remain outside Git in `$HOME/Desktop/CAUSALFADE/weights/gguf/`. The F16 file is retained as a quantization source; 30 GiB physical RAM is insufficient for a reliable F16 CPU inference arm alongside the runtime.
+
+The primary descriptive quantities are strict JSON action accuracy in aligned and conflict conditions, each format's historical-first minus randomized-first contrast on conflict tasks, and the Q4_K_M minus Q8_0 interaction. The family is the unit for intervals and tests. Q8_0 is a quantized reference, so the contrast does not estimate a full-precision quantization effect. These families were already used in cohort 016, making this a cross-size exploratory follow-up rather than fresh confirmation. This task measures choices from supplied causal evidence; it does not test autonomous graph discovery or intervention selection.
+
+The unattended controller downloads the source from pinned Hugging Face revision `608247a797d920aa2f94c1381d53bdc6a2a3b5b8`, checks file size and GGUF header, records SHA-256 hashes, quantizes with local llama.cpp b12176, executes both full schedules sequentially, analyzes complete paired arms, normalizes local path prefixes in publishable records, and commits and pushes the cohort folder. It also commits failure status and partial logs if an earlier stage fails. `automation_status.json` and the systemd journal show progress. Download, quantization and model files stay in the PC-local CAUSALFADE folder. Actual elapsed time depends on network and CPU throughput; the plan aims to occupy most of an approximately eight-hour unattended window without terminating a run midway.
+
+Launch: `systemd-run --user --unit=causalfade-14b-20261113 --collect --working-directory=$HOME/Desktop/project-causalfade /usr/bin/python3 $HOME/Desktop/project-causalfade/tools/run_14b_unattended.py`
+
+Inspect later: `systemctl --user status causalfade-14b-20261113` and `journalctl --user -u causalfade-14b-20261113`.
