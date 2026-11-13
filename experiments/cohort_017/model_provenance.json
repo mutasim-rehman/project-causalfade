@@ -1,0 +1,22 @@
+{
+  "source_repo": "second-state/Qwen2.5-14B-Instruct-GGUF",
+  "source_revision": "608247a797d920aa2f94c1381d53bdc6a2a3b5b8",
+  "source_file": "qwen2.5-14b-instruct-f16.gguf",
+  "source_bytes": 29547716448,
+  "source_sha256": "c599ec1e577392748413138162ccce5625df9dbe1dcd91a48a2442cc1f3062ff",
+  "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+  "quantizer": "llama.cpp b12176 CPU",
+  "method": "GGUF weight-only quantization; no imatrix",
+  "q8_0": {
+    "file": "qwen2.5-14b-instruct-q8_0.gguf",
+    "bytes": 15701598048,
+    "sha256": "22f130567f093edc5f30636d14f34d2b5e0f368c14a306edd5e8c1ef839150ef",
+    "format": "Q8_0"
+  },
+  "q4_k_m": {
+    "file": "qwen2.5-14b-instruct-q4_k_m.gguf",
+    "bytes": 8988110688,
+    "sha256": "35d0fd631e2b5d593e123ff87058b66b203f12213cbd4f39ae701fc59796bb1e",
+    "format": "Q4_K_M"
+  }
+}

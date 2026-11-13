@@ -1,0 +1,6 @@
+{
+  "stage": "failed",
+  "updated_utc": "2026-11-13T07:42:41.321854+00:00",
+  "elapsed_seconds": 14937,
+  "error": "CalledProcessError(1, ['/usr/bin/python3', '$HOME/Desktop/project-causalfade/tools/analyze_14b_followup.py', '--q8', '$HOME/Desktop/project-causalfade/experiments/cohort_017/run_001_14b_q8_0', '--q4', '$HOME/Desktop/project-causalfade/experiments/cohort_017/run_002_14b_q4_k_m', '--truth', '$HOME/Desktop/project-causalfade/experiments/cohort_016/input/oracle_truth.jsonl', '--out', '$HOME/Desktop/project-causalfade/experiments/cohort_017/analysis.json'])"
+}

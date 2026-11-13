@@ -1,0 +1,5 @@
+2026-11-13T07:42:41.246368+00:00 command: /usr/bin/python3 $HOME/Desktop/project-causalfade/tools/analyze_14b_followup.py --q8 $HOME/Desktop/project-causalfade/experiments/cohort_017/run_001_14b_q8_0 --q4 $HOME/Desktop/project-causalfade/experiments/cohort_017/run_002_14b_q4_k_m --truth $HOME/Desktop/project-causalfade/experiments/cohort_016/input/oracle_truth.jsonl --out $HOME/Desktop/project-causalfade/experiments/cohort_017/analysis.json
+Traceback (most recent call last):
+  File "$HOME/Desktop/project-causalfade/tools/analyze_14b_followup.py", line 6, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
