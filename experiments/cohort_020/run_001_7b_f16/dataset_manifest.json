@@ -1,0 +1,20 @@
+{
+  "version": "component-diagnostic-development-v1",
+  "classification": "development_only_not_confirmatory",
+  "families": 8,
+  "tasks": 224,
+  "seed": 20261116,
+  "decision_tasks": 160,
+  "number_checks": 32,
+  "source_checks": 32,
+  "effect_strengths": [
+    0.04,
+    0.12
+  ],
+  "observational_strength": 0.36,
+  "schedule_policy": "single seeded shuffle; fresh context per request",
+  "file_sha256": {
+    "public_tasks.jsonl": "3cd387d4968126c16d66d7e7b2609d12932dcbdffc49577d9818c809b50148b7",
+    "oracle_truth.jsonl": "0b62d7a8af011a0dcf2e3099db555e7f801312e4d2328f9b1c210609b1ab0963"
+  }
+}
