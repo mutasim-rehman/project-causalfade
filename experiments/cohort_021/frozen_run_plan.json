@@ -1,0 +1,67 @@
+{
+  "classification": "development_only_not_confirmatory",
+  "prepared_utc": "2026-11-14T10:48:59Z",
+  "seed": 20261117,
+  "families": 8,
+  "tasks": 576,
+  "pairing": {
+    "base_stems": 32,
+    "two_source_stems": 128,
+    "per_two_source_stem": [
+      "source_selection",
+      "ordinary",
+      "guided",
+      "neutral_guidance"
+    ],
+    "two_source_prompts": 512,
+    "randomized_only": 32,
+    "direct_identification": 32
+  },
+  "guidance": {
+    "specific": "For this intervention decision, use the random-assignment study to evaluate the effect of X.",
+    "neutral": "For this intervention decision, review the displayed studies and success probabilities carefully."
+  },
+  "response_contracts": {
+    "source_selection": "one-key governing_study A/B",
+    "direct_identification": "one-key randomized_study A/B",
+    "decisions": "one-key decision activate/leave_off",
+    "invalid": "scheduled failure"
+  },
+  "planned_contrasts": [
+    "guided minus ordinary within agreement/order",
+    "guided minus neutral within agreement/order",
+    "ordinary/guided/neutral minus paired randomized-only",
+    "historical-first minus randomized-first within agreement and decision type",
+    "joint independent-request source-selection by decision correctness"
+  ],
+  "interpretation_limits": [
+    "eight development families",
+    "joint independent requests do not establish mediation",
+    "guided performance is not unassisted competence"
+  ],
+  "schedule_policy": "one seeded shuffle; fresh context for each request",
+  "inference": {
+    "threads": 8,
+    "max_tokens": 64,
+    "request_timeout_seconds": 180,
+    "max_seconds": 7200,
+    "temperature": 0,
+    "context": 2048,
+    "gpu_layers": 0,
+    "kv_precision": "f16"
+  },
+  "failure_policy": "one append-only fsynced attempt per task; preserve failed attempts; resume only with matching configuration and provenance; exclusive lock; no Q4",
+  "stopping_decision": "run complete F16 only, analyze then choose next development action; no prompt changes after outcomes",
+  "server_sha256": "6d3d7416bf83500c5adda80ee4bb076f6877e38ff0a53ddc81c0b278108b2f24",
+  "f16_sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+  "file_sha256": {
+    "experiments/cohort_021/input/manifest.json": "c90ca475dd70b5e0bc8ad6ca4812adb5899b2c1fa2280f838adfecd31ab6c50e",
+    "experiments/cohort_021/input/public_tasks.jsonl": "49497e822aa091c2ffaee129408a9eb0855ef2453030da44cf75f703e42a113e",
+    "experiments/cohort_021/input/oracle_truth.jsonl": "2d8ed151e556eaff75769f4ba4ea6e68026f9f4352555995f68c220da0288558",
+    "causalfade/guidance.py": "6f51492bc08e64105cf08c51d6cc5cdfb27fe65a00510046807382ef15e3c01b",
+    "causalfade/sensitivity.py": "6f6edb0113d6fa6b4326d4d37e99191327725e38fa00f46dcafb185e1a0340b1",
+    "causalfade/worlds.py": "176b0338171d6baff5a3fdd321ff531def145cabf90e4087c2620040571f4725",
+    "tools/guidance_pilot.py": "672913d00ad2c8b3f0a2c5c065a2a70b586eba7b1ac0fa0db24d7fba6ad92ae4",
+    "tools/run_direct_pilot.py": "2ec6a70e50e14f88cb17e2244e244d338cbd86780beffd9de48891d06a3d3ea1"
+  }
+}
