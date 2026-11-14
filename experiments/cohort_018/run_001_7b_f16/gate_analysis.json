@@ -1,0 +1,20 @@
+{
+  "passed": false,
+  "checks": {
+    "all_completed": true,
+    "valid_rate": 1.0,
+    "causal_accuracy": 0.5,
+    "comprehension_accuracy": 1,
+    "conflict_accuracy_each_order": {
+      "randomized_first": 0.5625,
+      "historical_first": 0.4375
+    }
+  },
+  "thresholds": {
+    "valid_rate": 0.9,
+    "causal_accuracy": 0.625,
+    "conflict_accuracy_each_order": 0.55,
+    "comprehension_accuracy": 0.875
+  },
+  "interpretation": "operational development screen, not a powered competence test"
+}

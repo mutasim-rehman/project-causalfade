@@ -1,0 +1,38 @@
+{
+  "version": "sensitivity-development-v1",
+  "classification": "development_only_not_confirmatory",
+  "families": 8,
+  "tasks": 288,
+  "seed": 20261114,
+  "causal_strengths": [
+    0.04,
+    0.12
+  ],
+  "observational_strength": 0.36,
+  "severity_gap_uniform": [
+    0.68,
+    0.78
+  ],
+  "outcome_baseline_offset_uniform": [
+    -0.04,
+    0.04
+  ],
+  "cross_mappings": false,
+  "gate": {
+    "valid_rate": 0.9,
+    "causal_accuracy": 0.625,
+    "conflict_accuracy_each_order": 0.55,
+    "comprehension_accuracy": 0.875
+  },
+  "design_limits": [
+    "Source names are counterbalanced between independent families, not crossed within.",
+    "Response mappings are counterbalanced between families; mapping differences are exploratory between-family contrasts.",
+    "Two causal strengths and one observational strength do not identify a general psychophysical curve or independent observational-strength slope.",
+    "Noncausal tasks share numbers and contract but differ in instruction semantics.",
+    "Gate cutoffs are operational development decisions, not powered competence tests."
+  ],
+  "file_sha256": {
+    "public_tasks.jsonl": "e1c78481aa5a68bfcd5593e53d4ecc795655554a7f279836e91dc7f4ae3aba46",
+    "oracle_truth.jsonl": "45f1346daf3ed0ca18b320aab4da3057c8a602beb47c6d0fb71a6feab604ce94"
+  }
+}
