@@ -1,0 +1,32 @@
+{
+  "version": "guidance-run-v1",
+  "classification": "development_only",
+  "role": "reference",
+  "dataset": "/home/i242514/Desktop/project-causalfade/experiments/cohort_021/input",
+  "dataset_manifest_sha256": "c90ca475dd70b5e0bc8ad6ca4812adb5899b2c1fa2280f838adfecd31ab6c50e",
+  "model": "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+  "model_sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+  "server": "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-server",
+  "server_sha256": "6d3d7416bf83500c5adda80ee4bb076f6877e38ff0a53ddc81c0b278108b2f24",
+  "threads": 8,
+  "max_tokens": 64,
+  "seed": 20261117,
+  "request_timeout": 180,
+  "source_sha256": {
+    "tools/guidance_pilot.py": "672913d00ad2c8b3f0a2c5c065a2a70b586eba7b1ac0fa0db24d7fba6ad92ae4",
+    "causalfade/sensitivity.py": "6f6edb0113d6fa6b4326d4d37e99191327725e38fa00f46dcafb185e1a0340b1",
+    "causalfade/guidance.py": "6f51492bc08e64105cf08c51d6cc5cdfb27fe65a00510046807382ef15e3c01b",
+    "causalfade/worlds.py": "176b0338171d6baff5a3fdd321ff531def145cabf90e4087c2620040571f4725",
+    "tools/run_direct_pilot.py": "2ec6a70e50e14f88cb17e2244e244d338cbd86780beffd9de48891d06a3d3ea1"
+  },
+  "reference": null,
+  "decoding": {
+    "temperature": 0,
+    "cache_prompt": false,
+    "stream": false
+  },
+  "context": 2048,
+  "gpu_layers": 0,
+  "kv_precision": "f16",
+  "failure_policy": "one persisted attempt per task; infrastructure failures abort; resume never replaces an attempt"
+}
