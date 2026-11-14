@@ -1,0 +1,26 @@
+{
+  "passed": false,
+  "checks": {
+    "all_completed": true,
+    "semantic_valid_rate": 1.0,
+    "semantic_causal_correct": 73,
+    "semantic_comprehension_correct": 24,
+    "semantic_conflict_correct_each_order": {
+      "randomized_first": 12,
+      "historical_first": 13
+    }
+  },
+  "thresholds": {
+    "valid_rate": 0.9,
+    "causal_accuracy": 0.625,
+    "conflict_accuracy_each_order": 0.55,
+    "comprehension_accuracy": 0.875
+  },
+  "count_cutoffs": {
+    "semantic_valid": 260,
+    "semantic_causal": 80,
+    "semantic_conflict_each_order": 18,
+    "semantic_comprehension": 28
+  },
+  "interpretation": "operational development screen, not a powered competence test"
+}

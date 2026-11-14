@@ -1,5 +1,7 @@
 # Lab handoff: prepared sensitivity/bias pilot
 
+**Later development work:** Cohort 018's F16 reference completed and failed its competence gate. Its commands and artifacts below remain the historical handoff. For the separate within-world response-contract experiment, use [cohort 019's frozen plan and reproduction commands](../experiments/cohort_019/README.md). Do not rerun cohort 018 or use a post hoc token reinterpretation as its official score.
+
 **14 November 2026 session.** Most implementation and archived 14B analysis are already prepared. The lab agent should verify the environment, run the committed development fixture, inspect competence and analyze completed outputs. Read [cohort 018](../experiments/cohort_018/README.md) and the [study specification](INTERDISCIPLINARY_FOLLOWUP.md) first.
 
 ## 1. Sync and environment (approximately 30–60 minutes)

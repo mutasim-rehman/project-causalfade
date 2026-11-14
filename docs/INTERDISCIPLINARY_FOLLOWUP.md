@@ -2,6 +2,8 @@
 
 **Version 0.2 — 13 November 2026. Status: methodology amendment with a prepared development implementation.** The broader validation and confirmation study remains prospective. [Cohort 018](../experiments/cohort_018/README.md) now has executable generation, validation, resumable inference, semantic scoring and descriptive analysis, with no model inference performed. Its input fixture and operational gate are fixed before inference; this is not a registered confirmatory protocol. See the [lab runbook](LAB_FOLLOWUP_RUNBOOK.md). Existing frozen cohort protocols remain unchanged.
 
+**14 November 2026 development update:** Cohort 018 subsequently completed its F16 reference and failed its fixed competence gate; its official score remains 64/128 causal correct. [Cohort 019](../experiments/cohort_019/README.md) freezes a separate within-world response-contract experiment on fresh families. It crosses semantic and two neutral-token contracts on identical decision stems, with a semantic-subset competence gate before any Q4 comparison. Its semantic-versus-neutral contrast changes several response properties; only the two neutral contracts isolate mapping reversal. This development amendment does not alter cohort 018 or establish a new confirmatory result.
+
 ## 1. Scientific purpose and contribution
 
 Ask whether precision configurations change discrimination of beneficial versus harmful interventions, the propensity to activate, or the weighting of evidence source and presentation. Causal inference remains central: an SCM supplies intervention ground truth, and randomized versus confounded historical evidence must be distinguished. Supplied-evidence decisions do not establish autonomous discovery or agentic experimentation.
