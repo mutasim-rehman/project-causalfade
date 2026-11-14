@@ -1,5 +1,7 @@
 # Cohort 019: within-world response-contract development screen
 
+**14 November 2026 interpretation note.** The archived source checks can mention the randomized study first in prose while later stating that the historical study is “listed first.” Their 8/16 score therefore does not cleanly distinguish source comprehension from conflicting position cues and should not establish a source-comprehension deficit. The original prompts, scores and official failed gate remain unchanged. The reference also failed separate causal-accuracy and both conflict-order cutoffs, so Q4 remains withheld. This note is an interpretation amendment, not a rescore.
+
 ## Completion and operational gate
 
 The versioned eight-family fixture was frozen before inference at commit `e378c02` with seed 20261115, 256 decision stems crossed with three response contracts, 48 requested-action encoding checks and 16 semantic source checks. Validation confirmed 832 prompts per arm, including 288 semantic-subset prompts. All 43 repository tests passed. The 7B F16 reference completed 832/832 requests on 14 November 2026 with 832 strict-valid, normally stopped JSON responses and no infrastructure failures. It used the existing verified b12176 CPU server, eight threads, no GPU layers, F16 KV, temperature zero and a 64-token cap. The run took 5,805 seconds (96.7 minutes), within its 7,200-second budget. Raw attempts, server logs, schedule, configuration, hashes and session record are preserved in [run_001_7b_f16](run_001_7b_f16/).

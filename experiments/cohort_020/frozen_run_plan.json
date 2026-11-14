@@ -1,0 +1,62 @@
+{
+  "classification": "development_only_not_confirmatory",
+  "prepared_utc": "2026-11-14T09:56:19Z",
+  "seed": 20261116,
+  "families": 8,
+  "tasks": 224,
+  "pairing": {
+    "base_stems": 32,
+    "per_stem": [
+      "number",
+      "randomized_only",
+      "aligned_randomized_first",
+      "aligned_historical_first",
+      "conflict_randomized_first",
+      "conflict_historical_first"
+    ],
+    "decision_prompts": 160,
+    "number_checks": 32,
+    "source_identification_checks": 32
+  },
+  "response_contracts": {
+    "number": "one-key larger X=0/X=1",
+    "decisions": "one-key decision activate/leave_off",
+    "source": "one-key randomized_study A/B",
+    "invalid": "scheduled failure"
+  },
+  "planned_contrasts": [
+    "randomized_only minus number comparison",
+    "aligned two-source minus randomized_only",
+    "conflict two-source minus randomized_only",
+    "historical_first minus randomized_first within aligned and conflict",
+    "source identification by randomized name and actual order"
+  ],
+  "interpretation_limits": [
+    "task contrasts differ in demands and do not identify internal stages",
+    "eight families support development diagnosis only"
+  ],
+  "schedule_policy": "seeded complete shuffle, fresh context per request",
+  "inference": {
+    "threads": 8,
+    "max_tokens": 64,
+    "request_timeout_seconds": 180,
+    "max_seconds": 7200,
+    "temperature": 0,
+    "context": 2048,
+    "gpu_layers": 0,
+    "kv_precision": "f16"
+  },
+  "failure_policy": "one append-only fsynced attempt per task; preserve failed attempts; resume only with matching config/source/fixture/provenance; exclusive lock; no Q4",
+  "server_sha256": "6d3d7416bf83500c5adda80ee4bb076f6877e38ff0a53ddc81c0b278108b2f24",
+  "f16_sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+  "file_sha256": {
+    "experiments/cohort_020/input/manifest.json": "0468e0195d9b2e47acd7ec45e3cfe23534e82b3a7b1a7180c8bfafbf521870c5",
+    "experiments/cohort_020/input/public_tasks.jsonl": "3cd387d4968126c16d66d7e7b2609d12932dcbdffc49577d9818c809b50148b7",
+    "experiments/cohort_020/input/oracle_truth.jsonl": "0b62d7a8af011a0dcf2e3099db555e7f801312e4d2328f9b1c210609b1ab0963",
+    "causalfade/components.py": "1b7ed2b742a1e9023c2fa81e9322e8682ff9273a9af2723f8d037ffe259529c4",
+    "causalfade/sensitivity.py": "6f6edb0113d6fa6b4326d4d37e99191327725e38fa00f46dcafb185e1a0340b1",
+    "causalfade/worlds.py": "176b0338171d6baff5a3fdd321ff531def145cabf90e4087c2620040571f4725",
+    "tools/component_pilot.py": "367436400eeb40ba57e02475aa426da25d87878d32d3c4472976656ff1cf2803",
+    "tools/run_direct_pilot.py": "2ec6a70e50e14f88cb17e2244e244d338cbd86780beffd9de48891d06a3d3ea1"
+  }
+}
