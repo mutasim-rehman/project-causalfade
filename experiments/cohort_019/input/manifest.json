@@ -1,0 +1,30 @@
+{
+  "version": "response-contract-development-v1",
+  "classification": "development_only_not_confirmatory",
+  "families": 8,
+  "tasks": 832,
+  "seed": 20261115,
+  "contracts": [
+    "semantic",
+    "neutral_forward",
+    "neutral_reverse"
+  ],
+  "causal_strengths": [
+    0.04,
+    0.12
+  ],
+  "observational_strength": 0.36,
+  "gate": {
+    "valid_rate": 0.9,
+    "causal_accuracy": 0.625,
+    "conflict_accuracy_each_order": 0.55,
+    "comprehension_accuracy": 0.875
+  },
+  "gate_subset": "semantic",
+  "schedule_policy": "one complete seeded shuffle; fresh context per request; twins interleaved",
+  "analysis_specification": "scheduled-task accuracy; semantic gate; family-cluster paired differences and intervals; contract-specific SDT",
+  "file_sha256": {
+    "public_tasks.jsonl": "d85625385ba402b85cf636a8dfcbecd249306525859c44b9583ef83be3bbb409",
+    "oracle_truth.jsonl": "225a13be356210532f0a68c8e5e66782273617a0073129cf607e907fce7452e0"
+  }
+}

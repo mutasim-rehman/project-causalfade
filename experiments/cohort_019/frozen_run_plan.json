@@ -1,0 +1,38 @@
+{
+  "classification": "development_only_not_confirmatory",
+  "prepared_date": "2026-11-14",
+  "seed": 20261115,
+  "scheduled_per_arm": 832,
+  "semantic_subset": 288,
+  "reference_gate_counts": {
+    "semantic_valid": 260,
+    "semantic_causal_correct": 80,
+    "semantic_conflict_correct_each_order": 18,
+    "semantic_comprehension_correct": 28
+  },
+  "inference": {
+    "threads": 8,
+    "max_tokens": 64,
+    "request_timeout_seconds": 180,
+    "temperature": 0,
+    "context": 2048,
+    "gpu_layers": 0,
+    "kv_precision": "f16",
+    "max_seconds_per_session": 7200
+  },
+  "server_sha256": "6d3d7416bf83500c5adda80ee4bb076f6877e38ff0a53ddc81c0b278108b2f24",
+  "f16_sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+  "q4_sha256": "7ebec3cd0f2d49bd4a8d068dc5f0e335f3647eec6dc4104d81416533a63bc5bc",
+  "file_sha256": {
+    "experiments/cohort_019/input/manifest.json": "f090b86e253d5d30d33b603a23f0cee2bbe097c03e79e312c5203ea783d82a6e",
+    "experiments/cohort_019/input/public_tasks.jsonl": "d85625385ba402b85cf636a8dfcbecd249306525859c44b9583ef83be3bbb409",
+    "experiments/cohort_019/input/oracle_truth.jsonl": "225a13be356210532f0a68c8e5e66782273617a0073129cf607e907fce7452e0",
+    "causalfade/contracts.py": "28b1588137f2159293d9203d5317c1cb1ce450166550f33b929280565c5a7aee",
+    "causalfade/sensitivity.py": "6f6edb0113d6fa6b4326d4d37e99191327725e38fa00f46dcafb185e1a0340b1",
+    "tools/contract_pilot.py": "76ae5356a633258162cdec028049441f7652ade129fa37385e52c1e71df1e4e9",
+    "tools/run_direct_pilot.py": "2ec6a70e50e14f88cb17e2244e244d338cbd86780beffd9de48891d06a3d3ea1",
+    "causalfade/worlds.py": "176b0338171d6baff5a3fdd321ff531def145cabf90e4087c2620040571f4725"
+  },
+  "schedule_policy": "seeded complete shuffle, no adjacent decision twins; each prompt fresh context",
+  "analysis_specification": "contract/task accuracy and validity, paired family contrasts, neutral mapping twin flips, order effects, check accuracy, contract-specific causal SDT and denominators; eight-family cluster percentile intervals"
+}
