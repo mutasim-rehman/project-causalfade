@@ -167,7 +167,11 @@ def build_models(args):
                           "source_repo":src["source_repo"],"license":src["license"],"conversion":src["conversion"],
                           "quantizer_sha256": quant_hash, "precision": precision}
             if target.exists() or sidecar.exists():
-                if not target.is_file() or not sidecar.is_file() or load(sidecar) != {**provenance, "output_sha256": digest(target)}:
+                if not target.is_file() or not sidecar.is_file():
+                    raise ValueError(f"Existing quant lacks matching provenance: {target}")
+                recorded = load(sidecar)
+                required = ("source_sha256", "source_revision", "source_repo", "license", "quantizer_sha256", "precision")
+                if any(recorded.get(key) != provenance[key] for key in required) or recorded.get("output_sha256") != digest(target) or not recorded.get("conversion"):
                     raise ValueError(f"Existing quant lacks matching provenance: {target}")
                 if gguf_file_type(target) != {"Q8_0":7,"Q6_K":18,"Q5_K_M":17,"Q4_K_M":15,"Q3_K_M":12,"Q2_K":10}[precision]:
                     raise ValueError("Existing quant has wrong GGUF file type: " + str(target))
@@ -186,7 +190,7 @@ def build_models(args):
                 write_json(sidecar, {**provenance, "output_sha256": digest(target)})
             inventory.append({"id": f"{lineage}_{precision.lower()}", "lineage": lineage, "precision": precision,
                               "path": str(target), "source_revision": src["source_revision"],
-                              "source_repo":src["source_repo"],"license":src["license"],"conversion":src["conversion"],
+                              "source_repo":src["source_repo"],"license":src["license"],"conversion":load(sidecar)["conversion"],
                               "source_sha256":base_hash,"quantizer_sha256":quant_hash,
                               "quantization_command":[str(quantizer),str(f16),str(target),precision],
                               "sha256": digest(target)})
