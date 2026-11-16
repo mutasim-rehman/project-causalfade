@@ -1,0 +1,451 @@
+{
+  "classification": "development_only_measurement_screen",
+  "created_utc": "2026-11-16T12:27:24.639440+00:00",
+  "dataset": "/home/i242514/Desktop/project-causalfade/experiments/cohort_024/input",
+  "dataset_hashes": {
+    "manifest.json": "d9f6ac314888e1ed45828dc9c948964b619450097fed6fd21c62cebb62b27d20",
+    "public_tasks.jsonl": "bab3fbfbc12991aec9f7be9299a409ab641025ff6660bbdb6540d914f87fbfcb",
+    "oracle_truth.jsonl": "a99fcf19ec503591a3c02853e0dac6080337bcd7d5d67d114d07dc618264bf0a"
+  },
+  "source_hashes": {
+    "causalfade/matrix024.py": "5563e04ccef8ea6b6ccd4e04ef0c68a2ece9e14812d7af5ecb4346613ec7292d",
+    "causalfade/measurement_audit.py": "3143831127ebb652bc811397ae60afa6efadc4f1042de93f693e8fa791dc08e6",
+    "causalfade/worlds.py": "176b0338171d6baff5a3fdd321ff531def145cabf90e4087c2620040571f4725",
+    "causalfade/sensitivity.py": "6f6edb0113d6fa6b4326d4d37e99191327725e38fa00f46dcafb185e1a0340b1",
+    "tools/cohort024.py": "84b2b31d14430e8d2d29ea93f43564a4489337c8365fda4aa178ba3fb0fd5a77",
+    "tools/run_direct_pilot.py": "2ec6a70e50e14f88cb17e2244e244d338cbd86780beffd9de48891d06a3d3ea1"
+  },
+  "server": "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-server",
+  "server_sha256": "6d3d7416bf83500c5adda80ee4bb076f6877e38ff0a53ddc81c0b278108b2f24",
+  "models": [
+    {
+      "id": "qwen7b_f16",
+      "lineage": "qwen7b",
+      "precision": "F16",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+      "source_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "source_repo": "Qwen/Qwen2.5-7B-Instruct",
+      "license": "apache-2.0",
+      "conversion": "existing F16 GGUF; CAUSALFADE agere_source/phase2 manifest; llama.cpp 7fe450e19305b828c199d602c23a8337aaa1f03b",
+      "source_sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+      "sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+      "bytes": 15237853248
+    },
+    {
+      "id": "qwen7b_q8_0",
+      "lineage": "qwen7b",
+      "precision": "Q8_0",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/qwen7b_Q8_0.gguf",
+      "source_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "source_repo": "Qwen/Qwen2.5-7B-Instruct",
+      "license": "apache-2.0",
+      "conversion": "existing F16 GGUF recorded in CAUSALFADE/manifests/agere_source/phase2/gguf_artifacts.json; llama.cpp source commit 7fe450e19305b828c199d602c23a8337aaa1f03b",
+      "source_sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+      "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+      "quantization_command": [
+        "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+        "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/qwen7b_Q8_0.gguf",
+        "Q8_0"
+      ],
+      "sha256": "fc9fc2c0f497d6f46b0b59d83d67f71d6bc40d6200008f6131d10be24bb50d37",
+      "bytes": 8098525248,
+      "provenance_sha256": "69fc36e13b1182d6d8100682d8c79bccfe57647fb0b739512d4b60f544da3cf2"
+    },
+    {
+      "id": "qwen7b_q6_k",
+      "lineage": "qwen7b",
+      "precision": "Q6_K",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/qwen7b_Q6_K.gguf",
+      "source_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "source_repo": "Qwen/Qwen2.5-7B-Instruct",
+      "license": "apache-2.0",
+      "conversion": "existing F16 GGUF recorded in CAUSALFADE/manifests/agere_source/phase2/gguf_artifacts.json; llama.cpp source commit 7fe450e19305b828c199d602c23a8337aaa1f03b",
+      "source_sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+      "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+      "quantization_command": [
+        "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+        "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/qwen7b_Q6_K.gguf",
+        "Q6_K"
+      ],
+      "sha256": "edbf7dd591ae7a0a29d9808565c32a2aeb546338f23479467402ee34a95dde14",
+      "bytes": 6254198848,
+      "provenance_sha256": "4eb621b766e34b30a080287250dc83ac9981ab58a698b8a10f1b3db07c4ec2dd"
+    },
+    {
+      "id": "qwen7b_q5_k_m",
+      "lineage": "qwen7b",
+      "precision": "Q5_K_M",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/qwen7b_Q5_K_M.gguf",
+      "source_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "source_repo": "Qwen/Qwen2.5-7B-Instruct",
+      "license": "apache-2.0",
+      "conversion": "existing F16 GGUF recorded in CAUSALFADE/manifests/agere_source/phase2/gguf_artifacts.json; llama.cpp source commit 7fe450e19305b828c199d602c23a8337aaa1f03b",
+      "source_sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+      "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+      "quantization_command": [
+        "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+        "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/qwen7b_Q5_K_M.gguf",
+        "Q5_K_M"
+      ],
+      "sha256": "00241ccf51d3cfa351fcf9bb0c198d3e22dace6d24ffa00a1b0c8f4767beb42e",
+      "bytes": 5444831296,
+      "provenance_sha256": "eef49f822d2fc3cb612090a6d60b23eedbd4f27d7bf6818a2b3e183c24660ee9"
+    },
+    {
+      "id": "qwen7b_q4_k_m",
+      "lineage": "qwen7b",
+      "precision": "Q4_K_M",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/qwen7b_Q4_K_M.gguf",
+      "source_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "source_repo": "Qwen/Qwen2.5-7B-Instruct",
+      "license": "apache-2.0",
+      "conversion": "existing F16 GGUF recorded in CAUSALFADE/manifests/agere_source/phase2/gguf_artifacts.json; llama.cpp source commit 7fe450e19305b828c199d602c23a8337aaa1f03b",
+      "source_sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+      "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+      "quantization_command": [
+        "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+        "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/qwen7b_Q4_K_M.gguf",
+        "Q4_K_M"
+      ],
+      "sha256": "7ebec3cd0f2d49bd4a8d068dc5f0e335f3647eec6dc4104d81416533a63bc5bc",
+      "bytes": 4683073600,
+      "provenance_sha256": "a9f4a0d8045785e65961d71b88773f8dd5631d521688553abfb4339ab125bebf"
+    },
+    {
+      "id": "qwen7b_q3_k_m",
+      "lineage": "qwen7b",
+      "precision": "Q3_K_M",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/qwen7b_Q3_K_M.gguf",
+      "source_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "source_repo": "Qwen/Qwen2.5-7B-Instruct",
+      "license": "apache-2.0",
+      "conversion": "existing F16 GGUF recorded in CAUSALFADE/manifests/agere_source/phase2/gguf_artifacts.json; llama.cpp source commit 7fe450e19305b828c199d602c23a8337aaa1f03b",
+      "source_sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+      "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+      "quantization_command": [
+        "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+        "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/qwen7b_Q3_K_M.gguf",
+        "Q3_K_M"
+      ],
+      "sha256": "2f0647b4056e4960c31cc24da2fe63fac128a913257efd3de5dc18376a76ffa9",
+      "bytes": 3808391232,
+      "provenance_sha256": "5844a955d5c1da1be54abb5c8f04b8393c5432c7755e6ebfe8a9e9fd9bc5e018"
+    },
+    {
+      "id": "qwen7b_q2_k",
+      "lineage": "qwen7b",
+      "precision": "Q2_K",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/qwen7b_Q2_K.gguf",
+      "source_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "source_repo": "Qwen/Qwen2.5-7B-Instruct",
+      "license": "apache-2.0",
+      "conversion": "existing F16 GGUF recorded in CAUSALFADE/manifests/agere_source/phase2/gguf_artifacts.json; llama.cpp source commit 7fe450e19305b828c199d602c23a8337aaa1f03b",
+      "source_sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+      "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+      "quantization_command": [
+        "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+        "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/qwen7b_Q2_K.gguf",
+        "Q2_K"
+      ],
+      "sha256": "149e27fd6041517703436b3e0dd2b3204d0ebe0ed9dbc815fafde6d377357f87",
+      "bytes": 3015940160,
+      "provenance_sha256": "fa45cd4f5fd61171aa53394737b19c73f49e2313f5fe6a7ed1fa7d4870834baf"
+    },
+    {
+      "id": "mistral7b_f16",
+      "lineage": "mistral7b",
+      "precision": "F16",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/mistral7b/Mistral-7B-Instruct-v0.3-f16.gguf",
+      "source_revision": "1b61eaebc05628c996532ffb676c6f209824216a",
+      "source_repo": "second-state/Mistral-7B-Instruct-v0.3-GGUF",
+      "license": "apache-2.0",
+      "conversion": "published F16 GGUF; original mistralai/Mistral-7B-Instruct-v0.3; publisher conversion command not independently verified",
+      "source_sha256": "afd9070b42b8788becde8959d2924489cc1226e3104272f93ae8403e98e9be30",
+      "sha256": "afd9070b42b8788becde8959d2924489cc1226e3104272f93ae8403e98e9be30",
+      "bytes": 14497337344
+    },
+    {
+      "id": "mistral7b_q8_0",
+      "lineage": "mistral7b",
+      "precision": "Q8_0",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/mistral7b_Q8_0.gguf",
+      "source_revision": "1b61eaebc05628c996532ffb676c6f209824216a",
+      "source_repo": "second-state/Mistral-7B-Instruct-v0.3-GGUF",
+      "license": "apache-2.0",
+      "conversion": "published F16 GGUF; original mistralai/Mistral-7B-Instruct-v0.3; publisher conversion command not independently verified",
+      "source_sha256": "afd9070b42b8788becde8959d2924489cc1226e3104272f93ae8403e98e9be30",
+      "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+      "quantization_command": [
+        "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/mistral7b/Mistral-7B-Instruct-v0.3-f16.gguf",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/mistral7b_Q8_0.gguf",
+        "Q8_0"
+      ],
+      "sha256": "1200702eca13a218b50efec8a956ab399dc0bc3629da9270ccf533bedd7e68a2",
+      "bytes": 7702564864,
+      "provenance_sha256": "6988cc31c270460ab53b1a2d88d722979b17c9c64a1338100f03476ab73659a2"
+    },
+    {
+      "id": "mistral7b_q6_k",
+      "lineage": "mistral7b",
+      "precision": "Q6_K",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/mistral7b_Q6_K.gguf",
+      "source_revision": "1b61eaebc05628c996532ffb676c6f209824216a",
+      "source_repo": "second-state/Mistral-7B-Instruct-v0.3-GGUF",
+      "license": "apache-2.0",
+      "conversion": "published F16 GGUF; original mistralai/Mistral-7B-Instruct-v0.3; publisher conversion command not independently verified",
+      "source_sha256": "afd9070b42b8788becde8959d2924489cc1226e3104272f93ae8403e98e9be30",
+      "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+      "quantization_command": [
+        "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/mistral7b/Mistral-7B-Instruct-v0.3-f16.gguf",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/mistral7b_Q6_K.gguf",
+        "Q6_K"
+      ],
+      "sha256": "1a93d4d4a58757c234dac2d45a6378bbfda84a19362944e11b31eac25bc94721",
+      "bytes": 5947248640,
+      "provenance_sha256": "7d87d452cab0e2ed29959f91bb06d41def9a3fae1dda821115fe5e01b14df011"
+    },
+    {
+      "id": "mistral7b_q5_k_m",
+      "lineage": "mistral7b",
+      "precision": "Q5_K_M",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/mistral7b_Q5_K_M.gguf",
+      "source_revision": "1b61eaebc05628c996532ffb676c6f209824216a",
+      "source_repo": "second-state/Mistral-7B-Instruct-v0.3-GGUF",
+      "license": "apache-2.0",
+      "conversion": "published F16 GGUF; original mistralai/Mistral-7B-Instruct-v0.3; publisher conversion command not independently verified",
+      "source_sha256": "afd9070b42b8788becde8959d2924489cc1226e3104272f93ae8403e98e9be30",
+      "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+      "quantization_command": [
+        "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/mistral7b/Mistral-7B-Instruct-v0.3-f16.gguf",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/mistral7b_Q5_K_M.gguf",
+        "Q5_K_M"
+      ],
+      "sha256": "7468f6480417699c17681488aaaab043bb4f420f3d0da414432ea249c51690ac",
+      "bytes": 5136175104,
+      "provenance_sha256": "ef526560444290e2c6b0296ff52316ecf4cb8fe5643eef099eaebac9037aa7a0"
+    },
+    {
+      "id": "mistral7b_q4_k_m",
+      "lineage": "mistral7b",
+      "precision": "Q4_K_M",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/mistral7b_Q4_K_M.gguf",
+      "source_revision": "1b61eaebc05628c996532ffb676c6f209824216a",
+      "source_repo": "second-state/Mistral-7B-Instruct-v0.3-GGUF",
+      "license": "apache-2.0",
+      "conversion": "published F16 GGUF; original mistralai/Mistral-7B-Instruct-v0.3; publisher conversion command not independently verified",
+      "source_sha256": "afd9070b42b8788becde8959d2924489cc1226e3104272f93ae8403e98e9be30",
+      "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+      "quantization_command": [
+        "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/mistral7b/Mistral-7B-Instruct-v0.3-f16.gguf",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/mistral7b_Q4_K_M.gguf",
+        "Q4_K_M"
+      ],
+      "sha256": "492c44d8e460a93369767fc44d2b107e2cda016d0ccf2f9ad1780762b5dcc76a",
+      "bytes": 4372811776,
+      "provenance_sha256": "3e09e69e24aad36e6a435ff3640a39f5eeb828211101a9ea5f5dadfa11c0ba90"
+    },
+    {
+      "id": "mistral7b_q3_k_m",
+      "lineage": "mistral7b",
+      "precision": "Q3_K_M",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/mistral7b_Q3_K_M.gguf",
+      "source_revision": "1b61eaebc05628c996532ffb676c6f209824216a",
+      "source_repo": "second-state/Mistral-7B-Instruct-v0.3-GGUF",
+      "license": "apache-2.0",
+      "conversion": "published F16 GGUF; original mistralai/Mistral-7B-Instruct-v0.3; publisher conversion command not independently verified",
+      "source_sha256": "afd9070b42b8788becde8959d2924489cc1226e3104272f93ae8403e98e9be30",
+      "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+      "quantization_command": [
+        "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/mistral7b/Mistral-7B-Instruct-v0.3-f16.gguf",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/mistral7b_Q3_K_M.gguf",
+        "Q3_K_M"
+      ],
+      "sha256": "25637b93c23f0185d6d411547db516dd99bd54c5d8568822e32f4a94c61ac173",
+      "bytes": 3522940928,
+      "provenance_sha256": "406f8958e3efb0a37242d70449ba10addb2504ce9403ed591aeb1d4c5f132066"
+    },
+    {
+      "id": "mistral7b_q2_k",
+      "lineage": "mistral7b",
+      "precision": "Q2_K",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/mistral7b_Q2_K.gguf",
+      "source_revision": "1b61eaebc05628c996532ffb676c6f209824216a",
+      "source_repo": "second-state/Mistral-7B-Instruct-v0.3-GGUF",
+      "license": "apache-2.0",
+      "conversion": "published F16 GGUF; original mistralai/Mistral-7B-Instruct-v0.3; publisher conversion command not independently verified",
+      "source_sha256": "afd9070b42b8788becde8959d2924489cc1226e3104272f93ae8403e98e9be30",
+      "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+      "quantization_command": [
+        "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/mistral7b/Mistral-7B-Instruct-v0.3-f16.gguf",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/mistral7b_Q2_K.gguf",
+        "Q2_K"
+      ],
+      "sha256": "bba5104d75ba3de3b0137f29d7240f63bc26f5c99fc8b8892ead31fc08ecd220",
+      "bytes": 2722877440,
+      "provenance_sha256": "9f9f273f3584eafbda396c1163a25e37bf825e0dabe66fcbc2c8b50047595c18"
+    },
+    {
+      "id": "llama8b_f16",
+      "lineage": "llama8b",
+      "precision": "F16",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/llama8b/Llama-3.1-8B-Instruct-f16.gguf",
+      "source_revision": "6d6118a261564da05fd7e651f4bc069eb7c38c20",
+      "source_repo": "second-state/Meta-Llama-3.1-8B-Instruct-GGUF",
+      "license": "llama3.1",
+      "conversion": "published F16 GGUF; original meta-llama/Llama-3.1-8B-Instruct@0e9e39f249a16976918f6564b8830bc894c89659; publisher conversion command not independently verified",
+      "source_sha256": "031c5d9ae1ad8cf676f8498ef539418c0d1f2b1b9c9d33c8f9207b83218c89b3",
+      "sha256": "031c5d9ae1ad8cf676f8498ef539418c0d1f2b1b9c9d33c8f9207b83218c89b3",
+      "bytes": 16068896128
+    },
+    {
+      "id": "llama8b_q8_0",
+      "lineage": "llama8b",
+      "precision": "Q8_0",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/llama8b_Q8_0.gguf",
+      "source_revision": "6d6118a261564da05fd7e651f4bc069eb7c38c20",
+      "source_repo": "second-state/Meta-Llama-3.1-8B-Instruct-GGUF",
+      "license": "llama3.1",
+      "conversion": "published F16 GGUF; original meta-llama/Llama-3.1-8B-Instruct@0e9e39f249a16976918f6564b8830bc894c89659; publisher conversion command not independently verified",
+      "source_sha256": "031c5d9ae1ad8cf676f8498ef539418c0d1f2b1b9c9d33c8f9207b83218c89b3",
+      "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+      "quantization_command": [
+        "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/llama8b/Llama-3.1-8B-Instruct-f16.gguf",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/llama8b_Q8_0.gguf",
+        "Q8_0"
+      ],
+      "sha256": "798c1d12513bf2b2c9762c2ff5b9136de08fbbac0b498fe8b83d4f00d73d4044",
+      "bytes": 8540775808,
+      "provenance_sha256": "4a1490abb43d19f7c9aceb2fd13101d292ea1ae58cec2047a8ed087f50e7a89a"
+    },
+    {
+      "id": "llama8b_q6_k",
+      "lineage": "llama8b",
+      "precision": "Q6_K",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/llama8b_Q6_K.gguf",
+      "source_revision": "6d6118a261564da05fd7e651f4bc069eb7c38c20",
+      "source_repo": "second-state/Meta-Llama-3.1-8B-Instruct-GGUF",
+      "license": "llama3.1",
+      "conversion": "published F16 GGUF; original meta-llama/Llama-3.1-8B-Instruct@0e9e39f249a16976918f6564b8830bc894c89659; publisher conversion command not independently verified",
+      "source_sha256": "031c5d9ae1ad8cf676f8498ef539418c0d1f2b1b9c9d33c8f9207b83218c89b3",
+      "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+      "quantization_command": [
+        "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/llama8b/Llama-3.1-8B-Instruct-f16.gguf",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/llama8b_Q6_K.gguf",
+        "Q6_K"
+      ],
+      "sha256": "f6ac847bb62c2e038b6c638c8eff6fa6416737096d7350619cbb75d29a5d61ba",
+      "bytes": 6596011392,
+      "provenance_sha256": "0ad95d257ef8c55b5a4d422ba2b183f1a775c12d44d279d725b40a7a8ee9549e"
+    },
+    {
+      "id": "llama8b_q5_k_m",
+      "lineage": "llama8b",
+      "precision": "Q5_K_M",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/llama8b_Q5_K_M.gguf",
+      "source_revision": "6d6118a261564da05fd7e651f4bc069eb7c38c20",
+      "source_repo": "second-state/Meta-Llama-3.1-8B-Instruct-GGUF",
+      "license": "llama3.1",
+      "conversion": "published F16 GGUF; original meta-llama/Llama-3.1-8B-Instruct@0e9e39f249a16976918f6564b8830bc894c89659; publisher conversion command not independently verified",
+      "source_sha256": "031c5d9ae1ad8cf676f8498ef539418c0d1f2b1b9c9d33c8f9207b83218c89b3",
+      "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+      "quantization_command": [
+        "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/llama8b/Llama-3.1-8B-Instruct-f16.gguf",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/llama8b_Q5_K_M.gguf",
+        "Q5_K_M"
+      ],
+      "sha256": "1240ea85e6c113d20e858649e0a8325f2187683b0c69075be6d184320d9d5c79",
+      "bytes": 5732992384,
+      "provenance_sha256": "826311897a632fd80056a3ab5ff22c93fa5b3ffe6091ca7eb6f9aba1d0d07a7d"
+    },
+    {
+      "id": "llama8b_q4_k_m",
+      "lineage": "llama8b",
+      "precision": "Q4_K_M",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/llama8b_Q4_K_M.gguf",
+      "source_revision": "6d6118a261564da05fd7e651f4bc069eb7c38c20",
+      "source_repo": "second-state/Meta-Llama-3.1-8B-Instruct-GGUF",
+      "license": "llama3.1",
+      "conversion": "published F16 GGUF; original meta-llama/Llama-3.1-8B-Instruct@0e9e39f249a16976918f6564b8830bc894c89659; publisher conversion command not independently verified",
+      "source_sha256": "031c5d9ae1ad8cf676f8498ef539418c0d1f2b1b9c9d33c8f9207b83218c89b3",
+      "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+      "quantization_command": [
+        "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/llama8b/Llama-3.1-8B-Instruct-f16.gguf",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/llama8b_Q4_K_M.gguf",
+        "Q4_K_M"
+      ],
+      "sha256": "599024f21235045ea4ad7aecc5d46e794920e201d669328f577b1971cf98c904",
+      "bytes": 4920739200,
+      "provenance_sha256": "9b8c45cc836cd63447c4bca7651148ca3290cccd203148bb365628d7026ac8db"
+    },
+    {
+      "id": "llama8b_q3_k_m",
+      "lineage": "llama8b",
+      "precision": "Q3_K_M",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/llama8b_Q3_K_M.gguf",
+      "source_revision": "6d6118a261564da05fd7e651f4bc069eb7c38c20",
+      "source_repo": "second-state/Meta-Llama-3.1-8B-Instruct-GGUF",
+      "license": "llama3.1",
+      "conversion": "published F16 GGUF; original meta-llama/Llama-3.1-8B-Instruct@0e9e39f249a16976918f6564b8830bc894c89659; publisher conversion command not independently verified",
+      "source_sha256": "031c5d9ae1ad8cf676f8498ef539418c0d1f2b1b9c9d33c8f9207b83218c89b3",
+      "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+      "quantization_command": [
+        "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/llama8b/Llama-3.1-8B-Instruct-f16.gguf",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/llama8b_Q3_K_M.gguf",
+        "Q3_K_M"
+      ],
+      "sha256": "024edce38ba06f957af68a9e4ebf0691e1a897196ed5c067434bb488dc26d800",
+      "bytes": 4018922880,
+      "provenance_sha256": "547235f72f42277ab0be7941c7d83085d50b18e5dd4900c3a3da066616a3d373"
+    },
+    {
+      "id": "llama8b_q2_k",
+      "lineage": "llama8b",
+      "precision": "Q2_K",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/llama8b_Q2_K.gguf",
+      "source_revision": "6d6118a261564da05fd7e651f4bc069eb7c38c20",
+      "source_repo": "second-state/Meta-Llama-3.1-8B-Instruct-GGUF",
+      "license": "llama3.1",
+      "conversion": "published F16 GGUF; original meta-llama/Llama-3.1-8B-Instruct@0e9e39f249a16976918f6564b8830bc894c89659; publisher conversion command not independently verified",
+      "source_sha256": "031c5d9ae1ad8cf676f8498ef539418c0d1f2b1b9c9d33c8f9207b83218c89b3",
+      "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+      "quantization_command": [
+        "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/llama8b/Llama-3.1-8B-Instruct-f16.gguf",
+        "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/llama8b_Q2_K.gguf",
+        "Q2_K"
+      ],
+      "sha256": "bd52c261c8b48d964542130cee85cc027f844dc3b5b17064942e00713abb4eee",
+      "bytes": 3179136384,
+      "provenance_sha256": "32351d0328b5b57114f5ca963b5030ebe1f1a847c62b6ede89cd1b9583d52404"
+    }
+  ],
+  "runtime": {
+    "threads": 8,
+    "context": 2048,
+    "gpu_layers": 0,
+    "kv_precision": "f16",
+    "max_tokens": 64,
+    "temperature": 0,
+    "seed": 20261120,
+    "request_timeout": 180
+  },
+  "analysis_policy": "All scheduled tasks count; separate source/decision; family intervals; no model selection by outcome. F16 references before quantized arms; qualification is descriptive development screen.",
+  "stopping_policy": "Run every listed arm; preserve failures; do not replace attempts or alter frozen plan."
+}
