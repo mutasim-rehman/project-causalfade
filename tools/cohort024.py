@@ -107,6 +107,11 @@ def model_inventory(path):
                 raise ValueError("Lineage source provenance mismatch: " + lineage)
             if e["precision"] != "F16":
                 sidecar = Path(e["path"]).with_suffix(".provenance.json")
+                command = e.get("quantization_command")
+                if not isinstance(command,list) or len(command)!=4 or command != [str(Path(command[0]).resolve()),ref["path"],e["path"],e["precision"]]:
+                    raise ValueError("Quantization command mismatch: " + e["id"])
+                if digest(command[0]) != e.get("quantizer_sha256"):
+                    raise ValueError("Quantizer hash mismatch: " + e["id"])
                 if not sidecar.is_file() or load(sidecar).get("output_sha256") != e["sha256"] or load(sidecar).get("source_sha256") != ref["sha256"] or load(sidecar).get("quantizer_sha256") != e.get("quantizer_sha256"):
                     raise ValueError("Quantized arm provenance mismatch: " + e["id"])
                 e["provenance_sha256"] = digest(sidecar)
@@ -182,7 +187,9 @@ def build_models(args):
             inventory.append({"id": f"{lineage}_{precision.lower()}", "lineage": lineage, "precision": precision,
                               "path": str(target), "source_revision": src["source_revision"],
                               "source_repo":src["source_repo"],"license":src["license"],"conversion":src["conversion"],
-                              "source_sha256":base_hash,"quantizer_sha256":quant_hash,"sha256": digest(target)})
+                              "source_sha256":base_hash,"quantizer_sha256":quant_hash,
+                              "quantization_command":[str(quantizer),str(f16),str(target),precision],
+                              "sha256": digest(target)})
     if args.models_out.exists():
         raise FileExistsError(args.models_out)
     write_json(args.models_out, inventory)
