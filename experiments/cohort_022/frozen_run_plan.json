@@ -1,0 +1,62 @@
+{
+  "classification": "development_only_not_confirmatory",
+  "prepared_utc": "2026-11-16T03:40:06Z",
+  "seed": 20261118,
+  "families": 8,
+  "tasks_per_model": 576,
+  "total_requests": 1152,
+  "model_order": [
+    "qwen_f16",
+    "mistral_q4"
+  ],
+  "models": {
+    "qwen_f16": {
+      "path": "$HOME/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+      "sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+      "precision": "F16",
+      "chat_template": "GGUF embedded ChatML-style via llama.cpp"
+    },
+    "mistral_q4": {
+      "path": "$HOME/Desktop/CAUSALFADE/weights/gguf/mistral-7b-instruct-v0.3/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+      "sha256": "1270d22c0fbb3d092fb725d4d96c457b7b687a5f5a715abe1e818da303e562b6",
+      "bytes": 4372812000,
+      "precision": "Q4_K_M",
+      "chat_template": "GGUF embedded [INST] style via llama.cpp",
+      "source_repo": "bartowski/Mistral-7B-Instruct-v0.3-GGUF",
+      "revision": "61fd4167fff3ab01ee1cfe0da183fa27a944db48",
+      "license": "apache-2.0",
+      "original": "mistralai/Mistral-7B-Instruct-v0.3"
+    }
+  },
+  "server_sha256": "6d3d7416bf83500c5adda80ee4bb076f6877e38ff0a53ddc81c0b278108b2f24",
+  "inference": {
+    "threads": 8,
+    "max_tokens": 64,
+    "request_timeout_seconds": 180,
+    "max_seconds_per_session": 7200,
+    "temperature": 0,
+    "context": 2048,
+    "gpu_layers": 0,
+    "kv_precision": "f16",
+    "fresh_context": true
+  },
+  "schedule_policy": "identical complete seeded shuffle; Qwen first, Mistral second; no condition selection",
+  "analysis_specification": "checkpoint-specific guidance analysis, family-standardized randomized-only minus ordinary deficit, paired Mistral-minus-Qwen family contrast, simple-component qualification, all scheduled invalids as failures",
+  "stopping_policy": "run both models regardless of first outcome; preserve resumable budget progress; no prompt or model changes after outcomes",
+  "limitations": [
+    "different model family and weight precision are bundled",
+    "eight development families",
+    "cross-request patterns do not establish mediation"
+  ],
+  "file_sha256": {
+    "experiments/cohort_022/input/manifest.json": "547902a1f5a975cd844db514b403a074a61f2ab6a62973ae06b06c0e5f5e6e5c",
+    "experiments/cohort_022/input/public_tasks.jsonl": "78ebb4f9babf752fffc68bde95d1fdb0c765bd3b98e6b8af7c4328985c39fdb4",
+    "experiments/cohort_022/input/oracle_truth.jsonl": "73f536dbfb57ead068724ec80c63da501b6e837a85d98366e4f6a9a22821be3a",
+    "causalfade/guidance.py": "6f51492bc08e64105cf08c51d6cc5cdfb27fe65a00510046807382ef15e3c01b",
+    "causalfade/sensitivity.py": "6f6edb0113d6fa6b4326d4d37e99191327725e38fa00f46dcafb185e1a0340b1",
+    "causalfade/worlds.py": "176b0338171d6baff5a3fdd321ff531def145cabf90e4087c2620040571f4725",
+    "tools/replication_pilot.py": "6c5c1c6d48ac99003bfb1ab8a43c948dc1c5ad6c24b6d58f956836c6e590834b",
+    "tools/analyze_replication.py": "525c9fdd24b5a23549f2c9ca75fd0f6a38e037aeb801a95e78a1544298e178f6",
+    "tools/run_direct_pilot.py": "2ec6a70e50e14f88cb17e2244e244d338cbd86780beffd9de48891d06a3d3ea1"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "version": "source-guidance-development-v1",
+  "classification": "development_only_not_confirmatory",
+  "families": 8,
+  "seed": 20261118,
+  "tasks": 576,
+  "two_source_stems": 128,
+  "two_source_prompts": 512,
+  "randomized_only": 32,
+  "direct_identification": 32,
+  "effect_strengths": [
+    0.04,
+    0.12
+  ],
+  "observational_strength": 0.36,
+  "specific_guidance": "For this intervention decision, use the random-assignment study to evaluate the effect of X.",
+  "neutral_guidance": "For this intervention decision, review the displayed studies and success probabilities carefully.",
+  "schedule_policy": "one seeded shuffle; every prompt fresh context",
+  "file_sha256": {
+    "public_tasks.jsonl": "78ebb4f9babf752fffc68bde95d1fdb0c765bd3b98e6b8af7c4328985c39fdb4",
+    "oracle_truth.jsonl": "73f536dbfb57ead068724ec80c63da501b6e837a85d98366e4f6a9a22821be3a"
+  }
+}
