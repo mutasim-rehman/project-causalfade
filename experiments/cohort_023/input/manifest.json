@@ -1,0 +1,25 @@
+{
+  "version": "measurement-audit-v1",
+  "classification": "development_only",
+  "seed": 20261119,
+  "families": 8,
+  "strength": 0.12,
+  "tasks": 896,
+  "cells_per_family": 112,
+  "training_families": [
+    "audit-20261119-0000",
+    "audit-20261119-0001",
+    "audit-20261119-0002",
+    "audit-20261119-0003"
+  ],
+  "heldout_families": [
+    "audit-20261119-0004",
+    "audit-20261119-0005",
+    "audit-20261119-0006",
+    "audit-20261119-0007"
+  ],
+  "file_sha256": {
+    "public_tasks.jsonl": "909fbfc0ee36c3d5752b05c25197822e53d4559f813944d237c342b1d77f1f5f",
+    "oracle_truth.jsonl": "10ecb1f693db598eb8d782931083aa587afdb074f78f98c22aba8385a871061b"
+  }
+}

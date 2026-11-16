@@ -1,0 +1,50 @@
+{
+  "classification": "development_only_not_confirmatory",
+  "prepared_utc": "2026-11-16T06:35:36.936395+00:00",
+  "seed": 20261119,
+  "families": 8,
+  "strength": 0.12,
+  "tasks": 896,
+  "model_order": [
+    "qwen_f16"
+  ],
+  "model_sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+  "server_sha256": "6d3d7416bf83500c5adda80ee4bb076f6877e38ff0a53ddc81c0b278108b2f24",
+  "chat_template": "GGUF embedded Qwen ChatML template; /props and /apply-template inspected",
+  "inference": {
+    "threads": 8,
+    "gpu_layers": 0,
+    "context": 2048,
+    "kv_precision": "f16",
+    "temperature": 0,
+    "max_tokens": 64,
+    "request_timeout_seconds": 180,
+    "max_seconds_per_session": 7200,
+    "fresh_context": true
+  },
+  "schedule": "one full seeded shuffle; run all cells and controls; no outcome-dependent filtering",
+  "qualification": {
+    "overall_valid_min": 0.95,
+    "source_selection_each_name_min": 0.75,
+    "randomized_only_each_direction_min": 0.75
+  },
+  "robust_gap_rule": {
+    "family_standardized_gap_min": 0.15,
+    "each_name_and_answer_order_gap_min": 0.1,
+    "numeric_control_each_direction_min": 0.75,
+    "noncausal_control_each_direction_min": 0.75
+  },
+  "analysis": "strict validity, action/direction/name/order cells, activation, paired randomized-only and matched-control effects, family intervals and flips; fixed rival policies and 4/4 family train/holdout action-bias fit",
+  "stopping": "complete all 896; if simple components fail, stop isolated-gap interpretation; if robustness fails, report interface/control boundary; no prompt or model changes after results",
+  "file_sha256": {
+    "experiments/cohort_023/input/manifest.json": "5c4e9d9fa319a10534d203e69a05741ecb76a3f33ce16f073551a4c55a2f1396",
+    "experiments/cohort_023/input/public_tasks.jsonl": "909fbfc0ee36c3d5752b05c25197822e53d4559f813944d237c342b1d77f1f5f",
+    "experiments/cohort_023/input/oracle_truth.jsonl": "10ecb1f693db598eb8d782931083aa587afdb074f78f98c22aba8385a871061b",
+    "causalfade/measurement_audit.py": "3143831127ebb652bc811397ae60afa6efadc4f1042de93f693e8fa791dc08e6",
+    "causalfade/worlds.py": "176b0338171d6baff5a3fdd321ff531def145cabf90e4087c2620040571f4725",
+    "causalfade/sensitivity.py": "6f6edb0113d6fa6b4326d4d37e99191327725e38fa00f46dcafb185e1a0340b1",
+    "tools/measurement_audit_pilot.py": "cdf00620050cda961a146cfee851693618349f28ef5a629f405397cc18cb682e",
+    "tools/analyze_measurement_audit.py": "cc7ad059b4a47f6fbed0087e7727bcb90cb251f4c2590369bc3ded2f4a0905f3",
+    "tools/run_direct_pilot.py": "2ec6a70e50e14f88cb17e2244e244d338cbd86780beffd9de48891d06a3d3ea1"
+  }
+}
