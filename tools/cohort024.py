@@ -362,6 +362,8 @@ def run_all(args):
         if args.arm and model["id"] != args.arm: continue
         status = run_arm(plan, model, Path(args.out) / model["id"], args.max_seconds, args.progress_every)
         if status != "success": return 2
+        if args.checkpoint_after_arm:
+            checkpoint(argparse.Namespace(plan=args.plan, runs=args.out))
     return 0
 
 
@@ -465,7 +467,7 @@ def main():
     a = sub.add_parser("validate"); a.add_argument("--dataset", type=Path, required=True)
     a = sub.add_parser("freeze"); a.add_argument("--dataset", type=Path, required=True); a.add_argument("--models", type=Path, required=True); a.add_argument("--server", type=Path, required=True); a.add_argument("--plan", type=Path, required=True); a.add_argument("--threads", type=int, default=8)
     a = sub.add_parser("build-models"); a.add_argument("--sources", type=Path, required=True); a.add_argument("--quantizer", type=Path, required=True); a.add_argument("--out", type=Path, required=True); a.add_argument("--models-out", type=Path, required=True); a.add_argument("--levels", default="Q8_0,Q6_K,Q5_K_M,Q4_K_M,Q3_K_M,Q2_K")
-    a = sub.add_parser("run-all"); a.add_argument("--plan", type=Path, required=True); a.add_argument("--out", type=Path, required=True); a.add_argument("--arm"); a.add_argument("--max-seconds", type=float, default=7200); a.add_argument("--progress-every", type=int, default=20)
+    a = sub.add_parser("run-all"); a.add_argument("--plan", type=Path, required=True); a.add_argument("--out", type=Path, required=True); a.add_argument("--arm"); a.add_argument("--max-seconds", type=float, default=7200); a.add_argument("--progress-every", type=int, default=20); a.add_argument("--checkpoint-after-arm", action="store_true")
     a = sub.add_parser("analyze"); a.add_argument("--plan", type=Path, required=True); a.add_argument("--runs", type=Path, required=True); a.add_argument("--out", type=Path, required=True)
     a = sub.add_parser("status"); a.add_argument("--plan", type=Path, required=True); a.add_argument("--runs", type=Path, required=True)
     a = sub.add_parser("checkpoint"); a.add_argument("--plan", type=Path, required=True); a.add_argument("--runs", type=Path, required=True)

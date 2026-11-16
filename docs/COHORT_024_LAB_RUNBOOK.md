@@ -1,5 +1,23 @@
 # Cohort 024 lab runbook (Ubuntu)
 
+## Unattended handoff
+
+After the preparation-only checkpoint is committed, one command can resume pinned F16 downloads, verify publisher LFS SHA-256 hashes and Meta Instruct authorization, build/reuse all six quantizations per lineage, write ignored local inventories, freeze and push the 21-arm plan, then run all 30,912 requests. It resumes clean two-hour arm budget pauses and commits/pushes audited completed arms. A failed push or failed task stops visibly. The command does not run repository tests. Keep the terminal or a persistent `tmux` session alive:
+
+```bash
+cd "$HOME/Desktop/project-causalfade"
+.venv/bin/python -u tools/cohort024_unattended.py start 2>&1 | tee -a experiments/cohort_024/bootstrap.log
+```
+
+In another terminal, stream aggregate progress:
+
+```bash
+cd "$HOME/Desktop/project-causalfade"
+.venv/bin/python -u tools/cohort024_unattended.py progress --interval 20
+```
+
+The launcher reads `HF_TOKEN` from the environment or the ignored `.env` file; the token is never printed or passed on a command line. It checks authorized access to the pinned official Meta Instruct source before using the pinned Llama F16 GGUF derivative. F16 GGUF files are downloaded from pinned `second-state` revisions with publisher LFS hashes; the publisher's original conversion command is not independently verified. The existing Qwen F16 must match its archived SHA-256. No 12–14B arm is included. The three model lineages are distinct from the fixture's eight SCM world families. A roughly **26–45 hour** inference window is plausible on this CPU, excluding downloads and quantization; the 7200-second per-session budget means some F16 arms will pause and resume automatically. This is a development measurement screen, not a confirmatory quantization result.
+
 The code and fixture are committed before inference. Start from a clean checkout. Keep model GGUF files and quantized outputs **outside Git**. No Codex agent is required. Commands stop on missing files, changed hashes, failed attempts or changed settings. They do not silently retry a failed request.
 
 ## 1. Pull and verify
