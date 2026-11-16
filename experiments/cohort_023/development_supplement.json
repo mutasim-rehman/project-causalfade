@@ -1,0 +1,354 @@
+{
+  "classification": "post_inference_supplement_of_predeclared_outcomes",
+  "raw_sha256": "18860e362845b4638c6b444361f20141865c966e35fa91c58976097b3f804afe",
+  "source_reason": "Frozen analysis omitted aggregate paired and numeric-direction summaries; no scoring or fixture changes.",
+  "overall_paired_randomized_only": {
+    "other_minus_decision": {
+      "families": 8,
+      "estimate": 0.5546875,
+      "family_percentile_95": [
+        0.5390625,
+        0.5703125
+      ]
+    },
+    "action_flips_other_to_decision": {
+      "leave_off->activate": 116,
+      "activate->activate": 102,
+      "activate->leave_off": 26,
+      "leave_off->leave_off": 12
+    }
+  },
+  "overall_paired_noncausal": {
+    "other_minus_decision": {
+      "families": 8,
+      "estimate": 0.2890625,
+      "family_percentile_95": [
+        0.26171875,
+        0.31640625
+      ]
+    },
+    "action_flips_other_to_decision": {
+      "activate->activate": 147,
+      "leave_off->activate": 71,
+      "leave_off->leave_off": 19,
+      "activate->leave_off": 19
+    }
+  },
+  "by_direction": {
+    "0": {
+      "decision": {
+        "scheduled": 128,
+        "valid": 128,
+        "correct": 12,
+        "accuracy": 0.09375,
+        "activation_rate": 0.90625
+      },
+      "randomized_only_minus_decision": {
+        "other_minus_decision": {
+          "families": 8,
+          "estimate": 0.90625,
+          "family_percentile_95": [
+            0.859375,
+            0.9453125
+          ]
+        },
+        "action_flips_other_to_decision": {
+          "leave_off->activate": 116,
+          "leave_off->leave_off": 12
+        }
+      }
+    },
+    "1": {
+      "decision": {
+        "scheduled": 128,
+        "valid": 128,
+        "correct": 102,
+        "accuracy": 0.796875,
+        "activation_rate": 0.796875
+      },
+      "randomized_only_minus_decision": {
+        "other_minus_decision": {
+          "families": 8,
+          "estimate": 0.203125,
+          "family_percentile_95": [
+            0.171875,
+            0.2421875
+          ]
+        },
+        "action_flips_other_to_decision": {
+          "activate->activate": 102,
+          "activate->leave_off": 26
+        }
+      }
+    }
+  },
+  "by_name": {
+    "A": {
+      "decision": {
+        "scheduled": 128,
+        "valid": 128,
+        "correct": 60,
+        "accuracy": 0.46875,
+        "activation_rate": 0.875
+      },
+      "randomized_only_minus_decision": {
+        "other_minus_decision": {
+          "families": 8,
+          "estimate": 0.53125,
+          "family_percentile_95": [
+            0.5078125,
+            0.5546875
+          ]
+        },
+        "action_flips_other_to_decision": {
+          "leave_off->activate": 58,
+          "activate->activate": 54,
+          "activate->leave_off": 10,
+          "leave_off->leave_off": 6
+        }
+      }
+    },
+    "B": {
+      "decision": {
+        "scheduled": 128,
+        "valid": 128,
+        "correct": 54,
+        "accuracy": 0.421875,
+        "activation_rate": 0.828125
+      },
+      "randomized_only_minus_decision": {
+        "other_minus_decision": {
+          "families": 8,
+          "estimate": 0.578125,
+          "family_percentile_95": [
+            0.546875,
+            0.609375
+          ]
+        },
+        "action_flips_other_to_decision": {
+          "leave_off->activate": 58,
+          "activate->activate": 48,
+          "activate->leave_off": 16,
+          "leave_off->leave_off": 6
+        }
+      }
+    }
+  },
+  "by_answer_order": {
+    "canonical": {
+      "decision": {
+        "scheduled": 128,
+        "valid": 128,
+        "correct": 57,
+        "accuracy": 0.4453125,
+        "activation_rate": 0.7578125
+      },
+      "randomized_only_minus_decision": {
+        "other_minus_decision": {
+          "families": 8,
+          "estimate": 0.5546875,
+          "family_percentile_95": [
+            0.53125,
+            0.578125
+          ]
+        },
+        "action_flips_other_to_decision": {
+          "leave_off->activate": 52,
+          "activate->activate": 45,
+          "activate->leave_off": 19,
+          "leave_off->leave_off": 12
+        }
+      }
+    },
+    "reversed": {
+      "decision": {
+        "scheduled": 128,
+        "valid": 128,
+        "correct": 57,
+        "accuracy": 0.4453125,
+        "activation_rate": 0.9453125
+      },
+      "randomized_only_minus_decision": {
+        "other_minus_decision": {
+          "families": 8,
+          "estimate": 0.5546875,
+          "family_percentile_95": [
+            0.5390625,
+            0.5625
+          ]
+        },
+        "action_flips_other_to_decision": {
+          "leave_off->activate": 64,
+          "activate->activate": 57,
+          "activate->leave_off": 7
+        }
+      }
+    }
+  },
+  "by_physical_order": {
+    "randomized_first": {
+      "decision": {
+        "scheduled": 128,
+        "valid": 128,
+        "correct": 64,
+        "accuracy": 0.5,
+        "activation_rate": 1
+      },
+      "randomized_only_minus_decision": {
+        "other_minus_decision": {
+          "families": 8,
+          "estimate": 0.5,
+          "family_percentile_95": [
+            0.5,
+            0.5
+          ]
+        },
+        "action_flips_other_to_decision": {
+          "leave_off->activate": 64,
+          "activate->activate": 64
+        }
+      }
+    },
+    "historical_first": {
+      "decision": {
+        "scheduled": 128,
+        "valid": 128,
+        "correct": 50,
+        "accuracy": 0.390625,
+        "activation_rate": 0.703125
+      },
+      "randomized_only_minus_decision": {
+        "other_minus_decision": {
+          "families": 8,
+          "estimate": 0.609375,
+          "family_percentile_95": [
+            0.578125,
+            0.640625
+          ]
+        },
+        "action_flips_other_to_decision": {
+          "leave_off->activate": 52,
+          "activate->activate": 38,
+          "activate->leave_off": 26,
+          "leave_off->leave_off": 12
+        }
+      }
+    }
+  },
+  "by_condition": {
+    "aligned": {
+      "decision": {
+        "scheduled": 128,
+        "valid": 128,
+        "correct": 65,
+        "accuracy": 0.5078125,
+        "activation_rate": 0.9453125
+      },
+      "randomized_only_minus_decision": {
+        "other_minus_decision": {
+          "families": 8,
+          "estimate": 0.4921875,
+          "family_percentile_95": [
+            0.46875,
+            0.515625
+          ]
+        },
+        "action_flips_other_to_decision": {
+          "leave_off->activate": 60,
+          "activate->activate": 61,
+          "leave_off->leave_off": 4,
+          "activate->leave_off": 3
+        }
+      }
+    },
+    "conflict": {
+      "decision": {
+        "scheduled": 128,
+        "valid": 128,
+        "correct": 49,
+        "accuracy": 0.3828125,
+        "activation_rate": 0.7578125
+      },
+      "randomized_only_minus_decision": {
+        "other_minus_decision": {
+          "families": 8,
+          "estimate": 0.6171875,
+          "family_percentile_95": [
+            0.5859375,
+            0.6484375
+          ]
+        },
+        "action_flips_other_to_decision": {
+          "leave_off->activate": 56,
+          "activate->activate": 41,
+          "activate->leave_off": 23,
+          "leave_off->leave_off": 8
+        }
+      }
+    }
+  },
+  "numerical_control": {
+    "0": {
+      "scheduled": 32,
+      "valid": 32,
+      "correct": 18,
+      "accuracy": 0.5625,
+      "activation_rate": null,
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.5625,
+        "family_percentile_95": [
+          0.3125,
+          0.8125
+        ]
+      }
+    },
+    "1": {
+      "scheduled": 32,
+      "valid": 32,
+      "correct": 32,
+      "accuracy": 1,
+      "activation_rate": null,
+      "family_interval": {
+        "families": 8,
+        "estimate": 1.0,
+        "family_percentile_95": [
+          1.0,
+          1.0
+        ]
+      }
+    }
+  },
+  "noncausal_control": {
+    "0": {
+      "scheduled": 128,
+      "valid": 128,
+      "correct": 75,
+      "accuracy": 0.5859375,
+      "activation_rate": 0.4140625,
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.5859375,
+        "family_percentile_95": [
+          0.5546875,
+          0.6171875
+        ]
+      }
+    },
+    "1": {
+      "scheduled": 128,
+      "valid": 128,
+      "correct": 113,
+      "accuracy": 0.8828125,
+      "activation_rate": 0.8828125,
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.8828125,
+        "family_percentile_95": [
+          0.875,
+          0.8984375
+        ]
+      }
+    }
+  }
+}

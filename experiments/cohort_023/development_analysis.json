@@ -1,0 +1,1486 @@
+{
+  "classification": "development_only",
+  "manifest_sha256": "5c4e9d9fa319a10534d203e69a05741ecb76a3f33ce16f073551a4c55a2f1396",
+  "run_config_sha256": "aaded91cad79327eb8722f983de95c872ee625e14fdf095e6c240874ac6656aa",
+  "source_sha256": {
+    "tools/measurement_audit_pilot.py": "cdf00620050cda961a146cfee851693618349f28ef5a629f405397cc18cb682e",
+    "causalfade/sensitivity.py": "6f6edb0113d6fa6b4326d4d37e99191327725e38fa00f46dcafb185e1a0340b1",
+    "causalfade/measurement_audit.py": "3143831127ebb652bc811397ae60afa6efadc4f1042de93f693e8fa791dc08e6",
+    "causalfade/worlds.py": "176b0338171d6baff5a3fdd321ff531def145cabf90e4087c2620040571f4725",
+    "tools/run_direct_pilot.py": "2ec6a70e50e14f88cb17e2244e244d338cbd86780beffd9de48891d06a3d3ea1"
+  },
+  "overall": {
+    "scheduled": 896,
+    "completed": 896,
+    "valid": 896,
+    "correct": 660,
+    "accuracy": 0.7366071428571429,
+    "activation_rate_valid": 0.4642857142857143,
+    "finish_reasons": {
+      "stop": 896
+    }
+  },
+  "cells": {
+    "decision": {
+      "scheduled": 256,
+      "completed": 256,
+      "valid": 256,
+      "correct": 114,
+      "accuracy": 0.4453125,
+      "activation_rate_valid": 0.8515625,
+      "finish_reasons": {
+        "stop": 256
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.4453125,
+        "family_percentile_95": [
+          0.4296875,
+          0.4609375
+        ]
+      }
+    },
+    "decision|0|aligned|historical_first|A|canonical": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 0,
+      "accuracy": 0,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.0,
+        "family_percentile_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "decision|0|aligned|historical_first|A|reversed": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 0,
+      "accuracy": 0,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.0,
+        "family_percentile_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "decision|0|aligned|historical_first|B|canonical": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 4,
+      "accuracy": 0.5,
+      "activation_rate_valid": 0.5,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.5,
+        "family_percentile_95": [
+          0.125,
+          0.875
+        ]
+      }
+    },
+    "decision|0|aligned|historical_first|B|reversed": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 0,
+      "accuracy": 0,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.0,
+        "family_percentile_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "decision|0|aligned|randomized_first|A|canonical": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 0,
+      "accuracy": 0,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.0,
+        "family_percentile_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "decision|0|aligned|randomized_first|A|reversed": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 0,
+      "accuracy": 0,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.0,
+        "family_percentile_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "decision|0|aligned|randomized_first|B|canonical": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 0,
+      "accuracy": 0,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.0,
+        "family_percentile_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "decision|0|aligned|randomized_first|B|reversed": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 0,
+      "accuracy": 0,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.0,
+        "family_percentile_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "decision|0|conflict|historical_first|A|canonical": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 6,
+      "accuracy": 0.75,
+      "activation_rate_valid": 0.25,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.75,
+        "family_percentile_95": [
+          0.375,
+          1.0
+        ]
+      }
+    },
+    "decision|0|conflict|historical_first|A|reversed": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 0,
+      "accuracy": 0,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.0,
+        "family_percentile_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "decision|0|conflict|historical_first|B|canonical": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 2,
+      "accuracy": 0.25,
+      "activation_rate_valid": 0.75,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.25,
+        "family_percentile_95": [
+          0.0,
+          0.625
+        ]
+      }
+    },
+    "decision|0|conflict|historical_first|B|reversed": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 0,
+      "accuracy": 0,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.0,
+        "family_percentile_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "decision|0|conflict|randomized_first|A|canonical": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 0,
+      "accuracy": 0,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.0,
+        "family_percentile_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "decision|0|conflict|randomized_first|A|reversed": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 0,
+      "accuracy": 0,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.0,
+        "family_percentile_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "decision|0|conflict|randomized_first|B|canonical": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 0,
+      "accuracy": 0,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.0,
+        "family_percentile_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "decision|0|conflict|randomized_first|B|reversed": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 0,
+      "accuracy": 0,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.0,
+        "family_percentile_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "decision|1|aligned|historical_first|A|canonical": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 6,
+      "accuracy": 0.75,
+      "activation_rate_valid": 0.75,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.75,
+        "family_percentile_95": [
+          0.375,
+          1.0
+        ]
+      }
+    },
+    "decision|1|aligned|historical_first|A|reversed": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 8,
+      "accuracy": 1,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 1.0,
+        "family_percentile_95": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "decision|1|aligned|historical_first|B|canonical": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 7,
+      "accuracy": 0.875,
+      "activation_rate_valid": 0.875,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.875,
+        "family_percentile_95": [
+          0.625,
+          1.0
+        ]
+      }
+    },
+    "decision|1|aligned|historical_first|B|reversed": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 8,
+      "accuracy": 1,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 1.0,
+        "family_percentile_95": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "decision|1|aligned|randomized_first|A|canonical": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 8,
+      "accuracy": 1,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 1.0,
+        "family_percentile_95": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "decision|1|aligned|randomized_first|A|reversed": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 8,
+      "accuracy": 1,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 1.0,
+        "family_percentile_95": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "decision|1|aligned|randomized_first|B|canonical": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 8,
+      "accuracy": 1,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 1.0,
+        "family_percentile_95": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "decision|1|aligned|randomized_first|B|reversed": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 8,
+      "accuracy": 1,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 1.0,
+        "family_percentile_95": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "decision|1|conflict|historical_first|A|canonical": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 0,
+      "accuracy": 0,
+      "activation_rate_valid": 0,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.0,
+        "family_percentile_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "decision|1|conflict|historical_first|A|reversed": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 8,
+      "accuracy": 1,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 1.0,
+        "family_percentile_95": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "decision|1|conflict|historical_first|B|canonical": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 0,
+      "accuracy": 0,
+      "activation_rate_valid": 0,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.0,
+        "family_percentile_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "decision|1|conflict|historical_first|B|reversed": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 1,
+      "accuracy": 0.125,
+      "activation_rate_valid": 0.125,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.125,
+        "family_percentile_95": [
+          0.0,
+          0.375
+        ]
+      }
+    },
+    "decision|1|conflict|randomized_first|A|canonical": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 8,
+      "accuracy": 1,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 1.0,
+        "family_percentile_95": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "decision|1|conflict|randomized_first|A|reversed": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 8,
+      "accuracy": 1,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 1.0,
+        "family_percentile_95": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "decision|1|conflict|randomized_first|B|canonical": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 8,
+      "accuracy": 1,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 1.0,
+        "family_percentile_95": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "decision|1|conflict|randomized_first|B|reversed": {
+      "scheduled": 8,
+      "completed": 8,
+      "valid": 8,
+      "correct": 8,
+      "accuracy": 1,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 8
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 1.0,
+        "family_percentile_95": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "decision|beneficial": {
+      "scheduled": 128,
+      "completed": 128,
+      "valid": 128,
+      "correct": 102,
+      "accuracy": 0.796875,
+      "activation_rate_valid": 0.796875,
+      "finish_reasons": {
+        "stop": 128
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.796875,
+        "family_percentile_95": [
+          0.7578125,
+          0.828125
+        ]
+      }
+    },
+    "decision|harmful": {
+      "scheduled": 128,
+      "completed": 128,
+      "valid": 128,
+      "correct": 12,
+      "accuracy": 0.09375,
+      "activation_rate_valid": 0.90625,
+      "finish_reasons": {
+        "stop": 128
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.09375,
+        "family_percentile_95": [
+          0.0546875,
+          0.140625
+        ]
+      }
+    },
+    "noncausal_control": {
+      "scheduled": 256,
+      "completed": 256,
+      "valid": 256,
+      "correct": 188,
+      "accuracy": 0.734375,
+      "activation_rate_valid": 0.6484375,
+      "finish_reasons": {
+        "stop": 256
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.734375,
+        "family_percentile_95": [
+          0.71875,
+          0.7461914062499995
+        ]
+      }
+    },
+    "noncausal_control|beneficial": {
+      "scheduled": 128,
+      "completed": 128,
+      "valid": 128,
+      "correct": 113,
+      "accuracy": 0.8828125,
+      "activation_rate_valid": 0.8828125,
+      "finish_reasons": {
+        "stop": 128
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.8828125,
+        "family_percentile_95": [
+          0.875,
+          0.8984375
+        ]
+      }
+    },
+    "noncausal_control|harmful": {
+      "scheduled": 128,
+      "completed": 128,
+      "valid": 128,
+      "correct": 75,
+      "accuracy": 0.5859375,
+      "activation_rate_valid": 0.4140625,
+      "finish_reasons": {
+        "stop": 128
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.5859375,
+        "family_percentile_95": [
+          0.5546875,
+          0.6171875
+        ]
+      }
+    },
+    "numerical_control": {
+      "scheduled": 64,
+      "completed": 64,
+      "valid": 64,
+      "correct": 50,
+      "accuracy": 0.78125,
+      "activation_rate_valid": null,
+      "finish_reasons": {
+        "stop": 64
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.78125,
+        "family_percentile_95": [
+          0.65625,
+          0.90625
+        ]
+      }
+    },
+    "randomized_only": {
+      "scheduled": 64,
+      "completed": 64,
+      "valid": 64,
+      "correct": 64,
+      "accuracy": 1,
+      "activation_rate_valid": 0.5,
+      "finish_reasons": {
+        "stop": 64
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 1.0,
+        "family_percentile_95": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "randomized_only|beneficial": {
+      "scheduled": 32,
+      "completed": 32,
+      "valid": 32,
+      "correct": 32,
+      "accuracy": 1,
+      "activation_rate_valid": 1,
+      "finish_reasons": {
+        "stop": 32
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 1.0,
+        "family_percentile_95": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "randomized_only|harmful": {
+      "scheduled": 32,
+      "completed": 32,
+      "valid": 32,
+      "correct": 32,
+      "accuracy": 1,
+      "activation_rate_valid": 0,
+      "finish_reasons": {
+        "stop": 32
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 1.0,
+        "family_percentile_95": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "selection|A": {
+      "scheduled": 128,
+      "completed": 128,
+      "valid": 128,
+      "correct": 116,
+      "accuracy": 0.90625,
+      "activation_rate_valid": null,
+      "finish_reasons": {
+        "stop": 128
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.90625,
+        "family_percentile_95": [
+          0.8828125,
+          0.9296875
+        ]
+      }
+    },
+    "selection|B": {
+      "scheduled": 128,
+      "completed": 128,
+      "valid": 128,
+      "correct": 128,
+      "accuracy": 1,
+      "activation_rate_valid": null,
+      "finish_reasons": {
+        "stop": 128
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 1.0,
+        "family_percentile_95": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "source_selection": {
+      "scheduled": 256,
+      "completed": 256,
+      "valid": 256,
+      "correct": 244,
+      "accuracy": 0.953125,
+      "activation_rate_valid": null,
+      "finish_reasons": {
+        "stop": 256
+      },
+      "family_interval": {
+        "families": 8,
+        "estimate": 0.953125,
+        "family_percentile_95": [
+          0.94140625,
+          0.96484375
+        ]
+      }
+    }
+  },
+  "paired_contrasts": {
+    "aligned|randomized_first|A|canonical": {
+      "two_source_minus_randomized_only": {
+        "families": 8,
+        "estimate": -0.5,
+        "family_percentile_95": [
+          -0.5,
+          -0.5
+        ]
+      },
+      "decision_minus_noncausal_control": {
+        "families": 8,
+        "estimate": 0.0,
+        "family_percentile_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_to_two_source_action_flips": {
+        "leave_off->activate": 8,
+        "activate->activate": 8
+      },
+      "control_to_decision_action_flips": {
+        "activate->activate": 16
+      }
+    },
+    "aligned|randomized_first|A|reversed": {
+      "two_source_minus_randomized_only": {
+        "families": 8,
+        "estimate": -0.5,
+        "family_percentile_95": [
+          -0.5,
+          -0.5
+        ]
+      },
+      "decision_minus_noncausal_control": {
+        "families": 8,
+        "estimate": -0.5,
+        "family_percentile_95": [
+          -0.5,
+          -0.5
+        ]
+      },
+      "baseline_to_two_source_action_flips": {
+        "leave_off->activate": 8,
+        "activate->activate": 8
+      },
+      "control_to_decision_action_flips": {
+        "leave_off->activate": 8,
+        "activate->activate": 8
+      }
+    },
+    "aligned|randomized_first|B|canonical": {
+      "two_source_minus_randomized_only": {
+        "families": 8,
+        "estimate": -0.5,
+        "family_percentile_95": [
+          -0.5,
+          -0.5
+        ]
+      },
+      "decision_minus_noncausal_control": {
+        "families": 8,
+        "estimate": -0.0625,
+        "family_percentile_95": [
+          -0.1875,
+          0.0
+        ]
+      },
+      "baseline_to_two_source_action_flips": {
+        "leave_off->activate": 8,
+        "activate->activate": 8
+      },
+      "control_to_decision_action_flips": {
+        "activate->activate": 15,
+        "leave_off->activate": 1
+      }
+    },
+    "aligned|randomized_first|B|reversed": {
+      "two_source_minus_randomized_only": {
+        "families": 8,
+        "estimate": -0.5,
+        "family_percentile_95": [
+          -0.5,
+          -0.5
+        ]
+      },
+      "decision_minus_noncausal_control": {
+        "families": 8,
+        "estimate": -0.5,
+        "family_percentile_95": [
+          -0.5,
+          -0.5
+        ]
+      },
+      "baseline_to_two_source_action_flips": {
+        "leave_off->activate": 8,
+        "activate->activate": 8
+      },
+      "control_to_decision_action_flips": {
+        "leave_off->activate": 8,
+        "activate->activate": 8
+      }
+    },
+    "aligned|historical_first|A|canonical": {
+      "two_source_minus_randomized_only": {
+        "families": 8,
+        "estimate": -0.625,
+        "family_percentile_95": [
+          -0.8125,
+          -0.5
+        ]
+      },
+      "decision_minus_noncausal_control": {
+        "families": 8,
+        "estimate": -0.375,
+        "family_percentile_95": [
+          -0.6875,
+          -0.125
+        ]
+      },
+      "baseline_to_two_source_action_flips": {
+        "leave_off->activate": 8,
+        "activate->activate": 6,
+        "activate->leave_off": 2
+      },
+      "control_to_decision_action_flips": {
+        "leave_off->activate": 4,
+        "activate->activate": 10,
+        "activate->leave_off": 2
+      }
+    },
+    "aligned|historical_first|A|reversed": {
+      "two_source_minus_randomized_only": {
+        "families": 8,
+        "estimate": -0.5,
+        "family_percentile_95": [
+          -0.5,
+          -0.5
+        ]
+      },
+      "decision_minus_noncausal_control": {
+        "families": 8,
+        "estimate": -0.5,
+        "family_percentile_95": [
+          -0.5,
+          -0.5
+        ]
+      },
+      "baseline_to_two_source_action_flips": {
+        "leave_off->activate": 8,
+        "activate->activate": 8
+      },
+      "control_to_decision_action_flips": {
+        "leave_off->activate": 8,
+        "activate->activate": 8
+      }
+    },
+    "aligned|historical_first|B|canonical": {
+      "two_source_minus_randomized_only": {
+        "families": 8,
+        "estimate": -0.3125,
+        "family_percentile_95": [
+          -0.4390624999999999,
+          -0.125
+        ]
+      },
+      "decision_minus_noncausal_control": {
+        "families": 8,
+        "estimate": -0.3125,
+        "family_percentile_95": [
+          -0.4390624999999999,
+          -0.125
+        ]
+      },
+      "baseline_to_two_source_action_flips": {
+        "leave_off->activate": 4,
+        "activate->activate": 7,
+        "leave_off->leave_off": 4,
+        "activate->leave_off": 1
+      },
+      "control_to_decision_action_flips": {
+        "leave_off->activate": 4,
+        "activate->activate": 7,
+        "leave_off->leave_off": 4,
+        "activate->leave_off": 1
+      }
+    },
+    "aligned|historical_first|B|reversed": {
+      "two_source_minus_randomized_only": {
+        "families": 8,
+        "estimate": -0.5,
+        "family_percentile_95": [
+          -0.5,
+          -0.5
+        ]
+      },
+      "decision_minus_noncausal_control": {
+        "families": 8,
+        "estimate": -0.5,
+        "family_percentile_95": [
+          -0.5,
+          -0.5
+        ]
+      },
+      "baseline_to_two_source_action_flips": {
+        "leave_off->activate": 8,
+        "activate->activate": 8
+      },
+      "control_to_decision_action_flips": {
+        "leave_off->activate": 8,
+        "activate->activate": 8
+      }
+    },
+    "conflict|randomized_first|A|canonical": {
+      "two_source_minus_randomized_only": {
+        "families": 8,
+        "estimate": -0.5,
+        "family_percentile_95": [
+          -0.5,
+          -0.5
+        ]
+      },
+      "decision_minus_noncausal_control": {
+        "families": 8,
+        "estimate": 0.0,
+        "family_percentile_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_to_two_source_action_flips": {
+        "leave_off->activate": 8,
+        "activate->activate": 8
+      },
+      "control_to_decision_action_flips": {
+        "activate->activate": 16
+      }
+    },
+    "conflict|randomized_first|A|reversed": {
+      "two_source_minus_randomized_only": {
+        "families": 8,
+        "estimate": -0.5,
+        "family_percentile_95": [
+          -0.5,
+          -0.5
+        ]
+      },
+      "decision_minus_noncausal_control": {
+        "families": 8,
+        "estimate": -0.5,
+        "family_percentile_95": [
+          -0.5,
+          -0.5
+        ]
+      },
+      "baseline_to_two_source_action_flips": {
+        "leave_off->activate": 8,
+        "activate->activate": 8
+      },
+      "control_to_decision_action_flips": {
+        "leave_off->activate": 8,
+        "activate->activate": 8
+      }
+    },
+    "conflict|randomized_first|B|canonical": {
+      "two_source_minus_randomized_only": {
+        "families": 8,
+        "estimate": -0.5,
+        "family_percentile_95": [
+          -0.5,
+          -0.5
+        ]
+      },
+      "decision_minus_noncausal_control": {
+        "families": 8,
+        "estimate": 0.0,
+        "family_percentile_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_to_two_source_action_flips": {
+        "leave_off->activate": 8,
+        "activate->activate": 8
+      },
+      "control_to_decision_action_flips": {
+        "activate->activate": 16
+      }
+    },
+    "conflict|randomized_first|B|reversed": {
+      "two_source_minus_randomized_only": {
+        "families": 8,
+        "estimate": -0.5,
+        "family_percentile_95": [
+          -0.5,
+          -0.5
+        ]
+      },
+      "decision_minus_noncausal_control": {
+        "families": 8,
+        "estimate": -0.5,
+        "family_percentile_95": [
+          -0.5,
+          -0.5
+        ]
+      },
+      "baseline_to_two_source_action_flips": {
+        "leave_off->activate": 8,
+        "activate->activate": 8
+      },
+      "control_to_decision_action_flips": {
+        "leave_off->activate": 8,
+        "activate->activate": 8
+      }
+    },
+    "conflict|historical_first|A|canonical": {
+      "two_source_minus_randomized_only": {
+        "families": 8,
+        "estimate": -0.625,
+        "family_percentile_95": [
+          -0.8125,
+          -0.5
+        ]
+      },
+      "decision_minus_noncausal_control": {
+        "families": 8,
+        "estimate": 0.375,
+        "family_percentile_95": [
+          0.1875,
+          0.5
+        ]
+      },
+      "baseline_to_two_source_action_flips": {
+        "leave_off->activate": 2,
+        "activate->leave_off": 8,
+        "leave_off->leave_off": 6
+      },
+      "control_to_decision_action_flips": {
+        "activate->activate": 2,
+        "leave_off->leave_off": 8,
+        "activate->leave_off": 6
+      }
+    },
+    "conflict|historical_first|A|reversed": {
+      "two_source_minus_randomized_only": {
+        "families": 8,
+        "estimate": -0.5,
+        "family_percentile_95": [
+          -0.5,
+          -0.5
+        ]
+      },
+      "decision_minus_noncausal_control": {
+        "families": 8,
+        "estimate": -0.4375,
+        "family_percentile_95": [
+          -0.5,
+          -0.3125
+        ]
+      },
+      "baseline_to_two_source_action_flips": {
+        "leave_off->activate": 8,
+        "activate->activate": 8
+      },
+      "control_to_decision_action_flips": {
+        "leave_off->activate": 7,
+        "activate->activate": 9
+      }
+    },
+    "conflict|historical_first|B|canonical": {
+      "two_source_minus_randomized_only": {
+        "families": 8,
+        "estimate": -0.875,
+        "family_percentile_95": [
+          -1.0,
+          -0.6875
+        ]
+      },
+      "decision_minus_noncausal_control": {
+        "families": 8,
+        "estimate": 0.0625,
+        "family_percentile_95": [
+          -0.125,
+          0.25
+        ]
+      },
+      "baseline_to_two_source_action_flips": {
+        "leave_off->activate": 6,
+        "activate->leave_off": 8,
+        "leave_off->leave_off": 2
+      },
+      "control_to_decision_action_flips": {
+        "activate->activate": 6,
+        "leave_off->leave_off": 7,
+        "activate->leave_off": 3
+      }
+    },
+    "conflict|historical_first|B|reversed": {
+      "two_source_minus_randomized_only": {
+        "families": 8,
+        "estimate": -0.9375,
+        "family_percentile_95": [
+          -1.0,
+          -0.8125
+        ]
+      },
+      "decision_minus_noncausal_control": {
+        "families": 8,
+        "estimate": -0.875,
+        "family_percentile_95": [
+          -1.0,
+          -0.6875
+        ]
+      },
+      "baseline_to_two_source_action_flips": {
+        "leave_off->activate": 8,
+        "activate->leave_off": 7,
+        "activate->activate": 1
+      },
+      "control_to_decision_action_flips": {
+        "leave_off->activate": 7,
+        "activate->leave_off": 7,
+        "activate->activate": 2
+      }
+    }
+  },
+  "fixed_policies": {
+    "decision": {
+      "randomized_source": {
+        "agreement_with_model": 114,
+        "accuracy_against_oracle": 256,
+        "scheduled": 256
+      },
+      "historical_source": {
+        "agreement_with_model": 144,
+        "accuracy_against_oracle": 128,
+        "scheduled": 256
+      },
+      "first_source": {
+        "agreement_with_model": 144,
+        "accuracy_against_oracle": 192,
+        "scheduled": 256
+      },
+      "last_source": {
+        "agreement_with_model": 114,
+        "accuracy_against_oracle": 192,
+        "scheduled": 256
+      },
+      "always_activate": {
+        "agreement_with_model": 218,
+        "accuracy_against_oracle": 128,
+        "scheduled": 256
+      },
+      "always_leave_off": {
+        "agreement_with_model": 38,
+        "accuracy_against_oracle": 128,
+        "scheduled": 256
+      },
+      "first_answer": {
+        "agreement_with_model": 104,
+        "accuracy_against_oracle": 128,
+        "scheduled": 256
+      },
+      "last_answer": {
+        "agreement_with_model": 152,
+        "accuracy_against_oracle": 128,
+        "scheduled": 256
+      }
+    },
+    "source_selection": {
+      "randomized_source": {
+        "agreement_with_model": 244,
+        "accuracy_against_oracle": 256,
+        "scheduled": 256
+      },
+      "historical_source": {
+        "agreement_with_model": 12,
+        "accuracy_against_oracle": 0,
+        "scheduled": 256
+      },
+      "first_source": {
+        "agreement_with_model": 140,
+        "accuracy_against_oracle": 128,
+        "scheduled": 256
+      },
+      "last_source": {
+        "agreement_with_model": 116,
+        "accuracy_against_oracle": 128,
+        "scheduled": 256
+      },
+      "always_A": {
+        "agreement_with_model": 116,
+        "accuracy_against_oracle": 128,
+        "scheduled": 256
+      },
+      "always_B": {
+        "agreement_with_model": 140,
+        "accuracy_against_oracle": 128,
+        "scheduled": 256
+      },
+      "first_answer": {
+        "agreement_with_model": 140,
+        "accuracy_against_oracle": 128,
+        "scheduled": 256
+      },
+      "last_answer": {
+        "agreement_with_model": 116,
+        "accuracy_against_oracle": 128,
+        "scheduled": 256
+      }
+    }
+  },
+  "policy_prediction_overlap": {
+    "decision": {
+      "scheduled": 256,
+      "equal_prediction_counts": {
+        "randomized_source|historical_source": 128,
+        "randomized_source|first_source": 192,
+        "randomized_source|last_source": 192,
+        "randomized_source|always_leave_off": 128,
+        "randomized_source|last_answer": 128,
+        "historical_source|first_source": 192,
+        "historical_source|last_source": 192,
+        "historical_source|always_leave_off": 128,
+        "historical_source|last_answer": 128,
+        "first_source|last_source": 128,
+        "first_source|always_leave_off": 128,
+        "first_source|last_answer": 128,
+        "last_source|always_leave_off": 128,
+        "last_source|last_answer": 128,
+        "always_activate|first_answer": 128,
+        "always_leave_off|last_answer": 128,
+        "historical_source|always_activate": 128,
+        "historical_source|first_answer": 128,
+        "last_source|always_activate": 128,
+        "last_source|first_answer": 128,
+        "first_source|always_activate": 128,
+        "first_source|first_answer": 128,
+        "randomized_source|first_answer": 128,
+        "always_activate|last_answer": 128,
+        "always_leave_off|first_answer": 128,
+        "randomized_source|always_activate": 128
+      }
+    },
+    "source_selection": {
+      "scheduled": 256,
+      "equal_prediction_counts": {
+        "randomized_source|first_source": 128,
+        "randomized_source|always_A": 128,
+        "randomized_source|first_answer": 128,
+        "historical_source|last_source": 128,
+        "historical_source|always_B": 128,
+        "historical_source|last_answer": 128,
+        "first_source|always_A": 128,
+        "first_source|first_answer": 128,
+        "last_source|always_B": 128,
+        "last_source|last_answer": 128,
+        "always_A|first_answer": 128,
+        "always_B|last_answer": 128,
+        "randomized_source|last_source": 128,
+        "historical_source|first_source": 128,
+        "first_source|always_B": 128,
+        "first_source|last_answer": 128,
+        "last_source|always_A": 128,
+        "last_source|first_answer": 128,
+        "randomized_source|last_answer": 128,
+        "historical_source|first_answer": 128,
+        "always_A|last_answer": 128,
+        "always_B|first_answer": 128,
+        "randomized_source|always_B": 128,
+        "historical_source|always_A": 128
+      }
+    }
+  },
+  "fitted_action_bias_holdout": {
+    "training_families": [
+      "audit-20261119-0000",
+      "audit-20261119-0001",
+      "audit-20261119-0002",
+      "audit-20261119-0003"
+    ],
+    "heldout_families": [
+      "audit-20261119-0004",
+      "audit-20261119-0005",
+      "audit-20261119-0006",
+      "audit-20261119-0007"
+    ],
+    "selected_policy": "always_activate",
+    "training_agreement": 110,
+    "heldout_agreement": 108,
+    "training_n": 128,
+    "heldout_n": 128
+  },
+  "qualification": {
+    "valid_rate_min": 0.95,
+    "source_selection_each_name_min": 0.75,
+    "randomized_only_each_direction_min": 0.75,
+    "passed": true
+  },
+  "limitations": [
+    "Eight development families; percentile intervals are coarse.",
+    "Constant-policy zero-width intervals are not equivalence evidence.",
+    "Separate source and decision requests are not a mediation chain.",
+    "Policy response agreement is descriptive, not a psychological latent-route identification."
+  ]
+}
