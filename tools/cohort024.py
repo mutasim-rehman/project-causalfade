@@ -12,6 +12,7 @@ import socket
 import subprocess
 import sys
 import time
+import struct
 from statistics import mean
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,6 +24,38 @@ from run_direct_pilot import request
 SOURCE_FILES = ("causalfade/matrix024.py", "causalfade/measurement_audit.py", "causalfade/worlds.py",
                 "causalfade/sensitivity.py", "tools/cohort024.py", "tools/run_direct_pilot.py")
 PRECISIONS = ("F16", "Q8_0", "Q6_K", "Q5_K_M", "Q4_K_M", "Q3_K_M", "Q2_K")
+
+
+def gguf_file_type(path):
+    """Read GGUF metadata, including general.file_type, without loading tensors."""
+    with Path(path).open("rb") as f:
+        def u32(): return struct.unpack("<I", f.read(4))[0]
+        def u64(): return struct.unpack("<Q", f.read(8))[0]
+        def string():
+            n = u64()
+            if n > 100_000_000: raise ValueError("Unreasonable GGUF string length")
+            return f.read(n).decode("utf-8")
+        def value(t):
+            sizes = {0:1, 1:1, 2:2, 3:2, 4:4, 5:4, 6:4, 7:1, 10:8, 11:8, 12:8}
+            if t == 8: return string()
+            if t == 9:
+                item_type, count = u32(), u64()
+                if count > 100_000_000: raise ValueError("Unreasonable GGUF array length")
+                return [value(item_type) for _ in range(count)] if item_type not in sizes else f.seek(count*sizes[item_type],1)
+            if t not in sizes: raise ValueError("Unsupported GGUF metadata type")
+            raw = f.read(sizes[t])
+            return int.from_bytes(raw,"little") if t in (0,1,2,3,4,5,7,10,11,12) else raw
+        if f.read(4) != b"GGUF": raise ValueError("Invalid GGUF header")
+        version = u32()
+        if version not in (2,3): raise ValueError("Unsupported GGUF version")
+        u64(); n_kv = u64()
+        if n_kv > 100_000: raise ValueError("Unreasonable GGUF metadata count")
+        file_type = None
+        for _ in range(n_kv):
+            key = string(); val = value(u32())
+            if key == "general.file_type": file_type = val
+        if file_type is None: raise ValueError("GGUF general.file_type missing")
+        return file_type
 
 
 def now():
@@ -50,14 +83,14 @@ def model_inventory(path):
             raise ValueError("Invalid/duplicate ID or unsupported precision: " + model_id)
         seen.add(model_id)
         model = Path(entry["path"]).expanduser().resolve()
-        if not model.is_file() or not entry.get("source_revision"):
+        if not model.is_file() or not entry.get("source_revision") or not entry.get("source_repo") or not entry.get("license") or not entry.get("source_sha256"):
             raise ValueError("Missing model file or source_revision: " + model_id)
+        if gguf_file_type(model) != {"F16":1,"Q8_0":7,"Q6_K":18,"Q5_K_M":17,"Q4_K_M":15,"Q3_K_M":12,"Q2_K":10}[precision]:
+            raise ValueError("GGUF precision metadata mismatch: " + model_id)
         actual = digest(model)
         if entry.get("sha256") and entry["sha256"] != actual:
             raise ValueError("Model hash mismatch: " + model_id)
-        inventory.append({"id": model_id, "lineage": lineage, "precision": precision,
-                          "source_revision": entry["source_revision"], "path": str(model),
-                          "sha256": actual, "bytes": model.stat().st_size})
+        inventory.append({**entry, "path": str(model), "sha256": actual, "bytes": model.stat().st_size})
     by_lineage = defaultdict(list)
     for entry in inventory:
         by_lineage[entry["lineage"]].append(entry)
@@ -68,6 +101,15 @@ def model_inventory(path):
             raise ValueError("Precision variants need one source revision: " + lineage)
         if "F16" not in {e["precision"] for e in entries}:
             raise ValueError("Each lineage requires an F16 reference: " + lineage)
+        ref = next(e for e in entries if e["precision"] == "F16")
+        for e in entries:
+            if e["source_sha256"] != ref["sha256"] or e["source_repo"] != ref["source_repo"] or e["license"] != ref["license"]:
+                raise ValueError("Lineage source provenance mismatch: " + lineage)
+            if e["precision"] != "F16":
+                sidecar = Path(e["path"]).with_suffix(".provenance.json")
+                if not sidecar.is_file() or load(sidecar).get("output_sha256") != e["sha256"] or load(sidecar).get("source_sha256") != ref["sha256"] or load(sidecar).get("quantizer_sha256") != e.get("quantizer_sha256"):
+                    raise ValueError("Quantized arm provenance mismatch: " + e["id"])
+                e["provenance_sha256"] = digest(sidecar)
     return inventory
 
 
@@ -80,7 +122,7 @@ def build_models(args):
     if not levels or len(set(levels)) != len(levels) or any(x == "F16" or x not in PRECISIONS for x in levels):
         raise ValueError("Invalid quantization levels")
     quantizer = Path(args.quantizer).resolve()
-    if not quantizer.is_file():
+    if not quantizer.is_file() or not os.access(quantizer, os.X_OK):
         raise ValueError("Quantizer binary missing")
     quant_hash = digest(quantizer)
     output_root = Path(args.out).resolve()
@@ -89,7 +131,7 @@ def build_models(args):
     seen = set()
     for src in sources:
         lineage = src["lineage"]
-        if not lineage.replace("_", "").isalnum() or lineage in seen or not src.get("source_revision"):
+        if not lineage.replace("_", "").isalnum() or lineage in seen or not all(src.get(k) for k in ("source_revision","source_repo","license","sha256","conversion")):
             raise ValueError("Invalid/duplicate lineage or missing source revision")
         seen.add(lineage)
         f16 = Path(src["path"]).expanduser().resolve()
@@ -99,18 +141,22 @@ def build_models(args):
             if stream.read(4) != b"GGUF":
                 raise ValueError("Source is not a GGUF file: " + lineage)
         base_hash = digest(f16)
-        if src.get("sha256") and src["sha256"] != base_hash:
+        if src["sha256"] != base_hash or gguf_file_type(f16) != 1:
             raise ValueError("Source hash mismatch: " + lineage)
         inventory.append({"id": lineage + "_f16", "lineage": lineage, "precision": "F16",
-                          "path": str(f16), "source_revision": src["source_revision"], "sha256": base_hash})
+                          "path": str(f16), "source_revision": src["source_revision"], "source_repo":src["source_repo"],
+                          "license":src["license"],"conversion":src["conversion"],"source_sha256":base_hash,"sha256":base_hash})
         for precision in levels:
             target = output_root / f"{lineage}_{precision}.gguf"
             sidecar = output_root / f"{lineage}_{precision}.provenance.json"
             provenance = {"source_sha256": base_hash, "source_revision": src["source_revision"],
+                          "source_repo":src["source_repo"],"license":src["license"],"conversion":src["conversion"],
                           "quantizer_sha256": quant_hash, "precision": precision}
             if target.exists() or sidecar.exists():
                 if not target.is_file() or not sidecar.is_file() or load(sidecar) != {**provenance, "output_sha256": digest(target)}:
                     raise ValueError(f"Existing quant lacks matching provenance: {target}")
+                if gguf_file_type(target) != {"Q8_0":7,"Q6_K":18,"Q5_K_M":17,"Q4_K_M":15,"Q3_K_M":12,"Q2_K":10}[precision]:
+                    raise ValueError("Existing quant has wrong GGUF file type: " + str(target))
                 print(f"REUSE {target}", flush=True)
             else:
                 if shutil.disk_usage(output_root).free < f16.stat().st_size * 1.5:
@@ -121,9 +167,13 @@ def build_models(args):
                                                stdout=log, stderr=subprocess.STDOUT, check=False)
                 if completed.returncode != 0 or not target.is_file():
                     raise RuntimeError(f"Quantization failed ({completed.returncode}); inspect log and partial target: {target}")
+                if gguf_file_type(target) != {"Q8_0":7,"Q6_K":18,"Q5_K_M":17,"Q4_K_M":15,"Q3_K_M":12,"Q2_K":10}[precision]:
+                    raise ValueError("Converted file type mismatch; inspect target: " + str(target))
                 write_json(sidecar, {**provenance, "output_sha256": digest(target)})
             inventory.append({"id": f"{lineage}_{precision.lower()}", "lineage": lineage, "precision": precision,
-                              "path": str(target), "source_revision": src["source_revision"], "sha256": digest(target)})
+                              "path": str(target), "source_revision": src["source_revision"],
+                              "source_repo":src["source_repo"],"license":src["license"],"conversion":src["conversion"],
+                              "source_sha256":base_hash,"quantizer_sha256":quant_hash,"sha256": digest(target)})
     if args.models_out.exists():
         raise FileExistsError(args.models_out)
     write_json(args.models_out, inventory)
@@ -134,6 +184,9 @@ def freeze(args):
     dataset = Path(args.dataset).resolve()
     validate(dataset)
     inventory = model_inventory(args.models)
+    expected = {f"{lineage}_{precision.lower()}" for lineage in ("qwen7b","mistral7b","llama8b") for precision in PRECISIONS}
+    if {m["id"] for m in inventory} != expected:
+        raise ValueError("Default lab freeze requires the complete 21-arm selected matrix")
     server = Path(args.server).resolve()
     if not server.is_file():
         raise ValueError("Server binary missing")
@@ -164,6 +217,10 @@ def check_plan(plan):
     for model in plan["models"]:
         if digest(model["path"]) != model["sha256"]:
             raise ValueError("Model hash changed: " + model["id"])
+        if model["precision"] != "F16":
+            sidecar = Path(model["path"]).with_suffix(".provenance.json")
+            if digest(sidecar) != model["provenance_sha256"]:
+                raise ValueError("Quantization provenance changed: " + model["id"])
     return dataset
 
 
@@ -299,6 +356,32 @@ def run_all(args):
     return 0
 
 
+def checkpoint(args):
+    """Commit and push only fully audited arm directories; never stage local assets."""
+    plan = load(args.plan); check_plan(plan)
+    dataset = Path(plan["dataset"]); truth = read_jsonl(dataset / "oracle_truth.jsonl")
+    ready = []
+    for model in arm_order(plan["models"]):
+        out = Path(args.runs) / model["id"]
+        if out.with_name(out.name + ".lock").exists(): continue
+        status_path = out / "status.json"
+        if not status_path.exists() or load(status_path)["status"] != "success": continue
+        raw = read_jsonl(out / "raw_responses.jsonl")
+        if len(raw) != len(truth) or score(truth, raw) != load(out / "results.json"):
+            raise ValueError("Completed arm failed raw audit: " + model["id"])
+        ready.append(str(out.resolve()))
+    if not ready: raise ValueError("No completed arms available for checkpoint")
+    subprocess.run(["git", "add", "--", *ready], cwd=ROOT, check=True)
+    staged = subprocess.run(["git", "diff", "--cached", "--name-only"], cwd=ROOT, capture_output=True, text=True, check=True).stdout.splitlines()
+    allowed = tuple(str(Path(p).resolve().relative_to(ROOT)) + "/" for p in ready)
+    if any(not name.startswith(allowed) for name in staged):
+        raise ValueError("Unrelated staged content present; unstage it before checkpoint")
+    if not staged: return print("CHECKPOINT no new completed-arm files", flush=True)
+    subprocess.run(["git", "commit", "-m", "results: checkpoint cohort 024 completed arms"], cwd=ROOT, check=True)
+    subprocess.run(["git", "push", "origin", "main"], cwd=ROOT, check=True)
+    print("CHECKPOINT pushed " + ", ".join(Path(p).name for p in ready), flush=True)
+
+
 def analysis(args):
     plan = load(args.plan); dataset = check_plan(plan)
     truth = read_jsonl(dataset / "oracle_truth.jsonl")
@@ -376,6 +459,7 @@ def main():
     a = sub.add_parser("run-all"); a.add_argument("--plan", type=Path, required=True); a.add_argument("--out", type=Path, required=True); a.add_argument("--arm"); a.add_argument("--max-seconds", type=float, default=7200); a.add_argument("--progress-every", type=int, default=20)
     a = sub.add_parser("analyze"); a.add_argument("--plan", type=Path, required=True); a.add_argument("--runs", type=Path, required=True); a.add_argument("--out", type=Path, required=True)
     a = sub.add_parser("status"); a.add_argument("--plan", type=Path, required=True); a.add_argument("--runs", type=Path, required=True)
+    a = sub.add_parser("checkpoint"); a.add_argument("--plan", type=Path, required=True); a.add_argument("--runs", type=Path, required=True)
     args = p.parse_args()
     if args.command == "prepare": print(json.dumps(prepare(args.dataset, args.seed), indent=2))
     elif args.command == "validate": print(json.dumps(validate(args.dataset), indent=2))
@@ -383,6 +467,7 @@ def main():
     elif args.command == "build-models": build_models(args)
     elif args.command == "run-all": sys.exit(run_all(args))
     elif args.command == "analyze": analysis(args)
+    elif args.command == "checkpoint": checkpoint(args)
     else:
         plan = load(args.plan)
         for m in arm_order(plan["models"]):

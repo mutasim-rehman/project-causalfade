@@ -19,7 +19,7 @@ Keep the pre-existing untracked publication assessment separate from model/run a
 
 Acquire or convert **F16 GGUF** files for Qwen2.5-7B-Instruct, Mistral-7B-Instruct-v0.3 and Llama-3.1-8B-Instruct. Verify each model's license and pinned source revision. Llama access may require accepting Meta's terms. Use the same pinned source revision for every quantized variant of a lineage. The existing Qwen F16 file may be reused if its SHA-256 matches prior cohorts. Do not substitute the cohort 022 Mistral Q4 file as an F16 source.
 
-Copy `experiments/cohort_024/sources.example.json` to `experiments/cohort_024/sources.local.json`, replace all three **absolute** paths and revision strings, and optionally add the exact SHA-256 for each F16 file. The example paths are placeholders and will fail closed. Keep `sources.local.json` untracked.
+Copy `experiments/cohort_024/sources.example.json` to `experiments/cohort_024/sources.local.json`, replace all three **absolute** paths and revision strings, and add the exact SHA-256, source repository, revision, license and conversion provenance for each F16 file. These fields are required. The example paths are placeholders and will fail closed. Keep `sources.local.json` untracked.
 
 ## 3. Build model formats and freeze the lab plan
 
@@ -69,12 +69,10 @@ Exit 0 means all listed arms completed. Exit 2 means the current arm paused, was
 At a natural completed-arm checkpoint, archive/push outputs if feasible:
 
 ```bash
-git add experiments/cohort_024/runs experiments/cohort_024/live.log
-git commit -m "results: checkpoint cohort 024 completed arms"
-git push origin main
+python tools/cohort024.py checkpoint --plan experiments/cohort_024/frozen_lab_plan.json --runs experiments/cohort_024/runs
 ```
 
-Avoid staging GGUF weights or `sources.local.json`/`models.local.json`. The raw logs may be large; ensure Git storage is available before starting.
+Avoid staging GGUF weights or `sources.local.json`/`models.local.json`. The checkpoint command stages only audited completed-arm directories and exits visibly on push failure. It rejects unrelated staged files. It never stages live.log, GGUF weights, credentials, local manifests or unrelated untracked files. The raw logs may be large; ensure Git storage is available before starting.
 
 ## 5. Analyze and push closure
 
