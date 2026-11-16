@@ -1,0 +1,12 @@
+{
+  "version": "matrix024-v1",
+  "classification": "development_only",
+  "seed": 20261120,
+  "families": 8,
+  "tasks": 1472,
+  "per_arm": 1472,
+  "file_sha256": {
+    "public_tasks.jsonl": "bab3fbfbc12991aec9f7be9299a409ab641025ff6660bbdb6540d914f87fbfcb",
+    "oracle_truth.jsonl": "a99fcf19ec503591a3c02853e0dac6080337bcd7d5d67d114d07dc618264bf0a"
+  }
+}

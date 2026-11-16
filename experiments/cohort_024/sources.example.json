@@ -1,0 +1,5 @@
+[
+  {"lineage":"qwen7b","path":"/ABSOLUTE/PATH/qwen2.5-7b-instruct-f16.gguf","source_revision":"PIN_EXACT_SOURCE_REVISION"},
+  {"lineage":"mistral7b","path":"/ABSOLUTE/PATH/Mistral-7B-Instruct-v0.3-F16.gguf","source_revision":"PIN_EXACT_SOURCE_REVISION"},
+  {"lineage":"llama8b","path":"/ABSOLUTE/PATH/Llama-3.1-8B-Instruct-F16.gguf","source_revision":"PIN_EXACT_SOURCE_REVISION"}
+]
