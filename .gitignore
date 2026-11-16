@@ -29,6 +29,7 @@ model_weights/
 wandb/
 experiments/cohort_024/sources.local.json
 experiments/cohort_024/models.local.json
+experiments/cohort_024/models.*.local.json
 
 # Local editor and OS files
 .vscode/
