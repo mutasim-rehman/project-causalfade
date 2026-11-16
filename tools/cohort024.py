@@ -126,6 +126,8 @@ def build_models(args):
         raise ValueError("Quantizer binary missing")
     quant_hash = digest(quantizer)
     output_root = Path(args.out).resolve()
+    if output_root == ROOT or ROOT in output_root.parents:
+        raise ValueError("GGUF output must stay outside the Git workspace")
     output_root.mkdir(parents=True, exist_ok=True)
     inventory = []
     seen = set()
@@ -135,6 +137,8 @@ def build_models(args):
             raise ValueError("Invalid/duplicate lineage or missing source revision")
         seen.add(lineage)
         f16 = Path(src["path"]).expanduser().resolve()
+        if f16 == ROOT or ROOT in f16.parents:
+            raise ValueError("GGUF source must stay outside the Git workspace")
         if not f16.is_file() or f16.suffix.lower() != ".gguf":
             raise ValueError("Source must be an existing F16 GGUF: " + lineage)
         with f16.open("rb") as stream:
@@ -143,6 +147,11 @@ def build_models(args):
         base_hash = digest(f16)
         if src["sha256"] != base_hash or gguf_file_type(f16) != 1:
             raise ValueError("Source hash mismatch: " + lineage)
+        expected_sizes = {"Q8_0":.56,"Q6_K":.45,"Q5_K_M":.39,"Q4_K_M":.34,"Q3_K_M":.29,"Q2_K":.23}
+        remaining = sum(int(f16.stat().st_size * expected_sizes[p]) for p in levels
+                        if not (output_root / f"{lineage}_{p}.gguf").exists())
+        if shutil.disk_usage(output_root).free < int(remaining * 1.25):
+            raise OSError(f"Insufficient disk reserve for selected {lineage} quantizations")
         inventory.append({"id": lineage + "_f16", "lineage": lineage, "precision": "F16",
                           "path": str(f16), "source_revision": src["source_revision"], "source_repo":src["source_repo"],
                           "license":src["license"],"conversion":src["conversion"],"source_sha256":base_hash,"sha256":base_hash})
