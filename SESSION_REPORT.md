@@ -1,5 +1,9 @@
 # November 10, 2026 research session
 
+## 16 November 2026 — cohort 022 independent checkpoint-family replication
+
+Synced a clean checkout, reviewed cohort 021's report and plan, ran the starting 53 tests and validated its fixture. Inventoried compatible local weights, acquired one pinned Apache-2.0 Mistral-7B-Instruct-v0.3 Q4_K_M GGUF outside Git, and froze a fresh eight-family 576-task fixture plus the paired execution/analysis policy at `6019ea7`. The separate runner enforces both declared checkpoint hashes and preserves existing runners and cohorts. All 55 pre-inference tests passed. Qwen ran first and Mistral second under the same CPU/decoding settings and identical shuffled fixture; both completed 576/576 strict-valid with no infrastructure failures. Qwen reproduced a 53.1-point family-standardized randomized-only advantage over ordinary two-source decisions, while Mistral failed source-selection and randomized-only components and cannot qualify as a replication of that deficit. Generated the paired analysis, documented the checkpoint-specific stopping decision and proposed future simulations. See [cohort 022 summary](experiments/cohort_022/summary.md).
+
 The session started at revision `ef0fa4e` with local inputs in `$HOME/Desktop/CAUSALFADE`. Prior work consists of synthetic design validation and prepared weights. Cohort 001 will assess feasibility of the paired 3B F16/Q2_K direct-response comparison using the existing fixtures.
 
 The CPU runtime is llama.cpp b12176 (commit 8820b088d) on the Ubuntu lab machine. The durable runner was pushed as `aec9fd2`. The exploratory fence sensitivity and arithmetic-control generator were pushed as `da4507b`. All 26 repository tests passed after these changes. Cohort 001 is executing F16 followed by Q2_K, with 64 scheduled responses each. Initial F16 output exposed a strict JSON compliance issue. Both unmodified strict scoring and a separately labeled fence-only sensitivity will be reported.
