@@ -1,0 +1,43 @@
+{
+  "model": {
+    "id": "mistral7b_q4_k_m",
+    "lineage": "mistral7b",
+    "precision": "Q4_K_M",
+    "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/mistral7b_Q4_K_M.gguf",
+    "source_revision": "1b61eaebc05628c996532ffb676c6f209824216a",
+    "source_repo": "second-state/Mistral-7B-Instruct-v0.3-GGUF",
+    "license": "apache-2.0",
+    "conversion": "published F16 GGUF; original mistralai/Mistral-7B-Instruct-v0.3; publisher conversion command not independently verified",
+    "source_sha256": "afd9070b42b8788becde8959d2924489cc1226e3104272f93ae8403e98e9be30",
+    "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+    "quantization_command": [
+      "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+      "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/mistral7b/Mistral-7B-Instruct-v0.3-f16.gguf",
+      "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/mistral7b_Q4_K_M.gguf",
+      "Q4_K_M"
+    ],
+    "sha256": "492c44d8e460a93369767fc44d2b107e2cda016d0ccf2f9ad1780762b5dcc76a",
+    "bytes": 4372811776,
+    "provenance_sha256": "3e09e69e24aad36e6a435ff3640a39f5eeb828211101a9ea5f5dadfa11c0ba90"
+  },
+  "dataset_hash": "d9f6ac314888e1ed45828dc9c948964b619450097fed6fd21c62cebb62b27d20",
+  "server_sha256": "6d3d7416bf83500c5adda80ee4bb076f6877e38ff0a53ddc81c0b278108b2f24",
+  "source_hashes": {
+    "causalfade/matrix024.py": "5563e04ccef8ea6b6ccd4e04ef0c68a2ece9e14812d7af5ecb4346613ec7292d",
+    "causalfade/measurement_audit.py": "3143831127ebb652bc811397ae60afa6efadc4f1042de93f693e8fa791dc08e6",
+    "causalfade/worlds.py": "176b0338171d6baff5a3fdd321ff531def145cabf90e4087c2620040571f4725",
+    "causalfade/sensitivity.py": "6f6edb0113d6fa6b4326d4d37e99191327725e38fa00f46dcafb185e1a0340b1",
+    "tools/cohort024.py": "84b2b31d14430e8d2d29ea93f43564a4489337c8365fda4aa178ba3fb0fd5a77",
+    "tools/run_direct_pilot.py": "2ec6a70e50e14f88cb17e2244e244d338cbd86780beffd9de48891d06a3d3ea1"
+  },
+  "runtime": {
+    "threads": 8,
+    "context": 2048,
+    "gpu_layers": 0,
+    "kv_precision": "f16",
+    "max_tokens": 64,
+    "temperature": 0,
+    "seed": 20261120,
+    "request_timeout": 180
+  }
+}
