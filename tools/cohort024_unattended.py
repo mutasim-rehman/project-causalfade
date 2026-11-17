@@ -123,9 +123,11 @@ def start(args):
         if rc==0:print('COMPLETE all 21 arms',flush=True);return
         if rc!=2:raise RuntimeError('run-all failed; inspect live.log and statuses')
         statuses=[(m['id'],load(runs/m['id']/'status.json')['status']) for m in inventory if (runs/m['id']/'status.json').exists()]
-        if not statuses or statuses[-1][1]!='paused_budget':
+        paused=[state for state in statuses if state[1]=='paused_budget']
+        unsafe=[state for state in statuses if state[1] not in ('success','paused_budget')]
+        if len(paused)!=1 or unsafe:
             raise RuntimeError('Arm failed or interrupted; inspect and resume manually')
-        print('RESUME after clean budget pause',statuses[-1],flush=True)
+        print('RESUME after clean budget pause',paused[0],flush=True)
 
 
 def progress(args):
