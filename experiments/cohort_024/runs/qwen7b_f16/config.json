@@ -1,0 +1,35 @@
+{
+  "model": {
+    "id": "qwen7b_f16",
+    "lineage": "qwen7b",
+    "precision": "F16",
+    "path": "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+    "source_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "source_repo": "Qwen/Qwen2.5-7B-Instruct",
+    "license": "apache-2.0",
+    "conversion": "existing F16 GGUF; CAUSALFADE agere_source/phase2 manifest; llama.cpp 7fe450e19305b828c199d602c23a8337aaa1f03b",
+    "source_sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+    "sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+    "bytes": 15237853248
+  },
+  "dataset_hash": "d9f6ac314888e1ed45828dc9c948964b619450097fed6fd21c62cebb62b27d20",
+  "server_sha256": "6d3d7416bf83500c5adda80ee4bb076f6877e38ff0a53ddc81c0b278108b2f24",
+  "source_hashes": {
+    "causalfade/matrix024.py": "5563e04ccef8ea6b6ccd4e04ef0c68a2ece9e14812d7af5ecb4346613ec7292d",
+    "causalfade/measurement_audit.py": "3143831127ebb652bc811397ae60afa6efadc4f1042de93f693e8fa791dc08e6",
+    "causalfade/worlds.py": "176b0338171d6baff5a3fdd321ff531def145cabf90e4087c2620040571f4725",
+    "causalfade/sensitivity.py": "6f6edb0113d6fa6b4326d4d37e99191327725e38fa00f46dcafb185e1a0340b1",
+    "tools/cohort024.py": "84b2b31d14430e8d2d29ea93f43564a4489337c8365fda4aa178ba3fb0fd5a77",
+    "tools/run_direct_pilot.py": "2ec6a70e50e14f88cb17e2244e244d338cbd86780beffd9de48891d06a3d3ea1"
+  },
+  "runtime": {
+    "threads": 8,
+    "context": 2048,
+    "gpu_layers": 0,
+    "kv_precision": "f16",
+    "max_tokens": 64,
+    "temperature": 0,
+    "seed": 20261120,
+    "request_timeout": 180
+  }
+}
