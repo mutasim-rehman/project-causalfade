@@ -2,6 +2,7 @@ import json
 import argparse
 from pathlib import Path
 import sys
+import struct
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -11,6 +12,12 @@ from causalfade.sensitivity import read_jsonl, digest, write_json, write_jsonl
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 from cohort024 import model_inventory, analysis, source_hashes, build_models
+
+
+def fake_gguf(file_type):
+    key = b"general.file_type"
+    return (b"GGUF" + struct.pack("<IQQQ", 3, 0, 1, len(key)) + key
+            + struct.pack("<II", 4, file_type))
 
 
 class Matrix024Tests(unittest.TestCase):
@@ -37,9 +44,14 @@ class Matrix024Tests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             base = Path(tmp)
             a, b = base / "f16.gguf", base / "q4.gguf"
-            a.write_bytes(b"f16"); b.write_bytes(b"q4")
-            spec = [{"id": "mistral_f16", "lineage": "mistral", "precision": "F16", "path": str(a), "source_revision": "v1", "sha256": digest(a)},
-                    {"id": "mistral_q4", "lineage": "mistral", "precision": "Q4_K_M", "path": str(b), "source_revision": "v2", "sha256": digest(b)}]
+            a.write_bytes(fake_gguf(1)); b.write_bytes(fake_gguf(15))
+            quantizer = base / "quantizer"; quantizer.write_bytes(b"quantizer")
+            common = {"source_repo": "test/mistral", "license": "test-license", "source_sha256": digest(a)}
+            write_json(b.with_suffix(".provenance.json"), {"source_sha256": digest(a),
+                       "quantizer_sha256": digest(quantizer), "output_sha256": digest(b)})
+            spec = [{"id": "mistral_f16", "lineage": "mistral", "precision": "F16", "path": str(a), "source_revision": "v1", "sha256": digest(a), **common},
+                    {"id": "mistral_q4", "lineage": "mistral", "precision": "Q4_K_M", "path": str(b), "source_revision": "v2", "sha256": digest(b),
+                     "quantizer_sha256": digest(quantizer), "quantization_command": [str(quantizer), str(a), str(b), "Q4_K_M"], **common}]
             path = base / "models.json"; path.write_text(json.dumps(spec))
             with self.assertRaisesRegex(ValueError, "one source revision"):
                 model_inventory(path)
@@ -54,9 +66,13 @@ class Matrix024Tests(unittest.TestCase):
             server = base / "server"; server.write_bytes(b"server")
             models = []
             for precision in ("F16", "Q4_K_M"):
-                path = base / (precision + ".gguf"); path.write_bytes(precision.encode())
+                path = base / (precision + ".gguf"); path.write_bytes(fake_gguf(1 if precision == "F16" else 15))
                 models.append({"id": "one_" + precision.lower(), "lineage": "one", "precision": precision,
                                "path": str(path), "source_revision": "r1", "sha256": digest(path)})
+                if precision != "F16":
+                    sidecar = path.with_suffix(".provenance.json")
+                    write_json(sidecar, {"output_sha256": digest(path)})
+                    models[-1]["provenance_sha256"] = digest(sidecar)
             runtime = {"threads": 1, "context": 2048, "gpu_layers": 0, "kv_precision": "f16",
                        "max_tokens": 64, "temperature": 0, "seed": 20261120, "request_timeout": 180}
             plan = {"dataset": str(dataset), "dataset_hashes": {n: digest(dataset / n) for n in ("manifest.json", "public_tasks.jsonl", "oracle_truth.jsonl")},
@@ -85,14 +101,16 @@ class Matrix024Tests(unittest.TestCase):
 
     def test_quant_builder_provenance_and_resume(self):
         with tempfile.TemporaryDirectory() as tmp:
-            base = Path(tmp); f16 = base / "source-f16.gguf"; f16.write_bytes(b"GGUFsource")
+            base = Path(tmp); f16 = base / "source-f16.gguf"; f16.write_bytes(fake_gguf(1))
             quantizer = base / "llama-quantize"; quantizer.write_bytes(b"binary")
             sources = base / "sources.json"
-            sources.write_text(json.dumps([{"lineage": "one", "path": str(f16), "source_revision": "r1"}]))
+            sources.write_text(json.dumps([{"lineage": "one", "path": str(f16), "source_revision": "r1",
+                                           "source_repo": "test/one", "license": "test-license",
+                                           "sha256": digest(f16), "conversion": "test fixture"}]))
             args = argparse.Namespace(sources=sources, quantizer=quantizer, out=base / "quants",
                                       models_out=base / "models.json", levels="Q8_0,Q4_K_M")
             def fake_run(command, **_kwargs):
-                Path(command[2]).write_bytes(b"GGUF" + command[3].encode())
+                Path(command[2]).write_bytes(fake_gguf({"Q8_0": 7, "Q4_K_M": 15}[command[3]]))
                 return argparse.Namespace(returncode=0)
             with patch("cohort024.subprocess.run", side_effect=fake_run):
                 build_models(args)

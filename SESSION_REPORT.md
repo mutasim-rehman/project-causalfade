@@ -1,5 +1,9 @@
 # November 10, 2026 research session
 
+## 18 November 2026 — local cohort 024 archived analysis
+
+Independently reconstructed all 21 arms from their raw JSONL on Windows without loading lab-local model weights. The frozen fixture/source hashes, per-arm status, schedule, config and saved scoring matched; four budget pauses and 21 successful sessions are retained. Added a separate post-inference archived analyzer, full cell-level JSON and a scientific summary. The matrix has 30,912 persisted attempts and 30,281 strict-valid responses. Its F16 controls and heterogeneous quantization effects do not support a causal-specific precision conclusion. Cohort-specific frozen files were not edited. See [cohort 024 summary](experiments/cohort_024/summary.md).
+
 ## 16 November 2026 — cohort 023 measurement audit
 
 Preserved cohorts 001–022 and audited cohort 022's constant-A/constant-activate Mistral responses, effective Qwen/Mistral chat templates, sampled Qwen rendered requests, answer alternatives, token caps and stop reasons. Built and froze an eight-family 896-request Qwen F16 fixture with exact factorial balance and matched controls at `fa5db6a`; 57 tests and fixture validation passed before inference. The full CPU block completed 896/896 strict-valid in 6,187 seconds with no infrastructure failures. Recomputed the frozen analysis and a documented post-inference supplement for omitted predeclared aggregate/control summaries from archived raw JSON, byte for byte. The Qwen gap persisted across source naming and answer order, but the harmful-direction numeric and noncausal control gates failed. Documented the resulting interface/control boundary in [cohort 023 summary](experiments/cohort_023/summary.md); no confirmation simulation or additional checkpoint run was triggered.
