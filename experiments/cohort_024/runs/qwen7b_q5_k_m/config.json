@@ -1,0 +1,43 @@
+{
+  "model": {
+    "id": "qwen7b_q5_k_m",
+    "lineage": "qwen7b",
+    "precision": "Q5_K_M",
+    "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/qwen7b_Q5_K_M.gguf",
+    "source_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "source_repo": "Qwen/Qwen2.5-7B-Instruct",
+    "license": "apache-2.0",
+    "conversion": "existing F16 GGUF recorded in CAUSALFADE/manifests/agere_source/phase2/gguf_artifacts.json; llama.cpp source commit 7fe450e19305b828c199d602c23a8337aaa1f03b",
+    "source_sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+    "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+    "quantization_command": [
+      "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+      "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+      "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_quantized/qwen7b_Q5_K_M.gguf",
+      "Q5_K_M"
+    ],
+    "sha256": "00241ccf51d3cfa351fcf9bb0c198d3e22dace6d24ffa00a1b0c8f4767beb42e",
+    "bytes": 5444831296,
+    "provenance_sha256": "eef49f822d2fc3cb612090a6d60b23eedbd4f27d7bf6818a2b3e183c24660ee9"
+  },
+  "dataset_hash": "d9f6ac314888e1ed45828dc9c948964b619450097fed6fd21c62cebb62b27d20",
+  "server_sha256": "6d3d7416bf83500c5adda80ee4bb076f6877e38ff0a53ddc81c0b278108b2f24",
+  "source_hashes": {
+    "causalfade/matrix024.py": "5563e04ccef8ea6b6ccd4e04ef0c68a2ece9e14812d7af5ecb4346613ec7292d",
+    "causalfade/measurement_audit.py": "3143831127ebb652bc811397ae60afa6efadc4f1042de93f693e8fa791dc08e6",
+    "causalfade/worlds.py": "176b0338171d6baff5a3fdd321ff531def145cabf90e4087c2620040571f4725",
+    "causalfade/sensitivity.py": "6f6edb0113d6fa6b4326d4d37e99191327725e38fa00f46dcafb185e1a0340b1",
+    "tools/cohort024.py": "84b2b31d14430e8d2d29ea93f43564a4489337c8365fda4aa178ba3fb0fd5a77",
+    "tools/run_direct_pilot.py": "2ec6a70e50e14f88cb17e2244e244d338cbd86780beffd9de48891d06a3d3ea1"
+  },
+  "runtime": {
+    "threads": 8,
+    "context": 2048,
+    "gpu_layers": 0,
+    "kv_precision": "f16",
+    "max_tokens": 64,
+    "temperature": 0,
+    "seed": 20261120,
+    "request_timeout": 180
+  }
+}
