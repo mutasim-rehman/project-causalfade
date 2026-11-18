@@ -1,5 +1,9 @@
 # November 10, 2026 research session
 
+## 18 November 2026 — cohort 025 no-inference methods screen
+
+Inventoried cohorts 001–024 and their archived run results, preserving the interrupted cohort 008 attempt separately. Added a reproducible post-outcome methods screen for cohort 024 metamorphic presentation pairs and response information, same-task precision transitions in cohorts 015–017 and 024, evidence-order interactions, cohort 021 source guidance and cohort 018's limited strength grid. An explicit applicability register marks graph-switch, transportability, full psychophysics, validated IRT, logits, activations, confidence and cognitive timing as unavailable from logs. The [summary](experiments/cohort_025/summary.md) records new descriptive diagnostics and the non-confirmatory boundary.
+
 ## 18 November 2026 — local cohort 024 archived analysis
 
 Independently reconstructed all 21 arms from their raw JSONL on Windows without loading lab-local model weights. The frozen fixture/source hashes, per-arm status, schedule, config and saved scoring matched; four budget pauses and 21 successful sessions are retained. Added a separate post-inference archived analyzer, full cell-level JSON and a scientific summary. The matrix has 30,912 persisted attempts and 30,281 strict-valid responses. Its F16 controls and heterogeneous quantization effects do not support a causal-specific precision conclusion. Cohort-specific frozen files were not edited. See [cohort 024 summary](experiments/cohort_024/summary.md).
