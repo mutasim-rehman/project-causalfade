@@ -1,0 +1,41 @@
+{
+  "classification": "prospective_bounded_development_screen",
+  "fixture_manifest_sha256": "f34e0787e7ca8a80d9966c22a613e529b322a1e38d2d7208a6cf378bc841ba4a",
+  "models": [
+    {
+      "id": "qwen7b_f16",
+      "lineage": "qwen2.5_7b",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+      "sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a"
+    },
+    {
+      "id": "llama8b_f16",
+      "lineage": "llama3.1_8b",
+      "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/llama8b/Llama-3.1-8B-Instruct-f16.gguf",
+      "sha256": "031c5d9ae1ad8cf676f8498ef539418c0d1f2b1b9c9d33c8f9207b83218c89b3"
+    }
+  ],
+  "server": "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-server",
+  "server_sha256": "6d3d7416bf83500c5adda80ee4bb076f6877e38ff0a53ddc81c0b278108b2f24",
+  "threads": 8,
+  "context": 2048,
+  "temperature": 0,
+  "seed": 20261119,
+  "max_tokens": 16,
+  "split": "development",
+  "forms": [
+    "direct",
+    "decision"
+  ],
+  "revision_limit_per_form": 1,
+  "gates": {
+    "strict_validity": 0.95,
+    "graph_accuracy": 0.8,
+    "arithmetic_accuracy": 0.8,
+    "switch_accuracy_each_polarity": 0.7,
+    "no_change_accuracy": 0.8,
+    "paired_switch_fidelity": 0.6
+  },
+  "qualification": "Each lineage and each form assessed separately; no model substitution. All scheduled prompts count, invalids wrong. If no lineage-form qualifies after one documented revision, stop. Validation and confirmation remain unqueried until later predeclared gates.",
+  "primary_development_metric": "paired graph-switch fidelity, both decisions correct within family and form"
+}
