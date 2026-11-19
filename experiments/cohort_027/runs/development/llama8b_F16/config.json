@@ -1,0 +1,23 @@
+{
+  "arm_id": "llama8b_F16",
+  "decoding": {
+    "cache_prompt": false,
+    "max_tokens": 64,
+    "seed": 20261119,
+    "stream": false,
+    "temperature": 0
+  },
+  "manifest_sha256": "30f40623d6ff075b620565ab9c8be4f19f9d5617791de8414dcbc14cada88c7d",
+  "model_path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/llama8b/Llama-3.1-8B-Instruct-f16.gguf",
+  "model_sha256": "031c5d9ae1ad8cf676f8498ef539418c0d1f2b1b9c9d33c8f9207b83218c89b3",
+  "plan_sha256": "371a7b3eec3947b622768e48b3fbe59e9c6a63665e990727fe1f3e9f62048e37",
+  "runtime": {
+    "context": 4096,
+    "execution_mode": "sequential",
+    "gpu_layers": 0,
+    "parallel": 1,
+    "threads": 8
+  },
+  "schedule_sha256": "142b3368b3d93c61c6b02d3e7ad4970b01237d92171f0bd59629fecabece205d",
+  "split": "development"
+}
