@@ -16,3 +16,13 @@ class GraphSwitchTests(unittest.TestCase):
     def test_reject_unknown_graph(self):
         with self.assertRaises(ValueError):
             intervention_effect(observational_joint(), 'unknown')
+
+class GeneratedFamilyTests(unittest.TestCase):
+    def test_independent_family_generation(self):
+        from causalfade.graph_switch import family, encode_family
+        records = [family(260000 + i, bool(i % 2)) for i in range(24)]
+        self.assertEqual(len({tuple(r['joint'].values()) for r in records}), 24)
+        for r in records:
+            self.assertEqual(sum(r['joint'].values()), 1)
+            self.assertLess(r['confounder_effect'] * r['mediator_effect'], 0)
+            self.assertEqual(F(encode_family(r)['confounder_effect']), r['confounder_effect'])

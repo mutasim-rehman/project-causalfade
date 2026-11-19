@@ -46,3 +46,44 @@ def validate_pair(reverse_outcome=False):
     if not a * b < 0:
         raise ValueError('No opposite intervention signs')
     return {'joint': joint_a, 'confounder_effect': a, 'mediator_effect': b}
+
+
+def family(seed, reverse_outcome=False):
+    """Deterministic, distinct exact-rational families; reject weak/non-switch worlds."""
+    import random
+    rng = random.Random(seed)
+    for _ in range(10000):
+        pw = F(rng.randint(4, 6), 10)
+        px = (F(rng.randint(7, 9), 10), F(rng.randint(1, 3), 10))
+        low = F(rng.randint(65, 85), 100)
+        high = F(rng.randint(15, 35), 100)
+        harm = F(rng.randint(5, 15), 100)
+        if low <= high or low - harm <= 0 or high - harm <= 0:
+            continue
+        joint = {}
+        for w, x, y in product((0, 1), repeat=3):
+            p_w = pw if w else 1 - pw
+            p_x = px[w] if x else 1 - px[w]
+            p_y = (low if w == 0 else high) - x * harm
+            if reverse_outcome:
+                p_y = 1 - p_y
+            joint[(w, x, y)] = p_w * p_x * (p_y if y else 1 - p_y)
+        a = intervention_effect(joint, 'confounder')
+        b = intervention_effect(joint, 'mediator')
+        if a * b < 0 and abs(a) >= F(4, 100) and abs(b) >= F(15, 100):
+            return {'seed': seed, 'reverse_outcome': reverse_outcome, 'joint': joint,
+                    'confounder_effect': a, 'mediator_effect': b,
+                    'parameters': {'p_w1': pw, 'p_x1_given_w': px,
+                                   'p_y1_baselines': (low, high), 'harm': harm}}
+    raise ValueError('Could not generate a sufficiently separated family')
+
+
+def encode_family(record):
+    """JSON-safe exact representation for manifests and independent checking."""
+    return {'seed': record['seed'], 'reverse_outcome': record['reverse_outcome'],
+            'joint': [{'w': w, 'x': x, 'y': y, 'p': str(p)}
+                      for (w, x, y), p in sorted(record['joint'].items())],
+            'confounder_effect': str(record['confounder_effect']),
+            'mediator_effect': str(record['mediator_effect']),
+            'parameters': {k: [str(v) for v in value] if isinstance(value, tuple) else str(value)
+                           for k, value in record['parameters'].items()}}
