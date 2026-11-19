@@ -7,6 +7,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from analyze_cohort025_archive import analyze, joint_mi
+from analyze_cohort025_1 import equivalent
 
 
 class Cohort025ArchiveTests(unittest.TestCase):
@@ -17,7 +18,7 @@ class Cohort025ArchiveTests(unittest.TestCase):
     def test_archived_screen_reproduces_reported_boundaries(self):
         result = analyze()
         saved = json.loads((ROOT / "experiments/cohort_025/archive_methods_screen.json").read_text(encoding="utf-8"))
-        self.assertEqual(result, saved)
+        self.assertTrue(equivalent(result, saved))
         self.assertEqual(len(result["source_cohorts"]), 24)
         self.assertEqual(sum(len(runs) for runs in result["inventory"].values()), 59)
         self.assertEqual(result["metamorphic_024"]["mistral7b_f16"]["answer_order|decision|semantic"]

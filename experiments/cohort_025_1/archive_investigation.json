@@ -1,0 +1,37 @@
+{
+  "classification": "post-outcome retrospective reproduction and applicability audit",
+  "cohort_025_analysis_sha256": "000ccc2a6d78d7c104cf56e6bd702380e2f1f0824cec4321e53f5a56fd42418c",
+  "proposals": {
+    "A_graph_switch": {
+      "reason": "No observationally identical alternate-graph pairs or no-change graph controls",
+      "status": "unavailable"
+    },
+    "B_grading": {
+      "reason": "Only a two-point causal strength pilot with fixed observational magnitude",
+      "status": "limited"
+    },
+    "C_rescue": {
+      "reason": "Source-guidance prompts exist; no complete source-by-calculation factorial or matched placebo",
+      "status": "limited"
+    },
+    "information_dependence": {
+      "reason": "Plug-in estimates exist; eight families and post-outcome selection",
+      "status": "descriptive_reproduced"
+    },
+    "neural_and_timing": {
+      "reason": "No precision restoration, logits, activations or validated cognitive timing",
+      "status": "unavailable"
+    },
+    "signal_detection": {
+      "reason": "Scheduled validity and binary response counts exist; latent parameters not identified",
+      "status": "descriptive_reproduced"
+    },
+    "transportability": {
+      "reason": "No target-population switches",
+      "status": "unavailable"
+    }
+  },
+  "reproduced_run_count": 59,
+  "reproduced_source_cohorts": 24,
+  "source_document_sha256": "d060db47408d520cdee345940dd4b00e75cd1805d62655ffe7b2b1e81aa5c1d7"
+}

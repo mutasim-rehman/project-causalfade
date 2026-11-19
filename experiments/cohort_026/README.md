@@ -26,3 +26,7 @@ Only after development qualification, choose one primary endpoint: paired graph-
 6. Confirmation and conditional precision contrast; archive raw outputs, hashes and report; commit and push.
 
 Choose the manuscript claim after results: selective precision effect if it survives qualified controls, evaluation methodology if measurement distortions transfer and the protocol resolves them, or a new assay/domain if neither transfers. No novelty claim is made for observational equivalence itself.
+
+## First implementation checkpoint
+
+`causalfade/graph_switch.py` now reproduces the investigation document's exact-rational seed: the same observational joint distribution yields effects −0.10 (W confounds X/Y) and +0.38 (W mediates X/Y). Complementing Y reverses both signs. Unit tests cover both polarities and normalization. This is an oracle seed, not yet an independent family generator or a development fixture. No model inference has begun.
