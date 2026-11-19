@@ -1,0 +1,17 @@
+{"completed": 0, "event": "arm_started", "total": 224, "utc": "2026-11-19T12:24:47.865829+00:00"}
+{"attempt": 1, "event": "server_ready", "pid": 881902, "utc": "2026-11-19T12:24:56.899189+00:00"}
+{"completed": 1, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_004_direct_main_confounder_z_forward", "total": 224, "utc": "2026-11-19T12:25:11.613574+00:00"}
+{"completed": 2, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_000_direct_main_confounder_z_forward", "total": 224, "utc": "2026-11-19T12:25:30.250359+00:00"}
+{"completed": 3, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_004_direct_graph_mediator_reverse", "total": 224, "utc": "2026-11-19T12:25:46.476222+00:00"}
+{"completed": 4, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_001_direct_graph_confounder_forward", "total": 224, "utc": "2026-11-19T12:26:02.643369+00:00"}
+{"completed": 5, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_002_decision_graph_mediator_forward", "total": 224, "utc": "2026-11-19T12:26:18.800690+00:00"}
+{"completed": 6, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_001_direct_arithmetic_marginal_forward", "total": 224, "utc": "2026-11-19T12:26:35.498064+00:00"}
+{"completed": 7, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_000_decision_arithmetic_conditional_forward", "total": 224, "utc": "2026-11-19T12:26:52.490304+00:00"}
+{"completed": 8, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_000_decision_main_confounder_z_reverse", "total": 224, "utc": "2026-11-19T12:27:10.842726+00:00"}
+{"completed": 9, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_005_decision_graph_mediator_reverse", "total": 224, "utc": "2026-11-19T12:27:27.102058+00:00"}
+{"completed": 10, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_003_direct_main_confounder_z_forward", "total": 224, "utc": "2026-11-19T12:27:45.492052+00:00"}
+{"completed": 11, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_005_direct_arithmetic_marginal_reverse", "total": 224, "utc": "2026-11-19T12:28:02.088839+00:00"}
+{"completed": 12, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_007_decision_main_confounder_forward", "total": 224, "utc": "2026-11-19T12:28:19.938303+00:00"}
+{"completed": 13, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_004_decision_graph_mediator_reverse", "total": 224, "utc": "2026-11-19T12:28:36.199666+00:00"}
+{"completed": 14, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_004_decision_arithmetic_marginal_reverse", "total": 224, "utc": "2026-11-19T12:28:52.892462+00:00"}
+{"completed": 14, "event": "checkpoint", "total": 224, "utc": "2026-11-19T12:28:52.897476+00:00"}
