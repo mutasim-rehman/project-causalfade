@@ -1,0 +1,51 @@
+{
+  "fixture_audit": {
+    "action_positions": {
+      "first": 240,
+      "second": 240
+    },
+    "families": 24,
+    "split_counts": {
+      "development": 8,
+      "validation": 16
+    },
+    "tasks": 672
+  },
+  "shortcut_audit": {
+    "always_first": {
+      "paired": {
+        "decision": 0,
+        "direct": 0
+      },
+      "qualified": false
+    },
+    "always_last": {
+      "paired": {
+        "decision": 0,
+        "direct": 0
+      },
+      "qualified": false
+    },
+    "constant_x0": {
+      "paired": {
+        "decision": 0,
+        "direct": 0
+      },
+      "qualified": false
+    },
+    "constant_x1": {
+      "paired": {
+        "decision": 0,
+        "direct": 0
+      },
+      "qualified": false
+    },
+    "graph_blind": {
+      "paired": {
+        "decision": 0,
+        "direct": 0
+      },
+      "qualified": false
+    }
+  }
+}

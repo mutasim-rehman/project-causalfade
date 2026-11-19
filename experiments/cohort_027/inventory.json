@@ -1,0 +1,93 @@
+[
+  {
+    "actual_sha256": "7861b68729de6c1c00828a54688b76a7dbdd20f8f87b4147de222554a70708d4",
+    "available": true,
+    "bytes": 6178316832,
+    "gguf_metadata": {
+      "chat_template_length": 2507,
+      "chat_template_sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+      "file_type": 1
+    },
+    "hash_ok": true,
+    "id": "qwen3b",
+    "license": "Apache-2.0",
+    "lineage": "Qwen2.5-3B-Instruct",
+    "path": "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-3b-instruct-f16.gguf",
+    "sha256": "7861b68729de6c1c00828a54688b76a7dbdd20f8f87b4147de222554a70708d4",
+    "source_repo": "Qwen/Qwen2.5-3B-Instruct",
+    "source_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1"
+  },
+  {
+    "actual_sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+    "available": true,
+    "bytes": 15237853248,
+    "gguf_metadata": {
+      "chat_template_length": 2507,
+      "chat_template_sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+      "file_type": 1
+    },
+    "hash_ok": true,
+    "id": "qwen7b",
+    "license": "Apache-2.0",
+    "lineage": "Qwen2.5-7B-Instruct",
+    "path": "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+    "sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+    "source_repo": "Qwen/Qwen2.5-7B-Instruct",
+    "source_revision": "a09a35458c702b33eeacc393d103063234e8bc28"
+  },
+  {
+    "actual_sha256": "c599ec1e577392748413138162ccce5625df9dbe1dcd91a48a2442cc1f3062ff",
+    "available": true,
+    "bytes": 29547716448,
+    "excluded_before_outcomes": "F16 file is 29.55 GB on a 32 GB RAM host; cannot retain the required 4 GB host headroom plus runtime buffers",
+    "gguf_metadata": {
+      "chat_template_length": 2509,
+      "chat_template_sha256": "d5495a1e5db0611132a97e46a65dbb64a642a499421228b9c8b93229097fa9a4",
+      "file_type": 1
+    },
+    "hash_ok": true,
+    "id": "qwen14b",
+    "license": "Apache-2.0",
+    "lineage": "Qwen2.5-14B-Instruct",
+    "path": "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-14b-instruct-f16.gguf",
+    "sha256": "c599ec1e577392748413138162ccce5625df9dbe1dcd91a48a2442cc1f3062ff",
+    "source_repo": "second-state/Qwen2.5-14B-Instruct-GGUF",
+    "source_revision": "608247a797d920aa2f94c1381d53bdc6a2a3b5b8"
+  },
+  {
+    "actual_sha256": "afd9070b42b8788becde8959d2924489cc1226e3104272f93ae8403e98e9be30",
+    "available": true,
+    "bytes": 14497337344,
+    "gguf_metadata": {
+      "chat_template_length": 470,
+      "chat_template_sha256": "26a59556925c987317ce5291811ba3b7f32ec4c647c400c6cc7e3a9993007ba7",
+      "file_type": 1
+    },
+    "hash_ok": true,
+    "id": "mistral7b",
+    "license": "apache-2.0",
+    "lineage": "Mistral-7B-Instruct-v0.3",
+    "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/mistral7b/Mistral-7B-Instruct-v0.3-f16.gguf",
+    "sha256": "afd9070b42b8788becde8959d2924489cc1226e3104272f93ae8403e98e9be30",
+    "source_repo": "second-state/Mistral-7B-Instruct-v0.3-GGUF",
+    "source_revision": "1b61eaebc05628c996532ffb676c6f209824216a"
+  },
+  {
+    "actual_sha256": "031c5d9ae1ad8cf676f8498ef539418c0d1f2b1b9c9d33c8f9207b83218c89b3",
+    "available": true,
+    "bytes": 16068896128,
+    "gguf_metadata": {
+      "chat_template_length": 4614,
+      "chat_template_sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+      "file_type": 1
+    },
+    "hash_ok": true,
+    "id": "llama8b",
+    "license": "llama3.1",
+    "lineage": "Llama-3.1-8B-Instruct",
+    "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/llama8b/Llama-3.1-8B-Instruct-f16.gguf",
+    "sha256": "031c5d9ae1ad8cf676f8498ef539418c0d1f2b1b9c9d33c8f9207b83218c89b3",
+    "source_repo": "second-state/Meta-Llama-3.1-8B-Instruct-GGUF",
+    "source_revision": "6d6118a261564da05fd7e651f4bc069eb7c38c20"
+  }
+]

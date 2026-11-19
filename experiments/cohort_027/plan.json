@@ -1,0 +1,100 @@
+{
+  "checkpoint_every": 14,
+  "classification": "frozen staged development and descriptive precision; no confirmation",
+  "decoding": {
+    "cache_prompt": false,
+    "max_tokens": 64,
+    "seed": 20261119,
+    "stream": false,
+    "temperature": 0
+  },
+  "development_families": 8,
+  "development_order": [
+    "qwen3b",
+    "qwen7b",
+    "mistral7b",
+    "llama8b"
+  ],
+  "model_ids": [
+    "qwen3b",
+    "qwen7b",
+    "mistral7b",
+    "llama8b"
+  ],
+  "precision_levels": [
+    "Q8_0",
+    "Q6_K",
+    "Q5_K_M",
+    "Q4_K_M",
+    "Q3_K_M",
+    "Q2_K"
+  ],
+  "precision_order_by_model": {
+    "llama8b": [
+      "Q6_K",
+      "Q3_K_M",
+      "Q8_0",
+      "Q4_K_M",
+      "Q5_K_M",
+      "Q2_K"
+    ],
+    "mistral7b": [
+      "Q3_K_M",
+      "Q2_K",
+      "Q5_K_M",
+      "Q8_0",
+      "Q6_K",
+      "Q4_K_M"
+    ],
+    "qwen3b": [
+      "Q3_K_M",
+      "Q5_K_M",
+      "Q2_K",
+      "Q4_K_M",
+      "Q6_K",
+      "Q8_0"
+    ],
+    "qwen7b": [
+      "Q5_K_M",
+      "Q2_K",
+      "Q8_0",
+      "Q4_K_M",
+      "Q6_K",
+      "Q3_K_M"
+    ]
+  },
+  "prompts_per_family": 28,
+  "quantizer": "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-quantize",
+  "quantizer_sha256": "ea836b715dd96e67099d2b7052e9d20be7f8f315a510fa94e12599ecb0f9fbc9",
+  "runtime": {
+    "context": 4096,
+    "execution_mode": "sequential",
+    "gpu_layers": 0,
+    "parallel": 1,
+    "threads": 8
+  },
+  "server": "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-server",
+  "server_sha256": "6d3d7416bf83500c5adda80ee4bb076f6877e38ff0a53ddc81c0b278108b2f24",
+  "server_start_retries": 3,
+  "source_commit": "4b1c4036a5e318016235976da19d6b65da2b256b",
+  "source_hashes": {
+    "causalfade/cohort027.py": "c08b6128ba35185979c02b13d0abd26a5b649f0d8aa30f6db4d740348e8e068d",
+    "causalfade/graph_switch.py": "7c9ab455789c01db0b5712b6f13590e48b6e50b96f07098b1bd1678fdcdb50a7",
+    "tools/cohort027_analyze.py": "02796907d97c8f97d8d5b5d3ad9aade0cba5d7c52fe8590908269aaa853e07ec",
+    "tools/cohort027_prepare.py": "3e00c0c36c6bd281e695251a59293f94d568495cc25f2de36d31148041456211",
+    "tools/cohort027_quantize.py": "fc81a53e6f54c50124a67b75de68abb5f0834c2b854f7f1bbfa3f981be2f3fbf",
+    "tools/cohort027_report.py": "8e8248d5e07ad023fb82501f7e101e910c6f54a20b65637c86b10eb1eb99e4d9",
+    "tools/cohort027_run.py": "3406091a98a7bdc295792b6cf135496cbac54c03786bd0a48d258798c85ddeb8",
+    "tools/cohort027_status.py": "ea8395c7d5bb85bf3aa4bb9dcf391394dabb5b54388914dd2e29b9d85adc279e",
+    "tools/cohort027_tokencheck.py": "b37322a8052dbb74db5e3e9b6ab0fab38f8adfdc4923f562444b6e30cea8dc94",
+    "tools/run_direct_pilot.py": "2ec6a70e50e14f88cb17e2244e244d338cbd86780beffd9de48891d06a3d3ea1"
+  },
+  "transport_retries": 2,
+  "validation_families": 16,
+  "validation_order": [
+    "mistral7b",
+    "llama8b",
+    "qwen7b",
+    "qwen3b"
+  ]
+}
