@@ -210,3 +210,18 @@
 {"completed": 195, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_005_direct_main_mediator_reverse", "total": 224, "utc": "2026-11-19T13:21:06.249408+00:00"}
 {"completed": 196, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_002_decision_graph_confounder_forward", "total": 224, "utc": "2026-11-19T13:21:22.426370+00:00"}
 {"completed": 196, "event": "checkpoint", "total": 224, "utc": "2026-11-19T13:21:22.433016+00:00"}
+{"completed": 197, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_003_direct_main_confounder_forward", "total": 224, "utc": "2026-11-19T13:21:43.940688+00:00"}
+{"completed": 198, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_004_decision_main_mediator_reverse", "total": 224, "utc": "2026-11-19T13:22:01.670665+00:00"}
+{"completed": 199, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_004_direct_arithmetic_conditional_forward", "total": 224, "utc": "2026-11-19T13:22:18.724666+00:00"}
+{"completed": 200, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_007_direct_arithmetic_marginal_reverse", "total": 224, "utc": "2026-11-19T13:22:35.425807+00:00"}
+{"completed": 201, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_000_direct_graph_confounder_reverse", "total": 224, "utc": "2026-11-19T13:22:51.590088+00:00"}
+{"completed": 202, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_002_decision_main_mediator_forward", "total": 224, "utc": "2026-11-19T13:23:09.313577+00:00"}
+{"completed": 203, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_006_decision_main_mediator_reverse", "total": 224, "utc": "2026-11-19T13:23:27.010538+00:00"}
+{"completed": 204, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_001_decision_main_confounder_z_forward", "total": 224, "utc": "2026-11-19T13:23:45.367252+00:00"}
+{"completed": 205, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_006_direct_main_mediator_forward", "total": 224, "utc": "2026-11-19T13:24:03.153671+00:00"}
+{"completed": 206, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_006_direct_main_confounder_z_reverse", "total": 224, "utc": "2026-11-19T13:24:21.806910+00:00"}
+{"completed": 207, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_000_direct_arithmetic_conditional_forward", "total": 224, "utc": "2026-11-19T13:24:38.873198+00:00"}
+{"completed": 208, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_005_decision_main_confounder_reverse", "total": 224, "utc": "2026-11-19T13:24:56.634338+00:00"}
+{"completed": 209, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_002_decision_main_confounder_forward", "total": 224, "utc": "2026-11-19T13:25:14.364585+00:00"}
+{"completed": 210, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_000_decision_main_confounder_forward", "total": 224, "utc": "2026-11-19T13:25:32.042764+00:00"}
+{"completed": 210, "event": "checkpoint", "total": 224, "utc": "2026-11-19T13:25:32.048244+00:00"}
