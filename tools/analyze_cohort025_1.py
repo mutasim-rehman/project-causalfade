@@ -6,7 +6,7 @@ from pathlib import Path
 from analyze_cohort025_archive import analyze
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = Path('/home/i242514/Desktop/CausalFade_Cross_Disciplinary_Research_Investigation.docx')
+SOURCE = ROOT / 'experiments/cohort_025_1/source_investigation.docx'
 EXPECTED_SOURCE_SHA256 = 'd060db47408d520cdee345940dd4b00e75cd1805d62655ffe7b2b1e81aa5c1d7'
 
 

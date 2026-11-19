@@ -18,3 +18,5 @@ The document ranks (A) observationally identical graph switches, (B) graded caus
 | IRT and psychometric invariance | No validated anchor task set | Not estimable |
 
 Checkpoint 1: verify source document hash and cohort 025 archive hashes. Checkpoint 2: reproduce existing supported diagnostics. Checkpoint 3: issue a 25.1 report separating reproduced numbers, new exploratory descriptions and unavailable analyses. Commit and push each completed feature or fix after tests and artifact review.
+
+The reviewed source is copied byte for byte to `source_investigation.docx` (SHA-256 `d060db47408d520cdee345940dd4b00e75cd1805d62655ffe7b2b1e81aa5c1d7`) so the audit remains reproducible without a Desktop-local file.
