@@ -18,7 +18,7 @@
     "development/worlds.jsonl": "5ae92259738ed6bc33b6bf7b5822cb2bd179c49816a465ca2b670eea93c2528a",
     "inventory.json": "41969a71ab2e36b83ad06ed02e69d1e1a36a039d05ef14ebc561540c71679f4e",
     "model_candidates.json": "b17e48683ad732ad44389878947354ba7992bd1cb7eadd4b50728e93beeb26de",
-    "plan.json": "a29cf9457ec3de115fb06a385884e7e26f66fdd001f3169bdbfea75d3c42878e",
+    "plan.json": "371a7b3eec3947b622768e48b3fbe59e9c6a63665e990727fe1f3e9f62048e37",
     "preflight.json": "91a8d97120b2e4d0f3a5306abdcb9d79b256d601ea50ccafeae416f7fcbb6c23",
     "validation/oracle_truth.jsonl": "507ada343c50ea3a8b084d26ff804337a1e9e95687192f77dd4759e53fd7afdc",
     "validation/public_tasks.jsonl": "96fff6060d3ee9272f4b58bc3444ed54ba947b4a8bcc42848ac86b353456c55a",
@@ -32,7 +32,7 @@
     "tools/cohort027_prepare.py": "3e00c0c36c6bd281e695251a59293f94d568495cc25f2de36d31148041456211",
     "tools/cohort027_quantize.py": "fc81a53e6f54c50124a67b75de68abb5f0834c2b854f7f1bbfa3f981be2f3fbf",
     "tools/cohort027_report.py": "8e8248d5e07ad023fb82501f7e101e910c6f54a20b65637c86b10eb1eb99e4d9",
-    "tools/cohort027_run.py": "3406091a98a7bdc295792b6cf135496cbac54c03786bd0a48d258798c85ddeb8",
+    "tools/cohort027_run.py": "d42cb2455104a659cef03c1b8fc14313b83a9e487ecdeac07cc57b288a2e300e",
     "tools/cohort027_status.py": "ea8395c7d5bb85bf3aa4bb9dcf391394dabb5b54388914dd2e29b9d85adc279e",
     "tools/cohort027_tokencheck.py": "b37322a8052dbb74db5e3e9b6ab0fab38f8adfdc4923f562444b6e30cea8dc94",
     "tools/run_direct_pilot.py": "2ec6a70e50e14f88cb17e2244e244d338cbd86780beffd9de48891d06a3d3ea1"
