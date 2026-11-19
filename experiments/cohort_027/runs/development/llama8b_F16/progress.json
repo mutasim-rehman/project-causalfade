@@ -1,7 +1,7 @@
 {
   "arm": "llama8b_F16",
-  "completed": 14,
+  "completed": 28,
   "split": "development",
   "total": 224,
-  "utc": "2026-11-19T13:33:19.292967+00:00"
+  "utc": "2026-11-19T13:36:40.798623+00:00"
 }
