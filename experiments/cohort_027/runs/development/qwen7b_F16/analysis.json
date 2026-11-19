@@ -1,0 +1,181 @@
+{
+  "forms": {
+    "decision": {
+      "cells": {
+        "added_z": {
+          "correct": 11,
+          "scheduled": 16
+        },
+        "added_z_X=0": {
+          "correct": 3,
+          "scheduled": 8
+        },
+        "added_z_X=1": {
+          "correct": 8,
+          "scheduled": 8
+        },
+        "arithmetic": {
+          "correct": 16,
+          "scheduled": 32
+        },
+        "arithmetic_X=0": {
+          "correct": 4,
+          "scheduled": 16
+        },
+        "arithmetic_X=1": {
+          "correct": 12,
+          "scheduled": 16
+        },
+        "graph": {
+          "correct": 24,
+          "scheduled": 32
+        },
+        "graph_downstream": {
+          "correct": 8,
+          "scheduled": 16
+        },
+        "graph_upstream": {
+          "correct": 16,
+          "scheduled": 16
+        },
+        "paired_switch": {
+          "correct": 0,
+          "scheduled": 8
+        },
+        "switch_X=0_forward": {
+          "correct": 0,
+          "scheduled": 8
+        },
+        "switch_X=0_reverse": {
+          "correct": 1,
+          "scheduled": 8
+        },
+        "switch_X=1_forward": {
+          "correct": 8,
+          "scheduled": 8
+        },
+        "switch_X=1_reverse": {
+          "correct": 8,
+          "scheduled": 8
+        },
+        "validity": {
+          "correct": 112,
+          "scheduled": 112
+        }
+      },
+      "family_paired": {
+        "development_000": false,
+        "development_001": false,
+        "development_002": false,
+        "development_003": false,
+        "development_004": false,
+        "development_005": false,
+        "development_006": false,
+        "development_007": false
+      },
+      "gates": {
+        "added_z_each_action": false,
+        "added_z_overall": false,
+        "arithmetic_each_action": false,
+        "arithmetic_overall": false,
+        "graph_each_label": false,
+        "graph_overall": false,
+        "paired_switch": false,
+        "switch_each_action_order": false,
+        "validity": true
+      },
+      "qualified": false
+    },
+    "direct": {
+      "cells": {
+        "added_z": {
+          "correct": 8,
+          "scheduled": 16
+        },
+        "added_z_X=0": {
+          "correct": 0,
+          "scheduled": 8
+        },
+        "added_z_X=1": {
+          "correct": 8,
+          "scheduled": 8
+        },
+        "arithmetic": {
+          "correct": 16,
+          "scheduled": 32
+        },
+        "arithmetic_X=0": {
+          "correct": 0,
+          "scheduled": 16
+        },
+        "arithmetic_X=1": {
+          "correct": 16,
+          "scheduled": 16
+        },
+        "graph": {
+          "correct": 24,
+          "scheduled": 32
+        },
+        "graph_downstream": {
+          "correct": 8,
+          "scheduled": 16
+        },
+        "graph_upstream": {
+          "correct": 16,
+          "scheduled": 16
+        },
+        "paired_switch": {
+          "correct": 0,
+          "scheduled": 8
+        },
+        "switch_X=0_forward": {
+          "correct": 0,
+          "scheduled": 8
+        },
+        "switch_X=0_reverse": {
+          "correct": 0,
+          "scheduled": 8
+        },
+        "switch_X=1_forward": {
+          "correct": 8,
+          "scheduled": 8
+        },
+        "switch_X=1_reverse": {
+          "correct": 8,
+          "scheduled": 8
+        },
+        "validity": {
+          "correct": 112,
+          "scheduled": 112
+        }
+      },
+      "family_paired": {
+        "development_000": false,
+        "development_001": false,
+        "development_002": false,
+        "development_003": false,
+        "development_004": false,
+        "development_005": false,
+        "development_006": false,
+        "development_007": false
+      },
+      "gates": {
+        "added_z_each_action": false,
+        "added_z_overall": false,
+        "arithmetic_each_action": false,
+        "arithmetic_overall": false,
+        "graph_each_label": false,
+        "graph_overall": false,
+        "paired_switch": false,
+        "switch_each_action_order": false,
+        "validity": true
+      },
+      "qualified": false
+    }
+  },
+  "infrastructure_failures": 0,
+  "qualified": false,
+  "raw_records": 224,
+  "scheduled": 224,
+  "split": "development"
+}
