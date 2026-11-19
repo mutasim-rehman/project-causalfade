@@ -1,0 +1,13 @@
+{
+  "classification": "development fixture plus sealed validation/confirmation inputs; no inference",
+  "counts": {
+    "oracle_truth.jsonl": 672,
+    "public_tasks.jsonl": 672,
+    "worlds.jsonl": 48
+  },
+  "sha256": {
+    "oracle_truth.jsonl": "47025b5dd7c4a3f71b5dabefbbc90e4c4ea6e674d61807329c4c8aa6fc4a3114",
+    "public_tasks.jsonl": "13f25edb67ed4b60ce8d440e9c2a0852565559cdf1dde2be4732aa0116751f4d",
+    "worlds.jsonl": "9ebb061b391d36403019a1fb49fdc59a793ec58e7890cc9103e713ede708925e"
+  }
+}

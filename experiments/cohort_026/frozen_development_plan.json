@@ -1,6 +1,6 @@
 {
   "classification": "prospective_bounded_development_screen",
-  "fixture_manifest_sha256": "a5189d76fb2d1420979e1f3b2053f2fca1b4e75cf674e846c48b1266623f0246",
+  "fixture_manifest_sha256": "0b8d8d694026180da708cb53dfb8089b10a30583e14bbcbd226c36e25f63e902",
   "models": [
     {
       "id": "qwen7b_f16",
@@ -38,5 +38,5 @@
   },
   "qualification": "Each lineage and each form assessed separately; no model substitution. All scheduled prompts count, invalids wrong. If no lineage-form qualifies after one documented revision, stop. Validation and confirmation remain unqueried until later predeclared gates.",
   "primary_development_metric": "paired graph-switch fidelity, both decisions correct within family and form",
-  "revision": "v2 arithmetic oracle and control question fix; v1 run invalidated before gate use"
+  "revision": "v3 final permitted wording revision: explicit graph-dependent weighting rule and bare-token instruction; same development families, models, endpoints and gates"
 }

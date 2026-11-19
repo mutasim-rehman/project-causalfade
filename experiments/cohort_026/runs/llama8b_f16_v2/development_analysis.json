@@ -1,0 +1,109 @@
+{
+  "forms": {
+    "decision": {
+      "checks": {
+        "arithmetic_accuracy": true,
+        "graph_accuracy": true,
+        "no_change_accuracy": false,
+        "paired_switch_fidelity": false,
+        "strict_validity": false,
+        "switch_accuracy_each_polarity": false
+      },
+      "counts": {
+        "arithmetic": {
+          "correct": 8,
+          "scheduled": 8
+        },
+        "graph": {
+          "correct": 16,
+          "scheduled": 16
+        },
+        "no_change": {
+          "correct": 0,
+          "scheduled": 16
+        },
+        "switch": {
+          "correct": 0,
+          "scheduled": 16
+        },
+        "switch_X=0": {
+          "correct": 0,
+          "scheduled": 8
+        },
+        "switch_X=1": {
+          "correct": 0,
+          "scheduled": 8
+        }
+      },
+      "paired": {
+        "correct": 0,
+        "scheduled": 8
+      },
+      "qualified": false,
+      "rates": {
+        "arithmetic": 1.0,
+        "graph": 1.0,
+        "no_change": 0.0,
+        "paired_switch_fidelity": 0.0,
+        "strict_validity": 0.42857142857142855,
+        "switch": 0.0,
+        "switch_X=0": 0.0,
+        "switch_X=1": 0.0
+      }
+    },
+    "direct": {
+      "checks": {
+        "arithmetic_accuracy": false,
+        "graph_accuracy": true,
+        "no_change_accuracy": false,
+        "paired_switch_fidelity": false,
+        "strict_validity": false,
+        "switch_accuracy_each_polarity": false
+      },
+      "counts": {
+        "arithmetic": {
+          "correct": 4,
+          "scheduled": 8
+        },
+        "graph": {
+          "correct": 16,
+          "scheduled": 16
+        },
+        "no_change": {
+          "correct": 0,
+          "scheduled": 16
+        },
+        "switch": {
+          "correct": 0,
+          "scheduled": 16
+        },
+        "switch_X=0": {
+          "correct": 0,
+          "scheduled": 8
+        },
+        "switch_X=1": {
+          "correct": 0,
+          "scheduled": 8
+        }
+      },
+      "paired": {
+        "correct": 0,
+        "scheduled": 8
+      },
+      "qualified": false,
+      "rates": {
+        "arithmetic": 0.5,
+        "graph": 1.0,
+        "no_change": 0.0,
+        "paired_switch_fidelity": 0.0,
+        "strict_validity": 0.42857142857142855,
+        "switch": 0.0,
+        "switch_X=0": 0.0,
+        "switch_X=1": 0.0
+      }
+    }
+  },
+  "model_id": "llama8b_f16",
+  "scheduled": 112,
+  "valid": 48
+}

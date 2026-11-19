@@ -47,12 +47,15 @@ def prompt(table, graph, form, kind, option_order):
         stem += '\nFor X=1, is P(Y=1|X=1,W=0) greater than P(Y=1|X=1,W=1)?'
         options = ['yes', 'no']
     else:
+        stem += ('\nCalculation rule: if W is upstream of X, use P(W) to average '
+                 'P(Y=1|X=x,W) for each x. If W is downstream of X, use '
+                 'P(W|X=x) to average those same outcome rates separately for each x.')
         stem += ('\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?'
                  if form == 'direct' else '\nWhich setting gives the higher P(Y=1 | do(X))?')
         options = ['X=1', 'X=0']
     if option_order:
         options.reverse()
-    return stem + '\nAnswer with exactly one of: ' + ' or '.join(options) + '. No explanation.'
+    return stem + '\nReturn exactly one bare token: ' + ' or '.join(options) + '. Do not add a period or explanation.'
 
 
 def build(n_dev=8, n_validation=8, n_confirm=32):
