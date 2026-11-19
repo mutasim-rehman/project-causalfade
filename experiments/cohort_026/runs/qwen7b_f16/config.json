@@ -5,7 +5,7 @@
     "path": "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
     "sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a"
   },
-  "plan_sha256": "35300e35f794402d6ffaebffbce7d17f6807913c3112fe931c96a4eca22f99e3",
+  "plan_sha256": "fca1dd92a3b2051d3bac8420701aafa69172af297ff0c892b9689fa233ab6c0b",
   "command": [
     "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-server",
     "-m",
@@ -13,7 +13,7 @@
     "--host",
     "127.0.0.1",
     "--port",
-    "42669",
+    "35083",
     "-ngl",
     "0",
     "-c",

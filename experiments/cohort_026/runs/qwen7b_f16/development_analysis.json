@@ -15,7 +15,7 @@
           "scheduled": 8
         },
         "graph": {
-          "correct": 13,
+          "correct": 16,
           "scheduled": 16
         },
         "no_change": {
@@ -42,7 +42,7 @@
       "qualified": false,
       "rates": {
         "arithmetic": 0.5,
-        "graph": 0.8125,
+        "graph": 1.0,
         "no_change": 0.5,
         "paired_switch_fidelity": 0.0,
         "strict_validity": 1.0,
@@ -53,7 +53,7 @@
     },
     "direct": {
       "checks": {
-        "arithmetic_accuracy": true,
+        "arithmetic_accuracy": false,
         "graph_accuracy": true,
         "no_change_accuracy": false,
         "paired_switch_fidelity": false,
@@ -62,7 +62,7 @@
       },
       "counts": {
         "arithmetic": {
-          "correct": 8,
+          "correct": 6,
           "scheduled": 8
         },
         "graph": {
@@ -92,7 +92,7 @@
       },
       "qualified": false,
       "rates": {
-        "arithmetic": 1.0,
+        "arithmetic": 0.75,
         "graph": 1.0,
         "no_change": 0.5,
         "paired_switch_fidelity": 0.0,
