@@ -240,3 +240,5 @@
 {"completed": 223, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_004_direct_arithmetic_marginal_reverse", "total": 224, "utc": "2026-11-19T11:25:45.579765+00:00"}
 {"completed": 224, "event": "task_complete", "infrastructure_error": false, "strict_valid": true, "task_id": "development_007_direct_graph_confounder_reverse", "total": 224, "utc": "2026-11-19T11:25:51.858288+00:00"}
 {"completed": 224, "event": "checkpoint", "total": 224, "utc": "2026-11-19T11:25:51.866000+00:00"}
+{"event": "arm_complete", "qualified": false, "utc": "2026-11-19T11:25:54.294029+00:00"}
+{"completed": 224, "event": "checkpoint", "total": 224, "utc": "2026-11-19T11:25:54.301761+00:00"}
