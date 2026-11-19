@@ -37,9 +37,9 @@ def prompt(table, graph, form, kind, option_order):
             'mediator': 'X causes W and X causes Y; W causes Y. W is determined after treatment X.',
             'confounder_z': 'W causes X and W causes Y; X causes Y. W also causes an unmeasured Z, which has no effect on X or Y.'}[graph]
     if form == 'direct':
-        stem = f'Consider binary treatment X and desirable outcome Y. Causal structure: {desc}\n{table}\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?'
+        stem = f'Consider binary treatment X and desirable outcome Y. Causal structure: {desc}\n{table}'
     else:
-        stem = f'Choose the action with the higher intervention probability of Y=1. Setting X is an intervention, not an observation. The supplied structure is: {desc}\n{table}\nWhich setting gives the higher P(Y=1 | do(X))?'
+        stem = f'Setting X is an intervention, not an observation. The supplied structure is: {desc}\n{table}'
     if kind == 'graph':
         stem += '\nIn this structure, is W upstream of X or downstream of X?'
         options = ['upstream', 'downstream']
@@ -47,6 +47,8 @@ def prompt(table, graph, form, kind, option_order):
         stem += '\nFor X=1, is P(Y=1|X=1,W=0) greater than P(Y=1|X=1,W=1)?'
         options = ['yes', 'no']
     else:
+        stem += ('\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?'
+                 if form == 'direct' else '\nWhich setting gives the higher P(Y=1 | do(X))?')
         options = ['X=1', 'X=0']
     if option_order:
         options.reverse()
@@ -72,7 +74,9 @@ def build(n_dev=8, n_validation=8, n_confirm=32):
                     option_order = (i + ordinal) % 2
                     task_id = f'{family_id}_{form}_{kind}_{graph}'
                     expected = ('upstream' if graph != 'mediator' else 'downstream') if kind == 'graph' else (
-                        'yes' if kind == 'arithmetic' else ('X=1' if intervention_effect(world['joint'], 'confounder' if graph == 'confounder_z' else graph) > 0 else 'X=0'))
+                        ('yes' if world['joint'][(0,1,1)] / sum(world['joint'][(0,1,y)] for y in (0,1)) >
+                                  world['joint'][(1,1,1)] / sum(world['joint'][(1,1,y)] for y in (0,1)) else 'no')
+                        if kind == 'arithmetic' else ('X=1' if intervention_effect(world['joint'], 'confounder' if graph == 'confounder_z' else graph) > 0 else 'X=0'))
                     tasks.append({'task_id': task_id, 'family_id': family_id, 'split': split,
                                   'form': form, 'kind': kind, 'graph': graph,
                                   'option_order_reversed': bool(option_order),

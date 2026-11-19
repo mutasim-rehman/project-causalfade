@@ -1,0 +1,30 @@
+{
+  "model": {
+    "id": "qwen7b_f16",
+    "lineage": "qwen2.5_7b",
+    "path": "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+    "sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a"
+  },
+  "plan_sha256": "6fcf82aecc39ba74cfa3f99792c6a3b08a43f7946f9b9e20e97b7ee9a2b19b55",
+  "command": [
+    "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-server",
+    "-m",
+    "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "45279",
+    "-ngl",
+    "0",
+    "-c",
+    "2048",
+    "-np",
+    "1",
+    "-t",
+    "8",
+    "--cache-type-k",
+    "f16",
+    "--cache-type-v",
+    "f16"
+  ]
+}
