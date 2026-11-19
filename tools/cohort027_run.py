@@ -235,8 +235,8 @@ def run_arm(split,model_id,precision='F16',push=True):
                 checkpoint(out,arm_id,split,len(completed),len(schedule),push,extra_paths)
                 print(f'{arm_id} {split}: {len(completed)}/{len(schedule)}',flush=True)
         result=analyze_arm(split,arm_id)
-        checkpoint(out,arm_id,split,len(completed),len(schedule),push,extra_paths)
         event(out,'arm_complete',qualified=result['qualified'])
+        checkpoint(out,arm_id,split,len(completed),len(schedule),push,extra_paths)
         return result
     except BaseException as exc:
         event(out,'arm_stopped',error=repr(exc),completed=len(completed))
