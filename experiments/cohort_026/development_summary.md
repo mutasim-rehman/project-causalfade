@@ -1,15 +1,30 @@
-# Cohort 026 development screen
+# Cohort 026 — completed bounded development screen
 
-Status: second frozen F16 lineage in progress. The development fixture contains eight new SCM families, two independently worded forms and 112 requests per lineage. Validation and confirmation families have not been queried. The first Qwen run was invalidated after discovering an arithmetic-control oracle and prompt-order defect; its complete raw output and invalidation note remain archived. Fixture v2 was frozen before either valid development arm.
+**Status:** stopped after the predeclared two-lineage, two-form development screen and its single permitted wording revision. No form met all qualification gates. No validation or confirmation family was queried, no precision contrast was run, and no causal-specific quantization claim is made.
 
-## Corrected Qwen F16 result
+## Design and provenance
 
-The corrected Qwen arm completed 112/112 strict-valid requests. On each form, it answered 8/16 graph-switch decisions correctly and achieved 0/8 paired switch fidelity. It selected `X=1` for all 16 switch items per form, so it was correct on 8/8 positive-action items and 0/8 negative-action items. Direct-form graph reading was 16/16 and arithmetic 8/8; decision-form graph reading was 13/16 and arithmetic 4/8. No-change accuracy was 8/16 per form. Both forms failed the frozen qualification gates. These are eight-family development results, not confirmation.
+The exact-rational generator produced 48 disjoint SCM families: eight development, eight validation and 32 reserved confirmation. Within each family the confounder and mediator graphs share the full observational P(W,X,Y), while their intervention-effect signs differ. Both answer polarities are balanced. A graph with an additional W→Z child and no path from Z to X or Y supplies an unchanged-answer control. Two task forms, graph-reading and arithmetic controls, option-order reversals and strict one-token scoring are included. Display rounding was independently checked to preserve intervention signs. The [fixture manifest](input/manifest.json), [frozen development plan](frozen_development_plan.json), runner and analysis code determine the schedule and gates.
 
-The fixed Llama F16 arm is running. Its complete result will determine whether either lineage/form qualifies. If neither does, the frozen stopping rule ends this assay without validation, confirmation or a precision contrast.
+The first Qwen F16 pilot was invalidated because its arithmetic oracle incorrectly assumed the same answer after complementing Y, and its control prompt contained an extra intervention question. Its complete output is preserved separately. The repaired v2 screen was run for fixed Qwen2.5-7B-Instruct F16 and Llama-3.1-8B-Instruct F16, 112 scheduled prompts each. A single final wording revision (v3) explicitly supplied the graph-dependent weighting rule and asked for a bare answer token; it was frozen before rerunning both models on the same development families. All fixed thresholds, family IDs, scoring and answer policies remained unchanged. This was a development revision, so comparisons across v2 and v3 are descriptive.
 
-## Initial form result and final bounded revision
+## Frozen qualification results
 
-Llama F16 completed 112/112 requests but only 48/112 were strict-valid. It returned `X=1.` (with a period) on all 64 action tasks, making every switch and no-change decision invalid under the frozen exact-output rule. Graph reading was 32/32 valid and correct; arithmetic was 12/16 correct. This is a response-contract failure in addition to the apparent action bias. The exact raw texts are retained in `runs/llama8b_f16_v2`.
+| Model and form | Strict valid | Graph reading | Arithmetic | Switch correct | Paired switch fidelity | No-change correct | Qualified |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| Qwen v2 direct | 56/56 | 16/16 | 8/8 | 8/16 | 0/8 | 8/16 | No |
+| Qwen v2 decision | 56/56 | 13/16 | 4/8 | 8/16 | 0/8 | 8/16 | No |
+| Llama v2 direct | 24/56 | 16/16 | 4/8 | 0/16 | 0/8 | 0/16 | No |
+| Llama v2 decision | 24/56 | 16/16 | 8/8 | 0/16 | 0/8 | 0/16 | No |
+| Qwen v3 direct | 56/56 | 16/16 | 6/8 | 8/16 | 0/8 | 8/16 | No |
+| Qwen v3 decision | 56/56 | 16/16 | 4/8 | 8/16 | 0/8 | 8/16 | No |
+| Llama v3 direct | 56/56 | 16/16 | 4/8 | 0/16 | 0/8 | 7/16 | No |
+| Llama v3 decision | 56/56 | 16/16 | 8/8 | 14/16 | 6/8 | 8/16 | No |
 
-The one allowed wording revision now supplies the graph-dependent weighting rule without giving the numeric intervention answer, and explicitly requests a bare answer token. It is applied to both forms and both fixed lineages on the same eight development families. All gate thresholds and scheduled denominators remain unchanged. This is the final permitted revision; no further prompt or model search will follow if it fails.
+Each form has eight switch pairs and 56 scheduled prompts. The frozen gate required at least 95% strict validity, 80% graph and arithmetic controls, 70% switch accuracy in **each** answer polarity, 80% no-change accuracy and 60% paired switch fidelity. Invalid outputs count as wrong. Full per-form gate decisions are in each arm's `development_analysis.json`.
+
+The final Qwen screen returned `X=1` on all switch and no-change action prompts in both forms. Its 8/16 switch accuracy is an action bias, not graph use. Llama v2 returned `X=1.` on all 64 action prompts, violating the exact-output contract. The final instruction repaired strict validity to 112/112. In Llama v3's decision form, the model got all eight confounder switch items and six of eight mediator switch items correct, but on the no-change pair it got all eight base confounder items and **zero of eight** W→Z variants correct. Thus its 6/8 paired switch fidelity alone does not establish principled graph use. Its direct form had 0/16 switch accuracy despite the same worlds, showing strong form dependence.
+
+## Decision
+
+The bounded development screen failed its predeclared qualification rule. Stop this graph-switch assay at development. Do not use the reserved validation or confirmation families, run a paired quantized arm, claim a selective precision effect, or promote the favorable Llama decision-form switch rate alone. The observed answer bias, punctuation-sensitive validity, and unchanged-answer graph sensitivity are useful measurement findings on these eight development families; they do not show transfer. A later study would require a separately versioned assay with a stronger no-change control and new development families, followed by fresh power and confirmation work only if its reference qualifies.

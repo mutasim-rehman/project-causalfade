@@ -30,3 +30,7 @@ Choose the manuscript claim after results: selective precision effect if it surv
 ## First implementation checkpoint
 
 `causalfade/graph_switch.py` now reproduces the investigation document's exact-rational seed: the same observational joint distribution yields effects −0.10 (W confounds X/Y) and +0.38 (W mediates X/Y). Complementing Y reverses both signs. Unit tests cover both polarities and normalization. This is an oracle seed, not yet an independent family generator or a development fixture. No model inference has begun.
+
+## Final outcome
+
+The bounded development screen and one wording revision are complete. Neither F16 lineage qualified on either task form. The [development summary](development_summary.md) records all gates and the stopping decision. The eight validation and 32 confirmation families remain unqueried. The assay is closed at development; its future phases require a new versioned study, not continuation of this cohort.

@@ -1,0 +1,1122 @@
+[
+  {
+    "family_id": "development_006",
+    "form": "direct",
+    "graph": "confounder_z",
+    "kind": "no_change",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W also causes an unmeasured Z, which has no effect on X or Y.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.030000\nP(W=0, X=0, Y=1) = 0.090000\nP(W=0, X=1, Y=0) = 0.158400\nP(W=0, X=1, Y=1) = 0.321600\nP(W=1, X=0, Y=0) = 0.227200\nP(W=1, X=0, Y=1) = 0.092800\nP(W=1, X=1, Y=0) = 0.063200\nP(W=1, X=1, Y=1) = 0.016800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.750000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.290000\nP(W=0|X=1) = 0.857143\nP(Y=1|X=1,W=0) = 0.670000\nP(W=1|X=1) = 0.142857\nP(Y=1|X=1,W=1) = 0.210000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_006_direct_no_change_confounder_z"
+  },
+  {
+    "family_id": "development_007",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "graph",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.072000\nP(W=0, X=0, Y=1) = 0.028000\nP(W=0, X=1, Y=0) = 0.268000\nP(W=0, X=1, Y=1) = 0.132000\nP(W=1, X=0, Y=0) = 0.116000\nP(W=1, X=0, Y=1) = 0.284000\nP(W=1, X=1, Y=0) = 0.024000\nP(W=1, X=1, Y=1) = 0.076000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.200000\nP(Y=1|X=0,W=0) = 0.280000\nP(W=1|X=0) = 0.800000\nP(Y=1|X=0,W=1) = 0.710000\nP(W=0|X=1) = 0.800000\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.200000\nP(Y=1|X=1,W=1) = 0.760000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: downstream or upstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_007_direct_graph_confounder"
+  },
+  {
+    "family_id": "development_003",
+    "form": "decision",
+    "graph": "confounder_z",
+    "kind": "no_change",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W also causes an unmeasured Z, which has no effect on X or Y.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.127500\nP(W=0, X=0, Y=1) = 0.022500\nP(W=0, X=1, Y=0) = 0.259000\nP(W=0, X=1, Y=1) = 0.091000\nP(W=1, X=0, Y=0) = 0.112000\nP(W=1, X=0, Y=1) = 0.288000\nP(W=1, X=1, Y=0) = 0.017000\nP(W=1, X=1, Y=1) = 0.083000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.150000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.720000\nP(W=0|X=1) = 0.777778\nP(Y=1|X=1,W=0) = 0.260000\nP(W=1|X=1) = 0.222222\nP(Y=1|X=1,W=1) = 0.830000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_003_decision_no_change_confounder_z"
+  },
+  {
+    "family_id": "development_001",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "no_change",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.040000\nP(W=0, X=0, Y=1) = 0.010000\nP(W=0, X=1, Y=0) = 0.301500\nP(W=0, X=1, Y=1) = 0.148500\nP(W=1, X=0, Y=0) = 0.072000\nP(W=1, X=0, Y=1) = 0.328000\nP(W=1, X=1, Y=0) = 0.005000\nP(W=1, X=1, Y=1) = 0.095000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.111111\nP(Y=1|X=0,W=0) = 0.200000\nP(W=1|X=0) = 0.888889\nP(Y=1|X=0,W=1) = 0.820000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.950000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_001_direct_no_change_confounder"
+  },
+  {
+    "family_id": "development_005",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "arithmetic",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.045000\nP(W=0, X=0, Y=1) = 0.015000\nP(W=0, X=1, Y=0) = 0.345600\nP(W=0, X=1, Y=1) = 0.194400\nP(W=1, X=0, Y=0) = 0.060800\nP(W=1, X=0, Y=1) = 0.259200\nP(W=1, X=1, Y=0) = 0.006400\nP(W=1, X=1, Y=1) = 0.073600\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.157895\nP(Y=1|X=0,W=0) = 0.250000\nP(W=1|X=0) = 0.842105\nP(Y=1|X=0,W=1) = 0.810000\nP(W=0|X=1) = 0.870968\nP(Y=1|X=1,W=0) = 0.360000\nP(W=1|X=1) = 0.129032\nP(Y=1|X=1,W=1) = 0.920000\nFor X=1, is P(Y=1|X=1,W=0) greater than P(Y=1|X=1,W=1)?\nReturn exactly one bare token: no or yes. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_005_direct_arithmetic_confounder"
+  },
+  {
+    "family_id": "development_006",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "switch",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.030000\nP(W=0, X=0, Y=1) = 0.090000\nP(W=0, X=1, Y=0) = 0.158400\nP(W=0, X=1, Y=1) = 0.321600\nP(W=1, X=0, Y=0) = 0.227200\nP(W=1, X=0, Y=1) = 0.092800\nP(W=1, X=1, Y=0) = 0.063200\nP(W=1, X=1, Y=1) = 0.016800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.750000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.290000\nP(W=0|X=1) = 0.857143\nP(Y=1|X=1,W=0) = 0.670000\nP(W=1|X=1) = 0.142857\nP(Y=1|X=1,W=1) = 0.210000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_006_direct_switch_confounder"
+  },
+  {
+    "family_id": "development_005",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "graph",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.045000\nP(W=0, X=0, Y=1) = 0.015000\nP(W=0, X=1, Y=0) = 0.345600\nP(W=0, X=1, Y=1) = 0.194400\nP(W=1, X=0, Y=0) = 0.060800\nP(W=1, X=0, Y=1) = 0.259200\nP(W=1, X=1, Y=0) = 0.006400\nP(W=1, X=1, Y=1) = 0.073600\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.157895\nP(Y=1|X=0,W=0) = 0.250000\nP(W=1|X=0) = 0.842105\nP(Y=1|X=0,W=1) = 0.810000\nP(W=0|X=1) = 0.870968\nP(Y=1|X=1,W=0) = 0.360000\nP(W=1|X=1) = 0.129032\nP(Y=1|X=1,W=1) = 0.920000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: downstream or upstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_005_direct_graph_confounder"
+  },
+  {
+    "family_id": "development_003",
+    "form": "direct",
+    "graph": "mediator",
+    "kind": "graph",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.127500\nP(W=0, X=0, Y=1) = 0.022500\nP(W=0, X=1, Y=0) = 0.259000\nP(W=0, X=1, Y=1) = 0.091000\nP(W=1, X=0, Y=0) = 0.112000\nP(W=1, X=0, Y=1) = 0.288000\nP(W=1, X=1, Y=0) = 0.017000\nP(W=1, X=1, Y=1) = 0.083000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.150000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.720000\nP(W=0|X=1) = 0.777778\nP(Y=1|X=1,W=0) = 0.260000\nP(W=1|X=1) = 0.222222\nP(Y=1|X=1,W=1) = 0.830000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: upstream or downstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_003_direct_graph_mediator"
+  },
+  {
+    "family_id": "development_004",
+    "form": "direct",
+    "graph": "confounder_z",
+    "kind": "no_change",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W also causes an unmeasured Z, which has no effect on X or Y.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.009200\nP(W=0, X=0, Y=1) = 0.030800\nP(W=0, X=1, Y=0) = 0.108000\nP(W=0, X=1, Y=1) = 0.252000\nP(W=1, X=0, Y=0) = 0.285600\nP(W=1, X=0, Y=1) = 0.134400\nP(W=1, X=1, Y=0) = 0.135000\nP(W=1, X=1, Y=1) = 0.045000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.400000\nP(W=1) = 0.600000\nP(W=0|X=0) = 0.086957\nP(Y=1|X=0,W=0) = 0.770000\nP(W=1|X=0) = 0.913043\nP(Y=1|X=0,W=1) = 0.320000\nP(W=0|X=1) = 0.666667\nP(Y=1|X=1,W=0) = 0.700000\nP(W=1|X=1) = 0.333333\nP(Y=1|X=1,W=1) = 0.250000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_004_direct_no_change_confounder_z"
+  },
+  {
+    "family_id": "development_000",
+    "form": "decision",
+    "graph": "mediator",
+    "kind": "graph",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.012600\nP(W=0, X=0, Y=1) = 0.047400\nP(W=0, X=1, Y=0) = 0.167400\nP(W=0, X=1, Y=1) = 0.372600\nP(W=1, X=0, Y=0) = 0.226800\nP(W=1, X=0, Y=1) = 0.053200\nP(W=1, X=1, Y=0) = 0.109200\nP(W=1, X=1, Y=1) = 0.010800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.176471\nP(Y=1|X=0,W=0) = 0.790000\nP(W=1|X=0) = 0.823529\nP(Y=1|X=0,W=1) = 0.190000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.690000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.090000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: upstream or downstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_000_decision_graph_mediator"
+  },
+  {
+    "family_id": "development_003",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "no_change",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.127500\nP(W=0, X=0, Y=1) = 0.022500\nP(W=0, X=1, Y=0) = 0.259000\nP(W=0, X=1, Y=1) = 0.091000\nP(W=1, X=0, Y=0) = 0.112000\nP(W=1, X=0, Y=1) = 0.288000\nP(W=1, X=1, Y=0) = 0.017000\nP(W=1, X=1, Y=1) = 0.083000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.150000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.720000\nP(W=0|X=1) = 0.777778\nP(Y=1|X=1,W=0) = 0.260000\nP(W=1|X=1) = 0.222222\nP(Y=1|X=1,W=1) = 0.830000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_003_direct_no_change_confounder"
+  },
+  {
+    "family_id": "development_001",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "graph",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.040000\nP(W=0, X=0, Y=1) = 0.010000\nP(W=0, X=1, Y=0) = 0.301500\nP(W=0, X=1, Y=1) = 0.148500\nP(W=1, X=0, Y=0) = 0.072000\nP(W=1, X=0, Y=1) = 0.328000\nP(W=1, X=1, Y=0) = 0.005000\nP(W=1, X=1, Y=1) = 0.095000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.111111\nP(Y=1|X=0,W=0) = 0.200000\nP(W=1|X=0) = 0.888889\nP(Y=1|X=0,W=1) = 0.820000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.950000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: downstream or upstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_001_direct_graph_confounder"
+  },
+  {
+    "family_id": "development_000",
+    "form": "decision",
+    "graph": "mediator",
+    "kind": "switch",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.012600\nP(W=0, X=0, Y=1) = 0.047400\nP(W=0, X=1, Y=0) = 0.167400\nP(W=0, X=1, Y=1) = 0.372600\nP(W=1, X=0, Y=0) = 0.226800\nP(W=1, X=0, Y=1) = 0.053200\nP(W=1, X=1, Y=0) = 0.109200\nP(W=1, X=1, Y=1) = 0.010800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.176471\nP(Y=1|X=0,W=0) = 0.790000\nP(W=1|X=0) = 0.823529\nP(Y=1|X=0,W=1) = 0.190000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.690000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.090000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_000_decision_switch_mediator"
+  },
+  {
+    "family_id": "development_007",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "no_change",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.072000\nP(W=0, X=0, Y=1) = 0.028000\nP(W=0, X=1, Y=0) = 0.268000\nP(W=0, X=1, Y=1) = 0.132000\nP(W=1, X=0, Y=0) = 0.116000\nP(W=1, X=0, Y=1) = 0.284000\nP(W=1, X=1, Y=0) = 0.024000\nP(W=1, X=1, Y=1) = 0.076000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.200000\nP(Y=1|X=0,W=0) = 0.280000\nP(W=1|X=0) = 0.800000\nP(Y=1|X=0,W=1) = 0.710000\nP(W=0|X=1) = 0.800000\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.200000\nP(Y=1|X=1,W=1) = 0.760000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_007_decision_no_change_confounder"
+  },
+  {
+    "family_id": "development_001",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "arithmetic",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.040000\nP(W=0, X=0, Y=1) = 0.010000\nP(W=0, X=1, Y=0) = 0.301500\nP(W=0, X=1, Y=1) = 0.148500\nP(W=1, X=0, Y=0) = 0.072000\nP(W=1, X=0, Y=1) = 0.328000\nP(W=1, X=1, Y=0) = 0.005000\nP(W=1, X=1, Y=1) = 0.095000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.111111\nP(Y=1|X=0,W=0) = 0.200000\nP(W=1|X=0) = 0.888889\nP(Y=1|X=0,W=1) = 0.820000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.950000\nFor X=1, is P(Y=1|X=1,W=0) greater than P(Y=1|X=1,W=1)?\nReturn exactly one bare token: no or yes. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_001_direct_arithmetic_confounder"
+  },
+  {
+    "family_id": "development_000",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "no_change",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.012600\nP(W=0, X=0, Y=1) = 0.047400\nP(W=0, X=1, Y=0) = 0.167400\nP(W=0, X=1, Y=1) = 0.372600\nP(W=1, X=0, Y=0) = 0.226800\nP(W=1, X=0, Y=1) = 0.053200\nP(W=1, X=1, Y=0) = 0.109200\nP(W=1, X=1, Y=1) = 0.010800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.176471\nP(Y=1|X=0,W=0) = 0.790000\nP(W=1|X=0) = 0.823529\nP(Y=1|X=0,W=1) = 0.190000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.690000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.090000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_000_decision_no_change_confounder"
+  },
+  {
+    "family_id": "development_004",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "no_change",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.009200\nP(W=0, X=0, Y=1) = 0.030800\nP(W=0, X=1, Y=0) = 0.108000\nP(W=0, X=1, Y=1) = 0.252000\nP(W=1, X=0, Y=0) = 0.285600\nP(W=1, X=0, Y=1) = 0.134400\nP(W=1, X=1, Y=0) = 0.135000\nP(W=1, X=1, Y=1) = 0.045000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.400000\nP(W=1) = 0.600000\nP(W=0|X=0) = 0.086957\nP(Y=1|X=0,W=0) = 0.770000\nP(W=1|X=0) = 0.913043\nP(Y=1|X=0,W=1) = 0.320000\nP(W=0|X=1) = 0.666667\nP(Y=1|X=1,W=0) = 0.700000\nP(W=1|X=1) = 0.333333\nP(Y=1|X=1,W=1) = 0.250000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_004_direct_no_change_confounder"
+  },
+  {
+    "family_id": "development_002",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "no_change",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.027000\nP(W=0, X=0, Y=1) = 0.153000\nP(W=0, X=1, Y=0) = 0.088200\nP(W=0, X=1, Y=1) = 0.331800\nP(W=1, X=0, Y=0) = 0.256000\nP(W=1, X=0, Y=1) = 0.064000\nP(W=1, X=1, Y=0) = 0.068800\nP(W=1, X=1, Y=1) = 0.011200\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.360000\nP(Y=1|X=0,W=0) = 0.850000\nP(W=1|X=0) = 0.640000\nP(Y=1|X=0,W=1) = 0.200000\nP(W=0|X=1) = 0.840000\nP(Y=1|X=1,W=0) = 0.790000\nP(W=1|X=1) = 0.160000\nP(Y=1|X=1,W=1) = 0.140000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_002_decision_no_change_confounder"
+  },
+  {
+    "family_id": "development_006",
+    "form": "decision",
+    "graph": "mediator",
+    "kind": "graph",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.030000\nP(W=0, X=0, Y=1) = 0.090000\nP(W=0, X=1, Y=0) = 0.158400\nP(W=0, X=1, Y=1) = 0.321600\nP(W=1, X=0, Y=0) = 0.227200\nP(W=1, X=0, Y=1) = 0.092800\nP(W=1, X=1, Y=0) = 0.063200\nP(W=1, X=1, Y=1) = 0.016800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.750000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.290000\nP(W=0|X=1) = 0.857143\nP(Y=1|X=1,W=0) = 0.670000\nP(W=1|X=1) = 0.142857\nP(Y=1|X=1,W=1) = 0.210000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: upstream or downstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_006_decision_graph_mediator"
+  },
+  {
+    "family_id": "development_002",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "arithmetic",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.027000\nP(W=0, X=0, Y=1) = 0.153000\nP(W=0, X=1, Y=0) = 0.088200\nP(W=0, X=1, Y=1) = 0.331800\nP(W=1, X=0, Y=0) = 0.256000\nP(W=1, X=0, Y=1) = 0.064000\nP(W=1, X=1, Y=0) = 0.068800\nP(W=1, X=1, Y=1) = 0.011200\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.360000\nP(Y=1|X=0,W=0) = 0.850000\nP(W=1|X=0) = 0.640000\nP(Y=1|X=0,W=1) = 0.200000\nP(W=0|X=1) = 0.840000\nP(Y=1|X=1,W=0) = 0.790000\nP(W=1|X=1) = 0.160000\nP(Y=1|X=1,W=1) = 0.140000\nFor X=1, is P(Y=1|X=1,W=0) greater than P(Y=1|X=1,W=1)?\nReturn exactly one bare token: yes or no. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_002_direct_arithmetic_confounder"
+  },
+  {
+    "family_id": "development_001",
+    "form": "decision",
+    "graph": "confounder_z",
+    "kind": "no_change",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W also causes an unmeasured Z, which has no effect on X or Y.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.040000\nP(W=0, X=0, Y=1) = 0.010000\nP(W=0, X=1, Y=0) = 0.301500\nP(W=0, X=1, Y=1) = 0.148500\nP(W=1, X=0, Y=0) = 0.072000\nP(W=1, X=0, Y=1) = 0.328000\nP(W=1, X=1, Y=0) = 0.005000\nP(W=1, X=1, Y=1) = 0.095000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.111111\nP(Y=1|X=0,W=0) = 0.200000\nP(W=1|X=0) = 0.888889\nP(Y=1|X=0,W=1) = 0.820000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.950000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_001_decision_no_change_confounder_z"
+  },
+  {
+    "family_id": "development_004",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "graph",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.009200\nP(W=0, X=0, Y=1) = 0.030800\nP(W=0, X=1, Y=0) = 0.108000\nP(W=0, X=1, Y=1) = 0.252000\nP(W=1, X=0, Y=0) = 0.285600\nP(W=1, X=0, Y=1) = 0.134400\nP(W=1, X=1, Y=0) = 0.135000\nP(W=1, X=1, Y=1) = 0.045000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.400000\nP(W=1) = 0.600000\nP(W=0|X=0) = 0.086957\nP(Y=1|X=0,W=0) = 0.770000\nP(W=1|X=0) = 0.913043\nP(Y=1|X=0,W=1) = 0.320000\nP(W=0|X=1) = 0.666667\nP(Y=1|X=1,W=0) = 0.700000\nP(W=1|X=1) = 0.333333\nP(Y=1|X=1,W=1) = 0.250000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: upstream or downstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_004_direct_graph_confounder"
+  },
+  {
+    "family_id": "development_000",
+    "form": "decision",
+    "graph": "confounder_z",
+    "kind": "no_change",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W also causes an unmeasured Z, which has no effect on X or Y.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.012600\nP(W=0, X=0, Y=1) = 0.047400\nP(W=0, X=1, Y=0) = 0.167400\nP(W=0, X=1, Y=1) = 0.372600\nP(W=1, X=0, Y=0) = 0.226800\nP(W=1, X=0, Y=1) = 0.053200\nP(W=1, X=1, Y=0) = 0.109200\nP(W=1, X=1, Y=1) = 0.010800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.176471\nP(Y=1|X=0,W=0) = 0.790000\nP(W=1|X=0) = 0.823529\nP(Y=1|X=0,W=1) = 0.190000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.690000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.090000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_000_decision_no_change_confounder_z"
+  },
+  {
+    "family_id": "development_005",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "arithmetic",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.045000\nP(W=0, X=0, Y=1) = 0.015000\nP(W=0, X=1, Y=0) = 0.345600\nP(W=0, X=1, Y=1) = 0.194400\nP(W=1, X=0, Y=0) = 0.060800\nP(W=1, X=0, Y=1) = 0.259200\nP(W=1, X=1, Y=0) = 0.006400\nP(W=1, X=1, Y=1) = 0.073600\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.157895\nP(Y=1|X=0,W=0) = 0.250000\nP(W=1|X=0) = 0.842105\nP(Y=1|X=0,W=1) = 0.810000\nP(W=0|X=1) = 0.870968\nP(Y=1|X=1,W=0) = 0.360000\nP(W=1|X=1) = 0.129032\nP(Y=1|X=1,W=1) = 0.920000\nFor X=1, is P(Y=1|X=1,W=0) greater than P(Y=1|X=1,W=1)?\nReturn exactly one bare token: yes or no. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_005_decision_arithmetic_confounder"
+  },
+  {
+    "family_id": "development_002",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "arithmetic",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.027000\nP(W=0, X=0, Y=1) = 0.153000\nP(W=0, X=1, Y=0) = 0.088200\nP(W=0, X=1, Y=1) = 0.331800\nP(W=1, X=0, Y=0) = 0.256000\nP(W=1, X=0, Y=1) = 0.064000\nP(W=1, X=1, Y=0) = 0.068800\nP(W=1, X=1, Y=1) = 0.011200\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.360000\nP(Y=1|X=0,W=0) = 0.850000\nP(W=1|X=0) = 0.640000\nP(Y=1|X=0,W=1) = 0.200000\nP(W=0|X=1) = 0.840000\nP(Y=1|X=1,W=0) = 0.790000\nP(W=1|X=1) = 0.160000\nP(Y=1|X=1,W=1) = 0.140000\nFor X=1, is P(Y=1|X=1,W=0) greater than P(Y=1|X=1,W=1)?\nReturn exactly one bare token: no or yes. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_002_decision_arithmetic_confounder"
+  },
+  {
+    "family_id": "development_003",
+    "form": "direct",
+    "graph": "confounder_z",
+    "kind": "no_change",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W also causes an unmeasured Z, which has no effect on X or Y.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.127500\nP(W=0, X=0, Y=1) = 0.022500\nP(W=0, X=1, Y=0) = 0.259000\nP(W=0, X=1, Y=1) = 0.091000\nP(W=1, X=0, Y=0) = 0.112000\nP(W=1, X=0, Y=1) = 0.288000\nP(W=1, X=1, Y=0) = 0.017000\nP(W=1, X=1, Y=1) = 0.083000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.150000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.720000\nP(W=0|X=1) = 0.777778\nP(Y=1|X=1,W=0) = 0.260000\nP(W=1|X=1) = 0.222222\nP(Y=1|X=1,W=1) = 0.830000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_003_direct_no_change_confounder_z"
+  },
+  {
+    "family_id": "development_003",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "arithmetic",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.127500\nP(W=0, X=0, Y=1) = 0.022500\nP(W=0, X=1, Y=0) = 0.259000\nP(W=0, X=1, Y=1) = 0.091000\nP(W=1, X=0, Y=0) = 0.112000\nP(W=1, X=0, Y=1) = 0.288000\nP(W=1, X=1, Y=0) = 0.017000\nP(W=1, X=1, Y=1) = 0.083000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.150000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.720000\nP(W=0|X=1) = 0.777778\nP(Y=1|X=1,W=0) = 0.260000\nP(W=1|X=1) = 0.222222\nP(Y=1|X=1,W=1) = 0.830000\nFor X=1, is P(Y=1|X=1,W=0) greater than P(Y=1|X=1,W=1)?\nReturn exactly one bare token: yes or no. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_003_decision_arithmetic_confounder"
+  },
+  {
+    "family_id": "development_003",
+    "form": "direct",
+    "graph": "mediator",
+    "kind": "switch",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.127500\nP(W=0, X=0, Y=1) = 0.022500\nP(W=0, X=1, Y=0) = 0.259000\nP(W=0, X=1, Y=1) = 0.091000\nP(W=1, X=0, Y=0) = 0.112000\nP(W=1, X=0, Y=1) = 0.288000\nP(W=1, X=1, Y=0) = 0.017000\nP(W=1, X=1, Y=1) = 0.083000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.150000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.720000\nP(W=0|X=1) = 0.777778\nP(Y=1|X=1,W=0) = 0.260000\nP(W=1|X=1) = 0.222222\nP(Y=1|X=1,W=1) = 0.830000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_003_direct_switch_mediator"
+  },
+  {
+    "family_id": "development_005",
+    "form": "decision",
+    "graph": "mediator",
+    "kind": "graph",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.045000\nP(W=0, X=0, Y=1) = 0.015000\nP(W=0, X=1, Y=0) = 0.345600\nP(W=0, X=1, Y=1) = 0.194400\nP(W=1, X=0, Y=0) = 0.060800\nP(W=1, X=0, Y=1) = 0.259200\nP(W=1, X=1, Y=0) = 0.006400\nP(W=1, X=1, Y=1) = 0.073600\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.157895\nP(Y=1|X=0,W=0) = 0.250000\nP(W=1|X=0) = 0.842105\nP(Y=1|X=0,W=1) = 0.810000\nP(W=0|X=1) = 0.870968\nP(Y=1|X=1,W=0) = 0.360000\nP(W=1|X=1) = 0.129032\nP(Y=1|X=1,W=1) = 0.920000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: downstream or upstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_005_decision_graph_mediator"
+  },
+  {
+    "family_id": "development_000",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "arithmetic",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.012600\nP(W=0, X=0, Y=1) = 0.047400\nP(W=0, X=1, Y=0) = 0.167400\nP(W=0, X=1, Y=1) = 0.372600\nP(W=1, X=0, Y=0) = 0.226800\nP(W=1, X=0, Y=1) = 0.053200\nP(W=1, X=1, Y=0) = 0.109200\nP(W=1, X=1, Y=1) = 0.010800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.176471\nP(Y=1|X=0,W=0) = 0.790000\nP(W=1|X=0) = 0.823529\nP(Y=1|X=0,W=1) = 0.190000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.690000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.090000\nFor X=1, is P(Y=1|X=1,W=0) greater than P(Y=1|X=1,W=1)?\nReturn exactly one bare token: no or yes. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_000_decision_arithmetic_confounder"
+  },
+  {
+    "family_id": "development_007",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "arithmetic",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.072000\nP(W=0, X=0, Y=1) = 0.028000\nP(W=0, X=1, Y=0) = 0.268000\nP(W=0, X=1, Y=1) = 0.132000\nP(W=1, X=0, Y=0) = 0.116000\nP(W=1, X=0, Y=1) = 0.284000\nP(W=1, X=1, Y=0) = 0.024000\nP(W=1, X=1, Y=1) = 0.076000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.200000\nP(Y=1|X=0,W=0) = 0.280000\nP(W=1|X=0) = 0.800000\nP(Y=1|X=0,W=1) = 0.710000\nP(W=0|X=1) = 0.800000\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.200000\nP(Y=1|X=1,W=1) = 0.760000\nFor X=1, is P(Y=1|X=1,W=0) greater than P(Y=1|X=1,W=1)?\nReturn exactly one bare token: yes or no. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_007_decision_arithmetic_confounder"
+  },
+  {
+    "family_id": "development_002",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "no_change",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.027000\nP(W=0, X=0, Y=1) = 0.153000\nP(W=0, X=1, Y=0) = 0.088200\nP(W=0, X=1, Y=1) = 0.331800\nP(W=1, X=0, Y=0) = 0.256000\nP(W=1, X=0, Y=1) = 0.064000\nP(W=1, X=1, Y=0) = 0.068800\nP(W=1, X=1, Y=1) = 0.011200\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.360000\nP(Y=1|X=0,W=0) = 0.850000\nP(W=1|X=0) = 0.640000\nP(Y=1|X=0,W=1) = 0.200000\nP(W=0|X=1) = 0.840000\nP(Y=1|X=1,W=0) = 0.790000\nP(W=1|X=1) = 0.160000\nP(Y=1|X=1,W=1) = 0.140000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_002_direct_no_change_confounder"
+  },
+  {
+    "family_id": "development_003",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "no_change",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.127500\nP(W=0, X=0, Y=1) = 0.022500\nP(W=0, X=1, Y=0) = 0.259000\nP(W=0, X=1, Y=1) = 0.091000\nP(W=1, X=0, Y=0) = 0.112000\nP(W=1, X=0, Y=1) = 0.288000\nP(W=1, X=1, Y=0) = 0.017000\nP(W=1, X=1, Y=1) = 0.083000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.150000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.720000\nP(W=0|X=1) = 0.777778\nP(Y=1|X=1,W=0) = 0.260000\nP(W=1|X=1) = 0.222222\nP(Y=1|X=1,W=1) = 0.830000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_003_decision_no_change_confounder"
+  },
+  {
+    "family_id": "development_001",
+    "form": "direct",
+    "graph": "mediator",
+    "kind": "switch",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.040000\nP(W=0, X=0, Y=1) = 0.010000\nP(W=0, X=1, Y=0) = 0.301500\nP(W=0, X=1, Y=1) = 0.148500\nP(W=1, X=0, Y=0) = 0.072000\nP(W=1, X=0, Y=1) = 0.328000\nP(W=1, X=1, Y=0) = 0.005000\nP(W=1, X=1, Y=1) = 0.095000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.111111\nP(Y=1|X=0,W=0) = 0.200000\nP(W=1|X=0) = 0.888889\nP(Y=1|X=0,W=1) = 0.820000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.950000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_001_direct_switch_mediator"
+  },
+  {
+    "family_id": "development_000",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "graph",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.012600\nP(W=0, X=0, Y=1) = 0.047400\nP(W=0, X=1, Y=0) = 0.167400\nP(W=0, X=1, Y=1) = 0.372600\nP(W=1, X=0, Y=0) = 0.226800\nP(W=1, X=0, Y=1) = 0.053200\nP(W=1, X=1, Y=0) = 0.109200\nP(W=1, X=1, Y=1) = 0.010800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.176471\nP(Y=1|X=0,W=0) = 0.790000\nP(W=1|X=0) = 0.823529\nP(Y=1|X=0,W=1) = 0.190000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.690000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.090000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: upstream or downstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_000_direct_graph_confounder"
+  },
+  {
+    "family_id": "development_004",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "arithmetic",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.009200\nP(W=0, X=0, Y=1) = 0.030800\nP(W=0, X=1, Y=0) = 0.108000\nP(W=0, X=1, Y=1) = 0.252000\nP(W=1, X=0, Y=0) = 0.285600\nP(W=1, X=0, Y=1) = 0.134400\nP(W=1, X=1, Y=0) = 0.135000\nP(W=1, X=1, Y=1) = 0.045000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.400000\nP(W=1) = 0.600000\nP(W=0|X=0) = 0.086957\nP(Y=1|X=0,W=0) = 0.770000\nP(W=1|X=0) = 0.913043\nP(Y=1|X=0,W=1) = 0.320000\nP(W=0|X=1) = 0.666667\nP(Y=1|X=1,W=0) = 0.700000\nP(W=1|X=1) = 0.333333\nP(Y=1|X=1,W=1) = 0.250000\nFor X=1, is P(Y=1|X=1,W=0) greater than P(Y=1|X=1,W=1)?\nReturn exactly one bare token: no or yes. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_004_decision_arithmetic_confounder"
+  },
+  {
+    "family_id": "development_007",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "graph",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.072000\nP(W=0, X=0, Y=1) = 0.028000\nP(W=0, X=1, Y=0) = 0.268000\nP(W=0, X=1, Y=1) = 0.132000\nP(W=1, X=0, Y=0) = 0.116000\nP(W=1, X=0, Y=1) = 0.284000\nP(W=1, X=1, Y=0) = 0.024000\nP(W=1, X=1, Y=1) = 0.076000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.200000\nP(Y=1|X=0,W=0) = 0.280000\nP(W=1|X=0) = 0.800000\nP(Y=1|X=0,W=1) = 0.710000\nP(W=0|X=1) = 0.800000\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.200000\nP(Y=1|X=1,W=1) = 0.760000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: upstream or downstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_007_decision_graph_confounder"
+  },
+  {
+    "family_id": "development_002",
+    "form": "direct",
+    "graph": "confounder_z",
+    "kind": "no_change",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W also causes an unmeasured Z, which has no effect on X or Y.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.027000\nP(W=0, X=0, Y=1) = 0.153000\nP(W=0, X=1, Y=0) = 0.088200\nP(W=0, X=1, Y=1) = 0.331800\nP(W=1, X=0, Y=0) = 0.256000\nP(W=1, X=0, Y=1) = 0.064000\nP(W=1, X=1, Y=0) = 0.068800\nP(W=1, X=1, Y=1) = 0.011200\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.360000\nP(Y=1|X=0,W=0) = 0.850000\nP(W=1|X=0) = 0.640000\nP(Y=1|X=0,W=1) = 0.200000\nP(W=0|X=1) = 0.840000\nP(Y=1|X=1,W=0) = 0.790000\nP(W=1|X=1) = 0.160000\nP(Y=1|X=1,W=1) = 0.140000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_002_direct_no_change_confounder_z"
+  },
+  {
+    "family_id": "development_006",
+    "form": "direct",
+    "graph": "mediator",
+    "kind": "graph",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.030000\nP(W=0, X=0, Y=1) = 0.090000\nP(W=0, X=1, Y=0) = 0.158400\nP(W=0, X=1, Y=1) = 0.321600\nP(W=1, X=0, Y=0) = 0.227200\nP(W=1, X=0, Y=1) = 0.092800\nP(W=1, X=1, Y=0) = 0.063200\nP(W=1, X=1, Y=1) = 0.016800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.750000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.290000\nP(W=0|X=1) = 0.857143\nP(Y=1|X=1,W=0) = 0.670000\nP(W=1|X=1) = 0.142857\nP(Y=1|X=1,W=1) = 0.210000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: downstream or upstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_006_direct_graph_mediator"
+  },
+  {
+    "family_id": "development_001",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "graph",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.040000\nP(W=0, X=0, Y=1) = 0.010000\nP(W=0, X=1, Y=0) = 0.301500\nP(W=0, X=1, Y=1) = 0.148500\nP(W=1, X=0, Y=0) = 0.072000\nP(W=1, X=0, Y=1) = 0.328000\nP(W=1, X=1, Y=0) = 0.005000\nP(W=1, X=1, Y=1) = 0.095000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.111111\nP(Y=1|X=0,W=0) = 0.200000\nP(W=1|X=0) = 0.888889\nP(Y=1|X=0,W=1) = 0.820000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.950000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: upstream or downstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_001_decision_graph_confounder"
+  },
+  {
+    "family_id": "development_004",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "graph",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.009200\nP(W=0, X=0, Y=1) = 0.030800\nP(W=0, X=1, Y=0) = 0.108000\nP(W=0, X=1, Y=1) = 0.252000\nP(W=1, X=0, Y=0) = 0.285600\nP(W=1, X=0, Y=1) = 0.134400\nP(W=1, X=1, Y=0) = 0.135000\nP(W=1, X=1, Y=1) = 0.045000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.400000\nP(W=1) = 0.600000\nP(W=0|X=0) = 0.086957\nP(Y=1|X=0,W=0) = 0.770000\nP(W=1|X=0) = 0.913043\nP(Y=1|X=0,W=1) = 0.320000\nP(W=0|X=1) = 0.666667\nP(Y=1|X=1,W=0) = 0.700000\nP(W=1|X=1) = 0.333333\nP(Y=1|X=1,W=1) = 0.250000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: downstream or upstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_004_decision_graph_confounder"
+  },
+  {
+    "family_id": "development_004",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "no_change",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.009200\nP(W=0, X=0, Y=1) = 0.030800\nP(W=0, X=1, Y=0) = 0.108000\nP(W=0, X=1, Y=1) = 0.252000\nP(W=1, X=0, Y=0) = 0.285600\nP(W=1, X=0, Y=1) = 0.134400\nP(W=1, X=1, Y=0) = 0.135000\nP(W=1, X=1, Y=1) = 0.045000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.400000\nP(W=1) = 0.600000\nP(W=0|X=0) = 0.086957\nP(Y=1|X=0,W=0) = 0.770000\nP(W=1|X=0) = 0.913043\nP(Y=1|X=0,W=1) = 0.320000\nP(W=0|X=1) = 0.666667\nP(Y=1|X=1,W=0) = 0.700000\nP(W=1|X=1) = 0.333333\nP(Y=1|X=1,W=1) = 0.250000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_004_decision_no_change_confounder"
+  },
+  {
+    "family_id": "development_004",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "switch",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.009200\nP(W=0, X=0, Y=1) = 0.030800\nP(W=0, X=1, Y=0) = 0.108000\nP(W=0, X=1, Y=1) = 0.252000\nP(W=1, X=0, Y=0) = 0.285600\nP(W=1, X=0, Y=1) = 0.134400\nP(W=1, X=1, Y=0) = 0.135000\nP(W=1, X=1, Y=1) = 0.045000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.400000\nP(W=1) = 0.600000\nP(W=0|X=0) = 0.086957\nP(Y=1|X=0,W=0) = 0.770000\nP(W=1|X=0) = 0.913043\nP(Y=1|X=0,W=1) = 0.320000\nP(W=0|X=1) = 0.666667\nP(Y=1|X=1,W=0) = 0.700000\nP(W=1|X=1) = 0.333333\nP(Y=1|X=1,W=1) = 0.250000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_004_decision_switch_confounder"
+  },
+  {
+    "family_id": "development_007",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "switch",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.072000\nP(W=0, X=0, Y=1) = 0.028000\nP(W=0, X=1, Y=0) = 0.268000\nP(W=0, X=1, Y=1) = 0.132000\nP(W=1, X=0, Y=0) = 0.116000\nP(W=1, X=0, Y=1) = 0.284000\nP(W=1, X=1, Y=0) = 0.024000\nP(W=1, X=1, Y=1) = 0.076000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.200000\nP(Y=1|X=0,W=0) = 0.280000\nP(W=1|X=0) = 0.800000\nP(Y=1|X=0,W=1) = 0.710000\nP(W=0|X=1) = 0.800000\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.200000\nP(Y=1|X=1,W=1) = 0.760000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_007_decision_switch_confounder"
+  },
+  {
+    "family_id": "development_006",
+    "form": "decision",
+    "graph": "confounder_z",
+    "kind": "no_change",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W also causes an unmeasured Z, which has no effect on X or Y.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.030000\nP(W=0, X=0, Y=1) = 0.090000\nP(W=0, X=1, Y=0) = 0.158400\nP(W=0, X=1, Y=1) = 0.321600\nP(W=1, X=0, Y=0) = 0.227200\nP(W=1, X=0, Y=1) = 0.092800\nP(W=1, X=1, Y=0) = 0.063200\nP(W=1, X=1, Y=1) = 0.016800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.750000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.290000\nP(W=0|X=1) = 0.857143\nP(Y=1|X=1,W=0) = 0.670000\nP(W=1|X=1) = 0.142857\nP(Y=1|X=1,W=1) = 0.210000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_006_decision_no_change_confounder_z"
+  },
+  {
+    "family_id": "development_000",
+    "form": "direct",
+    "graph": "mediator",
+    "kind": "graph",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.012600\nP(W=0, X=0, Y=1) = 0.047400\nP(W=0, X=1, Y=0) = 0.167400\nP(W=0, X=1, Y=1) = 0.372600\nP(W=1, X=0, Y=0) = 0.226800\nP(W=1, X=0, Y=1) = 0.053200\nP(W=1, X=1, Y=0) = 0.109200\nP(W=1, X=1, Y=1) = 0.010800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.176471\nP(Y=1|X=0,W=0) = 0.790000\nP(W=1|X=0) = 0.823529\nP(Y=1|X=0,W=1) = 0.190000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.690000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.090000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: downstream or upstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_000_direct_graph_mediator"
+  },
+  {
+    "family_id": "development_000",
+    "form": "direct",
+    "graph": "mediator",
+    "kind": "switch",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.012600\nP(W=0, X=0, Y=1) = 0.047400\nP(W=0, X=1, Y=0) = 0.167400\nP(W=0, X=1, Y=1) = 0.372600\nP(W=1, X=0, Y=0) = 0.226800\nP(W=1, X=0, Y=1) = 0.053200\nP(W=1, X=1, Y=0) = 0.109200\nP(W=1, X=1, Y=1) = 0.010800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.176471\nP(Y=1|X=0,W=0) = 0.790000\nP(W=1|X=0) = 0.823529\nP(Y=1|X=0,W=1) = 0.190000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.690000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.090000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_000_direct_switch_mediator"
+  },
+  {
+    "family_id": "development_001",
+    "form": "decision",
+    "graph": "mediator",
+    "kind": "switch",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.040000\nP(W=0, X=0, Y=1) = 0.010000\nP(W=0, X=1, Y=0) = 0.301500\nP(W=0, X=1, Y=1) = 0.148500\nP(W=1, X=0, Y=0) = 0.072000\nP(W=1, X=0, Y=1) = 0.328000\nP(W=1, X=1, Y=0) = 0.005000\nP(W=1, X=1, Y=1) = 0.095000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.111111\nP(Y=1|X=0,W=0) = 0.200000\nP(W=1|X=0) = 0.888889\nP(Y=1|X=0,W=1) = 0.820000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.950000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_001_decision_switch_mediator"
+  },
+  {
+    "family_id": "development_007",
+    "form": "direct",
+    "graph": "mediator",
+    "kind": "switch",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.072000\nP(W=0, X=0, Y=1) = 0.028000\nP(W=0, X=1, Y=0) = 0.268000\nP(W=0, X=1, Y=1) = 0.132000\nP(W=1, X=0, Y=0) = 0.116000\nP(W=1, X=0, Y=1) = 0.284000\nP(W=1, X=1, Y=0) = 0.024000\nP(W=1, X=1, Y=1) = 0.076000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.200000\nP(Y=1|X=0,W=0) = 0.280000\nP(W=1|X=0) = 0.800000\nP(Y=1|X=0,W=1) = 0.710000\nP(W=0|X=1) = 0.800000\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.200000\nP(Y=1|X=1,W=1) = 0.760000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_007_direct_switch_mediator"
+  },
+  {
+    "family_id": "development_003",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "arithmetic",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.127500\nP(W=0, X=0, Y=1) = 0.022500\nP(W=0, X=1, Y=0) = 0.259000\nP(W=0, X=1, Y=1) = 0.091000\nP(W=1, X=0, Y=0) = 0.112000\nP(W=1, X=0, Y=1) = 0.288000\nP(W=1, X=1, Y=0) = 0.017000\nP(W=1, X=1, Y=1) = 0.083000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.150000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.720000\nP(W=0|X=1) = 0.777778\nP(Y=1|X=1,W=0) = 0.260000\nP(W=1|X=1) = 0.222222\nP(Y=1|X=1,W=1) = 0.830000\nFor X=1, is P(Y=1|X=1,W=0) greater than P(Y=1|X=1,W=1)?\nReturn exactly one bare token: no or yes. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_003_direct_arithmetic_confounder"
+  },
+  {
+    "family_id": "development_004",
+    "form": "direct",
+    "graph": "mediator",
+    "kind": "switch",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.009200\nP(W=0, X=0, Y=1) = 0.030800\nP(W=0, X=1, Y=0) = 0.108000\nP(W=0, X=1, Y=1) = 0.252000\nP(W=1, X=0, Y=0) = 0.285600\nP(W=1, X=0, Y=1) = 0.134400\nP(W=1, X=1, Y=0) = 0.135000\nP(W=1, X=1, Y=1) = 0.045000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.400000\nP(W=1) = 0.600000\nP(W=0|X=0) = 0.086957\nP(Y=1|X=0,W=0) = 0.770000\nP(W=1|X=0) = 0.913043\nP(Y=1|X=0,W=1) = 0.320000\nP(W=0|X=1) = 0.666667\nP(Y=1|X=1,W=0) = 0.700000\nP(W=1|X=1) = 0.333333\nP(Y=1|X=1,W=1) = 0.250000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_004_direct_switch_mediator"
+  },
+  {
+    "family_id": "development_006",
+    "form": "decision",
+    "graph": "mediator",
+    "kind": "switch",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.030000\nP(W=0, X=0, Y=1) = 0.090000\nP(W=0, X=1, Y=0) = 0.158400\nP(W=0, X=1, Y=1) = 0.321600\nP(W=1, X=0, Y=0) = 0.227200\nP(W=1, X=0, Y=1) = 0.092800\nP(W=1, X=1, Y=0) = 0.063200\nP(W=1, X=1, Y=1) = 0.016800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.750000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.290000\nP(W=0|X=1) = 0.857143\nP(Y=1|X=1,W=0) = 0.670000\nP(W=1|X=1) = 0.142857\nP(Y=1|X=1,W=1) = 0.210000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_006_decision_switch_mediator"
+  },
+  {
+    "family_id": "development_007",
+    "form": "decision",
+    "graph": "mediator",
+    "kind": "switch",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.072000\nP(W=0, X=0, Y=1) = 0.028000\nP(W=0, X=1, Y=0) = 0.268000\nP(W=0, X=1, Y=1) = 0.132000\nP(W=1, X=0, Y=0) = 0.116000\nP(W=1, X=0, Y=1) = 0.284000\nP(W=1, X=1, Y=0) = 0.024000\nP(W=1, X=1, Y=1) = 0.076000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.200000\nP(Y=1|X=0,W=0) = 0.280000\nP(W=1|X=0) = 0.800000\nP(Y=1|X=0,W=1) = 0.710000\nP(W=0|X=1) = 0.800000\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.200000\nP(Y=1|X=1,W=1) = 0.760000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_007_decision_switch_mediator"
+  },
+  {
+    "family_id": "development_007",
+    "form": "direct",
+    "graph": "mediator",
+    "kind": "graph",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.072000\nP(W=0, X=0, Y=1) = 0.028000\nP(W=0, X=1, Y=0) = 0.268000\nP(W=0, X=1, Y=1) = 0.132000\nP(W=1, X=0, Y=0) = 0.116000\nP(W=1, X=0, Y=1) = 0.284000\nP(W=1, X=1, Y=0) = 0.024000\nP(W=1, X=1, Y=1) = 0.076000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.200000\nP(Y=1|X=0,W=0) = 0.280000\nP(W=1|X=0) = 0.800000\nP(Y=1|X=0,W=1) = 0.710000\nP(W=0|X=1) = 0.800000\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.200000\nP(Y=1|X=1,W=1) = 0.760000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: upstream or downstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_007_direct_graph_mediator"
+  },
+  {
+    "family_id": "development_001",
+    "form": "direct",
+    "graph": "mediator",
+    "kind": "graph",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.040000\nP(W=0, X=0, Y=1) = 0.010000\nP(W=0, X=1, Y=0) = 0.301500\nP(W=0, X=1, Y=1) = 0.148500\nP(W=1, X=0, Y=0) = 0.072000\nP(W=1, X=0, Y=1) = 0.328000\nP(W=1, X=1, Y=0) = 0.005000\nP(W=1, X=1, Y=1) = 0.095000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.111111\nP(Y=1|X=0,W=0) = 0.200000\nP(W=1|X=0) = 0.888889\nP(Y=1|X=0,W=1) = 0.820000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.950000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: upstream or downstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_001_direct_graph_mediator"
+  },
+  {
+    "family_id": "development_006",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "no_change",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.030000\nP(W=0, X=0, Y=1) = 0.090000\nP(W=0, X=1, Y=0) = 0.158400\nP(W=0, X=1, Y=1) = 0.321600\nP(W=1, X=0, Y=0) = 0.227200\nP(W=1, X=0, Y=1) = 0.092800\nP(W=1, X=1, Y=0) = 0.063200\nP(W=1, X=1, Y=1) = 0.016800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.750000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.290000\nP(W=0|X=1) = 0.857143\nP(Y=1|X=1,W=0) = 0.670000\nP(W=1|X=1) = 0.142857\nP(Y=1|X=1,W=1) = 0.210000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_006_decision_no_change_confounder"
+  },
+  {
+    "family_id": "development_001",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "switch",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.040000\nP(W=0, X=0, Y=1) = 0.010000\nP(W=0, X=1, Y=0) = 0.301500\nP(W=0, X=1, Y=1) = 0.148500\nP(W=1, X=0, Y=0) = 0.072000\nP(W=1, X=0, Y=1) = 0.328000\nP(W=1, X=1, Y=0) = 0.005000\nP(W=1, X=1, Y=1) = 0.095000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.111111\nP(Y=1|X=0,W=0) = 0.200000\nP(W=1|X=0) = 0.888889\nP(Y=1|X=0,W=1) = 0.820000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.950000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_001_direct_switch_confounder"
+  },
+  {
+    "family_id": "development_002",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "graph",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.027000\nP(W=0, X=0, Y=1) = 0.153000\nP(W=0, X=1, Y=0) = 0.088200\nP(W=0, X=1, Y=1) = 0.331800\nP(W=1, X=0, Y=0) = 0.256000\nP(W=1, X=0, Y=1) = 0.064000\nP(W=1, X=1, Y=0) = 0.068800\nP(W=1, X=1, Y=1) = 0.011200\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.360000\nP(Y=1|X=0,W=0) = 0.850000\nP(W=1|X=0) = 0.640000\nP(Y=1|X=0,W=1) = 0.200000\nP(W=0|X=1) = 0.840000\nP(Y=1|X=1,W=0) = 0.790000\nP(W=1|X=1) = 0.160000\nP(Y=1|X=1,W=1) = 0.140000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: downstream or upstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_002_decision_graph_confounder"
+  },
+  {
+    "family_id": "development_003",
+    "form": "decision",
+    "graph": "mediator",
+    "kind": "graph",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.127500\nP(W=0, X=0, Y=1) = 0.022500\nP(W=0, X=1, Y=0) = 0.259000\nP(W=0, X=1, Y=1) = 0.091000\nP(W=1, X=0, Y=0) = 0.112000\nP(W=1, X=0, Y=1) = 0.288000\nP(W=1, X=1, Y=0) = 0.017000\nP(W=1, X=1, Y=1) = 0.083000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.150000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.720000\nP(W=0|X=1) = 0.777778\nP(Y=1|X=1,W=0) = 0.260000\nP(W=1|X=1) = 0.222222\nP(Y=1|X=1,W=1) = 0.830000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: downstream or upstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_003_decision_graph_mediator"
+  },
+  {
+    "family_id": "development_007",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "no_change",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.072000\nP(W=0, X=0, Y=1) = 0.028000\nP(W=0, X=1, Y=0) = 0.268000\nP(W=0, X=1, Y=1) = 0.132000\nP(W=1, X=0, Y=0) = 0.116000\nP(W=1, X=0, Y=1) = 0.284000\nP(W=1, X=1, Y=0) = 0.024000\nP(W=1, X=1, Y=1) = 0.076000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.200000\nP(Y=1|X=0,W=0) = 0.280000\nP(W=1|X=0) = 0.800000\nP(Y=1|X=0,W=1) = 0.710000\nP(W=0|X=1) = 0.800000\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.200000\nP(Y=1|X=1,W=1) = 0.760000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_007_direct_no_change_confounder"
+  },
+  {
+    "family_id": "development_003",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "graph",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.127500\nP(W=0, X=0, Y=1) = 0.022500\nP(W=0, X=1, Y=0) = 0.259000\nP(W=0, X=1, Y=1) = 0.091000\nP(W=1, X=0, Y=0) = 0.112000\nP(W=1, X=0, Y=1) = 0.288000\nP(W=1, X=1, Y=0) = 0.017000\nP(W=1, X=1, Y=1) = 0.083000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.150000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.720000\nP(W=0|X=1) = 0.777778\nP(Y=1|X=1,W=0) = 0.260000\nP(W=1|X=1) = 0.222222\nP(Y=1|X=1,W=1) = 0.830000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: upstream or downstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_003_decision_graph_confounder"
+  },
+  {
+    "family_id": "development_003",
+    "form": "decision",
+    "graph": "mediator",
+    "kind": "switch",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.127500\nP(W=0, X=0, Y=1) = 0.022500\nP(W=0, X=1, Y=0) = 0.259000\nP(W=0, X=1, Y=1) = 0.091000\nP(W=1, X=0, Y=0) = 0.112000\nP(W=1, X=0, Y=1) = 0.288000\nP(W=1, X=1, Y=0) = 0.017000\nP(W=1, X=1, Y=1) = 0.083000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.150000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.720000\nP(W=0|X=1) = 0.777778\nP(Y=1|X=1,W=0) = 0.260000\nP(W=1|X=1) = 0.222222\nP(Y=1|X=1,W=1) = 0.830000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_003_decision_switch_mediator"
+  },
+  {
+    "family_id": "development_007",
+    "form": "decision",
+    "graph": "confounder_z",
+    "kind": "no_change",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W also causes an unmeasured Z, which has no effect on X or Y.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.072000\nP(W=0, X=0, Y=1) = 0.028000\nP(W=0, X=1, Y=0) = 0.268000\nP(W=0, X=1, Y=1) = 0.132000\nP(W=1, X=0, Y=0) = 0.116000\nP(W=1, X=0, Y=1) = 0.284000\nP(W=1, X=1, Y=0) = 0.024000\nP(W=1, X=1, Y=1) = 0.076000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.200000\nP(Y=1|X=0,W=0) = 0.280000\nP(W=1|X=0) = 0.800000\nP(Y=1|X=0,W=1) = 0.710000\nP(W=0|X=1) = 0.800000\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.200000\nP(Y=1|X=1,W=1) = 0.760000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_007_decision_no_change_confounder_z"
+  },
+  {
+    "family_id": "development_000",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "graph",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.012600\nP(W=0, X=0, Y=1) = 0.047400\nP(W=0, X=1, Y=0) = 0.167400\nP(W=0, X=1, Y=1) = 0.372600\nP(W=1, X=0, Y=0) = 0.226800\nP(W=1, X=0, Y=1) = 0.053200\nP(W=1, X=1, Y=0) = 0.109200\nP(W=1, X=1, Y=1) = 0.010800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.176471\nP(Y=1|X=0,W=0) = 0.790000\nP(W=1|X=0) = 0.823529\nP(Y=1|X=0,W=1) = 0.190000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.690000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.090000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: downstream or upstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_000_decision_graph_confounder"
+  },
+  {
+    "family_id": "development_002",
+    "form": "direct",
+    "graph": "mediator",
+    "kind": "graph",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.027000\nP(W=0, X=0, Y=1) = 0.153000\nP(W=0, X=1, Y=0) = 0.088200\nP(W=0, X=1, Y=1) = 0.331800\nP(W=1, X=0, Y=0) = 0.256000\nP(W=1, X=0, Y=1) = 0.064000\nP(W=1, X=1, Y=0) = 0.068800\nP(W=1, X=1, Y=1) = 0.011200\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.360000\nP(Y=1|X=0,W=0) = 0.850000\nP(W=1|X=0) = 0.640000\nP(Y=1|X=0,W=1) = 0.200000\nP(W=0|X=1) = 0.840000\nP(Y=1|X=1,W=0) = 0.790000\nP(W=1|X=1) = 0.160000\nP(Y=1|X=1,W=1) = 0.140000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: downstream or upstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_002_direct_graph_mediator"
+  },
+  {
+    "family_id": "development_001",
+    "form": "decision",
+    "graph": "mediator",
+    "kind": "graph",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.040000\nP(W=0, X=0, Y=1) = 0.010000\nP(W=0, X=1, Y=0) = 0.301500\nP(W=0, X=1, Y=1) = 0.148500\nP(W=1, X=0, Y=0) = 0.072000\nP(W=1, X=0, Y=1) = 0.328000\nP(W=1, X=1, Y=0) = 0.005000\nP(W=1, X=1, Y=1) = 0.095000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.111111\nP(Y=1|X=0,W=0) = 0.200000\nP(W=1|X=0) = 0.888889\nP(Y=1|X=0,W=1) = 0.820000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.950000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: downstream or upstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_001_decision_graph_mediator"
+  },
+  {
+    "family_id": "development_005",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "graph",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.045000\nP(W=0, X=0, Y=1) = 0.015000\nP(W=0, X=1, Y=0) = 0.345600\nP(W=0, X=1, Y=1) = 0.194400\nP(W=1, X=0, Y=0) = 0.060800\nP(W=1, X=0, Y=1) = 0.259200\nP(W=1, X=1, Y=0) = 0.006400\nP(W=1, X=1, Y=1) = 0.073600\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.157895\nP(Y=1|X=0,W=0) = 0.250000\nP(W=1|X=0) = 0.842105\nP(Y=1|X=0,W=1) = 0.810000\nP(W=0|X=1) = 0.870968\nP(Y=1|X=1,W=0) = 0.360000\nP(W=1|X=1) = 0.129032\nP(Y=1|X=1,W=1) = 0.920000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: upstream or downstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_005_decision_graph_confounder"
+  },
+  {
+    "family_id": "development_005",
+    "form": "direct",
+    "graph": "confounder_z",
+    "kind": "no_change",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W also causes an unmeasured Z, which has no effect on X or Y.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.045000\nP(W=0, X=0, Y=1) = 0.015000\nP(W=0, X=1, Y=0) = 0.345600\nP(W=0, X=1, Y=1) = 0.194400\nP(W=1, X=0, Y=0) = 0.060800\nP(W=1, X=0, Y=1) = 0.259200\nP(W=1, X=1, Y=0) = 0.006400\nP(W=1, X=1, Y=1) = 0.073600\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.157895\nP(Y=1|X=0,W=0) = 0.250000\nP(W=1|X=0) = 0.842105\nP(Y=1|X=0,W=1) = 0.810000\nP(W=0|X=1) = 0.870968\nP(Y=1|X=1,W=0) = 0.360000\nP(W=1|X=1) = 0.129032\nP(Y=1|X=1,W=1) = 0.920000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_005_direct_no_change_confounder_z"
+  },
+  {
+    "family_id": "development_004",
+    "form": "decision",
+    "graph": "mediator",
+    "kind": "graph",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.009200\nP(W=0, X=0, Y=1) = 0.030800\nP(W=0, X=1, Y=0) = 0.108000\nP(W=0, X=1, Y=1) = 0.252000\nP(W=1, X=0, Y=0) = 0.285600\nP(W=1, X=0, Y=1) = 0.134400\nP(W=1, X=1, Y=0) = 0.135000\nP(W=1, X=1, Y=1) = 0.045000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.400000\nP(W=1) = 0.600000\nP(W=0|X=0) = 0.086957\nP(Y=1|X=0,W=0) = 0.770000\nP(W=1|X=0) = 0.913043\nP(Y=1|X=0,W=1) = 0.320000\nP(W=0|X=1) = 0.666667\nP(Y=1|X=1,W=0) = 0.700000\nP(W=1|X=1) = 0.333333\nP(Y=1|X=1,W=1) = 0.250000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: upstream or downstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_004_decision_graph_mediator"
+  },
+  {
+    "family_id": "development_001",
+    "form": "direct",
+    "graph": "confounder_z",
+    "kind": "no_change",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W also causes an unmeasured Z, which has no effect on X or Y.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.040000\nP(W=0, X=0, Y=1) = 0.010000\nP(W=0, X=1, Y=0) = 0.301500\nP(W=0, X=1, Y=1) = 0.148500\nP(W=1, X=0, Y=0) = 0.072000\nP(W=1, X=0, Y=1) = 0.328000\nP(W=1, X=1, Y=0) = 0.005000\nP(W=1, X=1, Y=1) = 0.095000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.111111\nP(Y=1|X=0,W=0) = 0.200000\nP(W=1|X=0) = 0.888889\nP(Y=1|X=0,W=1) = 0.820000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.950000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_001_direct_no_change_confounder_z"
+  },
+  {
+    "family_id": "development_005",
+    "form": "direct",
+    "graph": "mediator",
+    "kind": "graph",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.045000\nP(W=0, X=0, Y=1) = 0.015000\nP(W=0, X=1, Y=0) = 0.345600\nP(W=0, X=1, Y=1) = 0.194400\nP(W=1, X=0, Y=0) = 0.060800\nP(W=1, X=0, Y=1) = 0.259200\nP(W=1, X=1, Y=0) = 0.006400\nP(W=1, X=1, Y=1) = 0.073600\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.157895\nP(Y=1|X=0,W=0) = 0.250000\nP(W=1|X=0) = 0.842105\nP(Y=1|X=0,W=1) = 0.810000\nP(W=0|X=1) = 0.870968\nP(Y=1|X=1,W=0) = 0.360000\nP(W=1|X=1) = 0.129032\nP(Y=1|X=1,W=1) = 0.920000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: upstream or downstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_005_direct_graph_mediator"
+  },
+  {
+    "family_id": "development_005",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "no_change",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.045000\nP(W=0, X=0, Y=1) = 0.015000\nP(W=0, X=1, Y=0) = 0.345600\nP(W=0, X=1, Y=1) = 0.194400\nP(W=1, X=0, Y=0) = 0.060800\nP(W=1, X=0, Y=1) = 0.259200\nP(W=1, X=1, Y=0) = 0.006400\nP(W=1, X=1, Y=1) = 0.073600\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.157895\nP(Y=1|X=0,W=0) = 0.250000\nP(W=1|X=0) = 0.842105\nP(Y=1|X=0,W=1) = 0.810000\nP(W=0|X=1) = 0.870968\nP(Y=1|X=1,W=0) = 0.360000\nP(W=1|X=1) = 0.129032\nP(Y=1|X=1,W=1) = 0.920000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_005_decision_no_change_confounder"
+  },
+  {
+    "family_id": "development_003",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "switch",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.127500\nP(W=0, X=0, Y=1) = 0.022500\nP(W=0, X=1, Y=0) = 0.259000\nP(W=0, X=1, Y=1) = 0.091000\nP(W=1, X=0, Y=0) = 0.112000\nP(W=1, X=0, Y=1) = 0.288000\nP(W=1, X=1, Y=0) = 0.017000\nP(W=1, X=1, Y=1) = 0.083000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.150000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.720000\nP(W=0|X=1) = 0.777778\nP(Y=1|X=1,W=0) = 0.260000\nP(W=1|X=1) = 0.222222\nP(Y=1|X=1,W=1) = 0.830000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_003_decision_switch_confounder"
+  },
+  {
+    "family_id": "development_002",
+    "form": "decision",
+    "graph": "mediator",
+    "kind": "graph",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.027000\nP(W=0, X=0, Y=1) = 0.153000\nP(W=0, X=1, Y=0) = 0.088200\nP(W=0, X=1, Y=1) = 0.331800\nP(W=1, X=0, Y=0) = 0.256000\nP(W=1, X=0, Y=1) = 0.064000\nP(W=1, X=1, Y=0) = 0.068800\nP(W=1, X=1, Y=1) = 0.011200\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.360000\nP(Y=1|X=0,W=0) = 0.850000\nP(W=1|X=0) = 0.640000\nP(Y=1|X=0,W=1) = 0.200000\nP(W=0|X=1) = 0.840000\nP(Y=1|X=1,W=0) = 0.790000\nP(W=1|X=1) = 0.160000\nP(Y=1|X=1,W=1) = 0.140000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: upstream or downstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_002_decision_graph_mediator"
+  },
+  {
+    "family_id": "development_001",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "switch",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.040000\nP(W=0, X=0, Y=1) = 0.010000\nP(W=0, X=1, Y=0) = 0.301500\nP(W=0, X=1, Y=1) = 0.148500\nP(W=1, X=0, Y=0) = 0.072000\nP(W=1, X=0, Y=1) = 0.328000\nP(W=1, X=1, Y=0) = 0.005000\nP(W=1, X=1, Y=1) = 0.095000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.111111\nP(Y=1|X=0,W=0) = 0.200000\nP(W=1|X=0) = 0.888889\nP(Y=1|X=0,W=1) = 0.820000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.950000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_001_decision_switch_confounder"
+  },
+  {
+    "family_id": "development_005",
+    "form": "decision",
+    "graph": "confounder_z",
+    "kind": "no_change",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W also causes an unmeasured Z, which has no effect on X or Y.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.045000\nP(W=0, X=0, Y=1) = 0.015000\nP(W=0, X=1, Y=0) = 0.345600\nP(W=0, X=1, Y=1) = 0.194400\nP(W=1, X=0, Y=0) = 0.060800\nP(W=1, X=0, Y=1) = 0.259200\nP(W=1, X=1, Y=0) = 0.006400\nP(W=1, X=1, Y=1) = 0.073600\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.157895\nP(Y=1|X=0,W=0) = 0.250000\nP(W=1|X=0) = 0.842105\nP(Y=1|X=0,W=1) = 0.810000\nP(W=0|X=1) = 0.870968\nP(Y=1|X=1,W=0) = 0.360000\nP(W=1|X=1) = 0.129032\nP(Y=1|X=1,W=1) = 0.920000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_005_decision_no_change_confounder_z"
+  },
+  {
+    "family_id": "development_007",
+    "form": "decision",
+    "graph": "mediator",
+    "kind": "graph",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.072000\nP(W=0, X=0, Y=1) = 0.028000\nP(W=0, X=1, Y=0) = 0.268000\nP(W=0, X=1, Y=1) = 0.132000\nP(W=1, X=0, Y=0) = 0.116000\nP(W=1, X=0, Y=1) = 0.284000\nP(W=1, X=1, Y=0) = 0.024000\nP(W=1, X=1, Y=1) = 0.076000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.200000\nP(Y=1|X=0,W=0) = 0.280000\nP(W=1|X=0) = 0.800000\nP(Y=1|X=0,W=1) = 0.710000\nP(W=0|X=1) = 0.800000\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.200000\nP(Y=1|X=1,W=1) = 0.760000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: downstream or upstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_007_decision_graph_mediator"
+  },
+  {
+    "family_id": "development_002",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "switch",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.027000\nP(W=0, X=0, Y=1) = 0.153000\nP(W=0, X=1, Y=0) = 0.088200\nP(W=0, X=1, Y=1) = 0.331800\nP(W=1, X=0, Y=0) = 0.256000\nP(W=1, X=0, Y=1) = 0.064000\nP(W=1, X=1, Y=0) = 0.068800\nP(W=1, X=1, Y=1) = 0.011200\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.360000\nP(Y=1|X=0,W=0) = 0.850000\nP(W=1|X=0) = 0.640000\nP(Y=1|X=0,W=1) = 0.200000\nP(W=0|X=1) = 0.840000\nP(Y=1|X=1,W=0) = 0.790000\nP(W=1|X=1) = 0.160000\nP(Y=1|X=1,W=1) = 0.140000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_002_direct_switch_confounder"
+  },
+  {
+    "family_id": "development_002",
+    "form": "direct",
+    "graph": "mediator",
+    "kind": "switch",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.027000\nP(W=0, X=0, Y=1) = 0.153000\nP(W=0, X=1, Y=0) = 0.088200\nP(W=0, X=1, Y=1) = 0.331800\nP(W=1, X=0, Y=0) = 0.256000\nP(W=1, X=0, Y=1) = 0.064000\nP(W=1, X=1, Y=0) = 0.068800\nP(W=1, X=1, Y=1) = 0.011200\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.360000\nP(Y=1|X=0,W=0) = 0.850000\nP(W=1|X=0) = 0.640000\nP(Y=1|X=0,W=1) = 0.200000\nP(W=0|X=1) = 0.840000\nP(Y=1|X=1,W=0) = 0.790000\nP(W=1|X=1) = 0.160000\nP(Y=1|X=1,W=1) = 0.140000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_002_direct_switch_mediator"
+  },
+  {
+    "family_id": "development_000",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "switch",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.012600\nP(W=0, X=0, Y=1) = 0.047400\nP(W=0, X=1, Y=0) = 0.167400\nP(W=0, X=1, Y=1) = 0.372600\nP(W=1, X=0, Y=0) = 0.226800\nP(W=1, X=0, Y=1) = 0.053200\nP(W=1, X=1, Y=0) = 0.109200\nP(W=1, X=1, Y=1) = 0.010800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.176471\nP(Y=1|X=0,W=0) = 0.790000\nP(W=1|X=0) = 0.823529\nP(Y=1|X=0,W=1) = 0.190000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.690000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.090000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_000_direct_switch_confounder"
+  },
+  {
+    "family_id": "development_006",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "arithmetic",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.030000\nP(W=0, X=0, Y=1) = 0.090000\nP(W=0, X=1, Y=0) = 0.158400\nP(W=0, X=1, Y=1) = 0.321600\nP(W=1, X=0, Y=0) = 0.227200\nP(W=1, X=0, Y=1) = 0.092800\nP(W=1, X=1, Y=0) = 0.063200\nP(W=1, X=1, Y=1) = 0.016800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.750000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.290000\nP(W=0|X=1) = 0.857143\nP(Y=1|X=1,W=0) = 0.670000\nP(W=1|X=1) = 0.142857\nP(Y=1|X=1,W=1) = 0.210000\nFor X=1, is P(Y=1|X=1,W=0) greater than P(Y=1|X=1,W=1)?\nReturn exactly one bare token: no or yes. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_006_decision_arithmetic_confounder"
+  },
+  {
+    "family_id": "development_007",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "arithmetic",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.072000\nP(W=0, X=0, Y=1) = 0.028000\nP(W=0, X=1, Y=0) = 0.268000\nP(W=0, X=1, Y=1) = 0.132000\nP(W=1, X=0, Y=0) = 0.116000\nP(W=1, X=0, Y=1) = 0.284000\nP(W=1, X=1, Y=0) = 0.024000\nP(W=1, X=1, Y=1) = 0.076000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.200000\nP(Y=1|X=0,W=0) = 0.280000\nP(W=1|X=0) = 0.800000\nP(Y=1|X=0,W=1) = 0.710000\nP(W=0|X=1) = 0.800000\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.200000\nP(Y=1|X=1,W=1) = 0.760000\nFor X=1, is P(Y=1|X=1,W=0) greater than P(Y=1|X=1,W=1)?\nReturn exactly one bare token: no or yes. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_007_direct_arithmetic_confounder"
+  },
+  {
+    "family_id": "development_005",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "switch",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.045000\nP(W=0, X=0, Y=1) = 0.015000\nP(W=0, X=1, Y=0) = 0.345600\nP(W=0, X=1, Y=1) = 0.194400\nP(W=1, X=0, Y=0) = 0.060800\nP(W=1, X=0, Y=1) = 0.259200\nP(W=1, X=1, Y=0) = 0.006400\nP(W=1, X=1, Y=1) = 0.073600\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.157895\nP(Y=1|X=0,W=0) = 0.250000\nP(W=1|X=0) = 0.842105\nP(Y=1|X=0,W=1) = 0.810000\nP(W=0|X=1) = 0.870968\nP(Y=1|X=1,W=0) = 0.360000\nP(W=1|X=1) = 0.129032\nP(Y=1|X=1,W=1) = 0.920000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_005_direct_switch_confounder"
+  },
+  {
+    "family_id": "development_005",
+    "form": "direct",
+    "graph": "mediator",
+    "kind": "switch",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.045000\nP(W=0, X=0, Y=1) = 0.015000\nP(W=0, X=1, Y=0) = 0.345600\nP(W=0, X=1, Y=1) = 0.194400\nP(W=1, X=0, Y=0) = 0.060800\nP(W=1, X=0, Y=1) = 0.259200\nP(W=1, X=1, Y=0) = 0.006400\nP(W=1, X=1, Y=1) = 0.073600\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.157895\nP(Y=1|X=0,W=0) = 0.250000\nP(W=1|X=0) = 0.842105\nP(Y=1|X=0,W=1) = 0.810000\nP(W=0|X=1) = 0.870968\nP(Y=1|X=1,W=0) = 0.360000\nP(W=1|X=1) = 0.129032\nP(Y=1|X=1,W=1) = 0.920000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_005_direct_switch_mediator"
+  },
+  {
+    "family_id": "development_002",
+    "form": "decision",
+    "graph": "confounder_z",
+    "kind": "no_change",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W also causes an unmeasured Z, which has no effect on X or Y.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.027000\nP(W=0, X=0, Y=1) = 0.153000\nP(W=0, X=1, Y=0) = 0.088200\nP(W=0, X=1, Y=1) = 0.331800\nP(W=1, X=0, Y=0) = 0.256000\nP(W=1, X=0, Y=1) = 0.064000\nP(W=1, X=1, Y=0) = 0.068800\nP(W=1, X=1, Y=1) = 0.011200\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.360000\nP(Y=1|X=0,W=0) = 0.850000\nP(W=1|X=0) = 0.640000\nP(Y=1|X=0,W=1) = 0.200000\nP(W=0|X=1) = 0.840000\nP(Y=1|X=1,W=0) = 0.790000\nP(W=1|X=1) = 0.160000\nP(Y=1|X=1,W=1) = 0.140000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_002_decision_no_change_confounder_z"
+  },
+  {
+    "family_id": "development_003",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "switch",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.127500\nP(W=0, X=0, Y=1) = 0.022500\nP(W=0, X=1, Y=0) = 0.259000\nP(W=0, X=1, Y=1) = 0.091000\nP(W=1, X=0, Y=0) = 0.112000\nP(W=1, X=0, Y=1) = 0.288000\nP(W=1, X=1, Y=0) = 0.017000\nP(W=1, X=1, Y=1) = 0.083000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.150000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.720000\nP(W=0|X=1) = 0.777778\nP(Y=1|X=1,W=0) = 0.260000\nP(W=1|X=1) = 0.222222\nP(Y=1|X=1,W=1) = 0.830000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_003_direct_switch_confounder"
+  },
+  {
+    "family_id": "development_004",
+    "form": "decision",
+    "graph": "mediator",
+    "kind": "switch",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.009200\nP(W=0, X=0, Y=1) = 0.030800\nP(W=0, X=1, Y=0) = 0.108000\nP(W=0, X=1, Y=1) = 0.252000\nP(W=1, X=0, Y=0) = 0.285600\nP(W=1, X=0, Y=1) = 0.134400\nP(W=1, X=1, Y=0) = 0.135000\nP(W=1, X=1, Y=1) = 0.045000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.400000\nP(W=1) = 0.600000\nP(W=0|X=0) = 0.086957\nP(Y=1|X=0,W=0) = 0.770000\nP(W=1|X=0) = 0.913043\nP(Y=1|X=0,W=1) = 0.320000\nP(W=0|X=1) = 0.666667\nP(Y=1|X=1,W=0) = 0.700000\nP(W=1|X=1) = 0.333333\nP(Y=1|X=1,W=1) = 0.250000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_004_decision_switch_mediator"
+  },
+  {
+    "family_id": "development_004",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "arithmetic",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.009200\nP(W=0, X=0, Y=1) = 0.030800\nP(W=0, X=1, Y=0) = 0.108000\nP(W=0, X=1, Y=1) = 0.252000\nP(W=1, X=0, Y=0) = 0.285600\nP(W=1, X=0, Y=1) = 0.134400\nP(W=1, X=1, Y=0) = 0.135000\nP(W=1, X=1, Y=1) = 0.045000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.400000\nP(W=1) = 0.600000\nP(W=0|X=0) = 0.086957\nP(Y=1|X=0,W=0) = 0.770000\nP(W=1|X=0) = 0.913043\nP(Y=1|X=0,W=1) = 0.320000\nP(W=0|X=1) = 0.666667\nP(Y=1|X=1,W=0) = 0.700000\nP(W=1|X=1) = 0.333333\nP(Y=1|X=1,W=1) = 0.250000\nFor X=1, is P(Y=1|X=1,W=0) greater than P(Y=1|X=1,W=1)?\nReturn exactly one bare token: yes or no. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_004_direct_arithmetic_confounder"
+  },
+  {
+    "family_id": "development_006",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "graph",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.030000\nP(W=0, X=0, Y=1) = 0.090000\nP(W=0, X=1, Y=0) = 0.158400\nP(W=0, X=1, Y=1) = 0.321600\nP(W=1, X=0, Y=0) = 0.227200\nP(W=1, X=0, Y=1) = 0.092800\nP(W=1, X=1, Y=0) = 0.063200\nP(W=1, X=1, Y=1) = 0.016800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.750000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.290000\nP(W=0|X=1) = 0.857143\nP(Y=1|X=1,W=0) = 0.670000\nP(W=1|X=1) = 0.142857\nP(Y=1|X=1,W=1) = 0.210000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: downstream or upstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_006_decision_graph_confounder"
+  },
+  {
+    "family_id": "development_000",
+    "form": "direct",
+    "graph": "confounder_z",
+    "kind": "no_change",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W also causes an unmeasured Z, which has no effect on X or Y.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.012600\nP(W=0, X=0, Y=1) = 0.047400\nP(W=0, X=1, Y=0) = 0.167400\nP(W=0, X=1, Y=1) = 0.372600\nP(W=1, X=0, Y=0) = 0.226800\nP(W=1, X=0, Y=1) = 0.053200\nP(W=1, X=1, Y=0) = 0.109200\nP(W=1, X=1, Y=1) = 0.010800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.176471\nP(Y=1|X=0,W=0) = 0.790000\nP(W=1|X=0) = 0.823529\nP(Y=1|X=0,W=1) = 0.190000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.690000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.090000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_000_direct_no_change_confounder_z"
+  },
+  {
+    "family_id": "development_002",
+    "form": "decision",
+    "graph": "mediator",
+    "kind": "switch",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.027000\nP(W=0, X=0, Y=1) = 0.153000\nP(W=0, X=1, Y=0) = 0.088200\nP(W=0, X=1, Y=1) = 0.331800\nP(W=1, X=0, Y=0) = 0.256000\nP(W=1, X=0, Y=1) = 0.064000\nP(W=1, X=1, Y=0) = 0.068800\nP(W=1, X=1, Y=1) = 0.011200\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.360000\nP(Y=1|X=0,W=0) = 0.850000\nP(W=1|X=0) = 0.640000\nP(Y=1|X=0,W=1) = 0.200000\nP(W=0|X=1) = 0.840000\nP(Y=1|X=1,W=0) = 0.790000\nP(W=1|X=1) = 0.160000\nP(Y=1|X=1,W=1) = 0.140000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_002_decision_switch_mediator"
+  },
+  {
+    "family_id": "development_001",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "no_change",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.040000\nP(W=0, X=0, Y=1) = 0.010000\nP(W=0, X=1, Y=0) = 0.301500\nP(W=0, X=1, Y=1) = 0.148500\nP(W=1, X=0, Y=0) = 0.072000\nP(W=1, X=0, Y=1) = 0.328000\nP(W=1, X=1, Y=0) = 0.005000\nP(W=1, X=1, Y=1) = 0.095000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.111111\nP(Y=1|X=0,W=0) = 0.200000\nP(W=1|X=0) = 0.888889\nP(Y=1|X=0,W=1) = 0.820000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.950000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_001_decision_no_change_confounder"
+  },
+  {
+    "family_id": "development_006",
+    "form": "direct",
+    "graph": "mediator",
+    "kind": "switch",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.030000\nP(W=0, X=0, Y=1) = 0.090000\nP(W=0, X=1, Y=0) = 0.158400\nP(W=0, X=1, Y=1) = 0.321600\nP(W=1, X=0, Y=0) = 0.227200\nP(W=1, X=0, Y=1) = 0.092800\nP(W=1, X=1, Y=0) = 0.063200\nP(W=1, X=1, Y=1) = 0.016800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.750000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.290000\nP(W=0|X=1) = 0.857143\nP(Y=1|X=1,W=0) = 0.670000\nP(W=1|X=1) = 0.142857\nP(Y=1|X=1,W=1) = 0.210000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_006_direct_switch_mediator"
+  },
+  {
+    "family_id": "development_006",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "no_change",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.030000\nP(W=0, X=0, Y=1) = 0.090000\nP(W=0, X=1, Y=0) = 0.158400\nP(W=0, X=1, Y=1) = 0.321600\nP(W=1, X=0, Y=0) = 0.227200\nP(W=1, X=0, Y=1) = 0.092800\nP(W=1, X=1, Y=0) = 0.063200\nP(W=1, X=1, Y=1) = 0.016800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.750000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.290000\nP(W=0|X=1) = 0.857143\nP(Y=1|X=1,W=0) = 0.670000\nP(W=1|X=1) = 0.142857\nP(Y=1|X=1,W=1) = 0.210000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_006_direct_no_change_confounder"
+  },
+  {
+    "family_id": "development_000",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "arithmetic",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.012600\nP(W=0, X=0, Y=1) = 0.047400\nP(W=0, X=1, Y=0) = 0.167400\nP(W=0, X=1, Y=1) = 0.372600\nP(W=1, X=0, Y=0) = 0.226800\nP(W=1, X=0, Y=1) = 0.053200\nP(W=1, X=1, Y=0) = 0.109200\nP(W=1, X=1, Y=1) = 0.010800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.176471\nP(Y=1|X=0,W=0) = 0.790000\nP(W=1|X=0) = 0.823529\nP(Y=1|X=0,W=1) = 0.190000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.690000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.090000\nFor X=1, is P(Y=1|X=1,W=0) greater than P(Y=1|X=1,W=1)?\nReturn exactly one bare token: yes or no. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_000_direct_arithmetic_confounder"
+  },
+  {
+    "family_id": "development_005",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "switch",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.045000\nP(W=0, X=0, Y=1) = 0.015000\nP(W=0, X=1, Y=0) = 0.345600\nP(W=0, X=1, Y=1) = 0.194400\nP(W=1, X=0, Y=0) = 0.060800\nP(W=1, X=0, Y=1) = 0.259200\nP(W=1, X=1, Y=0) = 0.006400\nP(W=1, X=1, Y=1) = 0.073600\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.157895\nP(Y=1|X=0,W=0) = 0.250000\nP(W=1|X=0) = 0.842105\nP(Y=1|X=0,W=1) = 0.810000\nP(W=0|X=1) = 0.870968\nP(Y=1|X=1,W=0) = 0.360000\nP(W=1|X=1) = 0.129032\nP(Y=1|X=1,W=1) = 0.920000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_005_decision_switch_confounder"
+  },
+  {
+    "family_id": "development_002",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "switch",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.027000\nP(W=0, X=0, Y=1) = 0.153000\nP(W=0, X=1, Y=0) = 0.088200\nP(W=0, X=1, Y=1) = 0.331800\nP(W=1, X=0, Y=0) = 0.256000\nP(W=1, X=0, Y=1) = 0.064000\nP(W=1, X=1, Y=0) = 0.068800\nP(W=1, X=1, Y=1) = 0.011200\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.360000\nP(Y=1|X=0,W=0) = 0.850000\nP(W=1|X=0) = 0.640000\nP(Y=1|X=0,W=1) = 0.200000\nP(W=0|X=1) = 0.840000\nP(Y=1|X=1,W=0) = 0.790000\nP(W=1|X=1) = 0.160000\nP(Y=1|X=1,W=1) = 0.140000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_002_decision_switch_confounder"
+  },
+  {
+    "family_id": "development_000",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "switch",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.012600\nP(W=0, X=0, Y=1) = 0.047400\nP(W=0, X=1, Y=0) = 0.167400\nP(W=0, X=1, Y=1) = 0.372600\nP(W=1, X=0, Y=0) = 0.226800\nP(W=1, X=0, Y=1) = 0.053200\nP(W=1, X=1, Y=0) = 0.109200\nP(W=1, X=1, Y=1) = 0.010800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.176471\nP(Y=1|X=0,W=0) = 0.790000\nP(W=1|X=0) = 0.823529\nP(Y=1|X=0,W=1) = 0.190000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.690000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.090000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_000_decision_switch_confounder"
+  },
+  {
+    "family_id": "development_003",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "graph",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.127500\nP(W=0, X=0, Y=1) = 0.022500\nP(W=0, X=1, Y=0) = 0.259000\nP(W=0, X=1, Y=1) = 0.091000\nP(W=1, X=0, Y=0) = 0.112000\nP(W=1, X=0, Y=1) = 0.288000\nP(W=1, X=1, Y=0) = 0.017000\nP(W=1, X=1, Y=1) = 0.083000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.150000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.720000\nP(W=0|X=1) = 0.777778\nP(Y=1|X=1,W=0) = 0.260000\nP(W=1|X=1) = 0.222222\nP(Y=1|X=1,W=1) = 0.830000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: downstream or upstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_003_direct_graph_confounder"
+  },
+  {
+    "family_id": "development_004",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "switch",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.009200\nP(W=0, X=0, Y=1) = 0.030800\nP(W=0, X=1, Y=0) = 0.108000\nP(W=0, X=1, Y=1) = 0.252000\nP(W=1, X=0, Y=0) = 0.285600\nP(W=1, X=0, Y=1) = 0.134400\nP(W=1, X=1, Y=0) = 0.135000\nP(W=1, X=1, Y=1) = 0.045000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.400000\nP(W=1) = 0.600000\nP(W=0|X=0) = 0.086957\nP(Y=1|X=0,W=0) = 0.770000\nP(W=1|X=0) = 0.913043\nP(Y=1|X=0,W=1) = 0.320000\nP(W=0|X=1) = 0.666667\nP(Y=1|X=1,W=0) = 0.700000\nP(W=1|X=1) = 0.333333\nP(Y=1|X=1,W=1) = 0.250000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_004_direct_switch_confounder"
+  },
+  {
+    "family_id": "development_006",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "graph",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.030000\nP(W=0, X=0, Y=1) = 0.090000\nP(W=0, X=1, Y=0) = 0.158400\nP(W=0, X=1, Y=1) = 0.321600\nP(W=1, X=0, Y=0) = 0.227200\nP(W=1, X=0, Y=1) = 0.092800\nP(W=1, X=1, Y=0) = 0.063200\nP(W=1, X=1, Y=1) = 0.016800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.750000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.290000\nP(W=0|X=1) = 0.857143\nP(Y=1|X=1,W=0) = 0.670000\nP(W=1|X=1) = 0.142857\nP(Y=1|X=1,W=1) = 0.210000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: upstream or downstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_006_direct_graph_confounder"
+  },
+  {
+    "family_id": "development_005",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "no_change",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.045000\nP(W=0, X=0, Y=1) = 0.015000\nP(W=0, X=1, Y=0) = 0.345600\nP(W=0, X=1, Y=1) = 0.194400\nP(W=1, X=0, Y=0) = 0.060800\nP(W=1, X=0, Y=1) = 0.259200\nP(W=1, X=1, Y=0) = 0.006400\nP(W=1, X=1, Y=1) = 0.073600\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.157895\nP(Y=1|X=0,W=0) = 0.250000\nP(W=1|X=0) = 0.842105\nP(Y=1|X=0,W=1) = 0.810000\nP(W=0|X=1) = 0.870968\nP(Y=1|X=1,W=0) = 0.360000\nP(W=1|X=1) = 0.129032\nP(Y=1|X=1,W=1) = 0.920000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_005_direct_no_change_confounder"
+  },
+  {
+    "family_id": "development_002",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "graph",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.027000\nP(W=0, X=0, Y=1) = 0.153000\nP(W=0, X=1, Y=0) = 0.088200\nP(W=0, X=1, Y=1) = 0.331800\nP(W=1, X=0, Y=0) = 0.256000\nP(W=1, X=0, Y=1) = 0.064000\nP(W=1, X=1, Y=0) = 0.068800\nP(W=1, X=1, Y=1) = 0.011200\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.360000\nP(Y=1|X=0,W=0) = 0.850000\nP(W=1|X=0) = 0.640000\nP(Y=1|X=0,W=1) = 0.200000\nP(W=0|X=1) = 0.840000\nP(Y=1|X=1,W=0) = 0.790000\nP(W=1|X=1) = 0.160000\nP(Y=1|X=1,W=1) = 0.140000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: upstream or downstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_002_direct_graph_confounder"
+  },
+  {
+    "family_id": "development_000",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "no_change",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.012600\nP(W=0, X=0, Y=1) = 0.047400\nP(W=0, X=1, Y=0) = 0.167400\nP(W=0, X=1, Y=1) = 0.372600\nP(W=1, X=0, Y=0) = 0.226800\nP(W=1, X=0, Y=1) = 0.053200\nP(W=1, X=1, Y=0) = 0.109200\nP(W=1, X=1, Y=1) = 0.010800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.176471\nP(Y=1|X=0,W=0) = 0.790000\nP(W=1|X=0) = 0.823529\nP(Y=1|X=0,W=1) = 0.190000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.690000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.090000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_000_direct_no_change_confounder"
+  },
+  {
+    "family_id": "development_001",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "arithmetic",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.040000\nP(W=0, X=0, Y=1) = 0.010000\nP(W=0, X=1, Y=0) = 0.301500\nP(W=0, X=1, Y=1) = 0.148500\nP(W=1, X=0, Y=0) = 0.072000\nP(W=1, X=0, Y=1) = 0.328000\nP(W=1, X=1, Y=0) = 0.005000\nP(W=1, X=1, Y=1) = 0.095000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.111111\nP(Y=1|X=0,W=0) = 0.200000\nP(W=1|X=0) = 0.888889\nP(Y=1|X=0,W=1) = 0.820000\nP(W=0|X=1) = 0.818182\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.181818\nP(Y=1|X=1,W=1) = 0.950000\nFor X=1, is P(Y=1|X=1,W=0) greater than P(Y=1|X=1,W=1)?\nReturn exactly one bare token: yes or no. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_001_decision_arithmetic_confounder"
+  },
+  {
+    "family_id": "development_005",
+    "form": "decision",
+    "graph": "mediator",
+    "kind": "switch",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.045000\nP(W=0, X=0, Y=1) = 0.015000\nP(W=0, X=1, Y=0) = 0.345600\nP(W=0, X=1, Y=1) = 0.194400\nP(W=1, X=0, Y=0) = 0.060800\nP(W=1, X=0, Y=1) = 0.259200\nP(W=1, X=1, Y=0) = 0.006400\nP(W=1, X=1, Y=1) = 0.073600\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.157895\nP(Y=1|X=0,W=0) = 0.250000\nP(W=1|X=0) = 0.842105\nP(Y=1|X=0,W=1) = 0.810000\nP(W=0|X=1) = 0.870968\nP(Y=1|X=1,W=0) = 0.360000\nP(W=1|X=1) = 0.129032\nP(Y=1|X=1,W=1) = 0.920000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_005_decision_switch_mediator"
+  },
+  {
+    "family_id": "development_007",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "switch",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.072000\nP(W=0, X=0, Y=1) = 0.028000\nP(W=0, X=1, Y=0) = 0.268000\nP(W=0, X=1, Y=1) = 0.132000\nP(W=1, X=0, Y=0) = 0.116000\nP(W=1, X=0, Y=1) = 0.284000\nP(W=1, X=1, Y=0) = 0.024000\nP(W=1, X=1, Y=1) = 0.076000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.200000\nP(Y=1|X=0,W=0) = 0.280000\nP(W=1|X=0) = 0.800000\nP(Y=1|X=0,W=1) = 0.710000\nP(W=0|X=1) = 0.800000\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.200000\nP(Y=1|X=1,W=1) = 0.760000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_007_direct_switch_confounder"
+  },
+  {
+    "family_id": "development_006",
+    "form": "decision",
+    "graph": "confounder",
+    "kind": "switch",
+    "option_order_reversed": true,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.030000\nP(W=0, X=0, Y=1) = 0.090000\nP(W=0, X=1, Y=0) = 0.158400\nP(W=0, X=1, Y=1) = 0.321600\nP(W=1, X=0, Y=0) = 0.227200\nP(W=1, X=0, Y=1) = 0.092800\nP(W=1, X=1, Y=0) = 0.063200\nP(W=1, X=1, Y=1) = 0.016800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.750000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.290000\nP(W=0|X=1) = 0.857143\nP(Y=1|X=1,W=0) = 0.670000\nP(W=1|X=1) = 0.142857\nP(Y=1|X=1,W=1) = 0.210000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=0 or X=1. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_006_decision_switch_confounder"
+  },
+  {
+    "family_id": "development_004",
+    "form": "decision",
+    "graph": "confounder_z",
+    "kind": "no_change",
+    "option_order_reversed": false,
+    "prompt": "Setting X is an intervention, not an observation. The supplied structure is: W causes X and W causes Y; X causes Y. W also causes an unmeasured Z, which has no effect on X or Y.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.009200\nP(W=0, X=0, Y=1) = 0.030800\nP(W=0, X=1, Y=0) = 0.108000\nP(W=0, X=1, Y=1) = 0.252000\nP(W=1, X=0, Y=0) = 0.285600\nP(W=1, X=0, Y=1) = 0.134400\nP(W=1, X=1, Y=0) = 0.135000\nP(W=1, X=1, Y=1) = 0.045000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.400000\nP(W=1) = 0.600000\nP(W=0|X=0) = 0.086957\nP(Y=1|X=0,W=0) = 0.770000\nP(W=1|X=0) = 0.913043\nP(Y=1|X=0,W=1) = 0.320000\nP(W=0|X=1) = 0.666667\nP(Y=1|X=1,W=0) = 0.700000\nP(W=1|X=1) = 0.333333\nP(Y=1|X=1,W=1) = 0.250000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nWhich setting gives the higher P(Y=1 | do(X))?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_004_decision_no_change_confounder_z"
+  },
+  {
+    "family_id": "development_006",
+    "form": "direct",
+    "graph": "confounder",
+    "kind": "arithmetic",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W is determined before treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.030000\nP(W=0, X=0, Y=1) = 0.090000\nP(W=0, X=1, Y=0) = 0.158400\nP(W=0, X=1, Y=1) = 0.321600\nP(W=1, X=0, Y=0) = 0.227200\nP(W=1, X=0, Y=1) = 0.092800\nP(W=1, X=1, Y=0) = 0.063200\nP(W=1, X=1, Y=1) = 0.016800\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.600000\nP(W=1) = 0.400000\nP(W=0|X=0) = 0.272727\nP(Y=1|X=0,W=0) = 0.750000\nP(W=1|X=0) = 0.727273\nP(Y=1|X=0,W=1) = 0.290000\nP(W=0|X=1) = 0.857143\nP(Y=1|X=1,W=0) = 0.670000\nP(W=1|X=1) = 0.142857\nP(Y=1|X=1,W=1) = 0.210000\nFor X=1, is P(Y=1|X=1,W=0) greater than P(Y=1|X=1,W=1)?\nReturn exactly one bare token: yes or no. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_006_direct_arithmetic_confounder"
+  },
+  {
+    "family_id": "development_004",
+    "form": "direct",
+    "graph": "mediator",
+    "kind": "graph",
+    "option_order_reversed": true,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: X causes W and X causes Y; W causes Y. W is determined after treatment X.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.009200\nP(W=0, X=0, Y=1) = 0.030800\nP(W=0, X=1, Y=0) = 0.108000\nP(W=0, X=1, Y=1) = 0.252000\nP(W=1, X=0, Y=0) = 0.285600\nP(W=1, X=0, Y=1) = 0.134400\nP(W=1, X=1, Y=0) = 0.135000\nP(W=1, X=1, Y=1) = 0.045000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.400000\nP(W=1) = 0.600000\nP(W=0|X=0) = 0.086957\nP(Y=1|X=0,W=0) = 0.770000\nP(W=1|X=0) = 0.913043\nP(Y=1|X=0,W=1) = 0.320000\nP(W=0|X=1) = 0.666667\nP(Y=1|X=1,W=0) = 0.700000\nP(W=1|X=1) = 0.333333\nP(Y=1|X=1,W=1) = 0.250000\nIn this structure, is W upstream of X or downstream of X?\nReturn exactly one bare token: downstream or upstream. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_004_direct_graph_mediator"
+  },
+  {
+    "family_id": "development_007",
+    "form": "direct",
+    "graph": "confounder_z",
+    "kind": "no_change",
+    "option_order_reversed": false,
+    "prompt": "Consider binary treatment X and desirable outcome Y. Causal structure: W causes X and W causes Y; X causes Y. W also causes an unmeasured Z, which has no effect on X or Y.\nFull observational distribution, identical across paired questions:\nP(W=0, X=0, Y=0) = 0.072000\nP(W=0, X=0, Y=1) = 0.028000\nP(W=0, X=1, Y=0) = 0.268000\nP(W=0, X=1, Y=1) = 0.132000\nP(W=1, X=0, Y=0) = 0.116000\nP(W=1, X=0, Y=1) = 0.284000\nP(W=1, X=1, Y=0) = 0.024000\nP(W=1, X=1, Y=1) = 0.076000\nYou may use the following values derived from that same joint table:\nP(W=0) = 0.500000\nP(W=1) = 0.500000\nP(W=0|X=0) = 0.200000\nP(Y=1|X=0,W=0) = 0.280000\nP(W=1|X=0) = 0.800000\nP(Y=1|X=0,W=1) = 0.710000\nP(W=0|X=1) = 0.800000\nP(Y=1|X=1,W=0) = 0.330000\nP(W=1|X=1) = 0.200000\nP(Y=1|X=1,W=1) = 0.760000\nCalculation rule: if W is upstream of X, use P(W) to average P(Y=1|X=x,W) for each x. If W is downstream of X, use P(W|X=x) to average those same outcome rates separately for each x.\nShould we set X=1 rather than X=0 to increase P(Y=1) under intervention?\nReturn exactly one bare token: X=1 or X=0. Do not add a period or explanation.",
+    "split": "development",
+    "task_id": "development_007_direct_no_change_confounder_z"
+  }
+]
