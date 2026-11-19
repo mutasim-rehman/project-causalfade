@@ -8,7 +8,7 @@ from fractions import Fraction as F
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'tools'))
 from cohort026 import build, numeric_table
-from causalfade.graph_switch import family
+from causalfade.graph_switch import family, intervention_effect
 
 
 class Cohort026FixtureTests(unittest.TestCase):
@@ -44,3 +44,8 @@ class Cohort026FixtureTests(unittest.TestCase):
                     rounded.append(F(line.split(' = ')[1]))
             self.assertEqual(len(rounded),8)
             self.assertLess(abs(sum(rounded)-1),F(1,100000))
+            displayed={(a,b,c): rounded[4*a+2*b+c]
+                       for a in (0,1) for b in (0,1) for c in (0,1)}
+            for graph in ('confounder','mediator'):
+                self.assertGreater(intervention_effect(displayed,graph)*
+                                   intervention_effect(w['joint'],graph),0)
