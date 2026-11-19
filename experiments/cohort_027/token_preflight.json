@@ -1,0 +1,63 @@
+{
+  "checked_prompt_ids": [
+    "development_000_direct_main_confounder_z_forward",
+    "development_000_direct_graph_confounder_forward",
+    "development_000_direct_arithmetic_conditional_forward",
+    "development_000_decision_main_confounder_z_forward",
+    "development_000_decision_graph_confounder_forward",
+    "development_000_decision_arithmetic_conditional_forward"
+  ],
+  "context": 4096,
+  "max_tokens": 64,
+  "models": {
+    "llama8b": {
+      "counts": {
+        "development_000_decision_arithmetic_conditional_forward": 389,
+        "development_000_decision_graph_confounder_forward": 374,
+        "development_000_decision_main_confounder_z_forward": 429,
+        "development_000_direct_arithmetic_conditional_forward": 388,
+        "development_000_direct_graph_confounder_forward": 373,
+        "development_000_direct_main_confounder_z_forward": 428
+      },
+      "max_count": 429,
+      "model_sha256": "031c5d9ae1ad8cf676f8498ef539418c0d1f2b1b9c9d33c8f9207b83218c89b3"
+    },
+    "mistral7b": {
+      "counts": {
+        "development_000_decision_arithmetic_conditional_forward": 512,
+        "development_000_decision_graph_confounder_forward": 496,
+        "development_000_decision_main_confounder_z_forward": 554,
+        "development_000_direct_arithmetic_conditional_forward": 513,
+        "development_000_direct_graph_confounder_forward": 497,
+        "development_000_direct_main_confounder_z_forward": 555
+      },
+      "max_count": 555,
+      "model_sha256": "afd9070b42b8788becde8959d2924489cc1226e3104272f93ae8403e98e9be30"
+    },
+    "qwen3b": {
+      "counts": {
+        "development_000_decision_arithmetic_conditional_forward": 460,
+        "development_000_decision_graph_confounder_forward": 445,
+        "development_000_decision_main_confounder_z_forward": 500,
+        "development_000_direct_arithmetic_conditional_forward": 459,
+        "development_000_direct_graph_confounder_forward": 444,
+        "development_000_direct_main_confounder_z_forward": 499
+      },
+      "max_count": 500,
+      "model_sha256": "7861b68729de6c1c00828a54688b76a7dbdd20f8f87b4147de222554a70708d4"
+    },
+    "qwen7b": {
+      "counts": {
+        "development_000_decision_arithmetic_conditional_forward": 460,
+        "development_000_decision_graph_confounder_forward": 445,
+        "development_000_decision_main_confounder_z_forward": 500,
+        "development_000_direct_arithmetic_conditional_forward": 459,
+        "development_000_direct_graph_confounder_forward": 444,
+        "development_000_direct_main_confounder_z_forward": 499
+      },
+      "max_count": 500,
+      "model_sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a"
+    }
+  },
+  "tokenizer_sha256": "712076edf65a35a84188df933912d9e735758fa7bdffb9796287adfadf4263a3"
+}
