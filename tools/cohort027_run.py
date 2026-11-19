@@ -46,6 +46,7 @@ def checkpoint(out,model_id,split,completed,total,push=True,extra_paths=()):
     atomic_json(out/'progress.json',{'arm':model_id,'split':split,'completed':completed,'total':total,'utc':utc()})
     event(out,'checkpoint',completed=completed,total=total)
     paths=[str(out.relative_to(ROOT))]+[str(Path(p).relative_to(ROOT)) for p in extra_paths]
+    if (BASE/'token_preflight.json').exists():paths.append('experiments/cohort_027/token_preflight.json')
     subprocess.run(['git','add','--',*paths],cwd=ROOT,check=True)
     staged=subprocess.run(['git','diff','--cached','--quiet','--',*paths],cwd=ROOT)
     if staged.returncode==1:
@@ -60,9 +61,11 @@ def checkpoint(out,model_id,split,completed,total,push=True,extra_paths=()):
 
 def pipeline_checkpoint(push=True):
     rel='experiments/cohort_027/pipeline_status.json'
-    subprocess.run(['git','add','--',rel],cwd=ROOT,check=True)
-    if subprocess.run(['git','diff','--cached','--quiet','--',rel],cwd=ROOT).returncode==1:
-        subprocess.run(['git','commit','-m','Checkpoint cohort 027 pipeline status','--',rel],cwd=ROOT,check=True,stdout=subprocess.DEVNULL)
+    paths=[rel]
+    if (BASE/'token_preflight.json').exists():paths.append('experiments/cohort_027/token_preflight.json')
+    subprocess.run(['git','add','--',*paths],cwd=ROOT,check=True)
+    if subprocess.run(['git','diff','--cached','--quiet','--',*paths],cwd=ROOT).returncode==1:
+        subprocess.run(['git','commit','-m','Checkpoint cohort 027 pipeline status','--',*paths],cwd=ROOT,check=True,stdout=subprocess.DEVNULL)
     if push:
         result=subprocess.run(['git','push'],cwd=ROOT,text=True,capture_output=True)
         if result.returncode:print('WARNING: pipeline status push failed; local commit remains safe',flush=True)

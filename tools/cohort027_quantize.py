@@ -41,7 +41,9 @@ def build(model_id,precision):
         raise RuntimeError(f'Quantizer failed ({result.returncode}); partial and log retained')
     if not partial.is_file() or partial.stat().st_size==0:raise ValueError('Empty quantized output')
     expected_type={'Q8_0':7,'Q6_K':18,'Q5_K_M':17,'Q4_K_M':15,'Q3_K_M':12,'Q2_K':10}[precision]
-    if gguf_metadata(partial)['file_type']!=expected_type:raise ValueError('Quantizer produced wrong GGUF format')
+    output_meta=gguf_metadata(partial)
+    if output_meta['file_type']!=expected_type or output_meta['chat_template_sha256']!=m['gguf_metadata']['chat_template_sha256']:
+        raise ValueError('Quantized GGUF format or chat template differs from F16')
     os.replace(partial,output)
     info={'model_id':model_id,'precision':precision,'source':m['path'],'source_sha256':m['sha256'],
           'quantizer':str(quant),'quantizer_sha256':plan['quantizer_sha256'],'command':command,
