@@ -63,7 +63,9 @@ class Cohort028Tests(unittest.TestCase):
                 raw=y['expected_action'] if t['condition']=='bare' else json.dumps({'rule':y['expected_rule'],'score_x0':float(y['score_x0']),
                      'score_x1':float(y['score_x1']),'action':y['expected_action']})
                 records.append({'task_id':t['task_id'],'raw':raw,'finish_reason':'stop'})
-            self.assertTrue(analyze(tasks,truth,records,split)['qualified'])
+            oracle_report=analyze(tasks,truth,records,split)
+            self.assertTrue(oracle_report['qualified'])
+            self.assertEqual(len(oracle_report['descriptive_cells']),80)
             for rule in ('marginal','conditional'):
                 shortcut=[]
                 for t in tasks:

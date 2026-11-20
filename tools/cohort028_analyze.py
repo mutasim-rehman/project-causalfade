@@ -21,9 +21,11 @@ def item_score(task,truth,record):
     c=replay(task['payload'],b) if b is not None else None
     selected=calculate(task['payload'],b['rule']) if b is not None else None
     score_match=b is not None and all(abs(b[k]-selected[k])<=SCORE_TOLERANCE for k in ('score_x0','score_x1'))
+    score_match_oracle=b is not None and all(abs(b[k]-Decimal(truth[k]))<=SCORE_TOLERANCE for k in ('score_x0','score_x1'))
     return {'valid':b is not None,'rule':b['rule'] if b else None,
             'rule_correct':b is not None and b['rule']==truth['expected_rule'],
             'score_match_selected':score_match,
+            'score_match_oracle':score_match_oracle,
             'action_score_agreement':b is not None and b['action']==('X=1' if b['score_x1']>b['score_x0'] else 'X=0') if b and b['score_x1']!=b['score_x0'] else False,
             'action_b':b['action'] if b else None,'action_c':c['action'] if c else None,
             'correct_b':b is not None and b['action']==truth['expected_action'],
@@ -105,12 +107,32 @@ def analyze(tasks,truth,records,split):
         row['control_gain']=row['c_control_raw']-row['b_control_raw']
         row['specificity']=row['causal_gain']-row['control_gain']
         family.append(row)
+    grouped=defaultdict(list)
+    for t in tasks:
+        label=t['graph'] if t['kind']=='causal' else t['specified_rule']
+        grouped[(t['condition'],t['form'],t['representation'],t['kind'],label,t['order'])].append(t)
+    descriptive={}
+    for key,sub in sorted(grouped.items()):
+        name='|'.join(key)
+        cell={'scheduled':len(sub),'valid':metric(sub,'valid')}
+        for system in ('a','b','c'):
+            if (system=='a')==(key[0]=='bare'):
+                cell[system+'_accuracy']=metric(sub,'correct_'+system)
+                first='X=0' if key[-1]=='forward' else 'X=1'
+                answers=[scored[t['task_id']].get('action_'+system) for t in sub]
+                cell[system+'_first_option_agreement']={'count':sum(a==first for a in answers),'valid':sum(a is not None for a in answers)}
+        if key[0]=='structured':
+            for field in ('rule_correct','score_match_selected','score_match_oracle','action_score_agreement'):
+                cell[field]=metric(sub,field)
+        descriptive[name]=cell
     return {'split':split,'scheduled':len(tasks),'models_calls':len(records),'forms':forms,
             'qualified':all(x['qualified'] for x in forms.values()),'families':family,
+            'descriptive_cells':descriptive,
             'primary_gain_pp':bootstrap_mean([100*r['causal_gain'] for r in family]),
             'specificity_pp':bootstrap_mean([100*r['specificity'] for r in family],seed=28029),
             'validity':{condition:metric(select(condition=condition),'valid') for condition in ('bare','structured')},
-            'infrastructure_failures':sum(x['infrastructure_error'] for x in scored.values())}
+            'infrastructure_failures':sum(x['infrastructure_error'] for x in scored.values()),
+            'finish_reasons':dict(Counter(saved['finish_reason'] if 'finish_reason' in saved else 'missing' for saved in records))}
 
 def shortcut_audit(tasks,truth,split):
     oracle={x['task_id']:x for x in truth};out={}
