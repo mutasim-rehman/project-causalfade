@@ -1,0 +1,157 @@
+{
+  "audit": {
+    "conditions": {
+      "bare": 1920,
+      "structured": 1920
+    },
+    "development_calls_per_model": 1280,
+    "families": 48,
+    "split_families": {
+      "development": 16,
+      "validation": 32
+    },
+    "tasks": 3840,
+    "validation_calls_per_model": 2560
+  },
+  "max_prompt_bytes": 1312,
+  "oracle_controls": {
+    "development": {
+      "oracle_qualified": true,
+      "primary_gain_pp": 0.0,
+      "shortcut_audit": {
+        "constant_conditional": {
+          "qualified": false,
+          "raw_paired": {
+            "decision": 0,
+            "direct": 0
+          }
+        },
+        "constant_marginal": {
+          "qualified": false,
+          "raw_paired": {
+            "decision": 0,
+            "direct": 0
+          }
+        },
+        "constant_x0": {
+          "qualified": false,
+          "raw_paired": {
+            "decision": 0,
+            "direct": 0
+          }
+        },
+        "constant_x1": {
+          "qualified": false,
+          "raw_paired": {
+            "decision": 0,
+            "direct": 0
+          }
+        },
+        "first_action": {
+          "qualified": false,
+          "raw_paired": {
+            "decision": 0,
+            "direct": 0
+          }
+        },
+        "first_candidate": {
+          "qualified": false,
+          "raw_paired": {
+            "decision": 0,
+            "direct": 0
+          }
+        },
+        "graph_blind_observational": {
+          "qualified": false,
+          "raw_paired": {
+            "decision": 0,
+            "direct": 0
+          }
+        },
+        "last_action": {
+          "qualified": false,
+          "raw_paired": {
+            "decision": 0,
+            "direct": 0
+          }
+        },
+        "last_candidate": {
+          "qualified": false,
+          "raw_paired": {
+            "decision": 0,
+            "direct": 0
+          }
+        }
+      }
+    },
+    "validation": {
+      "oracle_qualified": true,
+      "primary_gain_pp": 0.0,
+      "shortcut_audit": {
+        "constant_conditional": {
+          "qualified": false,
+          "raw_paired": {
+            "decision": 0,
+            "direct": 0
+          }
+        },
+        "constant_marginal": {
+          "qualified": false,
+          "raw_paired": {
+            "decision": 0,
+            "direct": 0
+          }
+        },
+        "constant_x0": {
+          "qualified": false,
+          "raw_paired": {
+            "decision": 0,
+            "direct": 0
+          }
+        },
+        "constant_x1": {
+          "qualified": false,
+          "raw_paired": {
+            "decision": 0,
+            "direct": 0
+          }
+        },
+        "first_action": {
+          "qualified": false,
+          "raw_paired": {
+            "decision": 0,
+            "direct": 0
+          }
+        },
+        "first_candidate": {
+          "qualified": false,
+          "raw_paired": {
+            "decision": 0,
+            "direct": 0
+          }
+        },
+        "graph_blind_observational": {
+          "qualified": false,
+          "raw_paired": {
+            "decision": 0,
+            "direct": 0
+          }
+        },
+        "last_action": {
+          "qualified": false,
+          "raw_paired": {
+            "decision": 0,
+            "direct": 0
+          }
+        },
+        "last_candidate": {
+          "qualified": false,
+          "raw_paired": {
+            "decision": 0,
+            "direct": 0
+          }
+        }
+      }
+    }
+  }
+}

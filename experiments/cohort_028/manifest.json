@@ -1,0 +1,25 @@
+{
+  "files": {
+    "development/oracle_truth.jsonl": "fcc7c4892cac4d1c83484786d4b9398881d2bb8b8c59bc49a8f1a37d21d5e04c",
+    "development/public_tasks.jsonl": "40689209f87c38cbf3a961dced18f3c9459b7bd0d14dad6963d403ddf0d0f78f",
+    "development/schedule.json": "bd235bfddb9731ca7a9ea741bc6ece1582e88d8383da0a7473f4f2d21610c19f",
+    "development/worlds.jsonl": "4b3251c78559df4a1f2d43339e250daaddb3dd12dd35eae221bd4ff3b716a4df",
+    "inventory.json": "bcbc6258cd87e1ecccd1a944b84421c6f3849bdceba01e409b2be57cd40003b6",
+    "plan.json": "00f6fb8213cec14422860d4fb28c97a4ff77561fd49bdb986b51e8bbfaf21129",
+    "preflight.json": "9a9a0ffd047c938ef6fc4f1842e7a59bf6de16af3db2cb1aa3bab9f61d24d55b",
+    "validation/oracle_truth.jsonl": "c8320a303345395417259c0f7e34d231f1b818b64ddc981d240d219308c99e15",
+    "validation/public_tasks.jsonl": "98f50484da0e6ebf47a7fe64cee3f7c92da8a1ec76f6f94c7b961801f9586a80",
+    "validation/schedule.json": "3e6a2a9b1e0f0bbc26f6c34cb9b8627b6b670b047d0f6e11b8edf5923e9cd72a",
+    "validation/worlds.jsonl": "f079dd1ab892bf720bc6fc85ab504f5e33e9bfa12c100fcc51044398ab4755ba"
+  },
+  "source_hashes": {
+    "causalfade/cohort028.py": "16fda67561b86c3bb5fb687f2ff29bdd5112687755cadeed3d4199bce9a5bacc",
+    "causalfade/graph_switch.py": "7c9ab455789c01db0b5712b6f13590e48b6e50b96f07098b1bd1678fdcdb50a7",
+    "tools/cohort028_analyze.py": "7fd181d03cdbd74ca0160244f1bb1797f3726fa01c798369acf9b48c4822c019",
+    "tools/cohort028_prepare.py": "ecd7e8af57f8a8a15a3e8244fca3a814707faa5a41d44cf4c332d2866db9fd07",
+    "tools/cohort028_run.py": "529241e2780a29960dd14ab4c5307c46869fd5a2f2ca6bce13585709e5458473",
+    "tools/cohort028_status.py": "1f4ad38f542a9f719cd7fab79a1e63fb7a8341387c20e77c4e5d645494d2a763",
+    "tools/cohort028_tokencheck.py": "25c8253151a104bd2b73b005dda2e491e7f806e6a67835c52df8651450e0ed63",
+    "tools/run_direct_pilot.py": "2ec6a70e50e14f88cb17e2244e244d338cbd86780beffd9de48891d06a3d3ea1"
+  }
+}

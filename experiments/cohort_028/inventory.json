@@ -1,0 +1,32 @@
+[
+  {
+    "bytes": 15237853248,
+    "gguf_metadata": {
+      "chat_template_length": 2507,
+      "chat_template_sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+      "file_type": 1
+    },
+    "id": "qwen7b",
+    "license": "Apache-2.0",
+    "lineage": "Qwen2.5-7B-Instruct",
+    "path": "/home/i242514/Desktop/CAUSALFADE/weights/gguf/qwen2.5-7b-instruct-f16.gguf",
+    "sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+    "source_repo": "Qwen/Qwen2.5-7B-Instruct",
+    "source_revision": "a09a35458c702b33eeacc393d103063234e8bc28"
+  },
+  {
+    "bytes": 16068896128,
+    "gguf_metadata": {
+      "chat_template_length": 4614,
+      "chat_template_sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+      "file_type": 1
+    },
+    "id": "llama8b",
+    "license": "llama3.1",
+    "lineage": "Llama-3.1-8B-Instruct",
+    "path": "/home/i242514/Desktop/CAUSALFADE/weights/cohort_024_sources/llama8b/Llama-3.1-8B-Instruct-f16.gguf",
+    "sha256": "031c5d9ae1ad8cf676f8498ef539418c0d1f2b1b9c9d33c8f9207b83218c89b3",
+    "source_repo": "second-state/Meta-Llama-3.1-8B-Instruct-GGUF",
+    "source_revision": "6d6118a261564da05fd7e651f4bc069eb7c38c20"
+  }
+]

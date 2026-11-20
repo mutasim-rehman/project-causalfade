@@ -1,0 +1,39 @@
+{
+  "checkpoint_every": 20,
+  "classification": "bounded development and conditional validation, no quantization or confirmation",
+  "decoding": {
+    "cache_prompt": false,
+    "seed": 20261120,
+    "stream": false,
+    "temperature": 0
+  },
+  "max_tokens": {
+    "bare": 64,
+    "structured": 192
+  },
+  "models": [
+    "llama8b",
+    "qwen7b"
+  ],
+  "runtime": {
+    "context": 4096,
+    "gpu_layers": 0,
+    "parallel": 1,
+    "threads": 8
+  },
+  "server": "/home/i242514/Desktop/project-causalfade/.tools/llama-b12176/llama-server",
+  "server_sha256": "6d3d7416bf83500c5adda80ee4bb076f6877e38ff0a53ddc81c0b278108b2f24",
+  "server_start_retries": 3,
+  "source_commit": "d0cb85829b1bb16190b2efbcb7afe47464a7bf34",
+  "source_hashes": {
+    "causalfade/cohort028.py": "16fda67561b86c3bb5fb687f2ff29bdd5112687755cadeed3d4199bce9a5bacc",
+    "causalfade/graph_switch.py": "7c9ab455789c01db0b5712b6f13590e48b6e50b96f07098b1bd1678fdcdb50a7",
+    "tools/cohort028_analyze.py": "7fd181d03cdbd74ca0160244f1bb1797f3726fa01c798369acf9b48c4822c019",
+    "tools/cohort028_prepare.py": "ecd7e8af57f8a8a15a3e8244fca3a814707faa5a41d44cf4c332d2866db9fd07",
+    "tools/cohort028_run.py": "529241e2780a29960dd14ab4c5307c46869fd5a2f2ca6bce13585709e5458473",
+    "tools/cohort028_status.py": "1f4ad38f542a9f719cd7fab79a1e63fb7a8341387c20e77c4e5d645494d2a763",
+    "tools/cohort028_tokencheck.py": "25c8253151a104bd2b73b005dda2e491e7f806e6a67835c52df8651450e0ed63",
+    "tools/run_direct_pilot.py": "2ec6a70e50e14f88cb17e2244e244d338cbd86780beffd9de48891d06a3d3ea1"
+  },
+  "transport_retries": 2
+}

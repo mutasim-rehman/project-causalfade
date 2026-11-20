@@ -1,6 +1,6 @@
 # Cohort 028 — causal procedure selection with deterministic calculation
 
-Designed 19 November 2026. **Design specification only: not frozen, implemented, preregistered or executed.** No new inference, model download or quantization is part of this design task. Historical fixtures and results remain unchanged.
+Designed 19 November 2026. **Implementation and fixture frozen 20 November 2026; no cohort 028 inference has run.** The required tokenizer preflight remains pending until launch. The [execution runbook](RUNBOOK.md) gives the start, stream and resume commands. No new model download or quantization is part of this cohort. Historical fixtures and results remain unchanged.
 
 ## Purpose and decision
 
@@ -153,7 +153,7 @@ No concurrency or quantization benchmark requests are included. Load one F16 mod
 
 ## Deliverables and manuscript relevance
 
-Implementation must produce a generator/oracle, public calculator, matched task fixtures, schema scorer, anti-leakage/shortcut tests, frozen inventory/plan, append-only runner and a report with all model × system × task × representation cells. Include a review-response ledger and a deviation log. None is claimed implemented by this design document.
+Implementation now provides the generator/oracle, public calculator, matched task fixtures, schema scorer, anti-leakage/shortcut tests, frozen inventory/plan and append-only runner. The analyzer is ready to report all model × system × task × representation cells when inference completes. The [review-response ledger](REVIEW_RESPONSE_LEDGER.md) and [deviation log](DEVIATIONS.md) are included. Results and qualification decisions do not exist yet.
 
 Possible successful finding: assistance yields reliable graph-sensitive decisions with no-change specificity, while the recorded unaided failures can be localized to observable selected-rule execution or action inconsistencies. Alternative: procedure selection remains unreliable despite supplied scores and exact execution, ruling out arithmetic-only rescue in this setting. Either outcome requires careful task-bound interpretation.
 
