@@ -1,0 +1,38 @@
+{
+  "context": 4096,
+  "max_tokens": {
+    "bare": 64,
+    "structured": 192
+  },
+  "models": {
+    "llama8b": {
+      "counts": {
+        "development_000_decision_forward_raw_causal_confounder_z_bare": 447,
+        "development_000_decision_forward_raw_causal_confounder_z_structured": 485,
+        "development_000_decision_forward_supplied_causal_confounder_z_bare": 511,
+        "development_000_decision_forward_supplied_causal_confounder_z_structured": 549,
+        "development_000_direct_forward_raw_causal_confounder_z_bare": 448,
+        "development_000_direct_forward_raw_causal_confounder_z_structured": 486,
+        "development_000_direct_forward_supplied_causal_confounder_z_bare": 512,
+        "development_000_direct_forward_supplied_causal_confounder_z_structured": 550
+      },
+      "maximum": 550,
+      "model_sha256": "031c5d9ae1ad8cf676f8498ef539418c0d1f2b1b9c9d33c8f9207b83218c89b3"
+    },
+    "qwen7b": {
+      "counts": {
+        "development_000_decision_forward_raw_causal_confounder_z_bare": 518,
+        "development_000_decision_forward_raw_causal_confounder_z_structured": 556,
+        "development_000_decision_forward_supplied_causal_confounder_z_bare": 598,
+        "development_000_decision_forward_supplied_causal_confounder_z_structured": 636,
+        "development_000_direct_forward_raw_causal_confounder_z_bare": 519,
+        "development_000_direct_forward_raw_causal_confounder_z_structured": 557,
+        "development_000_direct_forward_supplied_causal_confounder_z_bare": 599,
+        "development_000_direct_forward_supplied_causal_confounder_z_structured": 637
+      },
+      "maximum": 637,
+      "model_sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a"
+    }
+  },
+  "tokenizer_sha256": "712076edf65a35a84188df933912d9e735758fa7bdffb9796287adfadf4263a3"
+}
