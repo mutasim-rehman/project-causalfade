@@ -10344,3 +10344,4 @@
 37.48.795.362 I slot print_timing: id  0 | task 2867 |    graphs reused =       2536
 37.48.795.362 I slot print_timing: id  0 | task 2867 |   graph reallocs =          0    /     0        (same size) / (changed size)
 37.48.795.394 I slot      release: id  0 | task 2867 | stop processing: n_tokens = 549, truncated = 0
+37.52.117.977 I srv    operator(): operator(): cleaning up before exit...

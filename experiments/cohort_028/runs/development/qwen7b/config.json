@@ -1,0 +1,23 @@
+{
+  "decoding": {
+    "cache_prompt": false,
+    "seed": 20261120,
+    "stream": false,
+    "temperature": 0
+  },
+  "manifest_sha256": "6773d01027bd80af6613288eb494759a6a625bcad45ce6c2458194290f49ce27",
+  "max_tokens": {
+    "bare": 64,
+    "structured": 192
+  },
+  "model": "qwen7b",
+  "model_sha256": "389d79c70a7c78b7b5190a3d6c3cd1146aa8b1350ab3a3e981804b8a2600de9a",
+  "plan_sha256": "00f6fb8213cec14422860d4fb28c97a4ff77561fd49bdb986b51e8bbfaf21129",
+  "runtime": {
+    "context": 4096,
+    "gpu_layers": 0,
+    "parallel": 1,
+    "threads": 8
+  },
+  "schedule_sha256": "bd235bfddb9731ca7a9ea741bc6ece1582e88d8383da0a7473f4f2d21610c19f"
+}
