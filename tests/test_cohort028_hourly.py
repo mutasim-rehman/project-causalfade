@@ -1,6 +1,7 @@
 """Operational checkpoint cadence tests; no model or Git calls."""
 import sys
 import tempfile
+import json
 from pathlib import Path
 from unittest import TestCase
 from unittest.mock import patch
@@ -46,3 +47,22 @@ class HourlyCheckpointTests(TestCase):
                  patch.object(hourly, 'commit_snapshot') as commit:
                 hourly.checkpoint(out, 'llama8b', 'development', 1100, 1280, True)
                 commit.assert_called_once()
+
+    def test_final_arm_and_pipeline_status_share_one_commit(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            out = base / 'runs' / 'development' / 'qwen7b'
+            out.mkdir(parents=True)
+            (out / 'analysis.json').write_text('{}')
+            (base / 'pipeline_status.json').write_text(json.dumps({'status': 'stopped_by_gate'}))
+            with patch.object(hourly, 'BASE', base), \
+                 patch.object(hourly, '_in_run_all', True), \
+                 patch.object(hourly, '_pending_completion', None), \
+                 patch.object(hourly, 'is_final_arm', return_value=True), \
+                 patch.object(hourly, 'commit_snapshot') as commit:
+                hourly.checkpoint(out, 'qwen7b', 'development', 1280, 1280, True)
+                commit.assert_not_called()
+                hourly.pipeline_checkpoint(True)
+                commit.assert_called_once()
+                self.assertIn('model_complete', commit.call_args.args[0])
+                self.assertIsNone(hourly._pending_completion)

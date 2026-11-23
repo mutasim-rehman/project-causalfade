@@ -13,6 +13,8 @@ BASE = original.BASE
 AMENDMENT = BASE / 'amendments' / 'hourly_checkpoint_2026-11-23.json'
 HOUR_SECONDS = 3600
 _last_commit_mono = time.monotonic()
+_in_run_all = False
+_pending_completion = None
 
 
 def due(now, last, finished):
@@ -45,8 +47,22 @@ def commit_snapshot(message, push, include_live=True):
     original.commit_paths([p for p in paths if p.exists()], message, push)
 
 
+def is_final_arm(split, arm):
+    """Identify the last arm after its analysis has been written."""
+    models = json.loads((BASE / 'plan.json').read_text())['models']
+    analyses = BASE / 'runs' / 'development'
+    if split == 'development':
+        if arm != models[-1]:
+            return False
+        return all((analyses / m / 'analysis.json').exists() for m in models) and not any(
+            json.loads((analyses / m / 'analysis.json').read_text())['qualified'] for m in models)
+    qualified = [m for m in models if (analyses / m / 'analysis.json').exists() and
+                 json.loads((analyses / m / 'analysis.json').read_text())['qualified']]
+    return bool(qualified) and arm == qualified[-1]
+
+
 def checkpoint(out, arm, split, done, total, push):
-    global _last_commit_mono
+    global _last_commit_mono, _pending_completion
     original.atomic(out / 'progress.json', {
         'arm': arm, 'split': split, 'completed': done,
         'total': total, 'utc': original.utc(),
@@ -60,21 +76,27 @@ def checkpoint(out, arm, split, done, total, push):
     reason = 'model_complete' if finished else 'hourly'
     original.event(out, 'git_checkpoint', completed=done, total=total,
                    policy='hourly_or_model_complete', reason=reason)
-    commit_snapshot(f'Cohort 028 {reason} {split} {arm} {done}/{total}', push)
+    message = f'Cohort 028 {reason} {split} {arm} {done}/{total}'
+    if finished and _in_run_all and is_final_arm(split, arm):
+        _pending_completion = message
+        return  # Include the terminal pipeline status in this one final commit.
+    commit_snapshot(message, push)
     _last_commit_mono = time.monotonic()
     print(f'Git checkpoint ({reason}): {split} {arm} {done}/{total}', flush=True)
 
 
 def pipeline_checkpoint(push=True):
+    global _last_commit_mono, _pending_completion
     # The original runner calls this at start, interruption and terminal state.
-    # Start/interruption are locally durable and await the next hourly/model
-    # commit. A terminal status is saved once all model work has finished.
-    status = json.loads((BASE / 'pipeline_status.json').read_text())['status']
-    if status in ('validation_complete', 'stopped_by_gate'):
-        commit_snapshot('Cohort 028 final pipeline status', push)
+    # The final model's completion commit includes terminal pipeline status.
+    if _pending_completion is not None:
+        commit_snapshot(_pending_completion, push)
+        _last_commit_mono = time.monotonic()
+        _pending_completion = None
 
 
 def main():
+    global _in_run_all
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest='command', required=True)
     arm = sub.add_parser('run-arm')
@@ -90,7 +112,11 @@ def main():
         print(json.dumps(original.run_arm(args.split, args.model_id,
                                          not args.no_push), indent=2))
     else:
-        original.run_all(not args.no_push)
+        _in_run_all = True
+        try:
+            original.run_all(not args.no_push)
+        finally:
+            _in_run_all = False
 
 
 if __name__ == '__main__':
