@@ -1,5 +1,9 @@
 # November 10, 2026 research session
 
+## 23 November 2026 — cohort 028 checkpoint cadence amendment
+
+The paused cohort 028 run has a completed tokenizer preflight and 1030/1280 durable `llama8b` development responses. A separate, hash-pinned operational launcher now keeps local progress updates every 20 responses while committing and pushing at most hourly during an arm and again when an analyzed model arm finishes. A final pipeline-status commit may follow completion. The original frozen scientific runner and fixture remain unchanged, so saved results can resume. The [runbook](experiments/cohort_028/RUNBOOK.md) now uses the amended launcher. No inference was started during this change.
+
 ## 18 November 2026 — cohort 025 no-inference methods screen
 
 Inventoried cohorts 001–024 and their archived run results, preserving the interrupted cohort 008 attempt separately. Added a reproducible post-outcome methods screen for cohort 024 metamorphic presentation pairs and response information, same-task precision transitions in cohorts 015–017 and 024, evidence-order interactions, cohort 021 source guidance and cohort 018's limited strength grid. An explicit applicability register marks graph-switch, transportability, full psychophysics, validated IRT, logits, activations, confidence and cognitive timing as unavailable from logs. The [summary](experiments/cohort_025/summary.md) records new descriptive diagnostics and the non-confirmatory boundary.

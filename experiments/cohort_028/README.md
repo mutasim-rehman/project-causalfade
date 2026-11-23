@@ -1,6 +1,6 @@
 # Cohort 028 — causal procedure selection with deterministic calculation
 
-Designed 19 November 2026. **Implementation and fixture frozen 20 November 2026; no cohort 028 inference has run.** The required tokenizer preflight remains pending until launch. The [execution runbook](RUNBOOK.md) gives the start, stream and resume commands. No new model download or quantization is part of this cohort. Historical fixtures and results remain unchanged.
+Designed 19 November 2026. **Implementation and fixture frozen 20 November 2026.** As of 23 November, tokenizer preflight is complete and development `llama8b` is paused with 1030/1280 responses saved. The [execution runbook](RUNBOOK.md) gives the resume and streaming commands and documents the hourly Git checkpoint amendment. No new model download or quantization is part of this cohort. Historical fixtures and results remain unchanged.
 
 ## Purpose and decision
 

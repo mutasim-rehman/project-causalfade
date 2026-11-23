@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-23",
+  "hourly_launcher_sha256": "dc3fc89f1352aee876406f2c8716a1a3ea81d2b069e70e7b800f84397d02391c",
+  "interval_seconds": 3600,
+  "original_manifest_sha256": "6773d01027bd80af6613288eb494759a6a625bcad45ce6c2458194290f49ce27",
+  "original_plan_sha256": "00f6fb8213cec14422860d4fb28c97a4ff77561fd49bdb986b51e8bbfaf21129",
+  "original_runner_sha256": "529241e2780a29960dd14ab4c5307c46869fd5a2f2ca6bce13585709e5458473",
+  "policy": "hourly_or_model_complete",
+  "resume_from_saved_results": "development llama8b 1030/1280 at amendment preparation",
+  "scope": "Git commit/push cadence only; request, oracle, scorer, fixture, gates and resume configuration unchanged"
+}
