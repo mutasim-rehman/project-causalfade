@@ -1,4 +1,5 @@
 {
-  "status": "running",
-  "utc": "2026-11-23T08:09:51.051077+00:00"
+  "development_qualified": [],
+  "status": "stopped_by_gate",
+  "utc": "2026-11-23T15:37:03.130926+00:00"
 }
