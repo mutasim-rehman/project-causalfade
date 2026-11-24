@@ -1,4 +1,4 @@
-"""Check, run, resume or stream the authorized CF-TP1 schedule."""
+"""Check, run, resume or stream the frozen CF-TP1 schedule."""
 
 import argparse
 import base64
@@ -22,7 +22,7 @@ from tools.cohort029_prepare import ROOT
 from tools.cohort029_runtime import (
     SAMPLING, deployment_args, inventory, load, rows, serving, sha, template_identity,
 )
-from tools.freeze_target_transport import ROLES, authorization_signature, verify
+from tools.freeze_target_transport import verify
 
 BASE = ROOT / "experiments/cohort_029"
 CHECKPOINT_REF = "refs/heads/codex/cohort-029-checkpoints"
@@ -314,18 +314,9 @@ def collect_schedule(args, run, ledger, cp, started, initial, template):
 
 def verified_launch(args):
     run = args.out.resolve()
-    if not run.is_relative_to(BASE / "runs"):
-        raise ValueError("Production run directory must be inside experiments/cohort_029/runs")
-    paths = [args.freeze / "manifest.json", args.trust,
-             args.authorization, authorization_signature(args.authorization),
-             *(args.signatures / f"{role}.sig" for role in ROLES)]
-    missing = [str(path) for path in paths if not path.is_file()]
-    if missing:
-        raise ValueError("Launch files missing:\n  " + "\n  ".join(missing))
-    run_path = str(run.relative_to(ROOT))
-    binding = dict(manifest_sha256=verify(args.freeze, args.signatures, args.authorization,
-                                         args.trust, run_path),
-                   authorization_sha256=sha(args.authorization), run_path=run_path)
+    if run != (BASE / "runs/confirmatory").resolve():
+        raise ValueError("Production run directory must be experiments/cohort_029/runs/confirmatory")
+    binding = dict(manifest_sha256=verify(args.freeze), run_path=str(run.relative_to(ROOT)))
     manifest_inventory = load(args.freeze / "deployment/inventory.json")
     schedule, tasks = load_schedule(args.freeze / "fixture")
     return run, binding, manifest_inventory, schedule, tasks
@@ -339,6 +330,8 @@ def collect(args):
         closure = run / "terminal.json"
         if closure.exists() and not load(closure)["complete"]:
             raise ValueError("This campaign was closed as abandoned")
+        if args.command == "run" and (run / JOURNAL).exists():
+            raise ValueError("Existing collection journal; use resume")
         if args.command == "resume" and not (run / JOURNAL).exists():
             raise ValueError("No local journal to resume")
         ledger = Ledger(run / JOURNAL, schedule, tasks, binding)
@@ -398,9 +391,6 @@ def main():
     commands = cli.add_subparsers(dest="command", required=True)
     paths = {
         "freeze": BASE / "freeze",
-        "signatures": BASE / "lab/signatures",
-        "authorization": BASE / "lab/authorization.json",
-        "trust": BASE / "lab/allowed_signers",
         "out": BASE / "runs/confirmatory",
     }
     for name in ("check-ready", "run", "resume"):
@@ -409,7 +399,7 @@ def main():
             run.add_argument("--" + flag, type=Path, default=path)
         if name != "check-ready":
             run.add_argument("--remote", default="origin")
-            deployment_args(run)
+        deployment_args(run)
     view = commands.add_parser("stream")
     view.add_argument("--out", type=Path, required=True)
     view.add_argument("--once", action="store_true")
@@ -417,8 +407,10 @@ def main():
     if args.command == "stream":
         stream(args.out, not args.once)
     elif args.command == "check-ready":
-        run, _, _, schedule, _ = verified_launch(args)
-        print(f"Verified signed launch files and {len(schedule)} scheduled responses for {run}")
+        run, _, frozen_inventory, schedule, _ = verified_launch(args)
+        if inventory(args.server, args.model, args.freeze) != frozen_inventory:
+            raise ValueError("Local runtime inventory differs from the frozen inventory")
+        print(f"Verified frozen artifacts and local deployment and {len(schedule)} scheduled responses for {run}")
     else:
         def interrupted(_signum, _frame):
             raise KeyboardInterrupt

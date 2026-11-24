@@ -1,6 +1,6 @@
 # CF-TP1 policy clarification · constant-rivals-v1
 
-This document takes effect for a formal freeze only when signed by the lab PI.
+The solo workflow freezes the exact bytes of this clarification with the fixture.
 It clarifies the rival policy gates in section 6 and the lab validation matrix.
 
 The requirement to disagree under both gold actions applies to nonconstant rival
@@ -17,4 +17,4 @@ even if its predictions happen to be constant in one candidate fixture.
 
 Retain the original literal-gate results beside the clarified results. Keep the
 same generator, prompt design, schedule, model, scoring, estimand and response cap.
-Approval of this document is separate from authorization to collect responses.
+Collection starts only through the explicit runner command.

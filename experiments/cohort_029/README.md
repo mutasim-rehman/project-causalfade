@@ -1,139 +1,46 @@
-# Cohort 029 Â· CF-TP1
+# Cohort 029 · CF-TP1 single-researcher runbook
 
-## Status
+The original [CF-TP1 scientific specification](CF-TP1-v1.0.md) is archived verbatim. This workflow supersedes its signing and committee administration. It retains the generator, two forms, numerical and public-text oracles, rival policies, matched controls, model configuration, 128 families, 4,096 scheduled responses and statistical endpoints. Offline verification from previous versions is historical evidence.
 
-The policy audit records both the literal gate and the proposed clarification.
-The literal rule rejects constant predictions because they can only err under one
-gold action. The [policy clarification](policy-clarification.md) applies the
-constant-output gate only to declared constants and mathematically constant
-threshold boundaries. The lab PI signs the clarification before freeze.
+## 1. Prepare and validate
 
-The transfer wording used by the mock is a test fixture. Formal preparation
-requires the independent author's wording. Freeze requires blinded review and gate
-evidence. The PI separately authorizes a specific manifest, deployment, path and
-response cap.
+On the lab PC, place the actual final two-paragraph JSON form at the path below. See the [form requirements](lab-handoff.md). Review the wording against the scientific question and record actual limitations. Use one Python 3.13 patch throughout. Use new output directories; preserve failed attempts and follow the protocol's one-repair limit.
 
-## Run a mock and view progress
-
-Run from the repository root. A compatible local Python works for mock preparation.
-Use a fresh output directory per mock.
-
-```bash
+~~~bash
+cd /home/i242514/Desktop/project-causalfade
 C29=experiments/cohort_029
-mkdir -p "$C29/mock"
-.venv/bin/python -m tools.cohort029_prepare --mock --out "$C29/mock/fixture"
-.venv/bin/python -m tools.analyze_target_transport mock-run \
-  --candidate "$C29/mock/fixture" --out "$C29/mock/run"
-.venv/bin/python -m tools.run_target_transport stream --out "$C29/mock/run" --once
-.venv/bin/python -m tools.analyze_target_transport calibrate-intervals \
-  --out "$C29/mock/coverage.json"
-```
+python3.13 -m tools.cohort029_prepare --transfer "$C29/lab/transfer.json" --out "$C29/candidate"
+python3.13 -m unittest discover -s tests -p 'test_target_transport*.py' -v
+python3.13 -m tools.cohort029_runtime --candidate "$C29/candidate" --out "$C29/preflight"
+~~~
 
-Mock preparation reports the original literal failures and saves both tie audits for inspection.
-The mock runner exercises an interrupted intent and then replays 4,096 deterministic
-responses through terminal scoring. The expected Delta is 0.78125 percentage points.
+Preparation verifies SCM feasibility, paired truth and margins, public-text agreement, prompt changes, balance and scientific rival-policy gates. The runtime preflight uses the pinned local server and model for chat formatting and tokenization only. Check the forms, review packet, fixture audit, literal and clarified rival-policy results, and tokenizer budget. Numerical oracle agreement cannot certify the meaning of the prose.
 
-## Formal preflight and freeze
+## 2. Freeze and check readiness
 
-Use the same Python 3.13 patch for candidate generation, token preflight and
-collection. See the [independent review handoff](lab-handoff.md) for wording and review instructions.
-The transfer input is a JSON object with single-paragraph
-`context` and `arithmetic` strings. The renderer supplies the common message,
-numerical layout and response contract. The implementation uses Python's standard
-library and the archived llama.cpp binaries and GGUF.
-
-```bash
-C29=experiments/cohort_029
-python3.13 -m tools.cohort029_prepare --transfer "$C29/lab/transfer.json" \
-  --out "$C29/candidate"
-python3.13 -m tools.cohort029_runtime --candidate "$C29/candidate" \
-  --out "$C29/preflight"
-ssh-keygen -Y sign -n causalfade-cohort029 -f /path/to/pi-key \
-  "$C29/policy-clarification.md"
-python3.13 -m tools.freeze_target_transport --candidate "$C29/candidate" \
-  --preflight "$C29/preflight" --evidence "$C29/lab/evidence" \
-  --protocol /home/i242514/Downloads/cohorts_29.md --out "$C29/freeze" \
-  --policy-approval "$C29/policy-clarification.md.sig" --trust "$C29/lab/allowed_signers"
-```
-
-The token audit only calls chat template
-and tokenization endpoints. It records the rendered chat and token sequence hashes
-and enforces the 2,048-token budget with 48 tokens reserved for completion.
-
-Prepare `lab/evidence/gates.json` with keys `"1"` through `"7"`. Each record supplies
-`owner`, `verifier`, `artifact` relative to the evidence directory, `sha256`,
-`predicate`, `observed`, `timestamp` and the Boolean `pass`. Also supply
-`mock_recovery.json`, `coverage.json`, `form_review.md` and `deviations.json`.
-The review documents names, dates, commits, form authorship, exposure declarations,
-the eight blinded quartets and the four worked cases. Retain failed candidate evidence
-when resolving any deficiency. Authorization is gate eight.
-
-After freeze, six reviewers sign the exact `manifest.json` bytes with
-`ssh-keygen -Y sign -n causalfade-cohort029 -f /path/to/lab-key manifest.json`.
-Store signatures as `pi.sig`, `causal-lead.sig`, `statistician.sig`,
-`benchmark-engineer.sig`, `independent-reviewer.sig` and `transfer-author.sig` in
-`lab/signatures/`. The lab supplies a trusted `allowed_signers` file mapping these
-principals to their approved public keys. The PI separately signs
-`lab/authorization.json` in the same namespace and places the detached signature
-at `lab/authorization.json.sig`. The signed JSON contains `authorized: true`,
-`authorized_responses: 4096`, `manifest_sha256`, `model_sha256`, `server_sha256`
-and the relative `run_path` shown below.
-
-The following command prepares the unsigned PI authorization payload directly from
-the frozen files. The PI reviews the payload and signs it with the same namespace.
-
-```bash
-python3.13 - <<'PY_AUTH'
-from pathlib import Path
-from tools.cohort029_prepare import write
-from tools.cohort029_runtime import load, sha
-
-base = Path("experiments/cohort_029")
-freeze = base / "freeze"
-manifest = freeze / "manifest.json"
-deployment = load(freeze / "deployment/inventory.json")
-write(base / "lab/authorization.json", {
-    "authorized": True,
-    "authorized_responses": load(manifest)["response_cap"],
-    "manifest_sha256": sha(manifest),
-    "model_sha256": deployment["model_sha256"],
-    "server_sha256": deployment["server_sha256"],
-    "run_path": str(base / "runs/confirmatory"),
-})
-PY_AUTH
-ssh-keygen -Y sign -n causalfade-cohort029 -f /path/to/pi-key "$C29/lab/authorization.json"
-```
-
-
-## Start and stream the authorized run
-
-First verify the signed launch files in the foreground. This check does not
-start the model server. It lists missing files and exits nonzero.
-
-```bash
+~~~bash
+python3.13 -m tools.freeze_target_transport --candidate "$C29/candidate" --preflight "$C29/preflight" --out "$C29/freeze"
 python3.13 -m tools.run_target_transport check-ready
-```
+~~~
 
-Wait for a successful check before starting the background job.
+Optional freeze arguments --authorship "..." and --review "..." record the actual author, exposure, review work, and/or lack of independence. Omission records independence as undocumented, which limits transfer claims. Keep original supporting records with the release. Automated oracle agreement does not establish independent human review.
 
-```bash
-C29=experiments/cohort_029
-RUN="$C29/runs/confirmatory"
-mkdir -p "$C29/runs"
-nohup python3.13 -u -m tools.run_target_transport run \
-  --freeze "$C29/freeze" --signatures "$C29/lab/signatures" \
-  --authorization "$C29/lab/authorization.json" \
-  --trust "$C29/lab/allowed_signers" --out "$RUN" \
-  >>"$C29/runs/confirmatory.console.log" 2>&1 </dev/null &
-```
+Freeze regenerates the formal fixture, compares its files byte-for-byte with the candidate, checks the tokenizer evidence, exercises mock interruption/recovery and scoring, and runs the prespecified interval calibration. It publishes the results, protocol, implementation snapshot, provenance, manifest and checksum into a new directory only after success. Save the printed manifest SHA-256 in your research log. The sidecar detects accidental changes; the log provides an external reference. Readiness rechecks frozen files, source and the local deployment inventory without issuing a completion. Investigate and disclose failed checks.
 
-```bash
-.venv/bin/python -m tools.run_target_transport stream \
-  --out experiments/cohort_029/runs/confirmatory
+## 3. Explicitly start collection
 
-# Includes startup, server retry and Git checkpoint messages.
-tail -n 30 -F experiments/cohort_029/runs/confirmatory.console.log
-```
+Execute the following only when ready for real responses. The formal run path is fixed.
+
+~~~bash
+python3.13 -m tools.run_target_transport run
+~~~
+
+Monitor from a second terminal. After an interruption use resume with the same freeze and journal.
+
+~~~bash
+python3.13 -m tools.run_target_transport stream --out experiments/cohort_029/runs/confirmatory
+python3.13 -m tools.run_target_transport resume
+~~~
 
 The stream shows saved responses out of 4,096, percentage, remaining calls, ETA,
 connection failures and ambiguous dispatches. Keep the PC awake. The runner retries

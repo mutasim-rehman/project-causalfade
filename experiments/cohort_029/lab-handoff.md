@@ -1,10 +1,9 @@
-# Cohort 29 independent review handoff
+# Cohort 029 transfer form and review notes
 
-## Transfer author
+## Transfer form
 
-Provide `experiments/cohort_029/lab/transfer.json` with two independently written
-single-paragraph strings called `context` and `arithmetic`. Write from the
-scientific specification before inspecting the archive and mock wording. The
+Provide `experiments/cohort_029/lab/transfer.json` with two
+single-paragraph strings called `context` and `arithmetic`. For an independent submission, write from the scientific specification before inspecting archive or mock wording. The
 renderer adds the system message, group names, target mix, two source blocks and
 JSON response contract. The source blocks identify the randomized and historical
 studies in the causal task, and the designated and other scorecards in the
@@ -18,22 +17,11 @@ weight the designated scorecard's on and off scores by the target mix and choose
 the higher total. Use the noncausal scorecard setting. Do not include examples or
 fixture-specific data in either paragraph.
 
-Record the author and date, a declaration of independence and outcome exposure,
-and the SHA-256 of the submitted file. The benchmark engineer runs formal
+Record the author and date, actual independence status and outcome exposure,
+and the SHA-256 of the submitted file. Use the lab installation for formal
 preparation and token preflight with Python 3.13. The mock wording is not an
 independent transfer submission.
 
-## Independent reviewer and gate owners
+## Review and provenance
 
-Solve the eight blinded transfer-form causal role-by-target quartets in the
-formal candidate's `blind_review.json` plus the four worked cases. Record decisions before accessing the
-private oracle and reconcile them afterwards. Document any ambiguity and review
-the independence of the public verifier. Sign the review alongside the transfer
-authorship record in `form_review.md`.
-
-Copy or regenerate the mock recovery and coverage reports into `lab/evidence/`.
-Record gate evidence for the formal candidate in `gates.json` and record the
-clarification and any prior formal failures in `deviations.json`. The
-[runbook](README.md) specifies the evidence fields and signing commands.
-The PI signs the clarification separately from the manifest and the final run
-authorization.
+Use the candidate's blind_review.json for the eight transfer quartets and review the four worked cases. If someone performs an independent blinded review, record their actual exposure, answers before seeing the key, and reconciliation. Describe a solo review as such. Record missing independent authorship or review as a limitation in freeze provenance and the manuscript. Stop for ambiguous or scientifically incorrect instructions. Follow the [single-researcher runbook](README.md) to validate, freeze and launch explicitly.
