@@ -20,7 +20,13 @@ class FormsTests(unittest.TestCase):
             self.assertEqual((fixture["tasks"], fixture["oracle_mismatches"]), (4096, 0))
             self.assertEqual(load(out / "structural_diffs.json")["checks"]["role"], 2048)
             self.assertEqual(policy["ties"]["0"]["positive"]["correct"], 4096)
-            self.assertEqual(len(policy["failures"]), 12)
+            self.assertEqual(policy["failures"], [])
+            self.assertEqual(len(policy["literal_failures"]), 12)
+            packets = load(out / "blind_review.json")
+            self.assertEqual([len(quartet) for quartet in packets], [4]*8)
+            self.assertEqual(len({row["task_id"] for quartet in packets for row in quartet}), 32)
+            self.assertTrue(all(set(row) == {"task_id", "messages"}
+                                for quartet in packets for row in quartet))
             self.assertEqual(policy["ties"]["0"]["target_constant_0"]["disagreement_actions"], [1])
 
     def test_invalid_public_units_missing_rows_and_weights(self):

@@ -105,6 +105,24 @@ def structural_audit(out, prompts, parsed, design):
 
 
 
+def blind_review_packet(out, prompts, design):
+    """Use the first slot of each stratum and alternate physical source order."""
+    packets = [[] for _ in DESIGN]
+    for prompt, row in zip(prompts, design, strict=True):
+        slot, form, task, order, _, _ = row["indices"]
+        h = row["h"]
+        if slot == h*16 and form == 1 and task == 0 and order == h % 2:
+            packets[h].append({k: prompt[k] for k in ("task_id", "messages")})
+    if any(len(packet) != 4 for packet in packets):
+        raise ValueError("Blinded review requires eight complete quartets")
+    rng = random.Random(290434)
+    rng.shuffle(packets)
+    for packet in packets:
+        rng.shuffle(packet)
+    write(out / "blind_review.json", packets)
+
+
+
 def prepare(out, transfer, mock):
     if not mock and sys.version_info[:2] != (3, 13):
         raise ValueError("Formal preparation requires Python 3.13")
@@ -192,6 +210,7 @@ def prepare(out, transfer, mock):
           dup_prompts=[v[1] for v in seen.values() if len(v[1]) > 1],
           worked_cases=worked_cases(), oracle_mismatches=0, mutation_checks=2))
     structural_audit(out, prompts, parsed, design)
+    blind_review_packet(out, prompts, design)
     from tools.cohort029_policies import audit
     audit(out, parsed, design, mock=mock)
 

@@ -61,10 +61,11 @@ def predict(public, thresholds, tie):
 
 def audit(out, parsed, design, mock=False):
     thresholds = [Fraction(w, 100) for w in (*range(54, 63), *range(76, 85))]
-    summary, failures = {}, []
+    summary, failures, literal_failures = {}, [], []
     lookup = {tuple(row["indices"]): i for i, row in enumerate(design)}
     for tie in (0, 1):
         columns = defaultdict(bytearray)
+        predicted_actions = defaultdict(set)
         with (out / f"policy_rows_tie_{tie}.jsonl.gz").open("xb") as raw:
             with gzip.GzipFile(fileobj=raw, mode="wb", mtime=0) as records:
                 for (key, public), row in zip(parsed, design, strict=True):
@@ -74,6 +75,7 @@ def audit(out, parsed, design, mock=False):
                     records.write(encode(dict(task_id=key, predictions=predictions)) + b"\n")
                     for name, action in predictions.items():
                         columns[name].append(action == public["action"])
+                        predicted_actions[name].add(action)
         target_pairs, role_pairs = [], []
         for i, row in enumerate(design):
             slot, f, t, o, r, k = row["indices"]
@@ -98,19 +100,41 @@ def audit(out, parsed, design, mock=False):
                                 role_pairs=[[s, n, v] for (s, n), v in sorted(role.items())],
                                 cells=[[factors, h, option, ok, count]
                                        for (factors, h, option, ok), count in sorted(cells.items())])
-            fail = (sum(correct) != len(correct) if name == "positive" else
-                    families < 16 or actions != [0, 1])
-            if name.startswith("source_"):
-                fail |= bool(role[1, 2]) or sum(correct)*4 > len(correct)*3
-            if name.startswith("target_"):
-                fail |= bool(target[1, 2]) or target[0, 2]*2 > len(target_pairs)
-            if fail:
+            # Only declared constants and mathematically constant threshold rules
+            # qualify. A seemingly constant nondegenerate rival still faces the full gate.
+            exempt = name in {"target_constant_0", "target_constant_1"}
+            if name.startswith("weight_only:"):
+                _, cutoff, _, inclusive = name.split(":")
+                threshold = Fraction(cutoff)
+                exempt = ((threshold == min(thresholds) and inclusive == "1") or
+                          (threshold == max(thresholds) and inclusive == "0"))
+            source_fail = name.startswith("source_") and (
+                bool(role[1, 2]) or sum(correct)*4 > len(correct)*3)
+            target_fail = name.startswith("target_") and (
+                bool(target[1, 2]) or target[0, 2]*2 > len(target_pairs))
+            if name == "positive":
+                literal = clarified = sum(correct) != len(correct)
+            else:
+                core_fail = families < 16 or source_fail or target_fail
+                literal = core_fail or actions != [0, 1]
+                if exempt:
+                    clarified = (core_fail or len(predicted_actions[name]) != 1 or
+                                 sum(correct)*2 != len(correct) or bool(target[1, 2]))
+                else:
+                    clarified = literal
+            report[name]["constant_rule_exception"] = exempt
+            if literal:
+                literal_failures.append((tie, name))
+            if clarified:
                 failures.append((tie, name))
         summary[str(tie)] = report
     write(out / "policy_audit.json", dict(ties=summary, failures=failures,
+          literal_failures=literal_failures, policy_rule="constant-rivals-v1",
           forced_target_flip_wrong=sum(not switch for _, _, switch in target_pairs),
           forced_role_flip_wrong=sum(not switch for _, _, switch in role_pairs)))
+    if literal_failures:
+        print(f"Literal policy gate failures retained: {len(literal_failures)}", flush=True)
     if failures:
-        print(f"Failed policy gates: {failures}", flush=True)
+        print(f"Failures under policy clarification: {failures}", flush=True)
         if not mock:
-            raise ValueError("Formal fixture failed the literal policy gates. See policy_audit.json.")
+            raise ValueError("Formal fixture failed the policy audit. See policy_audit.json.")

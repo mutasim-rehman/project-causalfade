@@ -21,12 +21,15 @@ CODE = (
 )
 DATA = ("forms.json", "schedule.json", "tasks.jsonl", "design.jsonl", "worlds.jsonl",
         "gold.jsonl", "public_oracle.jsonl", "fixture_audit.json", "policy_audit.json",
-        "policy_rows_tie_0.jsonl.gz", "policy_rows_tie_1.jsonl.gz", "structural_diffs.json")
+        "policy_rows_tie_0.jsonl.gz", "policy_rows_tie_1.jsonl.gz", "structural_diffs.json",
+        "blind_review.json")
+CLARIFICATION = ROOT / "experiments/cohort_029/policy-clarification.md"
 ROLES = ("pi", "causal-lead", "statistician", "benchmark-engineer",
          "independent-reviewer", "transfer-author")
 
 
-def frozen(candidate, preflight, evidence, protocol, out):
+def frozen(candidate, preflight, evidence, protocol, out, policy_approval, trust):
+    verify_signature(CLARIFICATION, policy_approval, trust, "pi")
     forms = load(candidate / "forms.json")
     tokens = load(preflight / "token_budget.json")
     inv = load(preflight / "inventory.json")
@@ -41,7 +44,8 @@ def frozen(candidate, preflight, evidence, protocol, out):
         set(tokens["counts"]) != set(load(candidate / "schedule.json")) or
         any(v["tokens"] + 48 > 2048 for v in tokens["counts"].values())):
         raise ValueError("Tokenizer report does not bind the complete deployment and fixture")
-    if load(candidate / "policy_audit.json")["failures"] or mock["passed"] is not True:
+    policy = load(candidate / "policy_audit.json")
+    if policy["policy_rule"] != "constant-rivals-v1" or policy["failures"] or mock["passed"] is not True:
         raise ValueError("Policy or mock preflight failed")
     if (set(coverage["scenarios"]) != {"constant", "rare", "balanced_extremes", "heterogeneous"} or
         coverage["coverage_primary"] not in {"t", "bounded"} or
@@ -68,6 +72,8 @@ def frozen(candidate, preflight, evidence, protocol, out):
         "form_review.md", "deviations.json")})
     files.update(gate_files)
     files["protocol.md"] = protocol
+    files["policy-clarification.md"] = CLARIFICATION
+    files["policy-clarification.sig"] = policy_approval
     files.update({f"source/{name}": ROOT / name for name in CODE})
     out.mkdir(parents=True, exist_ok=False)
     for n, source in files.items():
@@ -93,6 +99,13 @@ def verify_signature(payload, sig, trust, identity):
                        stdin=data, stdout=subprocess.DEVNULL, check=True, timeout=15)
 
 
+def authorization_signature(authorization):
+    generated = authorization.with_suffix(authorization.suffix + ".sig")
+    legacy = authorization.with_suffix(".sig")
+    return legacy if legacy.is_file() and not generated.is_file() else generated
+
+
+
 def verify(freeze, signatures, authorization, trust, run_path):
     path = freeze / "manifest.json"
     manifest = load(path)
@@ -100,7 +113,7 @@ def verify(freeze, signatures, authorization, trust, run_path):
         raise ValueError("Unexpected freeze schema, protocol, or response cap")
     for role in ROLES:
         verify_signature(path, signatures / f"{role}.sig", trust, role)
-    verify_signature(authorization, authorization.with_suffix(".sig"), trust, "pi")
+    verify_signature(authorization, authorization_signature(authorization), trust, "pi")
     auth = load(authorization)
     if (auth["manifest_sha256"] != sha(path) or auth["run_path"] != run_path or
         auth["authorized_responses"] != TOTAL or auth["authorized"] is not True):
@@ -117,6 +130,9 @@ def verify(freeze, signatures, authorization, trust, run_path):
     for n, expected in manifest["code"].items():
         if sha(ROOT / n) != expected:
             raise ValueError(f"Frozen code changed: {n}")
+    if sha(freeze / "policy-clarification.md") != sha(CLARIFICATION):
+        raise ValueError("Frozen policy clarification does not match this runner")
+    verify_signature(freeze / "policy-clarification.md", freeze / "policy-clarification.sig", trust, "pi")
     inv = load(freeze / "deployment/inventory.json")
     if auth["model_sha256"] != inv["model_sha256"] or auth["server_sha256"] != inv["server_sha256"]:
         raise ValueError("Authorization deployment mismatch")
@@ -125,6 +141,6 @@ def verify(freeze, signatures, authorization, trust, run_path):
 
 if __name__ == "__main__":
     cli = argparse.ArgumentParser(description=__doc__)
-    for flag in ("candidate", "preflight", "evidence", "protocol", "out"):
+    for flag in ("candidate", "preflight", "evidence", "protocol", "out", "policy-approval", "trust"):
         cli.add_argument("--" + flag, type=Path, required=True)
     frozen(**vars(cli.parse_args()))

@@ -2,24 +2,16 @@
 
 ## Status
 
-The code supports offline preparation and mock collection. The formal fixture cannot
-pass the literal adversarial policy gate as written. Section 6C and the lab validation
-matrix require errors on both gold actions for every non-equivalent threshold
-candidate. At the lower boundary with inclusive comparison and at the upper
-boundary with strict comparison, a weight-only threshold predicts the same action on
-every row. That policy can only err on one gold action. The auditor also reports the
-same conflict for the explicitly enumerated constant-output policies. The positive
-control and every other tested policy satisfy their corresponding checks in the mock
-fixture. The formal preparation and freeze commands reject a failed audit.
+The policy audit records both the literal gate and the proposed clarification.
+The literal rule rejects constant predictions because they can only err under one
+gold action. The [policy clarification](policy-clarification.md) applies the
+constant-output gate only to declared constants and mathematically constant
+threshold boundaries. The lab PI signs the clarification before freeze.
 
-A lab decision is needed on which gate applies to constant predictions, including
-threshold configurations whose predictions reduce to a constant. A possible
-clarification is to apply the existing constant-output gates to these cases and retain
-the two-gold-action criterion for nonconstant rivals. The code currently applies the
-literal criterion and records the failures. The transfer wording used by the mock is
-a test fixture. Formal preparation requires the independent author's wording, and
-freeze requires the blinded review and gate evidence. The PI separately authorizes a
-specific manifest, deployment, path and response cap.
+The transfer wording used by the mock is a test fixture. Formal preparation
+requires the independent author's wording. Freeze requires blinded review and gate
+evidence. The PI separately authorizes a specific manifest, deployment, path and
+response cap.
 
 ## Run a mock and view progress
 
@@ -37,14 +29,15 @@ mkdir -p "$C29/mock"
   --out "$C29/mock/coverage.json"
 ```
 
-Mock preparation prints the gate failures and saves both tie audits for inspection.
+Mock preparation reports the original literal failures and saves both tie audits for inspection.
 The mock runner exercises an interrupted intent and then replays 4,096 deterministic
 responses through terminal scoring. The expected Delta is 0.78125 percentage points.
 
 ## Formal preflight and freeze
 
 Use the same Python 3.13 patch for candidate generation, token preflight and
-collection. The transfer input is a JSON object with single-paragraph
+collection. See the [independent review handoff](lab-handoff.md) for wording and review instructions.
+The transfer input is a JSON object with single-paragraph
 `context` and `arithmetic` strings. The renderer supplies the common message,
 numerical layout and response contract. The implementation uses Python's standard
 library and the archived llama.cpp binaries and GGUF.
@@ -55,13 +48,15 @@ python3.13 -m tools.cohort029_prepare --transfer "$C29/lab/transfer.json" \
   --out "$C29/candidate"
 python3.13 -m tools.cohort029_runtime --candidate "$C29/candidate" \
   --out "$C29/preflight"
+ssh-keygen -Y sign -n causalfade-cohort029 -f /path/to/pi-key \
+  "$C29/policy-clarification.md"
 python3.13 -m tools.freeze_target_transport --candidate "$C29/candidate" \
   --preflight "$C29/preflight" --evidence "$C29/lab/evidence" \
-  --protocol /home/i242514/Downloads/cohorts_29.md --out "$C29/freeze"
+  --protocol /home/i242514/Downloads/cohorts_29.md --out "$C29/freeze" \
+  --policy-approval "$C29/policy-clarification.md.sig" --trust "$C29/lab/allowed_signers"
 ```
 
-These commands are sequential. Formal preparation currently exits nonzero at the
-policy gate and writes the audit artifacts. The token audit only calls chat template
+The token audit only calls chat template
 and tokenization endpoints. It records the rendered chat and token sequence hashes
 and enforces the 2,048-token budget with 48 tokens reserved for completion.
 
@@ -80,11 +75,46 @@ Store signatures as `pi.sig`, `causal-lead.sig`, `statistician.sig`,
 `lab/signatures/`. The lab supplies a trusted `allowed_signers` file mapping these
 principals to their approved public keys. The PI separately signs
 `lab/authorization.json` in the same namespace and places the detached signature
-at `lab/authorization.sig`. The signed JSON contains `authorized: true`,
+at `lab/authorization.json.sig`. The signed JSON contains `authorized: true`,
 `authorized_responses: 4096`, `manifest_sha256`, `model_sha256`, `server_sha256`
 and the relative `run_path` shown below.
 
+The following command prepares the unsigned PI authorization payload directly from
+the frozen files. The PI reviews the payload and signs it with the same namespace.
+
+```bash
+python3.13 - <<'PY_AUTH'
+from pathlib import Path
+from tools.cohort029_prepare import write
+from tools.cohort029_runtime import load, sha
+
+base = Path("experiments/cohort_029")
+freeze = base / "freeze"
+manifest = freeze / "manifest.json"
+deployment = load(freeze / "deployment/inventory.json")
+write(base / "lab/authorization.json", {
+    "authorized": True,
+    "authorized_responses": load(manifest)["response_cap"],
+    "manifest_sha256": sha(manifest),
+    "model_sha256": deployment["model_sha256"],
+    "server_sha256": deployment["server_sha256"],
+    "run_path": str(base / "runs/confirmatory"),
+})
+PY_AUTH
+ssh-keygen -Y sign -n causalfade-cohort029 -f /path/to/pi-key "$C29/lab/authorization.json"
+```
+
+
 ## Start and stream the authorized run
+
+First verify the signed launch files in the foreground. This check does not
+start the model server. It lists missing files and exits nonzero.
+
+```bash
+python3.13 -m tools.run_target_transport check-ready
+```
+
+Wait for a successful check before starting the background job.
 
 ```bash
 C29=experiments/cohort_029

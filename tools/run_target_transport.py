@@ -1,4 +1,4 @@
-"""Run, resume or stream the authorized CF-TP1 schedule."""
+"""Check, run, resume or stream the authorized CF-TP1 schedule."""
 
 import argparse
 import base64
@@ -22,7 +22,7 @@ from tools.cohort029_prepare import ROOT
 from tools.cohort029_runtime import (
     SAMPLING, deployment_args, inventory, load, rows, serving, sha, template_identity,
 )
-from tools.freeze_target_transport import verify
+from tools.freeze_target_transport import ROLES, authorization_signature, verify
 
 BASE = ROOT / "experiments/cohort_029"
 CHECKPOINT_REF = "refs/heads/codex/cohort-029-checkpoints"
@@ -312,16 +312,27 @@ def collect_schedule(args, run, ledger, cp, started, initial, template):
             time.sleep(delay)
 
 
-def collect(args):
+def verified_launch(args):
     run = args.out.resolve()
     if not run.is_relative_to(BASE / "runs"):
         raise ValueError("Production run directory must be inside experiments/cohort_029/runs")
+    paths = [args.freeze / "manifest.json", args.trust,
+             args.authorization, authorization_signature(args.authorization),
+             *(args.signatures / f"{role}.sig" for role in ROLES)]
+    missing = [str(path) for path in paths if not path.is_file()]
+    if missing:
+        raise ValueError("Launch files missing:\n  " + "\n  ".join(missing))
     run_path = str(run.relative_to(ROOT))
     binding = dict(manifest_sha256=verify(args.freeze, args.signatures, args.authorization,
                                          args.trust, run_path),
                    authorization_sha256=sha(args.authorization), run_path=run_path)
     manifest_inventory = load(args.freeze / "deployment/inventory.json")
     schedule, tasks = load_schedule(args.freeze / "fixture")
+    return run, binding, manifest_inventory, schedule, tasks
+
+
+def collect(args):
+    run, binding, manifest_inventory, schedule, tasks = verified_launch(args)
     run.mkdir(parents=True, exist_ok=True)
     with (run / "runner.local.lock").open("ab") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -385,18 +396,29 @@ def stream(run, follow):
 def main():
     cli = argparse.ArgumentParser(description=__doc__)
     commands = cli.add_subparsers(dest="command", required=True)
-    for name in ("run", "resume"):
+    paths = {
+        "freeze": BASE / "freeze",
+        "signatures": BASE / "lab/signatures",
+        "authorization": BASE / "lab/authorization.json",
+        "trust": BASE / "lab/allowed_signers",
+        "out": BASE / "runs/confirmatory",
+    }
+    for name in ("check-ready", "run", "resume"):
         run = commands.add_parser(name)
-        for flag in ("freeze", "signatures", "authorization", "trust", "out"):
-            run.add_argument("--" + flag, type=Path, required=True)
-        run.add_argument("--remote", default="origin")
-        deployment_args(run)
+        for flag, path in paths.items():
+            run.add_argument("--" + flag, type=Path, default=path)
+        if name != "check-ready":
+            run.add_argument("--remote", default="origin")
+            deployment_args(run)
     view = commands.add_parser("stream")
     view.add_argument("--out", type=Path, required=True)
     view.add_argument("--once", action="store_true")
     args = cli.parse_args()
     if args.command == "stream":
         stream(args.out, not args.once)
+    elif args.command == "check-ready":
+        run, _, _, schedule, _ = verified_launch(args)
+        print(f"Verified signed launch files and {len(schedule)} scheduled responses for {run}")
     else:
         def interrupted(_signum, _frame):
             raise KeyboardInterrupt
