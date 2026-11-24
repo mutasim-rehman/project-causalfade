@@ -1,0 +1,11 @@
+Cohort 029 stopped: Launch files missing:
+  /repo/experiments/cohort_029/freeze/manifest.json
+  /repo/experiments/cohort_029/lab/allowed_signers
+  /repo/experiments/cohort_029/lab/authorization.json
+  /repo/experiments/cohort_029/lab/authorization.json.sig
+  /repo/experiments/cohort_029/lab/signatures/pi.sig
+  /repo/experiments/cohort_029/lab/signatures/causal-lead.sig
+  /repo/experiments/cohort_029/lab/signatures/statistician.sig
+  /repo/experiments/cohort_029/lab/signatures/benchmark-engineer.sig
+  /repo/experiments/cohort_029/lab/signatures/independent-reviewer.sig
+  /repo/experiments/cohort_029/lab/signatures/transfer-author.sig
