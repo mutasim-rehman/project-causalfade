@@ -1,4 +1,9 @@
-# Cohort 029 · CF-TP1 single-researcher runbook
+# Cohort 029 â€” CF-TP1 single-researcher runbook
+
+**Collection completed on 25 November 2026.** All 4,096 scheduled responses
+are saved. This document preserves the historical launch procedure; use the
+[offline release guide](release/REPRODUCE.md) to verify and analyze the
+completed experiment without model inference.
 
 The original [CF-TP1 scientific specification](CF-TP1-v1.0.md) is archived verbatim. This workflow supersedes its signing and committee administration. It retains the generator, two forms, numerical and public-text oracles, rival policies, matched controls, model configuration, 128 families, 4,096 scheduled responses and statistical endpoints. Offline verification from previous versions is historical evidence.
 

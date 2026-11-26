@@ -1,6 +1,15 @@
 # Reproducing the design-validation package
 
-For the paused cohort 028 model run, use its [execution runbook](../experiments/cohort_028/RUNBOOK.md). The dated operational launcher changes Git checkpoint commits to hourly or model-arm completion while retaining the frozen fixture, runner and per-response durable logs. Restart through that launcher to preserve the amended cadence.
+For the completed Cohort 029 production study, use its [model-free release
+guide](../experiments/cohort_029/release/REPRODUCE.md). It includes the original
+freeze, all 4,096 saved responses, exact prompt reconstruction, independent
+hash and oracle checks, strict scoring and statistical replay. Do not use the
+historical collection commands for offline reproduction.
+
+For Cohort 028's completed development runs and stopped qualification gate,
+see its [execution runbook](../experiments/cohort_028/RUNBOOK.md) and
+[pipeline status](../experiments/cohort_028/pipeline_status.json). Its dated
+operational launcher retained the frozen fixture, runner and durable logs.
 
 For the prepared sensitivity/bias development pilot, follow the [lab runbook](LAB_FOLLOWUP_RUNBOOK.md). `tools/sensitivity_pilot.py` supplies `prepare`, `validate`, `run`/`--resume` and `analyze` commands. The committed cohort 018 fixture contains 288 tasks per format, with a conditional reference gate. It requires its own semantic-mapping scorer, not the original scorer below. Archived cohort 017 14B analysis was recovered locally; see its [report and provenance](../experiments/cohort_017/summary.md).
 

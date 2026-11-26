@@ -1,0 +1,23 @@
+{
+  "status": "decisions_reconciled_pending_reviewer_identity_candidate_binding_and_signature",
+  "submitted_reviewer_label": "Raza Blind Reviewer (Cohort 29)",
+  "submitted_review_date": "2026-11-24",
+  "decisions": {
+    "scheduled_matching": 32,
+    "scheduled_total": 32,
+    "worked_matching": 16,
+    "worked_total": 16
+  },
+  "scheduled_randomized_source_or_reported_effect_mismatches": 0,
+  "reported_effect_comparison_tolerance_percentage_points": 0.01,
+  "pasted_csv_and_attached_csv_records_match": true,
+  "two_candidates_share_the_same_scheduled_review_ids": true,
+  "sha256": {
+    "transfer.json": "48bb313e7d02fcfe5f17b99739fb33f84c1803e6127e6add6488115f0e8123c5",
+    "blind-review-packet.zip": "c4b97df54cc508a3116b40ec8c73e6ff36d5b227c5c617af33929bc825ec263e",
+    "blind_review.json": "a4f0dbbe09114fb5624d84542b8aab4d3f452af9c06ad277c177a6fce49873ba",
+    "tasks.jsonl": "a279fa2939c6a58d843b108e1312428c1f6fa9738153a750fdddfb9d979778e5",
+    "answers.csv": "4e7a01c3a8f823572f97f724647d00cc7e6b3a19cd6d12cebd7cdb6914e081b4",
+    "INDEPENDENT_REVIEW_REPORT.md": "68350976805cb97387063e324a9b3b226861c7b8cba6bdfe42e7d135338c8f6d"
+  }
+}

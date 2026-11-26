@@ -16,7 +16,7 @@ The motivating idea is that compression might disrupt mechanisms supporting caus
 
 ## Current status
 
-As of **23 November 2026**, the project has an executable simulator, synthetic methodology validation and analyzed cohorts through 027. Cohort 027's four F16 development arms failed qualification, so its validation and precision arms did not run. [Cohort 028](experiments/cohort_028/README.md) is a procedure-selection study with deterministic calculation assistance; its tokenizer preflight passed, and its first development arm is paused with 1030/1280 responses saved. Its [runbook](experiments/cohort_028/RUNBOOK.md) gives the amended hourly Git checkpoint resume command. No cohort 028 result has been interpreted yet. The literature collection contains 14 papers from 2025–2026 plus methodological source records. Follow the [experiment index](EXPERIMENTS.md), [decision log](DECISIONS.md), and [session report](SESSION_REPORT.md) for evidence and limitations.
+As of **26 November 2026**, [Cohort 029](experiments/cohort_029/release/REPRODUCE.md) has completed all 4,096 scheduled model responses. Its original lab freeze, response journal and model-free reproduction package are available in this repository. On the final transfer form, causal target-pair fidelity was 128/512 and arithmetic target-pair fidelity was 146/512; the family-standardized difference was −3.515625 percentage points (approximate 95% interval −7.77 to +0.74). This is a deployment-specific evaluation-methodology finding, not evidence that quantization selectively damaged causal reasoning or that the two tasks are equivalent. [Cohort 028](experiments/cohort_028/README.md) completed its development runs and stopped at its frozen qualification gate; no later validation or precision arms ran. Cohort 027 likewise stopped after development qualification failed. Follow the [experiment index](EXPERIMENTS.md), [decision log](DECISIONS.md), and [session report](SESSION_REPORT.md) for historical evidence and limitations.
 
 Read the [research methodology](docs/RESEARCH_METHODOLOGY.md), [reproduction instructions](docs/REPRODUCIBILITY.md), and [generated validation report](results/design_validation/VALIDATION_REPORT.md). The proposed psychological adaptation separates causal sensitivity, conditional associative influence and residual action bias, with explicit identification and model-fit limitations.
 
@@ -102,5 +102,8 @@ python "literature review/write_review.py"
 The downloader accesses arXiv, ACL Anthology and Springer, pins arXiv versions, checks PDF headers, parses pages, extracts text and records SHA-256 checksums. It reuses existing PDFs. Run the summary generator after downloading to restore the review annotations in the manifest. The executive summary is maintained separately. These scripts reproduce the selected collection and authored notes; they do not conduct an automated literature search or reproduce the papers' experiments.
 
 ## Attribution
+
+See [license scope](LICENSES.md) for the software, project-authored data,
+independent transfer wording, model outputs and third-party materials.
 
 Research papers retain their authors' and publishers' copyrights and licenses. Source records are linked in the reading index, individual summaries and manifest. Summaries distinguish authors' findings from reviewer interpretations. No blanket license is granted over the bundled third-party papers.
