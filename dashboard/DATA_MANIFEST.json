@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "git_commit": "01728ada407e8e5d59d6d7918dcd71dc0532b706",
+  "release_tag": "cohort-029-v1.0.0",
+  "generated_at": "2026-11-26T17:05:12.634024+00:00",
+  "all_verification_checks_passed": true,
+  "datasets": [
+    {
+      "path": "public/data/causal_lab.json",
+      "bytes": 68890,
+      "sha256": "f06f984d2986c4e8f71012b220a25aaa34a115c4ab698bbf3eca77998267d39e"
+    },
+    {
+      "path": "public/data/cohorts.json",
+      "bytes": 74538,
+      "sha256": "a7322820d51f85ee6a1cf691722e722acac56911edadd19a95e56571b86dc116"
+    },
+    {
+      "path": "public/data/decision_behavior.json",
+      "bytes": 17215,
+      "sha256": "e258e4d3b9bc281ef0576dee3edfc2df1d57735fe5f021e030c2a544b8b6d095"
+    },
+    {
+      "path": "public/data/hypotheses.json",
+      "bytes": 21756,
+      "sha256": "881bebc81b3b9b88c680ed27f65b92fdf74abf77e93386ee36762242efc3a859"
+    },
+    {
+      "path": "public/data/literature.json",
+      "bytes": 39667,
+      "sha256": "3f2239954e79948f176d433de9e11308f5bf9f91ca9225890273c781f8692464"
+    },
+    {
+      "path": "public/data/methodologies.json",
+      "bytes": 15867,
+      "sha256": "a1da52725bd2dd54617e7094e8c265c1d70a5f54620f13b9b906dc78f0b17cb5"
+    },
+    {
+      "path": "public/data/models_quantization.json",
+      "bytes": 529394,
+      "sha256": "b4690b1639a221dda1f2fec05e1dead419de4443bdd04cdb0a13fafce9c065c5"
+    },
+    {
+      "path": "public/data/overview.json",
+      "bytes": 6528,
+      "sha256": "250b951592a175fbb8728ffc1970d1efc67abaf583aed70a15bf67f8dd8c4787"
+    },
+    {
+      "path": "public/data/reproducibility.json",
+      "bytes": 50952,
+      "sha256": "9a55976261ffee932469b985aefa448e530e24c871f1029a50f3e5541fa9a280"
+    },
+    {
+      "path": "public/data/responses/cohort_008_interrupted.json",
+      "bytes": 2705,
+      "sha256": "cc8d21b5478ae32713d700fb703d937a8d1618d7743f3aff19fd7a6a2500ff80"
+    },
+    {
+      "path": "public/data/responses/cohort_016.json",
+      "bytes": 1764097,
+      "sha256": "db932a2cd083d0d51ccc9bf834981757add9cd021eebe8d260e35d0922f151d7"
+    },
+    {
+      "path": "public/data/responses/cohort_029_part1.json",
+      "bytes": 1346077,
+      "sha256": "a388b1fcf63427f60c6f237d0c446a3cbc3bae7e13d5a21c47c9947b4b657c53"
+    },
+    {
+      "path": "public/data/responses/cohort_029_part2.json",
+      "bytes": 1330459,
+      "sha256": "002be8d4df3c474e9e3493a052834a2f954cb01ea8ffbed5ef551ea63ba22355"
+    },
+    {
+      "path": "public/data/responses/cohort_029_part3.json",
+      "bytes": 1335586,
+      "sha256": "d8d15d3fa384a42426ed566e1791009e3255fe2fa854bf59b651be2e8cdb9d12"
+    },
+    {
+      "path": "public/data/responses/cohort_029_part4.json",
+      "bytes": 1338193,
+      "sha256": "93e8196f689916fcff756927025c34d683769afa687842660b30ee89fe4dadc9"
+    },
+    {
+      "path": "public/data/responses/index.json",
+      "bytes": 710,
+      "sha256": "bcb971dacc36c32d3d07729182d1ac0d8c5469aa05b0e4b7f35b3e864b2c4baf"
+    },
+    {
+      "path": "public/data/statistics.json",
+      "bytes": 776876,
+      "sha256": "2c786dcd2afe84ad71f333f6b1390420d123f5b9148352a75ca0fe791d4aa17f"
+    },
+    {
+      "path": "public/data/timeline.json",
+      "bytes": 17979,
+      "sha256": "d975cd3c54ecb5bc3b79e9c468baeb506795ed6fd6c2238d043868ace731c438"
+    }
+  ]
+}
