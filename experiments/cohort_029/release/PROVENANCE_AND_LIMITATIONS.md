@@ -8,10 +8,13 @@ before the first journal event. Its manifest SHA-256 is
 The first journal event records 2026-11-25 08:15:14 UTC, and every event binds
 that exact manifest hash. The 4,096-response journal SHA-256 is
 `673eb723637614dc8b94875f2e8c4e9e20234c1d179c992791853797875977bd`.
-Neither the freeze nor the journal was regenerated for this release. The
-release's `terminal.json`, analyses, verification report and figures were
-created **after** collection from saved data. They are later derived files,
-not pre-inference evidence. The journal itself was committed at `d909097`.
+Neither the freeze nor the journal was regenerated for this release. No
+terminal record or production analysis directory was present in the lab
+inventory at the start of release work. The release's `terminal.json`,
+analyses, verification report and figures were created **after** collection
+from saved data. They are later derived files, not pre-inference evidence or
+recovered original analysis outputs. The journal itself was committed at
+`d909097`.
 
 The frozen files include the original `inventory.json` and
 `token_budget.json`, which document the pinned Qwen2.5-7B-Instruct Q4_K_M
