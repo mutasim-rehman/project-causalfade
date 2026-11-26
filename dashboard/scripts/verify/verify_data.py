@@ -7,6 +7,9 @@ and writes dashboard/VERIFICATION_REPORT.md + dashboard/DATA_MANIFEST.json.
 
 from __future__ import annotations
 
+import argparse
+import base64
+import csv
 import hashlib
 import json
 import math
@@ -32,6 +35,11 @@ def load_json(path: Path) -> Any:
         return json.load(f)
 
 
+def load_jsonl(path: Path) -> list[dict[str, Any]]:
+    with path.open("r", encoding="utf-8") as f:
+        return [json.loads(line) for line in f if line.strip()]
+
+
 def run_checks() -> tuple[list[dict[str, Any]], bool]:
     checks: list[dict[str, Any]] = []
 
@@ -40,16 +48,74 @@ def run_checks() -> tuple[list[dict[str, Any]], bool]:
     stats = load_json(DATA_DIR / "statistics.json")
     repro = load_json(DATA_DIR / "reproducibility.json")
 
-    # 1. Check Cohort 029 raw response count across chunks == 4096
-    c29_rows = []
-    for i in range(1, 5):
-        c29_rows.extend(load_json(DATA_DIR / "responses" / f"cohort_029_part{i}.json"))
+    response_archive = load_json(DATA_DIR / "responses" / "index.json")["archives"][0]
+    c29_rows = [
+        row for chunk in response_archive["chunks"]
+        for row in load_json(DASHBOARD_ROOT / "public" / chunk.lstrip("/"))
+    ]
+    run = REPO_ROOT / "experiments" / "cohort_029" / "runs" / "confirmatory"
+    events = [event for event in load_jsonl(run / "events.jsonl") if event["type"] == "response"]
+    scored = load_jsonl(run / "analysis" / "row_scores.jsonl")
+    scores_by_id = {row["task_id"]: row for row in scored}
+    raw_by_id = {
+        event["task_id"]: json.loads(base64.b64decode(event["response_b64"]))["choices"][0]["message"]["content"]
+        for event in events
+    }
+    normalized_ids = {row["task_id"] for row in c29_rows}
 
     checks.append({
         "name": "cohort_029_raw_response_count",
-        "expected": 4096,
+        "expected": len(events),
         "observed": len(c29_rows),
-        "passed": len(c29_rows) == 4096,
+        "passed": len(c29_rows) == len(events) == len(scored) == len(normalized_ids)
+        and normalized_ids == scores_by_id.keys() == raw_by_id.keys(),
+    })
+
+    mismatches = sum(
+        row["task_id"] not in scores_by_id or row["task_id"] not in raw_by_id
+        or (
+            row["raw_response"], row["valid"], row["correct"], row["gold_action"], row["predicted_action"]
+        ) != (
+            raw_by_id[row["task_id"]], bool(scores_by_id[row["task_id"]]["valid"]),
+            bool(scores_by_id[row["task_id"]]["correct"]), scores_by_id[row["task_id"]]["gold"],
+            scores_by_id[row["task_id"]]["action"],
+        )
+        for row in c29_rows
+    )
+    checks.append({
+        "name": "cohort_029_verbatim_and_frozen_scores",
+        "expected": 0, "observed": mismatches, "passed": mismatches == 0,
+    })
+
+    with (REPO_ROOT / "manuscript" / "data" / "pairs.csv").open(encoding="utf-8", newline="") as f:
+        manuscript_pairs = [row for row in csv.DictReader(f) if row["axis"] == "target" and row["form"] == "1"]
+    transitions = load_json(DATA_DIR / "target_transitions.json")["rows"]
+    transition_cells = {
+        (task, switch): [
+            row for row in transitions if row["form"] == "transfer" and row["task"] == task
+            and (row["expected"][0] != row["expected"][1]) == switch
+        ]
+        for task in ("causal", "arithmetic") for switch in (False, True)
+    }
+    expected_cells = {
+        (("causal" if row["task"] == "0" else "arithmetic"), row["switch"] == "1"):
+        (int(row["pairs"]), int(row["both"]), int(row["changed"]))
+        for row in manuscript_pairs
+    }
+    observed_cells = {
+        key: (
+            len(rows),
+            sum(row["expected"] == row["observed"] for row in rows),
+            sum(None not in row["observed"] and row["observed"][0] != row["observed"][1] for row in rows),
+        )
+        for key, rows in transition_cells.items()
+    }
+    reversal_total, reversal_correct, _ = expected_cells[("causal", True)]
+    checks.append({
+        "name": "cohort_029_transition_counts_match_manuscript",
+        "expected": expected_cells, "observed": observed_cells,
+        "passed": observed_cells == expected_cells
+        and overview["kpis"]["causal_reversals_correct"] == {"total": reversal_total, "correct": reversal_correct},
     })
 
     # 2. Recompute Cohort 029 transfer-form direction counts directly from decoded raw responses
@@ -86,11 +152,25 @@ def run_checks() -> tuple[list[dict[str, Any]], bool]:
         strata_means.append(sum(vals) / len(vals))
     recomputed_delta = sum(strata_means) / 8.0
     reported_delta = overview["kpis"]["delta_pp"] / 100.0
+    frozen_delta = load_json(run / "analysis" / "primary.json")["delta"]
+    dashboard_pairs = {
+        task: (overview["kpis"][f"{task}_pair_fidelity"]["total"], overview["kpis"][f"{task}_pair_fidelity"]["correct"])
+        for task in ("causal", "arithmetic")
+    }
+    manuscript_totals = {
+        task: (
+            sum(expected_cells[(task, switch)][0] for switch in (False, True)),
+            sum(expected_cells[(task, switch)][1] for switch in (False, True)),
+        )
+        for task in ("causal", "arithmetic")
+    }
     checks.append({
         "name": "cohort_029_primary_delta_reconciliation",
-        "expected": reported_delta,
-        "observed": recomputed_delta,
-        "passed": abs(recomputed_delta - reported_delta) < 1e-12,
+        "expected": {"delta": frozen_delta, "pairs_and_correct": manuscript_totals},
+        "observed": {"delta": reported_delta, "pairs_and_correct": dashboard_pairs},
+        "passed": abs(recomputed_delta - frozen_delta) < 1e-12
+        and abs(reported_delta - frozen_delta) < 1e-12
+        and dashboard_pairs == manuscript_totals,
     })
 
     # 4. Recompute Cohort 016 Q4 conflict order effect across 96 families
@@ -103,10 +183,41 @@ def run_checks() -> tuple[list[dict[str, Any]], bool]:
         "passed": len(q4_016) == 96 and abs(mean_016 - 62.5) < 1e-9,
     })
 
+    order_responses = load_json(DATA_DIR / "responses" / "cohort_016.json")
+    with (REPO_ROOT / "manuscript" / "data" / "order016.csv").open(encoding="utf-8", newline="") as f:
+        order_scores = {(row["arm"], row["id"]): row for row in csv.DictReader(f)}
+    observed_order_ids = {(row["arm"], row["task_id"]) for row in order_responses}
+    score_mismatches = sum(
+        (row["arm"], row["task_id"]) not in order_scores
+        or (
+            row["predicted_action"], row["gold_action"], row["order"]
+        ) != (
+            int(order_scores[(row["arm"], row["task_id"])]["action"]),
+            int(order_scores[(row["arm"], row["task_id"])]["gold"]),
+            order_scores[(row["arm"], row["task_id"])]["order"],
+        )
+        or row["correct"] != (row["predicted_action"] == row["gold_action"])
+        for row in order_responses
+    )
+    checks.append({
+        "name": "cohort_016_response_outcomes_match_manuscript",
+        "expected": {"records": len(order_scores), "score_mismatches": 0},
+        "observed": {"records": len(order_responses), "score_mismatches": score_mismatches},
+        "passed": len(order_responses) == len(observed_order_ids)
+        and observed_order_ids == order_scores.keys() and score_mismatches == 0,
+    })
+
     # 5. Repository-wide scheduled vs persisted raw responses reconciliation
     total_sched = sum(c["scheduled_requests"] for c in cohorts)
     total_persisted = sum(c["persisted_llm_responses"] for c in cohorts)
     c008_int = load_json(DATA_DIR / "responses" / "cohort_008_interrupted.json")
+    c008_statuses = {status: sum(row["status"] == status for row in c008_int) for status in ("completed", "interrupted")}
+    checks.append({
+        "name": "cohort_008_interruption_disposition",
+        "expected": {"completed": 25, "interrupted": 1},
+        "observed": c008_statuses,
+        "passed": c008_statuses == {"completed": 25, "interrupted": 1},
+    })
     checks.append({
         "name": "repo_scheduled_vs_persisted_reconciliation",
         "expected": {"scheduled": 48208, "persisted": 48170, "diff_from_008": 38},
@@ -191,9 +302,18 @@ def write_outputs(checks: list[dict[str, Any]], all_passed: bool) -> None:
         f.write("\n".join(lines))
 
 
-def main() -> None:
+def main(*, check_only: bool = False) -> None:
     checks, all_passed = run_checks()
-    write_outputs(checks, all_passed)
+    if check_only:
+        manifest = load_json(DASHBOARD_ROOT / "DATA_MANIFEST.json")
+        paths = {path.relative_to(DASHBOARD_ROOT).as_posix() for path in DATA_DIR.rglob("*.json")}
+        hashes_pass = paths == {row["path"] for row in manifest["datasets"]} and all(
+            sha256_file(DASHBOARD_ROOT / row["path"]) == row["sha256"] for row in manifest["datasets"]
+        )
+        print(f"[verify] snapshot_file_checksums: {'PASS' if hashes_pass else 'FAIL'}")
+        all_passed = all_passed and hashes_pass
+    else:
+        write_outputs(checks, all_passed)
     for c in checks:
         print(f"[verify] {c['name']}: {'PASS' if c['passed'] else 'FAIL'}")
     if not all_passed:
@@ -201,4 +321,6 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--check-only", action="store_true", help="Check existing data and checksums without writing files.")
+    main(check_only=parser.parse_args().check_only)

@@ -5,6 +5,7 @@ import type { EChartsOption } from "echarts";
 import { loadDataset } from "@/lib/data/loader";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { EChartBox } from "@/components/charts/EChartBox";
+import { TransitionMatrix } from "@/components/charts/TransitionMatrix";
 import { EvidenceButton } from "@/components/evidence/EvidenceDrawer";
 import type { ProvenanceMeta } from "@/lib/schemas/observatory";
 
@@ -78,6 +79,8 @@ export default function DecisionsPage() {
         subtitle="Why aggregate accuracy misleads: decomposing target switches, invariant stability, directional activation bias (995/1,024 causal), and deterministic shortcut policies."
         provenance={data.provenance}
       />
+
+      <TransitionMatrix />
 
       <section className="rounded border border-obs-border bg-obs-surface p-5">
         <div className="mb-3 flex items-center justify-between">

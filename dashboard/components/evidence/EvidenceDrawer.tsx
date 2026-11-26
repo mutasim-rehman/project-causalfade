@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 import { X, ExternalLink, Download, ShieldCheck, FileCode2, AlertTriangle } from "lucide-react";
 import type { ProvenanceMeta } from "@/lib/schemas/observatory";
 
@@ -45,11 +45,22 @@ export function EvidenceButton({
 
 export function EvidenceProvider({ children }: { children: React.ReactNode }) {
   const [active, setActive] = useState<{ meta: ProvenanceMeta; title?: string } | null>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const invokingElement = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (active && !dialogRef.current?.open) dialogRef.current?.showModal();
+  }, [active]);
 
   const openEvidence = (meta: ProvenanceMeta, title?: string) => {
+    invokingElement.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     setActive({ meta, title });
   };
-  const closeEvidence = () => setActive(null);
+  const closeEvidence = () => {
+    dialogRef.current?.close();
+    setActive(null);
+    invokingElement.current?.focus();
+  };
 
   const downloadJson = () => {
     if (!active) return;
@@ -68,11 +79,16 @@ export function EvidenceProvider({ children }: { children: React.ReactNode }) {
     <EvidenceContext.Provider value={{ openEvidence, closeEvidence }}>
       {children}
       {active && (
-        <div
-          className="fixed inset-0 z-50 flex justify-end bg-black/50 backdrop-blur-[1px]"
-          onClick={closeEvidence}
-          role="dialog"
-          aria-modal="true"
+        <dialog
+          ref={dialogRef}
+          className="evidence-dialog fixed inset-y-0 left-auto right-0 m-0 h-dvh max-h-none w-full max-w-lg border-0 bg-transparent p-0"
+          onCancel={(event) => {
+            event.preventDefault();
+            closeEvidence();
+          }}
+          onClick={(event) => {
+            if (event.target === event.currentTarget) closeEvidence();
+          }}
           aria-label="Evidence Inspector"
         >
           <aside
@@ -91,6 +107,7 @@ export function EvidenceProvider({ children }: { children: React.ReactNode }) {
               </div>
               <button
                 type="button"
+                autoFocus
                 onClick={closeEvidence}
                 className="rounded p-1.5 text-obs-secondary hover:bg-obs-elevated hover:text-obs-text"
                 aria-label="Close evidence drawer"
@@ -178,7 +195,7 @@ export function EvidenceProvider({ children }: { children: React.ReactNode }) {
 
               <div>
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-obs-muted">
-                  Pinned Source Artifacts (SHA-256 Verified)
+                  Pinned source artifacts
                 </h3>
                 <div className="mt-2 space-y-2">
                   {active.meta.sources.map((src) => (
@@ -234,7 +251,7 @@ export function EvidenceProvider({ children }: { children: React.ReactNode }) {
               </button>
             </div>
           </aside>
-        </div>
+        </dialog>
       )}
     </EvidenceContext.Provider>
   );

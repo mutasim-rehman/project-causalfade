@@ -24,6 +24,9 @@ import {
   Sun,
   X,
 } from "lucide-react";
+import { loadDataset } from "@/lib/data/loader";
+import type { CohortRecord } from "@/lib/schemas/observatory";
+import { fmtInt } from "@/lib/formatting/numbers";
 
 interface NavItem {
   label: string;
@@ -74,13 +77,30 @@ const QUICK_ROUTES = NAV_GROUPS.flatMap((g) =>
   g.items.map((item) => ({ ...item, group: g.group }))
 );
 
-export function ObservatoryShell({ children }: { children: React.ReactNode }) {
+export function ObservatoryShell({ children, snapshot }: {
+  children: React.ReactNode;
+  snapshot: { commit: string; release: string; cohorts: number; responses: number };
+}) {
   const pathname = usePathname();
   const router = useRouter();
   const [dark, setDark] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [cohorts, setCohorts] = useState<CohortRecord[]>([]);
+
+  useEffect(() => {
+    const preference = window.localStorage.getItem("causalfade-theme");
+    if (preference === "light") setDark(false);
+  }, []);
+
+  useEffect(() => {
+    if (searchOpen && cohorts.length === 0) {
+      loadDataset<{ cohorts: CohortRecord[] }>("/data/cohorts.json")
+        .then((data) => setCohorts(data.cohorts))
+        .catch(() => {});
+    }
+  }, [searchOpen, cohorts.length]);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -93,25 +113,36 @@ export function ObservatoryShell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      if (document.querySelector("dialog[open], [aria-label='Evidence Inspector']")) return;
+      if (e.key === "Escape") {
+        setMobileOpen(false);
+        setSearchOpen(false);
+      }
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        if (pathname?.startsWith("/presentation")) return;
         e.preventDefault();
         setSearchOpen((v) => !v);
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []);
+  }, [pathname]);
 
   // Fullscreen presentation route renders without sidebar chrome
   if (pathname?.startsWith("/presentation")) {
     return <div className="min-h-screen bg-obs-bg text-obs-text">{children}</div>;
   }
 
+  const term = query.trim().toLowerCase();
   const filteredRoutes = QUICK_ROUTES.filter(
     (r) =>
-      r.label.toLowerCase().includes(query.toLowerCase()) ||
-      r.group.toLowerCase().includes(query.toLowerCase())
+      r.label.toLowerCase().includes(term) ||
+      r.group.toLowerCase().includes(term)
   );
+  const matchedCohorts = term ? cohorts.filter((cohort) =>
+    `${cohort.cohort_id.replaceAll("_", " ")} ${cohort.cohort_id} ${cohort.title} ${cohort.models_and_formats}`.toLowerCase().includes(term)
+  ).map((cohort) => ({ href: `/cohorts/${cohort.cohort_id}/`, label: cohort.title, group: cohort.cohort_id })) : [];
+  const searchResults = [...filteredRoutes, ...matchedCohorts];
 
   const navContent = (
     <nav className="flex-1 space-y-5 overflow-y-auto px-3 py-4" aria-label="Observatory Navigation">
@@ -131,6 +162,7 @@ export function ObservatoryShell({ children }: { children: React.ReactNode }) {
                 <Link
                   key={item.href}
                   href={item.href}
+                  aria-current={active ? "page" : undefined}
                   onClick={() => setMobileOpen(false)}
                   className={`flex items-center gap-2.5 rounded px-2.5 py-1.5 text-[13px] font-medium transition-colors ${
                     active
@@ -152,7 +184,7 @@ export function ObservatoryShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen bg-obs-bg text-obs-text">
       {/* Desktop Sidebar */}
-      <aside className="hidden w-60 shrink-0 flex-col border-r border-obs-border bg-obs-surface lg:flex">
+      <aside className="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col border-r border-obs-border bg-obs-surface lg:flex">
         <div className="border-b border-obs-border px-4 py-3.5">
           <Link href="/" className="block">
             <div className="flex items-center gap-2">
@@ -166,8 +198,8 @@ export function ObservatoryShell({ children }: { children: React.ReactNode }) {
         </div>
         {navContent}
         <div className="border-t border-obs-border px-4 py-3 text-[11px] font-mono text-obs-muted">
-          <div>Snapshot: 01728ad</div>
-          <div>Release: cohort-029-v1.0.0</div>
+          <div>Snapshot {snapshot.commit.slice(0, 7)}</div>
+          <div>Release {snapshot.release}</div>
         </div>
       </aside>
 
@@ -186,6 +218,7 @@ export function ObservatoryShell({ children }: { children: React.ReactNode }) {
               <button
                 type="button"
                 onClick={() => setMobileOpen(false)}
+                aria-label="Close menu"
                 className="rounded p-1 text-obs-secondary"
               >
                 <X className="h-4 w-4" />
@@ -211,6 +244,7 @@ export function ObservatoryShell({ children }: { children: React.ReactNode }) {
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
+              aria-label="Search sections and cohorts"
               className="flex items-center gap-2 rounded border border-obs-border bg-obs-elevated px-2.5 py-1 text-xs text-obs-secondary hover:border-sci-causal/50"
             >
               <Search className="h-3.5 w-3.5" />
@@ -223,10 +257,11 @@ export function ObservatoryShell({ children }: { children: React.ReactNode }) {
 
           <div className="flex items-center gap-2">
             <span className="hidden rounded border border-obs-border bg-obs-elevated px-2 py-0.5 font-mono text-[11px] text-obs-secondary md:inline-block">
-              30 cohorts · 48,170 raw responses
+              {fmtInt(snapshot.cohorts)} documented cohorts · {fmtInt(snapshot.responses)} raw responses
             </span>
             <Link
               href="/presentation/"
+              aria-label="Open presentation mode"
               className="inline-flex items-center gap-1.5 rounded border border-sci-causal/40 bg-sci-causal/10 px-2.5 py-1 text-xs font-medium text-sci-causal hover:bg-sci-causal/20"
             >
               <Presentation className="h-3.5 w-3.5" />
@@ -234,7 +269,10 @@ export function ObservatoryShell({ children }: { children: React.ReactNode }) {
             </Link>
             <button
               type="button"
-              onClick={() => setDark((d) => !d)}
+              onClick={() => {
+                window.localStorage.setItem("causalfade-theme", dark ? "light" : "dark");
+                setDark(!dark);
+              }}
               className="rounded border border-obs-border bg-obs-elevated p-1.5 text-obs-secondary hover:text-obs-text"
               aria-label="Toggle theme"
               title={dark ? "Switch to classroom light theme" : "Switch to observatory dark theme"}
@@ -257,6 +295,8 @@ export function ObservatoryShell({ children }: { children: React.ReactNode }) {
         >
           <div
             className="w-full max-w-md rounded-md border border-obs-border bg-obs-surface shadow-2xl"
+            role="dialog"
+            aria-label="Search observatory"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center border-b border-obs-border px-3 py-2.5">
@@ -264,14 +304,23 @@ export function ObservatoryShell({ children }: { children: React.ReactNode }) {
               <input
                 type="text"
                 autoFocus
+                aria-label="Search sections and cohorts"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Navigate to section..."
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" && searchResults[0]) {
+                    router.push(searchResults[0].href);
+                    setSearchOpen(false);
+                    setQuery("");
+                  }
+                }}
+                placeholder="Search sections, cohorts or models"
                 className="w-full bg-transparent text-sm text-obs-text outline-none placeholder:text-obs-muted"
               />
             </div>
             <div className="max-h-72 overflow-y-auto p-1.5">
-              {filteredRoutes.map((r) => (
+              {searchResults.length === 0 && <p className="px-3 py-2 text-xs text-obs-muted">No matching sections or cohorts.</p>}
+              {searchResults.map((r) => (
                 <button
                   key={r.href}
                   type="button"

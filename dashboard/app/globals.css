@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "katex/dist/katex.min.css";
-@import "@xyflow/react/dist/style.css";
-
 :root {
   --bg-app: #f8fafc;
   --bg-surface: #ffffff;
@@ -13,6 +10,12 @@
   --text-primary: #0f172a;
   --text-secondary: #334155;
   --text-muted: #64748b;
+  --sci-causal: 5 108 91;
+  --sci-observational: 27 92 176;
+  --sci-arithmetic: 105 64 181;
+  --sci-caution: 141 87 3;
+  --sci-error: 170 44 54;
+  --sci-verified: 5 112 77;
 }
 
 .dark {
@@ -23,6 +26,12 @@
   --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
+  --sci-causal: 85 214 190;
+  --sci-observational: 96 165 250;
+  --sci-arithmetic: 167 139 250;
+  --sci-caution: 251 191 36;
+  --sci-error: 248 113 113;
+  --sci-verified: 52 211 153;
 }
 
 html,
@@ -34,6 +43,30 @@ body {
 
 .tabular-nums {
   font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--sci-observational));
+  outline-offset: 3px;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.evidence-dialog::backdrop {
+  background: rgb(0 0 0 / 50%);
+}
+
+.react-flow {
+  --xy-controls-button-background-color: var(--bg-surface);
+  --xy-controls-button-background-color-hover: var(--bg-elevated);
+  --xy-controls-button-color: var(--text-primary);
+  --xy-controls-button-color-hover: var(--text-primary);
+  --xy-controls-button-border-color: var(--border-subtle);
+  --xy-edge-label-background-color: var(--bg-surface);
+  --xy-edge-label-color: var(--text-secondary);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -48,6 +81,15 @@ body {
 }
 
 @media print {
+  html.dark {
+    color-scheme: light;
+    --bg-app: #fff;
+    --bg-surface: #fff;
+    --bg-elevated: #f1f5f9;
+    --border-subtle: #cbd5e1;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+  }
   aside,
   header,
   .no-print {

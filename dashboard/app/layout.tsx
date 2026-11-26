@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono, Newsreader } from "next/font/google";
+import "katex/dist/katex.min.css";
+import "@xyflow/react/dist/style.css";
 import "./globals.css";
 import { EvidenceProvider } from "@/components/evidence/EvidenceDrawer";
 import { ObservatoryShell } from "@/components/ui/ObservatoryShell";
+import overview from "@/public/data/overview.json";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const mono = IBM_Plex_Mono({
@@ -35,7 +38,7 @@ export default function RootLayout({
     >
       <body className="font-sans antialiased">
         <EvidenceProvider>
-          <ObservatoryShell>{children}</ObservatoryShell>
+          <ObservatoryShell snapshot={{ commit: overview.git_commit, release: overview.release_tag, cohorts: overview.kpis.documented_cohorts, responses: overview.kpis.persisted_raw_responses }}>{children}</ObservatoryShell>
         </EvidenceProvider>
       </body>
     </html>
