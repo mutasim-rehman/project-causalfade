@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { CheckCircle2, AlertTriangle, ExternalLink } from "lucide-react";
 import { loadDataset } from "@/lib/data/loader";
 import { PageHeader } from "@/components/ui/PageHeader";
+import manifest from "@/DATA_MANIFEST.json";
 
 interface ReproData {
   git_commit: string;
@@ -33,12 +34,14 @@ interface ReproData {
 
 export default function ReproducibilityPage() {
   const [data, setData] = useState<ReproData | null>(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    loadDataset<ReproData>("/data/reproducibility.json").then(setData);
+    loadDataset<ReproData>("/data/reproducibility.json").then(setData).catch(() => setError(true));
   }, []);
 
-  if (!data) return <div className="h-96 animate-pulse rounded bg-obs-surface" />;
+  if (error) return <p role="alert">The frozen reproducibility record is unavailable.</p>;
+  if (!data) return <p role="status">Loading verification records…</p>;
 
   const passedCount = data.cohort_029_verification.checks.filter((c) => c.passed).length;
 
@@ -61,13 +64,35 @@ export default function ReproducibilityPage() {
           <div className="mt-1 text-sci-causal">{data.release_tag}</div>
           <div className="mt-0.5 text-[11px] text-obs-muted">{data.release_commit.slice(0, 12)}…</div>
         </div>
-        <div className="rounded border border-sci-verified/40 bg-sci-verified/10 p-4 font-mono text-xs">
-          <span className="text-sci-verified">Cohort 029 Release Verifier</span>
-          <div className="mt-1 flex items-center gap-1.5 text-base font-bold text-sci-verified">
-            <CheckCircle2 className="h-4 w-4" />
-            <span>PASS ({passedCount} / {data.cohort_029_verification.checks.length} checks)</span>
+        <div className="rounded border border-obs-border bg-obs-surface p-4 font-mono text-xs">
+          <span className="text-obs-muted">Cohort 029 Release Verifier</span>
+          <div className={`mt-1 flex items-center gap-1.5 text-base font-bold ${data.cohort_029_verification.passed ? "text-sci-verified" : "text-sci-caution"}`}>
+            {data.cohort_029_verification.passed ? <CheckCircle2 size={16} /> : <AlertTriangle size={16} />}
+            <span>{data.cohort_029_verification.passed ? "PASS" : "FAIL"} ({passedCount} / {data.cohort_029_verification.checks.length} checks)</span>
           </div>
         </div>
+      </section>
+
+      <section className="space-y-3 rounded border border-obs-border bg-obs-surface p-5">
+        <h2 className="font-serif text-xl">Dashboard snapshot</h2>
+        <div className="flex flex-wrap gap-x-5 gap-y-1 text-xs text-obs-secondary">
+          <span>Extracted <time className="font-mono" dateTime={data.extraction_timestamp}>{data.extraction_timestamp}</time></span>
+          <span>Dashboard reconciliation <strong className={manifest.all_verification_checks_passed ? "text-sci-verified" : "text-sci-caution"}>{manifest.all_verification_checks_passed ? "PASS" : "FAIL"}</strong></span>
+        </div>
+        <p className="text-sm text-obs-secondary">
+          Recheck the local snapshot from the repository root with <code className="break-all text-obs-text">python dashboard/scripts/verify/verify_data.py --check-only</code>.
+        </p>
+        <details className="rounded border border-obs-border">
+          <summary className="cursor-pointer bg-obs-elevated p-2 text-sm">Downloads and SHA-256 digests ({manifest.datasets.length} files)</summary>
+          <ul className="divide-y divide-obs-border">
+            {manifest.datasets.map((entry) => (
+              <li className="px-3 py-2 text-xs" key={entry.path}>
+                <a href={entry.path.replace(/^public/, "")} download className="break-all text-sci-observational hover:underline">{entry.path.replace(/^public\/data\//, "")}</a>
+                <div className="mt-1 break-all font-mono text-[11px] text-obs-muted">{entry.sha256}</div>
+              </li>
+            ))}
+          </ul>
+        </details>
       </section>
 
       {/* Discrepancies */}
@@ -125,7 +150,7 @@ export default function ReproducibilityPage() {
                       rel="noreferrer"
                       className="inline-flex items-center gap-1 text-sci-observational hover:underline"
                     >
-                      <span>{row.tagged_path}</span>
+                      <span className="break-all">{row.tagged_path}</span>
                       <ExternalLink className="h-3 w-3" />
                     </a>
                     <div className="text-[10px] text-obs-muted">

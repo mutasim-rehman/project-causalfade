@@ -12,9 +12,11 @@ import csv
 import hashlib
 import json
 import math
+import os
 import subprocess
 from datetime import datetime, timezone
 from fractions import Fraction
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -26,27 +28,38 @@ RESPONSES_DIR = OUT_DIR / "responses"
 GITHUB_REPO = "https://github.com/mutasim-rehman/project-causalfade"
 RELEASE_TAG = "cohort-029-v1.0.0"
 RELEASE_COMMIT = "76206c259caa488668a7556ce1bc53cb35d220da"
+SOURCE_PATHS = ("experiments", "docs", "manuscript", "causalfade", "tools", "literature review", "results")
 
 
+@lru_cache
 def get_git_commit() -> str:
-    """Return the exact HEAD commit hash of the repository."""
-    try:
-        out = subprocess.check_output(
-            ["git", "rev-parse", "HEAD"], cwd=REPO_ROOT, text=True
-        ).strip()
-        return out
-    except Exception:
-        return "01728ada407e8e5d59d6d7918dcd71dc0532b706"
+    """Resolve the source revision and reject changes to its research inputs."""
+    ref = os.environ.get("CAUSALFADE_SOURCE_REF", "HEAD")
+    commit = subprocess.check_output(
+        ["git", "rev-parse", "--verify", "--end-of-options", f"{ref}^{{commit}}"],
+        cwd=REPO_ROOT, text=True,
+    ).strip()
+    changed = subprocess.run(
+        ["git", "diff", "--quiet", commit, "--", *SOURCE_PATHS], cwd=REPO_ROOT, check=False,
+    )
+    untracked = subprocess.check_output(
+        ["git", "ls-files", "--others", "--exclude-standard", "--", *SOURCE_PATHS],
+        cwd=REPO_ROOT, text=True,
+    ).strip()
+    if changed.returncode or untracked:
+        raise SystemExit(f"Research inputs must match the pinned source revision {commit}.")
+    return commit
 
 
+@lru_cache
 def sha256_file(path: Path) -> str | None:
-    if not path.exists() or not path.is_file():
-        return None
-    h = hashlib.sha256()
-    with path.open("rb") as f:
-        for chunk in iter(lambda: f.read(65536), b""):
-            h.update(chunk)
-    return h.hexdigest()
+    """Hash the committed bytes behind a pinned source link."""
+    relative_path = path.resolve().relative_to(REPO_ROOT).as_posix()
+    result = subprocess.run(
+        ["git", "cat-file", "blob", f"{get_git_commit()}:{relative_path}"],
+        cwd=REPO_ROOT, capture_output=True,
+    )
+    return hashlib.sha256(result.stdout).hexdigest() if result.returncode == 0 else None
 
 
 def read_json(path: Path) -> Any:
@@ -122,6 +135,43 @@ def make_provenance(
         "analysis_script": "dashboard/scripts/extract/extract_all.py",
         "classification": classification,
         "limitations": limitations,
+    }
+
+
+def build_target_transitions(c29: dict[str, Any], commit: str) -> dict[str, Any]:
+    """Join each frozen target pair to its scores in the verified target order."""
+    by_id = {row["task_id"]: row for row in c29["raw_responses"]}
+    rows = []
+    for pair in c29["pair_scores"]:
+        if pair["kind"] != "target":
+            continue
+        members = sorted((by_id[task_id] for task_id in pair["task_ids"]), key=lambda row: row["target"])
+        if [member["target"] for member in members] != [0, 1]:
+            raise ValueError(f"Invalid target pair: {pair['task_ids']}")
+        start, end = members
+        rows.append({
+            "family": start["slot"],
+            "form": start["form_label"],
+            "task": start["task_label"],
+            "order": start["order_label"],
+            "role": start["role_label"],
+            "expected": [start["gold_action"], end["gold_action"]],
+            "observed": [row["predicted_action"] if row["valid"] else None for row in members],
+        })
+    source_dir = "experiments/cohort_029/runs/confirmatory/analysis"
+    return {
+        "rows": rows,
+        "provenance": make_provenance(
+            "cohort_029_target_transitions",
+            "Observed and oracle actions from frozen target pairs, ordered from target 0 to target 1. Invalid actions are shown as unavailable.",
+            len(rows),
+            [f"{source_dir}/pair_scores.jsonl", f"{source_dir}/row_scores.jsonl"],
+            commit,
+            "Descriptive diagnostics from the confirmatory run",
+            unit="target pairs",
+            unit_of_analysis="paired decisions within numerical families",
+            limitations="Filters define descriptive subsets. Multiple pairs reuse each independent numerical family.",
+        ),
     }
 
 
@@ -646,6 +696,17 @@ def main() -> None:
 
     total_scheduled = sum(c["scheduled_requests"] for c in cohorts)
     total_persisted = sum(c["persisted_llm_responses"] for c in cohorts)
+    primary = c29["primary"]
+    transfer_causal = [r for r in c29["raw_responses"] if r["form"] == 1 and r["task"] == 0]
+    transitions = build_target_transitions(c29, commit)
+    causal_switches = [
+        row for row in transitions["rows"]
+        if row["form"] == "transfer" and row["task"] == "causal" and row["expected"][0] != row["expected"][1]
+    ]
+    fidelities = {
+        name: {"correct": row["both_correct"], "total": row["scheduled"], "pct": row["fidelity"] * 100}
+        for name, row in (("causal_pair_fidelity", primary["causal"]), ("arithmetic_pair_fidelity", primary["control"]))
+    }
 
     # 1. overview.json
     overview = {
@@ -664,17 +725,22 @@ def main() -> None:
             "interrupted_runs": sum(1 for c in cohorts if c["cohort_id"] != "design_validation" for r in c["runs"] if r["status"] == "interrupted"),
             "scheduled_requests": total_scheduled,
             "persisted_raw_responses": total_persisted,
-            "final_eval_responses": 4096,
-            "final_eval_strict_valid": 4096,
-            "independent_families_final": 128,
+            "final_eval_responses": len(c29["raw_responses"]),
+            "final_eval_strict_valid": sum(r["valid"] for r in c29["raw_responses"]),
+            "independent_families_final": len(c29["lab_families"]),
             "model_config_entries": len(models_inv),
-            "causal_pair_fidelity": {"correct": 128, "total": 512, "pct": 25.0},
-            "arithmetic_pair_fidelity": {"correct": 146, "total": 512, "pct": 28.515625},
-            "delta_pp": -3.515625,
+            **fidelities,
+            "delta_pp": primary["delta_percentage_points"],
             "t_ci_pp": [round(x * 100, 4) for x in c29["primary"]["interval_t"]],
             "bounded_ci_pp": [round(x * 100, 4) for x in c29["primary"]["interval_bounded"]],
-            "causal_reversals_correct": {"correct": 3, "total": 256},
-            "causal_activation": {"count": 995, "total": 1024},
+            "causal_reversals_correct": {
+                "correct": sum(row["observed"] == row["expected"] for row in causal_switches),
+                "total": len(causal_switches),
+            },
+            "causal_activation": {
+                "count": sum(r["valid"] and r["predicted_action"] == 1 for r in transfer_causal),
+                "total": len(transfer_causal),
+            },
         },
         "research_at_a_glance": [
             {
@@ -735,8 +801,8 @@ def main() -> None:
             unit="percentage_points",
             unit_of_analysis="128 independent numerical families (8 strata x 16)",
             cohort_id="cohort_029",
-            numerator=128,
-            denominator=512,
+            numerator=primary["causal"]["both_correct"],
+            denominator=primary["causal"]["scheduled"],
             ci_method="Stratified Welch-Satterthwaite 95% t CI & Hoeffding bounded CI",
             statistical_test="Paired within-family difference across 8 design strata",
             limitations="Single quantized deployment (Qwen2.5-7B-Instruct Q4_K_M); no F16 comparison arm in Cohort 029; primary CI crosses zero.",
@@ -871,6 +937,7 @@ def main() -> None:
     _write_json(OUT_DIR / "causal_lab.json", causal_lab)
     _write_json(OUT_DIR / "statistics.json", statistics)
     _write_json(OUT_DIR / "decision_behavior.json", decision_behavior)
+    _write_json(OUT_DIR / "target_transitions.json", transitions)
     _write_json(OUT_DIR / "models_quantization.json", models_quantization)
     _write_json(OUT_DIR / "methodologies.json", {"git_commit": commit, "methodologies": methodologies})
     _write_json(OUT_DIR / "hypotheses.json", {"git_commit": commit, "hypotheses": hypotheses})
@@ -1038,6 +1105,10 @@ def _extract_cohort_016_responses() -> list[dict[str, Any]]:
     c16 = REPO_ROOT / "experiments" / "cohort_016"
     tasks = {r["task_id"]: r for r in read_jsonl(c16 / "input" / "public_tasks.jsonl")}
     oracle = {r["task_id"]: r for r in read_jsonl(c16 / "input" / "oracle_truth.jsonl")}
+    manuscript_scores = {
+        (r["arm"], r["id"]): r
+        for r in read_csv(REPO_ROOT / "manuscript" / "data" / "order016.csv")
+    }
     out = []
     for arm, rdir in [("F16", "run_001_7b_f16"), ("Q4_K_M", "run_002_7b_q4_k_m")]:
         raw_path = c16 / rdir / "raw_responses.jsonl"
@@ -1050,19 +1121,22 @@ def _extract_cohort_016_responses() -> list[dict[str, Any]]:
             resp = row.get("response", {})
             choices = resp.get("choices", [])
             raw_text = choices[0].get("message", {}).get("content", "") if choices else ""
-            pred = row.get("prediction") or {}
-            pred_act = pred.get("activate")
+            published = manuscript_scores.get((arm, tid))
+            pred_act = int(published["action"]) if published else None
+            gold = o.get("optimal_action")
             out.append(
                 {
                     "task_id": tid,
                     "arm": arm,
                     "family_id": t.get("family_id", ""),
-                    "condition": o.get("condition", ""),
-                    "order": t.get("evidence_order", ""),
-                    "gold_action": o.get("gold_action"),
+                    "condition": "Conflict" if o.get("conflict") else "Aligned" if o else None,
+                    "order": t.get("presentation_order"),
+                    "gold_action": gold,
                     "predicted_action": pred_act,
-                    "valid": row.get("parse_status") == "object" and pred_act in (0, 1),
-                    "correct": pred_act == o.get("gold_action"),
+                    "valid": pred_act in (0, 1) if published else None,
+                    "correct": pred_act == gold if pred_act is not None and gold is not None else None,
+                    "finish_reason": choices[0].get("finish_reason") if choices else None,
+                    "source_path": raw_path.relative_to(REPO_ROOT).as_posix(),
                     "raw_response": raw_text,
                     "user_prompt": t.get("prompt", ""),
                 }
@@ -1075,15 +1149,29 @@ def _extract_cohort_008_interrupted() -> list[dict[str, Any]]:
     if not p.exists():
         return []
     rows = read_jsonl(p)
+    prompts = {row["task_id"]: row for row in read_json(p.with_name("schedule.json"))}
+    scores = {row["task_id"]: row for row in read_json(p.with_name("results.json"))}
     out = []
     for idx, r in enumerate(rows):
+        task = prompts.get(r["task_id"], {})
+        score = scores.get(r["task_id"], {})
+        choices = r.get("response", {}).get("choices", [])
+        choice = choices[0] if choices else {}
+        error = r.get("execution_error")
         out.append(
             {
                 "task_id": r.get("task_id", f"row-{idx}"),
-                "status": r.get("status", "unknown"),
-                "finish_reason": r.get("finish_reason", ""),
-                "raw_response": r.get("raw_text", r.get("error", "")),
-                "error": r.get("error"),
+                "status": "interrupted" if error and "KeyboardInterrupt" in error else
+                          "execution error" if error else "completed" if choice else "unavailable",
+                "finish_reason": choice.get("finish_reason"),
+                "raw_response": choice.get("message", {}).get("content"),
+                "user_prompt": task.get("prompt"),
+                "family_id": task.get("family_id"),
+                "predicted_action": score.get("activate"),
+                "valid": score.get("valid_action") if choice else None,
+                "correct": bool(score["correct"]) if choice and "correct" in score else None,
+                "source_path": p.relative_to(REPO_ROOT).as_posix(),
+                "error": error,
             }
         )
     return out

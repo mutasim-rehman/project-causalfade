@@ -9,6 +9,7 @@ import { EChartBox } from "@/components/charts/EChartBox";
 import { EvidenceButton } from "@/components/evidence/EvidenceDrawer";
 import { MathBlock } from "@/components/ui/MathBlock";
 import type { ProvenanceMeta } from "@/lib/schemas/observatory";
+import { fmtCI, fmtPP, fmtPValue } from "@/lib/formatting/numbers";
 
 interface StatsData {
   cohort_029: {
@@ -50,9 +51,11 @@ interface StatsData {
     family_effects: { arm: string; family: string; conflict_order_diff_pp: number }[];
   };
   cohort_017: {
-    recovery: {
-      q8_0?: { conflict_order_diff_mean?: number; t_interval_95?: number[] };
-      q4_k_m?: { conflict_order_diff_mean?: number };
+    analysis: {
+      results: { q8_0?: { conflict: { historical_first_minus_randomized_first: {
+        mean_difference: number;
+        t_interval_95: [number, number] | null;
+      } } } };
     } | null;
   };
   provenance: ProvenanceMeta;
@@ -60,63 +63,71 @@ interface StatsData {
 
 export default function StatisticsPage() {
   const [data, setData] = useState<StatsData | null>(null);
+  const [error, setError] = useState(false);
   const [mode, setMode] = useState<"intuitive" | "technical">("intuitive");
 
   useEffect(() => {
-    loadDataset<StatsData>("/data/statistics.json").then(setData);
+    loadDataset<StatsData>("/data/statistics.json").then(setData).catch(() => setError(true));
   }, []);
 
   const forestOption = useMemo<EChartsOption>(() => {
     if (!data) return {};
     const c29 = data.cohort_029.primary;
     const c16 = data.cohort_016.primary.primary_q4_conflict_order_effect;
+    const c17 = data.cohort_017.analysis?.results.q8_0?.conflict.historical_first_minus_randomized_first;
     const rows = [
       {
-        label: "Cohort 029: Causal − Arithmetic (Welch 95% t CI)",
+        label: "029 · Contrast\nWelch 95% t CI",
         est: c29.delta_percentage_points,
         low: c29.interval_t[0] * 100,
         high: c29.interval_t[1] * 100,
         color: "#55D6BE",
       },
       {
-        label: "Cohort 029: Causal − Arithmetic (Hoeffding Bounded)",
+        label: "029 · Contrast\nBounded 95% CI",
         est: c29.delta_percentage_points,
         low: c29.interval_bounded[0] * 100,
         high: c29.interval_bounded[1] * 100,
         color: "#FBBF24",
       },
       {
-        label: "Cohort 016: 7B Q4 Conflict Order (Hist − Rand, N=96)",
+        label: "016 · Q4 conflict\nHistorical − trial first",
         est: c16.mean_difference * 100,
         low: c16.t_interval_95[0] * 100,
         high: c16.t_interval_95[1] * 100,
         color: "#60A5FA",
       },
       {
-        label: "Cohort 016: 7B F16 Conflict Order (Descriptive, N=96)",
+        label: "016 · F16 conflict\nDescriptive",
         est: data.cohort_016.primary.secondary_order_results.f16.conflict.historical_first_minus_randomized_first * 100,
         low: data.cohort_016.primary.secondary_order_results.f16.conflict.historical_first_minus_randomized_first * 100,
         high: data.cohort_016.primary.secondary_order_results.f16.conflict.historical_first_minus_randomized_first * 100,
         color: "#94A3B8",
       },
-      {
-        label: "Cohort 017: 14B Q8_0 Conflict Order (Reused N=96)",
-        est: -4.17,
-        low: -6.98,
-        high: -1.35,
+      ...(c17?.t_interval_95 ? [{
+        label: "017 · Q8 conflict\nExploratory",
+        est: c17.mean_difference * 100,
+        low: c17.t_interval_95[0] * 100,
+        high: c17.t_interval_95[1] * 100,
         color: "#A78BFA",
-      },
+      }] : []),
     ];
 
     return {
       backgroundColor: "transparent",
       tooltip: {
-        trigger: "axis",
+        trigger: "item",
+        formatter: (params) => {
+          if (Array.isArray(params) || !Array.isArray(params.value)) return "";
+          const [index, estimate, low, high] = params.value.map(Number);
+          const label = rows[rows.length - 1 - index]?.label.replace("\n", " · ") ?? "";
+          return `${label}<br>${fmtPP(estimate)}${low === high ? "" : ` · ${fmtCI(low, high)}`}`;
+        },
         backgroundColor: "#111827",
         borderColor: "#263142",
         textStyle: { color: "#F1F5F9", fontSize: 11 },
       },
-      grid: { left: 310, right: 30, top: 24, bottom: 40 },
+      grid: { left: 125, right: 26, top: 22, bottom: 44 },
       xAxis: {
         type: "value",
         name: "Percentage Point Contrast (pp)",
@@ -134,6 +145,7 @@ export default function StatisticsPage() {
       series: [
         {
           type: "custom",
+          encode: { x: [1, 2, 3], y: 0 },
           renderItem: (_params, api) => {
             const yIdx = api.value(0) as number;
             const est = api.coord([api.value(1) as number, yIdx]);
@@ -162,7 +174,7 @@ export default function StatisticsPage() {
             .map((r, idx) => [idx, r.est, r.low, r.high]),
           markLine: {
             silent: true,
-            lineStyle: { color: "#F87171", type: "dashed" },
+            lineStyle: { color: "#64748B", type: "dashed" },
             data: [{ xAxis: 0 }],
           },
         },
@@ -254,7 +266,10 @@ export default function StatisticsPage() {
     };
   }, [data]);
 
-  if (!data) return <div className="h-96 animate-pulse rounded bg-obs-surface" />;
+  if (error) return <p role="alert">The frozen statistical dataset is unavailable.</p>;
+  if (!data) return <p role="status">Loading family-level results…</p>;
+  const primary = data.cohort_029.primary;
+  const order = data.cohort_016.primary.primary_q4_conflict_order_effect;
 
   return (
     <div className="space-y-6">
@@ -267,6 +282,7 @@ export default function StatisticsPage() {
         <div className="flex rounded border border-obs-border bg-obs-elevated p-0.5 text-xs">
           <button
             type="button"
+            aria-pressed={mode === "intuitive"}
             onClick={() => setMode("intuitive")}
             className={`rounded px-2.5 py-1 font-medium ${
               mode === "intuitive" ? "bg-sci-causal text-slate-950" : "text-obs-secondary"
@@ -276,6 +292,7 @@ export default function StatisticsPage() {
           </button>
           <button
             type="button"
+            aria-pressed={mode === "technical"}
             onClick={() => setMode("technical")}
             className={`rounded px-2.5 py-1 font-medium ${
               mode === "technical" ? "bg-sci-causal text-slate-950" : "text-obs-secondary"
@@ -294,7 +311,7 @@ export default function StatisticsPage() {
         </div>
         {mode === "intuitive" ? (
           <p>
-            Each numerical family generates 32 prompts, so those 32 answers are correlated—not 32 independent coin flips. All primary confidence intervals average scores within each family first (N=128 in Cohort 029; N=96 in Cohort 016). In Cohort 029, the causal-minus-arithmetic difference (-3.52 pp) has a 95% interval from -7.77 to +0.74 pp, crossing zero: we cannot conclude either a causal deficit or equivalence.
+            Prompts generated from the same numerical family reuse the same numbers. The primary analysis uses the family as the independent unit. In Cohort 029 the causal-minus-arithmetic difference was {fmtPP(primary.delta_percentage_points)}. Its approximate 95% interval, {fmtCI(primary.interval_t[0] * 100, primary.interval_t[1] * 100)}, spans zero. The comparison leaves causal-specific impairment and equivalence unresolved.
           </p>
         ) : (
           <div className="space-y-1.5">
@@ -302,10 +319,10 @@ export default function StatisticsPage() {
               <strong>Estimand:</strong> Stratified mean of within-family paired fidelity differences{" "}
               <MathBlock tex="\widehat{\Delta} = \frac{1}{8}\sum_{h=0}^{7} \bar{D}_h" /> across 8 design strata (16 families each).{" "}
               <strong>Variance:</strong>{" "}
-              <MathBlock tex="\mathrm{SE} = \sqrt{\sum_{h=0}^{7} s_h^2 / (64 \cdot 16)} = 2.1324\text{ pp}" /> with Welch-Satterthwaite{" "}
-              <MathBlock tex="\nu = 67.53" />.{" "}
+              <MathBlock tex={`\\mathrm{SE} = \\sqrt{\\sum_{h=0}^{7} s_h^2 / (64 \\cdot 16)} = ${(primary.se * 100).toFixed(4)}\\text{ pp}`} /> with Welch-Satterthwaite{" "}
+              <MathBlock tex={`\\nu = ${primary.welch_df.toFixed(2)}`} />.{" "}
               <strong>Bounded Interval:</strong> Distribution-free radius{" "}
-              <MathBlock tex="\sqrt{2\log(40)/128} = \pm 24.01\text{ pp}" />.
+              <MathBlock tex="\sqrt{2\log(40)/128}" />. The archived bounded interval is {fmtCI(primary.interval_bounded[0] * 100, primary.interval_bounded[1] * 100)}.
             </p>
           </div>
         )}
@@ -313,13 +330,13 @@ export default function StatisticsPage() {
 
       {/* Forest Plot */}
       <section className="rounded border border-obs-border bg-obs-surface p-5">
-        <div className="mb-3 flex items-center justify-between">
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
           <div>
             <h2 className="text-sm font-semibold text-obs-text">
               Forest Plot — Key Prespecified & Exploratory Family-Level Contrasts
             </h2>
             <p className="text-xs text-obs-secondary">
-              Dashed vertical line at 0 pp indicates no difference. Cohorts 029, 016, and 017 use distinct tasks and are not pooled.
+              The dashed line marks zero difference. Each row reports a separate estimand. The F16 descriptive row shows a point estimate.
             </p>
           </div>
           <EvidenceButton meta={data.provenance} title="Forest Plot Contrasts" />
@@ -344,7 +361,7 @@ export default function StatisticsPage() {
             Cohort 016: Q4_K_M Conflict Order Shift Distribution (N = 96)
           </h2>
           <p className="mb-3 text-xs text-obs-secondary">
-            Family-level shift (Historical-First minus Randomized-First): mean +62.5 pp, t(95) = 21.10, p = 1.24×10⁻³⁷.
+            Historical-first minus randomized-first mean {fmtPP(order.mean_difference * 100)}. t({order.degrees_of_freedom}) = {order.t_statistic.toFixed(2)}, p = {fmtPValue(order.two_sided_p_value)}.
           </p>
           <EChartBox option={order016HistOption} height={260} exportName="cohort-016-family-order-diffs" />
         </div>

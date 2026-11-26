@@ -2,18 +2,22 @@
 
 - **Source Git Commit:** `01728ada407e8e5d59d6d7918dcd71dc0532b706`
 - **Release Tag:** `cohort-029-v1.0.0` (`76206c259caa488668a7556ce1bc53cb35d220da`)
-- **Verified At (UTC):** `2026-11-26T17:05:12.634024+00:00`
-- **Overall Status:** `PASS` (7/7 checks passed)
+- **Verified At (UTC):** `2026-11-26T17:40:56.830539+00:00`
+- **Overall Status:** `PASS` (11/11 checks passed)
 
 ## Automated Reconciliation Checks
 
 | Check | Expected | Observed | Status |
 | --- | --- | --- | --- |
 | `cohort_029_raw_response_count` | `4096` | `4096` | **PASS** |
+| `cohort_029_verbatim_and_frozen_scores` | `0` | `0` | **PASS** |
+| `cohort_029_transition_counts_match_manuscript` | `{('causal', False): (256, 125, 7), ('causal', True): (256, 3, 8), ('arithmetic', False): (256, 119, 45), ('arithmetic', True): (256, 27, 46)}` | `{('causal', False): (256, 125, 7), ('causal', True): (256, 3, 8), ('arithmetic', False): (256, 119, 45), ('arithmetic', True): (256, 27, 46)}` | **PASS** |
 | `cohort_029_transfer_causal_direction_reconciliation` | `{'off_correct': 14, 'on_correct': 497, 'activated': 995}` | `{'off_correct': 14, 'on_correct': 497, 'activated': 995}` | **PASS** |
 | `cohort_029_transfer_arithmetic_direction_reconciliation` | `{'off_correct': 231, 'on_correct': 316, 'activated': 597}` | `{'off_correct': 231, 'on_correct': 316, 'activated': 597}` | **PASS** |
-| `cohort_029_primary_delta_reconciliation` | `-0.03515625` | `-0.03515625` | **PASS** |
+| `cohort_029_primary_delta_reconciliation` | `{'delta': -0.03515625, 'pairs_and_correct': {'causal': (512, 128), 'arithmetic': (512, 146)}}` | `{'delta': -0.03515625, 'pairs_and_correct': {'causal': (512, 128), 'arithmetic': (512, 146)}}` | **PASS** |
 | `cohort_016_q4_conflict_order_mean_reconciliation` | `62.5` | `62.5` | **PASS** |
+| `cohort_016_response_outcomes_match_manuscript` | `{'records': 1536, 'score_mismatches': 0}` | `{'records': 1536, 'score_mismatches': 0}` | **PASS** |
+| `cohort_008_interruption_disposition` | `{'completed': 25, 'interrupted': 1}` | `{'completed': 25, 'interrupted': 1}` | **PASS** |
 | `repo_scheduled_vs_persisted_reconciliation` | `{'scheduled': 48208, 'persisted': 48170, 'diff_from_008': 38}` | `{'scheduled': 48208, 'persisted': 48170, 'diff_from_008': 38}` | **PASS** |
 | `cohort_029_upstream_50_checks` | `True` | `True` | **PASS** |
 

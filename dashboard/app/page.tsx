@@ -9,7 +9,7 @@ import { OverviewSchema, type OverviewData } from "@/lib/schemas/observatory";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { EChartBox } from "@/components/charts/EChartBox";
 import { EvidenceButton } from "@/components/evidence/EvidenceDrawer";
-import { fmtInt, fmtPP, fmtCI } from "@/lib/formatting/numbers";
+import { fmtInt, fmtPP, fmtCI, fmtPct } from "@/lib/formatting/numbers";
 
 export default function OverviewPage() {
   const [data, setData] = useState<OverviewData | null>(null);
@@ -23,8 +23,7 @@ export default function OverviewPage() {
 
   const summaryChartOption = useMemo<EChartsOption>(() => {
     if (!data) return {};
-    const { causal_pair_fidelity, arithmetic_pair_fidelity, delta_pp, t_ci_pp, bounded_ci_pp } =
-      data.kpis;
+    const { causal_pair_fidelity, arithmetic_pair_fidelity } = data.kpis;
     return {
       backgroundColor: "transparent",
       tooltip: {
@@ -36,7 +35,10 @@ export default function OverviewPage() {
       grid: { left: 56, right: 24, top: 36, bottom: 44 },
       xAxis: {
         type: "category",
-        data: ["Causal Transfer\n(128/512 pairs)", "Arithmetic Control\n(146/512 pairs)"],
+        data: [
+          `Causal transfer\n(${causal_pair_fidelity.correct}/${causal_pair_fidelity.total} pairs)`,
+          `Arithmetic control\n(${arithmetic_pair_fidelity.correct}/${arithmetic_pair_fidelity.total} pairs)`,
+        ],
         axisLabel: { color: "#94A3B8", fontSize: 11 },
         axisLine: { lineStyle: { color: "#263142" } },
       },
@@ -44,7 +46,7 @@ export default function OverviewPage() {
         type: "value",
         name: "Target-Pair Fidelity (%)",
         min: 0,
-        max: 50,
+        max: 100,
         nameTextStyle: { color: "#94A3B8", fontSize: 11 },
         axisLabel: { color: "#94A3B8", formatter: "{value}%" },
         splitLine: { lineStyle: { color: "#1E293B" } },
@@ -68,33 +70,10 @@ export default function OverviewPage() {
             position: "top",
             color: "#F1F5F9",
             fontFamily: "monospace",
-            formatter: "{c}%",
-          },
-          markLine: {
-            silent: true,
-            lineStyle: { color: "#FBBF24", type: "dashed" },
-            data: [
-              {
-                yAxis: 25,
-                label: {
-                  formatter: "Always-On Baseline (25.0%)",
-                  color: "#FBBF24",
-                  position: "insideEndTop",
-                },
-              },
-            ],
+            formatter: ({ value }) => `${Number(value).toFixed(2)}%`,
           },
         },
       ],
-      title: {
-        text: `Cohort 029 Primary Contrast: Δ = ${fmtPP(delta_pp)} (95% t CI ${fmtCI(
-          t_ci_pp[0],
-          t_ci_pp[1]
-        )}; Bounded ${fmtCI(bounded_ci_pp[0], bounded_ci_pp[1])})`,
-        left: "center",
-        top: 4,
-        textStyle: { color: "#94A3B8", fontSize: 11, fontWeight: "normal" },
-      },
     };
   }, [data]);
 
@@ -140,9 +119,9 @@ export default function OverviewPage() {
 
       {/* Verified Scope-Labeled KPIs */}
       <section aria-label="Verified Repository Metrics">
-        <div className="mb-2 flex items-center justify-between">
+        <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
           <h2 className="font-mono text-xs font-semibold uppercase tracking-wider text-obs-muted">
-            Verified Empirical Scope (Separate Denominators — Never Pooled)
+            Research archive and final evaluation
           </h2>
           <span className="font-mono text-[11px] text-obs-muted">
             Commit {data.git_commit.slice(0, 7)} · Tag {data.release_tag}
@@ -155,7 +134,7 @@ export default function OverviewPage() {
               {kpis.documented_cohorts}
             </div>
             <div className="mt-1 text-[11px] text-obs-secondary">
-              29 LLM units + 1 synthetic validation
+              {fmtInt(kpis.llm_cohort_units)} entries contain recorded model responses
             </div>
           </div>
 
@@ -188,7 +167,7 @@ export default function OverviewPage() {
               {fmtInt(kpis.final_eval_strict_valid)} / {fmtInt(kpis.final_eval_responses)}
             </div>
             <div className="mt-1 text-[11px] text-obs-secondary">
-              100% strict-valid JSON (Cohort 029)
+              {fmtPct(kpis.final_eval_strict_valid / kpis.final_eval_responses, 0)} strict-valid (Cohort 029)
             </div>
           </div>
 
@@ -216,14 +195,14 @@ export default function OverviewPage() {
 
       {/* Main Results & Limitations Side-by-Side */}
       <section className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-        <div className="rounded border border-obs-border bg-obs-surface p-5 lg:col-span-7">
-          <div className="mb-3 flex items-center justify-between">
+        <div className="min-w-0 rounded border border-obs-border bg-obs-surface p-5 lg:col-span-7">
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
             <div>
               <h2 className="text-base font-semibold text-obs-text">
                 Final Confirmatory Case Study (Cohort 029 · CF-TP1)
               </h2>
               <p className="text-xs text-obs-secondary">
-                Qwen2.5-7B-Instruct Q4_K_M · Transfer Form (512 causal pairs vs. 512 matched arithmetic pairs)
+                Qwen2.5-7B-Instruct Q4_K_M · Transfer form
               </p>
             </div>
             <EvidenceButton meta={data.provenance} title="Cohort 029 Primary Result" />
@@ -271,13 +250,13 @@ export default function OverviewPage() {
               <div className="rounded border border-obs-border bg-obs-elevated/60 p-3">
                 <div className="font-semibold text-obs-text">Observed Decision Failure</div>
                 <p className="mt-1">
-                  The model activated on 995/1,024 causal prompts (97.2%) and correctly reversed its recommendation on only 3/256 required target-population switches.
+                  The model activated on {fmtInt(kpis.causal_activation.count)} of {fmtInt(kpis.causal_activation.total)} causal transfer prompts and correctly reversed its recommendation on {kpis.causal_reversals_correct.correct} of {kpis.causal_reversals_correct.total} required target-population switches.
                 </p>
               </div>
               <div className="rounded border border-obs-border bg-obs-elevated/60 p-3">
                 <div className="font-semibold text-obs-text">Matched-Control Result (Inconclusive)</div>
                 <p className="mt-1">
-                  Arithmetic fidelity was also low (146/512, 28.52%) with 46/256 required switches and 45/256 unwarranted invariant flips. Because the 95% CI [-7.77, +0.74] pp crosses zero and no equivalence margin was prespecified, neither causal-specific impairment nor equivalence is established.
+                  Arithmetic fidelity was {kpis.arithmetic_pair_fidelity.correct} of {kpis.arithmetic_pair_fidelity.total} matched pairs. The approximate 95% interval for the contrast, {fmtCI(kpis.t_ci_pp[0], kpis.t_ci_pp[1])}, spans zero. Causal-specific impairment and equivalence remain unresolved.
                 </p>
               </div>
               <div className="rounded border border-obs-border bg-obs-elevated/60 p-3">
@@ -302,7 +281,7 @@ export default function OverviewPage() {
               href="/reproducibility/"
               className="inline-flex items-center gap-1 text-xs font-medium text-sci-observational hover:underline"
             >
-              <span>50/50 Verification Checks</span>
+              <span>Inspect verification checks</span>
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
