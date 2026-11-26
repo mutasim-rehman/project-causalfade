@@ -1,0 +1,106 @@
+% =============================================================================
+% Front Matter: Title Page, Provenance Colophon, Preface, Executive Summary
+% =============================================================================
+\pagenumbering{Alph}
+\begin{titlepage}
+\centering
+\vspace*{0.4cm}
+{\scshape\large Project CausalFade Research Archive \par}
+\vspace{0.45cm}
+{\color{cfnavy}\rule{\textwidth}{1.8pt}\par}
+\vspace{0.4cm}
+{\Huge\bfseries\color{cfnavy} The Life of CausalFade \par}
+\vspace{0.3cm}
+{\large\itshape\color{cfteal} A Scientific Retrospective of Hypotheses, Experiments, Failures,\\Methodological Evolution, and Discovery \par}
+\vspace{0.4cm}
+{\color{cfnavy}\rule{\textwidth}{1.8pt}\par}
+\vspace{0.75cm}
+
+{\normalsize
+\begin{tabular}{@{}ccc@{}}
+\textbf{\large\color{cfnavy} Mutasim ur Rehman} &
+\textbf{\large\color{cfnavy} Ahmad Raza} &
+\textbf{\large\color{cfnavy} Umar Asghar} \\[3pt]
+\footnotesize\href{mailto:i242514@isb.nu.edu.pk}{\texttt{i242514@isb.nu.edu.pk}} &
+\footnotesize\href{mailto:i242574@isb.nu.edu.pk}{\texttt{i242574@isb.nu.edu.pk}} &
+\footnotesize\href{mailto:i242532@isb.nu.edu.pk}{\texttt{i242532@isb.nu.edu.pk}}
+\end{tabular}\par}
+\vspace{0.35cm}
+{\small\color{cfslate}
+Department of Artificial Intelligence \& Data Science,\\
+National University of Computer and Emerging Sciences (FAST-NUCES),\\
+Islamabad, Pakistan\par}
+
+\vspace{0.85cm}
+
+{\footnotesize
+\begin{tabular}{@{}p{4.3cm}p{10.8cm}@{}}
+\textbf{Document Genre:} & Comprehensive Scientific Monograph \& Reproducibility Audit \\
+\textbf{Source Repository:} & \texttt{project-causalfade} (\texttt{origin/main}) \\
+\textbf{Audited Snapshot Commit:} & \nolinkurl{b7371530caa62d6e43a8e83ef6db361f6640f63a} \\
+\textbf{Annotated Release Tag:} & \texttt{cohort-029-v1.0.0} (\nolinkurl{76206c259caa488668a7556ce1bc53cb35d220da}) \\
+\textbf{Inception Commit:} & \nolinkurl{4e2fe4f53370c05878476ed0363bf472fcd34d17} (2026-10-28) \\
+\textbf{Historical Span:} & October 28, 2026 -- November 25, 2026 (320 Git commits) \\
+\textbf{Empirical Scope:} & 1 Pre-LLM Validation Suite + 30 Cohort Units (\texttt{001}--\texttt{029}, incl.\ \texttt{025.1}) \\
+\textbf{Run Directories:} & 71 Local LLM Execution Runs + 3 Analytical/Synthetic Suites \\
+\textbf{Scheduled Inference Items:} & 48,208 LLM Requests (48,170 Persisted Raw Responses) \\
+\textbf{Evaluated Model Lineages:} & Qwen2.5 (3B, 7B, 14B), Mistral-7B-v0.3, Meta-Llama-3.1-8B \\
+\textbf{Quantization Formats:} & \texttt{F16}, \texttt{Q8\_0}, \texttt{Q6\_K}, \texttt{Q5\_K\_M}, \texttt{Q4\_K\_M}, \texttt{Q3\_K\_M}, \texttt{Q2\_K}
+\end{tabular}
+}
+
+\vfill
+{\footnotesize\color{cfslate}
+Prepared as a standalone historical, pedagogical, and methodological record.\\
+No historical experimental artifacts or manuscript files were modified during this audit.\\
+All newly calculated descriptive statistics are explicitly labeled as retrospective.\par}
+\end{titlepage}
+\pagenumbering{roman}
+
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+
+Published machine learning papers almost universally present science in reverse. They open with the final benchmark, state the surviving mathematical abstraction as if it had been obvious from day one, report the last confirmatory table, and relegate months or weeks of falsified hypotheses, broken parsers, degenerate baselines, and shortcut discoveries to a paragraph of ``ablations''---or omit them altogether. For fellow researchers and students learning how empirical artificial intelligence research actually works, that editorial compression hides the most instructive part of the scientific enterprise: \emph{how an attractive but under-controlled hypothesis collides with reality and is systematically forced to evolve}.
+
+This monograph tells the complete, unvarnished story of \textbf{Project CausalFade}, an intensive research campaign conducted across 320 Git commits between October 28, 2026 and November 25, 2026 (audited at snapshot commit \nolinkurl{b7371530caa62d6e43a8e83ef6db361f6640f63a}). Remarkably, the repository preserved virtually its entire experimental archaeology---zero tracked files were deleted or renamed across all 320 commits---retaining 30 experimental cohort directories (\texttt{cohort\_001} through \texttt{cohort\_029}, including \texttt{cohort\_025\_1}), a 3,600-fit synthetic pre-LLM design validation suite (\texttt{results/design\_validation/}), 71 LLM run directories containing $48{,}170$ persisted raw responses out of $48{,}208$ scheduled inference requests, contemporaneous decision ledgers, internal audits, invalidated pilot traces, and the final two-part research manuscript package (\texttt{manuscript/}).
+
+\section*{Who This Monograph Is Written For}
+
+We wrote this book simultaneously for two audiences:
+\begin{enumerate}
+  \item \textbf{University students and newcomers to causal AI} who possess foundational familiarity with probability, linear algebra, and machine learning, but have never previously studied Pearl's structural causal models, $\doop$-calculus, transportability across target populations, multinomial processing trees, or GGUF post-training quantization.
+  \item \textbf{Active researchers, faculty, and reproducibility auditors} in causal inference, natural language processing, and LLM evaluation who want complete artifact-level transparency, exact SHA-256 provenance, verbatim prompt and response traces, and rigorous separation of exploratory diagnostics from confirmatory claims.
+\end{enumerate}
+
+To serve both groups without sacrificing mathematical precision, core theoretical and methodological concepts in Chapters~3, 4, and 21 follow a \textbf{six-layer pedagogical architecture}: (1) an intuitive plain-language explanation, (2) a formal scientific definition, (3) exact mathematical equations, (4) concrete instantiation inside CausalFade, (5) actual empirical evidence from the cohorts, and (6) scientific limitations and failure modes. Whenever we construct a simplified numerical illustration purely for teaching purposes rather than quoting an archived cohort world, we explicitly enclose it in a \textbf{Constructed Teaching Example} block so historical boundaries remain unmistakable.
+
+\section*{Epistemic Commitments and Audit Rules}
+
+Every chapter in this monograph adheres to twelve non-negotiable evidentiary rules:
+\begin{itemize}
+  \item \textbf{Zero fabrication:} No experiments, motivations, discussions, citations, or events are invented. Where the archive does not record why a choice was made (for example, why \texttt{Qwen2.5-7B Q4\_K\_M} was selected as the sole confirmatory model in Cohort~029 rather than \texttt{F16}), we explicitly state that the motivation is \emph{undocumented in repository records}.
+  \item \textbf{Artifact immutability:} No historical experimental files were altered or re-executed, and the final manuscript in \texttt{manuscript/} remains completely untouched.
+  \item \textbf{Prospective vs.\ retrospective separation:} Every hypothesis is classified as \emph{documented prospective}, \emph{exploratory}, \emph{retrospective}, or \emph{undocumented}. Post-hoc discoveries---most notably the retrospective proof that a source-blind smaller-gap heuristic solves $768/768$ items in Cohort~016---are never presented as if the researchers knew them at the time of execution.
+  \item \textbf{No false triumphalism:} CausalFade did \emph{not} prove its founding hypothesis that post-training quantization selectively erodes causal reasoning, nor did its final confirmatory protocol (\texttt{CF-TP1}) detect an incremental penalty of causal framing beyond matched weighted arithmetic ($\widehat{\Delta} = -3.52\pp$, Welch $t$ 95\% CI $[-7.77, +0.74]\pp$). We treat this negative and diagnostic arc not as a blemish to be disguised, but as a premier case study in scientific self-correction.
+  \item \textbf{Transparent discrepancy reporting:} Where human-written summaries disagree with machine-verified raw journals---including a manual transcription error in \texttt{experiments/cohort\_029/release/RESULTS.md} regarding directional off/on counts---we exhibit both numbers side by side and prove the ground truth from raw SHA-256-verified event logs.
+\end{itemize}
+
+\chapter*{Executive Summary}
+\addcontentsline{toc}{chapter}{Executive Summary}
+
+Project CausalFade began on October 28, 2026 with a compelling, intuitive hypothesis (\texttt{H01}): when large language models (LLMs) are compressed via post-training weight quantization (such as 4-bit \texttt{Q4\_K\_M} or 2-bit \texttt{Q2\_K} GGUF formats), do they lose the capacity to adjust for confounding variables faster than they lose surface associative fluency, causing compressed models to fall back on spurious correlations? Formally, the initial proposal defined a \emph{ConflictPenalty} comparing confounded versus unconfounded backdoor adjustment problems and predicted that quantization would inflate that penalty relative to half-precision (\texttt{F16}) baselines.
+
+Over the next twenty-nine days and thirty experimental cohorts ($48{,}208$ scheduled LLM requests across \texttt{Qwen2.5-3B/7B/14B-Instruct}, \texttt{Mistral-7B-Instruct-v0.3}, and \texttt{Meta-Llama-3.1-8B-Instruct}), every layer of that initial formulation was subjected to empirical stress testing---and nearly every assumption broke in instructive ways:
+
+\begin{enumerate}
+  \item \textbf{Formatting, Truncation, and Degeneracy Masqueraded as Reasoning Loss (Cohorts 001--004):} In Cohort~001, \texttt{Qwen2.5-3B F16} scored $0/192$ under strict JSON parsing solely because it wrapped valid JSON inside Markdown code fences (\texttt{```json}), whereas \texttt{Q4\_K\_M} emitted bare JSON on $8/192$ items, creating an illusory quantization ``advantage.'' Stripping fences revealed identical $35/64$ exact-table accuracy for \texttt{F16} and \texttt{Q4\_K\_M}, while \texttt{Q2\_K} suffered total token-loop collapse ($64/64$ length-capped gibberish), which Cohort~003 proved was invariant to \texttt{llama-server} CPU weight-repacking flags.
+  \item \textbf{Psychometric Processing Trees Failed Identifiability and Additivity Checks (\texttt{design\_validation} \& Cohort 005):} Before and alongside early LLM runs, a 3,600-fit synthetic parameter-recovery study demonstrated that the proposed three-parameter Causal/Associative/Bias ($C/A/B$) multinomial processing tree is observationally equivalent on four cells to symmetric logistic cue integration ($p_{\text{boot}} = 0.433$). Empirically, Cohort~005 \texttt{F16} violated the homogeneous tree's core zero-interaction constraint ($p_{11}-p_{10}-p_{01}+p_{00}=0$) by $-43.75\pp$.
+  \item \textbf{Numeric Estimation Dissociated Sharply from Binary Action Commitment (Cohorts 002, 006--012):} Giving \texttt{Qwen2.5-3B} the explicit backdoor standardization formula raised \texttt{F16} numeric ATE sign accuracy from $34/64$ to $61/64$ ($95.3\%$) and revealed a real formula-execution drop at \texttt{Q4\_K\_M} ($45/64$ in Cohort~006; replicated on fresh families as $46/48$ vs.\ $31/48$, $-31.25\pp$, in Cohort~007). Yet on the \emph{exact same prompts}, \texttt{F16} selected \texttt{decline} (\texttt{activate=0}) on $64/64$ items ($50.0\%$ action accuracy), ignoring its own correctly computed positive treatment effects!
+  \item \textbf{A Spectacular Prospective Confirmation Was Retrospectively Invalidated by a Magnitude Shortcut (Cohorts 013--017):} Switching to two-study evidence selection (randomized trial vs.\ confounded historical log) produced a striking prospective replication in Cohort~016 on $96$ fresh families: \texttt{Qwen2.5-7B Q4\_K\_M} swung by $+62.5\pp$ depending on study order ($175/192 = 91.1\%$ when historical data appeared first vs.\ $55/192 = 28.6\%$ when randomized data appeared first; $t_{95}=21.10$, $p=1.24\times 10^{-37}$). However, Cohort~017 failed to generalize this pattern to \texttt{14B} ($-4.17\pp$ and $0.00\pp$), and a subsequent retrospective audit (\texttt{manuscript/scripts/extract.py}) uncovered a fatal benchmark flaw: because every true causal effect had $|\tau| \in [6, 12)\pp$ while every confounded gap had $|\delta_{\text{obs}}| \in [38, 46)\pp$, a source-blind heuristic choosing the sign of the \emph{smaller printed gap} solved $768/768$ ($100\%$) of Cohort~016 items without reading which study was randomized.
+  \item \textbf{Component Causal Knowledge Did Not Induce Causal Decisions (Cohorts 018--023):} Decomposing tasks into sub-skills showed that \texttt{Qwen2.5-7B F16} could identify the randomized study as the governing source with $128/128$ ($100\%$) accuracy and read single-study randomized outcomes at $30/32$ ($93.8\%$), yet collapsed to $58/128$ ($45.3\%$) on two-source decisions---and remained stuck at $58/128$ even when the prompt explicitly reminded it to use only the governing source ($11$ gains offset by $11$ losses).
+  \item \textbf{Cross-Lineage 21-Arm Matrix Exposed Control Failures and Option-Position Policies (Cohorts 024--025.1):} Evaluating $3\text{ lineages}\times 7\text{ GGUF formats}$ across $30{,}912$ scheduled requests in Cohort~024 revealed that zero of 21 arms passed pre-specified diagnostic gates: \texttt{Mistral-7B F16} obeyed a pure first-option policy ($256/256$ first listed option; $6/128$ semantic invariance), \texttt{Qwen} and \texttt{Llama} failed harmful-direction noncausal controls ($<75\%$), and \texttt{Llama-3.1-8B Q4\_K\_M} suffered $448$ length-capped verbose failures exclusively on noncausal control prompts while achieving $256/256$ valid JSON on causal conflict items.
+  \item \textbf{Observational Equivalence and Calculator Offloading Pinpointed Structural Identification Failure (Cohorts 026--028):} Holding the 8-cell joint distribution $P(W,X,Y)$ exact-rational identical while toggling only whether $W$ was a pre-treatment confounder or post-treatment mediator yielded $0/8$ order-robust paired switch fidelity across four \texttt{F16} models in Cohort~027 (after fixing a Cohort~026 v1 $Y$-complement bug and v2/v3 option-order coupling). In Cohort~028, offloading arithmetic to a deterministic Python calculator (\texttt{System C}) rescued matched noncausal named-rule tasks (\texttt{Qwen} $58/128 \to 128/128$, $+54.69\pp$; \texttt{Llama} $68/128 \to 112/128$, $+34.38\pp$) while leaving causal graph-switch accuracy near chance (\texttt{Qwen} $65 \to 68/128$, $+2.34\pp$; \texttt{Llama} $71 \to 60/128$, $-8.59\pp$) because models selected the right adjustment rule (\texttt{marginal} vs.\ \texttt{conditional}) only $\sim 50\%$ of the time.
+  \item \textbf{The Final Confirmatory Protocol (\texttt{CF-TP1}, Cohort 029) Revealed Near-Total Target-Transport Collapse alongside Matched Arithmetic Failure:} Rebuilt from exact rational arithmetic with pre-registered hashes, $162$-policy shortcut audits, matched weighted-scorecard controls, and pairwise reversal/invariance scoring across $128$ families ($4{,}096/4{,}096$ valid responses on \texttt{Qwen2.5-7B Q4\_K\_M}), Cohort~029 found transfer causal target-pair fidelity of $128/512$ ($25.00\%$) versus matched arithmetic fidelity of $146/512$ ($28.52\%$), $\widehat{\Delta} = -3.52\pp$ (Welch $t$ 95\% CI $[-7.77, +0.74]\pp$; conservative bounded CI $[-27.52, +20.49]\pp$). Crucially, pairwise directional decomposition exposed two qualitatively distinct failure modes behind similar aggregate scores: under causal framing, the model defaulted to \texttt{activate=1} on $995/1{,}024$ transfer items ($97.17\%$), achieving only $3/256$ ($1.17\%$) valid target-mix reversals; under matched arithmetic framing, it activated on $597/1{,}024$ items ($58.30\%$), executing $27/256$ ($10.55\%$) valid reversals alongside $45/256$ unwarranted flips on invariant pairs.
+\end{enumerate}
+
+Ultimately, CausalFade's lasting scientific contribution is not a claim about quantization degrading causal circuits, but a rigorous \textbf{diagnostic methodology and cautionary proof}: single-item accuracy and unmatched causal benchmarks routinely confuse default action priors, option-position heuristics, magnitude shortcuts, and multi-step weighted-aggregation failures with genuine interventional reasoning.

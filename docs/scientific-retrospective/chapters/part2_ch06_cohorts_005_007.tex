@@ -1,0 +1,154 @@
+% =============================================================================
+% Part II, Chapter 6: Cohorts 005--007
+% =============================================================================
+\chapter{Processing-Tree Falsification and Formula-Assisted Dissociation (Cohorts 005--007)}\label{ch:cohorts_005_007}
+
+Having discovered in Cohorts~001--004 that direct 4-stratum backdoor tables overwhelmed single-pass decision accuracy even at \texttt{7B F16}, while explicit formulas in Cohort~002 exposed a sharp $-25\pp$ \texttt{Q4\_K\_M} numeric sign drop alongside a $0/64$ action collapse, the researchers pursued two focused questions in Cohorts~005--007: (1) What happens when arithmetic is removed by supplying pre-aggregated randomized and historical rates directly, and does the CNI/$C/A/B$ processing tree fit real LLM choices? (2) Does the formula-execution drop at \texttt{3B Q4\_K\_M} spare \texttt{Q8\_0} and replicate prospectively on fresh SCM families?
+
+% =============================================================================
+\section{Cohort 005: Supplied-Rate Source Selection and C/A/B Tree Falsification}
+
+\subsection*{1. Historical Context}
+In Cohorts~001 and 004, models failed to compute $\Prob(Y=1\mid \doop(X=x))$ from stratified observational tables. Cohort~005 stripped away stratum arithmetic entirely: each prompt supplied both the exact randomized-trial rates (identifying $\Prob(Y=1\mid \doop(X=x))$) and the confounded historical rates ($\Prob(Y=1\mid X=x)$), asking only for binary JSON \texttt{\{"activate": 0/1\}}.
+
+\subsection*{2. Research Question}
+When interventional and observational rates are supplied directly without stratum arithmetic, can \texttt{Qwen2.5-3B F16} select the randomized source over confounded history, how does \texttt{Q4\_K\_M} compare, and do observed $2\times 2$ cell rates satisfy the $C/A/B$ multinomial processing tree?
+
+\subsection*{3. Hypothesis}
+\textbf{Classification:} \emph{Exploratory diagnostic of \texttt{H01} and \texttt{H02}.} Expected \texttt{F16} to prefer randomized trial evidence, \texttt{Q4\_K\_M} to exhibit a larger conflict penalty, and $2\times 2$ activation rates to satisfy $p_{11} - p_{10} - p_{01} + p_{00} = 0$.
+
+\subsection*{4. Experimental Design}
+\begin{itemize}
+  \item \textbf{Arms:} \texttt{Qwen2.5-3B-Instruct} \texttt{F16} (\texttt{run\_001\_f16}) and \texttt{Q4\_K\_M} (\texttt{run\_001\_q4\_k\_m}).
+  \item \textbf{Sample:} $16$ development families $\times 4$ $(T,S)$ cells $= 64$ single-key prompts/arm ($128$ total requests). Study display order (randomized-first vs.\ historical-first) was assigned at the family level.
+\end{itemize}
+
+\subsection*{5. Mathematical Formulation}
+Under the homogeneous $C/A/B$ tree~\eqref{eq:cab_tree}, activation rates $p_{TS} = \Prob(\text{act}=1\mid T,S)$ must satisfy $\mathcal{I}_{\mathrm{tree}} = p_{11} - p_{10} - p_{01} + p_{00} = 0$, and the aligned-minus-conflict accuracy penalty equals $w_A = (1-C)A$ only when $B$ does not interact with cell order.
+
+\subsection*{6. Experimental Execution}
+Completed November 10, 2026 (commit \texttt{4e90b24}). Every output stopped normally in $14$ tokens with a single fenced JSON object (\texttt{```json ... \{"activate": 1\} ```}; $0/64$ strict bare JSON, $64/64$ single-fence valid).
+
+\subsection*{7. Results}
+\emph{(Contemporaneous statistics from \texttt{experiments/cohort\_005/summary.md} and \texttt{source\_and\_tree\_diagnostics.json}.)}
+\begin{itemize}
+  \item \textbf{Paradoxical Reversal of the Conflict Penalty:}
+    \begin{itemize}
+      \item \texttt{F16}: $39/64$ ($60.94\%$) overall, with \textbf{$28/32$ ($87.50\%$)} aligned vs.\ \textbf{$11/32$ ($34.38\%$)} conflict ($\mathrm{ConflictPenalty}(\text{\texttt{F16}}) = +53.125\pp$), choosing \texttt{activate=1} on $47/64$ items and following the misleading historical direction on $21/32$ conflict items!
+      \item \texttt{Q4\_K\_M}: $35/64$ ($54.69\%$) overall, with \textbf{$19/32$ ($59.38\%$)} aligned vs.\ \textbf{$16/32$ ($50.00\%$)} conflict ($\mathrm{ConflictPenalty}(\text{\texttt{Q4\_K\_M}}) = +9.375\pp$), choosing \texttt{activate=1} on \textbf{$61/64$ items ($95.3\%$)}!
+      \item Thus $\Delta(\text{\texttt{Q4\_K\_M}}) = \mathrm{ConflictPenalty}(\text{\texttt{Q4\_K\_M}}) - \mathrm{ConflictPenalty}(\text{\texttt{F16}}) = \mathbf{-43.75\pp}$ (paired 16-family percentile 95\% CI $[-65.63, -21.88]\pp$)---the \emph{exact opposite sign} of founding hypothesis \texttt{H01}, driven entirely by \texttt{Q4\_K\_M} collapsing to near-constant activation!
+    \end{itemize}
+  \item \textbf{Decisive Empirical Falsification of the $C/A/B$ Tree:} On \texttt{F16}, the additivity residual $\widehat{\mathcal{I}}_{\mathrm{tree}} = \hat{p}_{11} - \hat{p}_{10} - \hat{p}_{01} + \hat{p}_{00}$ was \textbf{$-43.75\pp$} (paired 16-family 95\% CI $[-68.75, -18.75]\pp$; \texttt{Q4\_K\_M} residual $-18.75\pp$, CI $[-37.50, 0.00]\pp$).
+  \item \textbf{Discovery of Two Structural Confounds:} Post-hoc inspection in \texttt{summary.md} caught two critical clues: (i) when historical evidence was listed first ($10$ conflict items), \texttt{F16} followed history on $10/10$ ($0\%$ conflict accuracy), whereas when randomized evidence was listed first ($22$ conflict items), \texttt{F16} activated on $22/22$ ($11/22$ correct); and (ii) the original generator produced larger observational gaps in aligned items ($57.10\pp$) than in conflict items ($38.04\pp$) despite matched $9.53\pp$ causal gaps.
+\end{itemize}
+
+\subsection*{8. Interpretation at the Time}
+Cohort~005 was an immediate intellectual watershed (\texttt{D05}): the researchers explicitly rejected interpreting \texttt{Q4\_K\_M}'s $-43.75\pp$ smaller conflict penalty as ``better causal reasoning,'' formally retired homogeneous $C/A/B$ processing-tree parameter reporting due to the $-43.75\pp$ additivity failure, and flagged both within-item presentation order and observational-gap imbalance for dedicated follow-up.
+
+\subsection*{9. Retrospective Interpretation}
+Few moments in CausalFade better illustrate scientific integrity. A careless team looking only at conflict accuracy ($16/32$ \texttt{Q4\_K\_M} vs.\ $11/32$ \texttt{F16}) or $\Delta(\text{\texttt{Q4\_K\_M}}) = -43.75\pp$ might have spun a flashy claim that ``quantization acts as regularization against confounding.'' Checking total activation counts ($61/64$) and tree additivity immediately exposed that illusion.
+
+\subsection*{10. Methodological Limitations}
+Presentation order was assigned at the family level rather than crossed within each item; observational gap magnitudes differed between aligned and conflict cells.
+
+\subsection*{11. Scientific Contribution}
+\emph{Methodological refutation (\texttt{H02} $C/A/B$ tree retired) \& benchmark artifact discovery (action-bias inversion of $\mathrm{ConflictPenalty}$, order sensitivity, and aligned/conflict gap asymmetry).}
+
+\subsection*{12. Transition to Subsequent Research}
+Directly motivated Cohorts~008--010 (within-item source-order reversal) and Cohort~011 (matched observational-strength generator).
+
+\subsection*{13. Evidence and Reproducibility}
+Artifacts: \texttt{experiments/cohort\_005/summary.md}, \texttt{f16\_vs\_q4\_k\_m\_source\_selection.json}, \texttt{source\_and\_tree\_diagnostics.json}; commit \texttt{4e90b24}.
+
+% =============================================================================
+\section{Cohort 006: \texttt{3B Q8\_0} Intermediate-Precision Formula Follow-Up}
+
+\subsection*{1. Historical Context}
+Cohort~002 had found a $-25.0\pp$ drop in numeric ATE sign accuracy from \texttt{3B F16} ($61/64$) to \texttt{3B Q4\_K\_M} ($45/64$) when the backdoor formula was explicitly provided. Before testing fresh families, the researchers checked whether moderate 8-bit quantization (\texttt{Q8\_0}, $\approx 8.5\;\BPW$) preserved \texttt{F16}'s numeric execution.
+
+\subsection*{2. Research Question}
+Does \texttt{Qwen2.5-3B Q8\_0} match \texttt{F16} or degrade toward \texttt{Q4\_K\_M} on formula-given numeric ATE sign accuracy and explicit binary action selection?
+
+\subsection*{3. Hypothesis}
+\textbf{Classification:} \emph{Exploratory intermediate-precision check (\texttt{H04}).} Based on \citet{liu2025hurts}, expected 8-bit quantization to preserve \texttt{F16} arithmetic closely while outperforming \texttt{Q4\_K\_M}.
+
+\subsection*{4. Experimental Design}
+Single new arm (\texttt{qwen2.5-3b-instruct-q8\_0.gguf}, \texttt{run\_001\_q8\_0}) executed on the exact $64$-prompt Cohort~002 schedule and compared paired-by-task against archived Cohort~002 \texttt{F16} and \texttt{Q4\_K\_M}.
+
+\subsection*{5. Mathematical Formulation}
+Identical explicit standardization formula $\hat{\tau} = 0.5(p_{10}-p_{00}) + 0.5(p_{11}-p_{01})$ as Cohort~002.
+
+\subsection*{6. Experimental Execution}
+Completed November 10, 2026 (commit \texttt{09cf43b}); all $64$ responses stopped normally inside single \texttt{```json} fences ($0/64$ strict bare JSON; $64/64$ fence-valid).
+
+\subsection*{7. Results}
+\begin{itemize}
+  \item \textbf{Exact Tie With \texttt{F16} on Numeric Signs:} \texttt{Q8\_0} achieved \textbf{$61/64$ ($95.31\%$)} correct ATE signs ($29/32$ aligned, $32/32$ conflict)---tying \texttt{F16} ($61/64$, paired difference $0.00\pp$, 16-family percentile 95\% CI $[-4.69, +4.69]\pp$, with $1$ item gained and $1$ lost) and outperforming \texttt{Q4\_K\_M} ($45/64$) by \textbf{$+25.00\pp$} (95\% CI $[+12.50, +35.94]\pp$).
+  \item \textbf{Identical $100\%$ Decline Collapse on Actions:} Like \texttt{F16}, \texttt{Q8\_0} output \texttt{"activate": 0} on \textbf{$64/64$ items}, scoring $32/64$ ($50.0\%$) on explicit actions and disagreeing with its own positive numeric ATE estimates on $29/64$ items!
+\end{itemize}
+
+\subsection*{8. Interpretation at the Time}
+Confirmed that the 3B formula-execution degradation occurs between $8$-bit (\texttt{Q8\_0}) and $4$-bit (\texttt{Q4\_K\_M}) compression, while proving that the $100\%$ \texttt{decline} action collapse is an architecture/prompt-level behavior shared across \texttt{F16} and \texttt{Q8\_0}.
+
+\subsection*{9. Retrospective Interpretation}
+Reinforces two consistent lessons: 8-bit GGUF quantization (\texttt{Q8\_0}) was behaviorally indistinguishable from \texttt{F16} on formula execution, and numeric estimation vs.\ binary commitment behaved as two separate output heads under multi-key JSON prompts.
+
+\subsection*{10. Methodological Limitations}
+Reused the $16$ development families from Cohorts~001--002; single-fence parsing required.
+
+\subsection*{11. Scientific Contribution}
+\emph{Positive empirical finding (localized arithmetic drop to $<8$ bits) \& replication of numeric-action dissociation.}
+
+\subsection*{12. Transition to Subsequent Research}
+Because Cohorts~002 and 006 both reused the original $16$ development families, Cohort~007 tested whether the \texttt{F16}-vs.-\texttt{Q4\_K\_M} formula-sign gap replicated prospectively on freshly sampled SCM families.
+
+\subsection*{13. Evidence and Reproducibility}
+Artifacts: \texttt{experiments/cohort\_006/summary.md}, \texttt{run\_001\_f16\_vs\_q8\_0\_estimate\_sign.json}, \texttt{run\_002\_q4\_k\_m\_vs\_q8\_0\_estimate\_sign.json}; commit \texttt{09cf43b}.
+
+% =============================================================================
+\section{Cohort 007: Fresh-Family Replication of the \texttt{3B} Formula-Sign Deficit}
+
+\subsection*{1. Historical Context}
+In Cohort~002, scoring the sign of \texttt{ate\_estimate} had been introduced post-hoc after observing explicit action collapse. Scientific rigor required testing that metric \emph{prospectively} on newly generated families untouched by prior prompt tuning.
+
+\subsection*{2. Research Question}
+Does \texttt{Qwen2.5-3B Q4\_K\_M}'s deficit in formula-given numeric ATE sign accuracy relative to \texttt{F16} replicate on an independent sample of fresh SCM families?
+
+\subsection*{3. Hypothesis}
+\textbf{Classification:} \emph{Documented prospective fresh-family replication (\texttt{H04}).} Predicted $\mathrm{SignAcc}(\text{\texttt{Q4\_K\_M}}) < \mathrm{SignAcc}(\text{\texttt{F16}})$ on fresh worlds without claiming selective causal-conflict vulnerability.
+
+\subsection*{4. Experimental Design}
+\begin{itemize}
+  \item \textbf{Arms:} \texttt{Qwen2.5-3B-Instruct} \texttt{F16} (\texttt{run\_001\_f16}) and \texttt{Q4\_K\_M} (\texttt{run\_001\_q4\_k\_m}).
+  \item \textbf{Sample:} $12$ freshly generated SCM families (\texttt{seed=20261111}) $\times 4$ $(T,S)$ cells $= 48$ formula-assisted prompts/arm ($96$ total requests).
+\end{itemize}
+
+\subsection*{5. Mathematical Formulation}
+Paired family-cluster mean difference $\widehat{\Delta}_{\mathrm{sign}} = \frac{1}{12}\sum_{i=1}^{12} (\bar{Y}_{i,\text{\texttt{Q4}}} - \bar{Y}_{i,\text{\texttt{F16}}})$ over $4$-item family clusters, with paired percentile bootstrap 95\% confidence intervals.
+
+\subsection*{6. Experimental Execution}
+Completed November 10, 2026 (commit \texttt{12c7667}); $96/96$ normal stops inside single \texttt{```json} fences.
+
+\subsection*{7. Results}
+\begin{itemize}
+  \item \textbf{Prospective Replication Confirmed:} \texttt{F16} achieved \textbf{$46/48$ ($95.83\%$)} numeric ATE sign accuracy vs.\ \texttt{Q4\_K\_M\textbf{'s }$31/48$ ($64.58\%$)\textbf{---a paired difference of }$-31.25\pp$} (95\% paired family CI $[-41.67, -20.83]\pp$), exceeding Cohort~002's $-25.00\pp$ developmental effect!
+  \item \textbf{Action Collapse Persisted Unchanged:} Explicit binary actions remained stuck at chance due to \texttt{decline} bias: \texttt{F16} scored \textbf{$24/48$ ($50.00\%$)} ($0/48$ \texttt{activate=1}) and \texttt{Q4\_K\_M} scored \textbf{$28/48$ ($58.33\%$)}.
+\end{itemize}
+
+\subsection*{8. Interpretation at the Time}
+Established a genuine, prospectively replicated 4-bit quantization degradation in 3B multi-term decimal formula evaluation, while confirming that explicit binary action fields remained unusable under the 3-key formula scaffold.
+
+\subsection*{9. Retrospective Interpretation}
+Cohort~007 stands as one of only two cleanly replicated quantization effects across all 29 cohorts (alongside Cohort~016's 7B order effect)---and notably, it is a \emph{noncausal arithmetic execution effect}, not a causal identification effect.
+
+\subsection*{10. Methodological Limitations}
+Restricted to one 3B checkpoint family and explicit algebraic instructions rather than autonomous causal reasoning.
+
+\subsection*{11. Scientific Contribution}
+\emph{Positive empirical finding:} Prospectively replicated $-31.25\pp$ 4-bit arithmetic sign degradation on fresh families while confirming persistent numeric-action dissociation.
+
+\subsection*{12. Transition to Subsequent Research}
+Having closed the 3B formula-arithmetic loop, the researchers returned to Cohort~005's unfinished causal question: why did two-study source selection shift so sharply with presentation order?
+
+\subsection*{13. Evidence and Reproducibility}
+Artifacts: \texttt{experiments/cohort\_007/summary.md}, \texttt{f16\_vs\_q4\_k\_m\_fresh\_formula.json}, \texttt{run\_001\_*/raw\_responses.jsonl}; commit \texttt{12c7667}.

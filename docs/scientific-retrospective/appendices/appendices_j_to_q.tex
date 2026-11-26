@@ -1,0 +1,125 @@
+% =============================================================================
+% Appendices J through Q
+% =============================================================================
+
+\chapter{Artifact Verification Report and Claim Map}\label{app:verification}
+During Phase~I of this retrospective investigation, every cohort directory, manifest, raw JSONL log, and manuscript extraction script in \texttt{d:/project-causalfade} was audited programmatically (\texttt{scripts/build\_inventories.py} and \texttt{scripts/generate\_evidence\_ledgers.py}). Key verification invariants confirmed at snapshot commit \nolinkurl{b7371530caa62d6e43a8e83ef6db361f6640f63a} include:
+\begin{itemize}
+  \item \textbf{Git Repository Integrity:} \texttt{git pull --ff-only} verified clean parity with \texttt{origin/main} (\texttt{b7371530...}); $320$ total commits from \texttt{4e2fe4f5...} (2026-10-28) to \texttt{b7371530...} (2026-11-26); annotated tag \texttt{cohort-029-v1.0.0} = \texttt{76206c25...}; \textbf{$0$ deleted or renamed tracked files} across the entire commit graph.
+  \item \textbf{Raw Response Accounting:} Across all $71$ local LLM run directories, exactly \textbf{$48{,}208$} inference requests were scheduled and \textbf{$48{,}170$} raw records were persisted. The $38$-record difference is $100\%$ accounted for by \texttt{experiments/cohort\_008/run\_001\_f16} ($26/64$ persisted due to workstation shutdown, cleanly re-executed in \texttt{run\_002\_f16}).
+  \item \textbf{Cohort 029 Cryptographic Chain:} Verified \texttt{freeze/manifest.json} SHA-256 = \nolinkurl{5252f69d30a0a5bb65a5efa669458e325c0531f25ab55f768531c7ca29f4c766} and \texttt{runs/confirmatory/events.jsonl} SHA-256 = \nolinkurl{673eb723637614dc8b94875f2e8c4e9e20234c1d179c992791853797875977bd}, with all $4{,}096$ base64 response digests matching \texttt{response\_sha256} and reproducing \texttt{primary.json} within $< 10^{-12}$.
+\end{itemize}
+Table~\ref{tab:claim_evidence} maps twenty core claims of this monograph directly to primary repository artifacts.
+
+\input{tables/tab_claim_evidence}
+
+% =============================================================================
+\chapter{Known Methodological Limitations Catalog}\label{app:limitations}
+To aid external researchers building on CausalFade, we catalog below all verified methodological limitations across the archive:
+\begin{enumerate}
+  \item \textbf{Aligned vs.\ Conflict Observational Magnitude Imbalance (Cohorts 001--010):} Fixed confounding multiplier produced wider observational spreads on aligned items ($57.10\pp$) than conflict items ($38.04\pp$); repaired in Cohort~011 (\texttt{M06}).
+  \item \textbf{Between-Source Magnitude Separation Shortcut (Cohorts 011--017):} Equalizing aligned/conflict historical spreads left $|\tau| \in [6,12)\pp < |\RD_{\mathrm{obs}}| \in [38,46)\pp$ everywhere, allowing a source-blind smaller-gap heuristic to solve $768/768$ Cohort~016 items; repaired via symmetric role-swapped synthesis in Cohort~029 (\texttt{M18}).
+  \item \textbf{Markdown Fence \& Punctuation Sensitivity (Cohorts 001--013, 026):} Strict bare-JSON or bare-token parsers penalized valid fenced JSON (001--012), post-JSON causal explanations (013), and trailing periods (\texttt{"X=1."} in Cohort~026 Llama v2); resolved via explicit negative formatting instructions and duplicate-rejecting single-key JSON schemas.
+  \item \textbf{Lexical and Symbolic Label Non-Invariance (Cohorts 018--019):} Reversing \texttt{activate=0/1} polarity caused a $-56.25\pp$ Stroop drop (018), while neutral \texttt{K}/\texttt{M} letters induced $+25.8\pp$ to $+36.7\pp$ first-code bias (019).
+  \item \textbf{Option-Order Coupling (Cohort 026 v2/v3):} Uncrossed option display order inflated \texttt{Llama 8B} decision-form switch fidelity to $6/8$, which fell to $0/8$ once counterbalanced in Cohort~027.
+  \item \textbf{Uncalibrated PTQ Scope (Cohorts 001--024):} Locally quantized GGUF weights used \texttt{llama-quantize} without importance matrices (\texttt{imatrix}) or QAT; low-bit collapse at \texttt{3B Q2\_K} does not bound calibrated QAT methods.
+  \item \textbf{Single-Checkpoint, Stateless No-Scratchpad Scope of Cohort 029:} \texttt{CF-TP1} confirmatory inference queried only \texttt{Qwen2.5-7B-Instruct Q4\_K\_M} without chain-of-thought tokens, calculator tools, or paired \texttt{F16}/frontier-model arms, and pre-run \texttt{blind\_review.json} records co-author review entries with \texttt{certified=false}.
+\end{enumerate}
+
+% =============================================================================
+\chapter{Failed, Interrupted, and Invalidated Runs}\label{app:failed_runs}
+In accordance with our non-omission rule, every interrupted, invalidated, parser-broken, or script-repaired execution in the repository is documented below:
+\begin{enumerate}
+  \item \textbf{\texttt{cohort\_001/run\_001\_q2\_k} ($64/64$ length-capped) \& \texttt{cohort\_003/run\_001\_default}, \texttt{run\_002\_no\_repack} ($16/16$ length-capped each):} Generative token-looping collapse in \texttt{Qwen2.5-3B Q2\_K}.
+  \item \textbf{\texttt{cohort\_008/run\_001\_f16} ($26/64$ persisted: $25$ complete + $1$ connection-interrupted error):} Halted on November 10, 2026 for workstation shutdown; preserved untouched alongside complete rerun \texttt{run\_002\_f16} ($64/64$).
+  \item \textbf{\texttt{cohort\_009}, \texttt{010}, \texttt{011} v1 Order-Summary Display Bug:} Post-processing divided displayed integer numerators/denominators by $2$ while computing proportions/intervals accurately; v1 JSON preserved and repaired in commit \texttt{b90cb63}.
+  \item \textbf{\texttt{cohort\_013/run\_001\_7b\_f16} Causal-Context Half ($0/64$ valid, $64/64$ length-capped):} Valid JSON followed by unsolicited causal explanations hitting the 160-token cap.
+  \item \textbf{\texttt{cohort\_017} Unattended Analyzer Crash:} Both \texttt{14B} inference runs finished $768/768$, but post-run Python lacked \texttt{numpy}; original error status preserved and analysis recovered in \texttt{analysis\_recovery.json} (commit \texttt{caf5b1d}).
+  \item \textbf{\texttt{cohort\_024/runs/llama8b\_q4\_k\_m} ($448$ length-capped noncausal control failures):} Verbose step-by-step prose emitted on noncausal controls despite JSON-only instruction ($1{,}024/1{,}472$ valid overall).
+  \item \textbf{\texttt{cohort\_026/invalidated\_pilot\_qwen\_v1} ($112$ calls, 06:54 UTC):} Invalidated immediately due to complemented-$Y$ arithmetic control oracle sign bug and stray prompt line; preserved intact.
+  \item \textbf{\texttt{cohort\_026/llama8b\_f16\_v2} ($48/112$ valid, 07:54 UTC):} Appended trailing period (\texttt{"X=1."}) on all $64$ action prompts; repaired in v3.
+  \item \textbf{Seven Lawfully Gate-Stopped Pipelines:} Cohorts~\texttt{004}, \texttt{012}, \texttt{018}, \texttt{019}, \texttt{026}, \texttt{027}, and \texttt{028} halted at reference/development gates without running downstream quantized or confirmation splits.
+  \item \textbf{\texttt{cohort\_029/release/RESULTS.md} Manual Prose Typo (lines 44--47):} Miswrote transfer directional counts (\texttt{121/512, 416/512} causal; \texttt{124/512, 397/512, 785} arithmetic) vs.\ machine-verified \texttt{14/512, 497/512, 995} and \texttt{231/512, 316/512, 597} in \texttt{events.jsonl}, \texttt{secondary.json}, and \texttt{manuscript/supplement.tex}.
+\end{enumerate}
+
+% =============================================================================
+\chapter{Reproducibility Instructions}\label{app:reproducibility}
+All inventories, vector figures, LaTeX tables, byte-level audit checks, and the compiled PDF monograph can be reproduced deterministically from the repository root (\texttt{d:/project-causalfade}) without re-running any LLM inference (\textbf{Python 3.11+} with \texttt{numpy}, \texttt{scipy}, \texttt{matplotlib}, and \textbf{Tectonic 0.15+} or \textbf{TeX Live}):
+
+\begin{lstlisting}
+# 1. Verify Cohort 029 & Cohort 016 byte-level manuscript assertions (optional check):
+python manuscript/scripts/extract.py
+
+# 2. Rebuild all machine-readable inventories & SHA-256 verification reports:
+python docs/scientific-retrospective/scripts/build_inventories.py
+python docs/scientific-retrospective/scripts/generate_evidence_ledgers.py
+
+# 3. Regenerate all 18 programmatic vector PDF figures (fig01--fig18):
+python docs/scientific-retrospective/scripts/generate_figures_conceptual.py
+python docs/scientific-retrospective/scripts/generate_figures_empirical.py
+
+# 4. Regenerate all 11 modular LaTeX tables:
+python docs/scientific-retrospective/scripts/generate_tables.py
+
+# 5. Compile the searchable, bookmarked PDF monograph (from docs/scientific-retrospective):
+cd docs/scientific-retrospective
+tectonic -o build main.tex
+\end{lstlisting}
+
+% =============================================================================
+\chapter{Repository Navigation Guide}\label{app:navigation}
+\begin{itemize}
+  \item \texttt{README.md}, \texttt{EXPERIMENTS.md}, \texttt{DECISIONS.md}, \texttt{PUBLICATION\_HANDOFF.md}: Top-level project overview, master experiment index, chronological decision log, and final release handoff notes.
+  \item \texttt{literature review/}: Initial Oct 28, 2026 14-paper literature archive, \texttt{paper\_manifest.json}, \texttt{EXECUTIVE\_SUMMARY.md}, and individual technical dossiers (\texttt{summaries/01\_\emph{.md}--\texttt{14\_}.md}).
+  \item \texttt{causalfade/} \& \texttt{tools/}: Core SCM generator, $C/A/B$ EM solver, HTTP runner, parser modules, and cohort-specific analysis scripts.
+  \item \texttt{results/design\_validation/}: Pre-LLM $3{,}600$-fit synthetic parameter-recovery suite and initial $192$-prompt testbed.
+  \item \texttt{experiments/cohort\_001/} $\dots$ \texttt{cohort\_029/} (including \texttt{cohort\_025\_1/}): Individual cohort archives containing manifests, schedules, raw \texttt{llama-server} completions, scored JSONs, and summaries.
+  \item \texttt{manuscript/}: Two-part final research paper (\texttt{article.tex}, \texttt{supplement.tex}), historical note (\texttt{history.tex}), byte-level extraction/plotting scripts, and \texttt{audit/claim-ledger.csv}.
+  \item \texttt{docs/scientific-retrospective/}: This standalone monograph, its 18 vector figures (\texttt{figures/}), 11 generated tables (\texttt{tables/}), 12 audit/inventory files (\texttt{evidence/}), reproducible Python scripts (\texttt{scripts/}), internal audit (\texttt{REVIEW\_REPORT.md}), and compiled PDF (\texttt{build/main.pdf} / \texttt{The\_Life\_of\_CausalFade.pdf}).
+\end{itemize}
+
+% =============================================================================
+\chapter{Mathematical Notation Reference}\label{app:notation}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+\textbf{Symbol} & \textbf{Mathematical Meaning} \\
+\midrule
+$\mathcal{M} = \langle \mathcal{U}, \mathcal{V}, \mathcal{F}, \Prob(\mathcal{U}) \rangle$ & Markovian Structural Causal Model with exogenous $\mathcal{U}$, endogenous $\mathcal{V}$, and structural equations $\mathcal{F}$. \\
+$\mathcal{G} = (\mathcal{V}, \mathcal{E})$, $\mathrm{pa}_j$ & Directed Acyclic Graph induced by $\mathcal{M}$, and direct parent set of node $V_j$. \\
+$\doop(X=x)$ & Pearl's atomic intervention operator replacing $X \coloneqq f_X(\mathrm{pa}_X, U_X)$ with constant $X \coloneqq x$. \\
+$A \Ind B \mid C$ & Conditional probabilistic independence of $A$ and $B$ given $C$. \\
+$\ATE$, $\tau$ & Population Average Treatment Effect $\E[Y\mid \doop(X=1)] - \E[Y\mid \doop(X=0)]$. \\
+$\CATE$, $\tau(s)$ & Conditional Average Treatment Effect within pre-treatment group/stratum $S=s$. \\
+$\RD_{\mathrm{obs}}$, $\delta_{\mathrm{obs}}$ & Naive observational risk difference $\Prob(Y=1\mid X=1) - \Prob(Y=1\mid X=0)$. \\
+$T, S \in \{0,1\}$ & Binary causal effect sign indicator $T=\mathbb{I}(\ATE>0)$ and observational sign indicator $S=\mathbb{I}(\RD_{\mathrm{obs}}>0)$. \\
+$C, A, B \in [0,1]$ & Multinomial processing tree parameters: causal sensitivity $C$, conditional associative reliance $A$, and bias $B$. \\
+$\mathcal{I}_{\mathrm{tree}}$ & Homogeneous processing-tree zero-interaction constraint $p_{11} - p_{10} - p_{01} + p_{00} = 0$. \\
+$d', c$ & Signal Detection Theory discrimination sensitivity $d'=\Phi^{-1}(H)-\Phi^{-1}(F)$ and decision criterion $c$. \\
+$\BPW$ & Effective bits per neural parameter in a quantized GGUF tensor archive. \\
+$w^* = \Prob^*(S=0)$ & Target population share of the first pre-treatment stratum (\texttt{Amber}) in \texttt{CF-TP1}. \\
+$F_{\mathrm{pair}} = I_0 \cdot I_1$ & Pairwise bundle fidelity ($1$ iff both members of a minimal contrast pair are answered correctly). \\
+$\widehat{\Delta}, \widehat{\mathrm{SE}}, \hat{\nu}$ & Stratified family-cluster difference estimator, Welch standard error, and Satterthwaite degrees of freedom. \\
+\bottomrule
+\end{tabularx}
+
+% =============================================================================
+\chapter{Technical Glossary}\label{app:glossary}
+\begin{description}[style=nextline,leftmargin=1.5em]
+  \item[Backdoor Criterion] Graphical condition identifying covariate sets $Z$ that contain no descendants of treatment $X$ and block all spurious paths with arrows into $X$, enabling interventional identification via $\sum_z \Prob(Y\mid X,Z=z)\Prob(Z=z)$.
+  \item[CF-TP1] \emph{CausalFade Target-Population \& Provenance Transport v1.0}, the cryptographically frozen 128-family ($4{,}096$-prompt) confirmatory benchmark protocol executed in Cohort~029.
+  \item[Confounder vs.\ Mediator] A confounder $W$ causes both $X$ and $Y$ ($W\to X, Y$) and must be adjusted for via marginal $\Prob(W)$; a mediator $W$ lies on the causal pathway $X\to W\to Y$ and must \emph{not} be fixed to $\Prob(W)$ when estimating the total effect of $X$.
+  \item[Conflict Item (Simpson's Reversal)] A task world where the true interventional effect $\ATE$ and naive observational association $\RD_{\mathrm{obs}}$ have opposite signs ($T \neq S$).
+  \item[Construct Validity] The degree to which an evaluation metric genuinely measures the intended theoretical capability rather than surface heuristics, formatting compliance, or extraneous arithmetic bottlenecks.
+  \item[GGUF \& K-Quants] Binary weight serialization format of \texttt{llama.cpp} supporting hierarchical block-affine post-training quantization (\texttt{Q8\_0}, \texttt{Q6\_K}, \texttt{Q5\_K\_M}, \texttt{Q4\_K\_M}, \texttt{Q3\_K\_M}, \texttt{Q2\_K}) with mixed-precision tensor promotion (\texttt{\_M}).
+  \item[Observational Equivalence] When two distinct structural models (e.g., confounder vs.\ mediator DAGs in Cohorts~026--028, or $C/A/B$ tree vs.\ symmetric logistic regression in \texttt{design\_validation}) induce the exact same observable probability distribution.
+  \item[Pairwise Fidelity ($F_{\mathrm{pair}}$)] Contrast-bundle scoring rule awarding credit ($1$) iff a model answers \emph{both} members of a minimally perturbed pair correctly, eliminating the $50\%$ free credit constant policies earn on balanced switch items.
+  \item[Reference Competence Gate] Pre-declared minimum validity, control, and causal thresholds that an unquantized (\texttt{F16}) baseline must pass before quantized or confirmatory splits may be executed.
+  \item[Transportability] Extending causal stratum effects learned in a randomized source study to an external target population with a different pre-treatment subgroup composition $(w^*, 1-w^*)$.
+\end{description}
+
+% =============================================================================
+\chapter*{Appendix Q: Complete Verified Bibliography}\label{app:bibliography}
+\addcontentsline{toc}{chapter}{Appendix Q: Complete Verified Bibliography}
+\renewcommand{\bibname}{Verified References}
+\bibliographystyle{plainnat}
+\bibliography{bibliography/references}

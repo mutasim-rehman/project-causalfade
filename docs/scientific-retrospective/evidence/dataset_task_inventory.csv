@@ -1,0 +1,25 @@
+dataset_id,generator_module,seeds,independent_families,prompts_per_arm,task_description,manifest_path
+design_validation,causalfade.generate (make_families),20261101,24,192,"Binary confounded SCM (Z->X, Z->Y, X->Y), exact + sampled (n=2000), 3-key JSON",results/design_validation/manifest.json
+cohort_001_003_004,Subset of design_validation,20261110,16,64,"Exact-evidence direct causal decision (16 fam in 001, 4 in 003, 8 in 004)",experiments/cohort_001/run_001_f16/dataset_manifest.json
+cohort_002_006_formula,tools/make_arithmetic_control.py --variant formula,20261110,16,64,Explicit backdoor arithmetic formula on same 16 exact tables,experiments/cohort_002/run_001_f16/dataset_manifest.json
+cohort_005_source,tools/make_arithmetic_control.py --variant source-selection,20261110,16,64,"Pre-computed randomized vs historical rates, family-hashed source order",experiments/cohort_005/run_001_f16/dataset_manifest.json
+cohort_007_fresh_formula,causalfade.generate + make_arithmetic_control,20261111,12,48,Fresh 12-family formula-given arithmetic control,experiments/cohort_007/input/manifest.json
+cohort_008_reversed,make_arithmetic_control --variant source-selection-reversed,20261110,16,64,Within-item line-order reversal of cohort_005 prompts,experiments/cohort_008/run_002_f16/dataset_manifest.json
+cohort_009_interleaved,tools/make_interleaved_source_order.py,20261112,16,128,Same-session interleaved order twins on 16 original families,experiments/cohort_009/input/manifest.json
+cohort_010_fresh_order,causalfade.generate + make_interleaved_source_order,20261113 / 20261112,12,96,Fresh 12-family interleaved source-order crossover,experiments/cohort_010/input/manifest.json
+cohort_011_012_matched,tools/make_matched_source_selection.py,20261114 / 20261115,16,128,"Matched observational magnitude m in [0.38, 0.46) across aligned & conflict (8 fam in 012)",experiments/cohort_011/input/manifest.json
+cohort_013_clarity,tools/make_prompt_clarity_crossover.py (legacy 160 tok),20261116,8,128,Paired minimal vs causal-context prompt frames across both source orders,experiments/cohort_013/input/manifest.json
+cohort_014_strict,tools/make_prompt_clarity_crossover.py (strict_json 48 tok),20261119,8,128,Strict bare one-key JSON contract on minimal vs causal-context frames,experiments/cohort_014/input/manifest.json
+cohort_015_context16,make_matched_source_selection + make_prompt_clarity_crossover,20261122 / 20261123,16,128,"16 fresh matched-strength families, causal-context strict JSON only",experiments/cohort_015/input/manifest.json
+cohort_016_017_rep96,make_matched_source_selection + make_prompt_clarity_crossover,20261127 / 20261128,96,768,96 fresh matched-strength families for prospective order confirmation (reused in 017),experiments/cohort_016/input/manifest.json
+cohort_018_sensitivity,causalfade/sensitivity.py,20261114,8,288,"Graded causal strengths (0.04, 0.12), fixed obs (0.36), noncausal controls, XOR token mapping",experiments/cohort_018/input/manifest.json
+cohort_019_contracts,causalfade/contracts.py,20261115,8,832,Within-world semantic vs neutral-forward (K) vs neutral-reverse (M) contracts + controls,experiments/cohort_019/input/manifest.json
+cohort_020_components,causalfade/components.py,20261116,8,224,"Isolated rate comparison, randomized-only decision, numbered two-source blocks, direct source ID",experiments/cohort_020/input/manifest.json
+cohort_021_guidance,causalfade/guidance.py,20261117,8,576,"Governing-source selection + ordinary, source-guided, and length-matched neutral-guided decisions",experiments/cohort_021/input/manifest.json
+cohort_022_replication,causalfade/guidance.py (replication_pilot),20261118,8,576,Fresh 8-family cohort-021 task schedule for Qwen F16 vs Mistral Q4_K_M,experiments/cohort_022/input/manifest.json
+cohort_023_audit,causalfade/measurement_audit.py,20261119,8,896,"Full factorial crossing direction, agreement, block order, A/B name, option order + controls",experiments/cohort_023/input/manifest.json
+cohort_024_matrix,causalfade/matrix024.py,20261124 (frozen),8,1472,Cohort-023 factorial crossed with semantic vs neutral X=0/X=1 contracts across 21 model arms,experiments/cohort_024/input/manifest.json
+cohort_026_graph_switch,causalfade/graph_switch.py + tools/cohort026.py,exact-rational seeds,48,112,"8 dev / 8 val / 32 conf exact-rational P(W,X,Y) confounder vs mediator + W->Z control (v1, v2, v3)",experiments/cohort_026/input/manifest.json
+cohort_027_graph_balanced,causalfade/cohort027.py,27027000 / 27028000,24,672,"8 dev (224 tasks) + 16 val (448 tasks) fully crossing graph, form, and option order",experiments/cohort_027/manifest.json
+cohort_028_proc_calc,causalfade/cohort028.py,28028000 / 28029000,48,3840,"16 dev (1,280 calls) + 32 val (2,560 calls), bare A vs structured B vs deterministic calculator C",experiments/cohort_028/manifest.json
+cohort_029_cftp1,causalfade/target_transport.py + target_forms.py,290431 / 290432,128,4096,CF-TP1: 128 families across 8 sign strata x 2 forms x 2 tasks x 2 orders x 2 feasible roles x 2 target mixes,experiments/cohort_029/freeze/manifest.json

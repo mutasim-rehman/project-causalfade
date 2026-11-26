@@ -1,0 +1,153 @@
+% =============================================================================
+% Appendices A through I
+% =============================================================================
+
+\chapter{Master Cohort Inventory}\label{app:cohort_inventory}
+Table~\ref{tab:cohort_master} catalogs all thirty-one methodological and empirical cohort units in Project CausalFade (\texttt{design\_validation} and Cohorts~\texttt{001}--\texttt{029}, including \texttt{025\_1}), extracted programmatically from \texttt{evidence/cohort\_inventory.csv}.
+
+\input{tables/tab_cohort_master}
+
+% =============================================================================
+\chapter{Complete Experimental Run Inventory}\label{app:run_inventory}
+Table~\ref{tab:experiment_runs} lists every one of the 74 experimental and analytical run entries across the archive ($71$ local LLM run directories totaling $48{,}208$ scheduled inference requests and $48{,}170$ persisted raw responses, plus $3$ zero-inference synthetic/analytical suites), with SHA-256 prefixes of the persisted raw response files from \texttt{evidence/experiment\_inventory.csv}.
+
+\input{tables/tab_experiment_runs}
+
+% =============================================================================
+\chapter{Model and Quantization Inventory}\label{app:model_inventory}
+Table~\ref{tab:model_quant_inventory} documents all thirteen model-lineage and GGUF precision records prepared on local storage or queried across Cohorts~\texttt{001}--\texttt{029}, including unqueried \texttt{Qwen2.5-0.5B/1.5B} SSD assets documented in \texttt{docs/SSD\_ASSET\_REUSE.md}.
+
+\input{tables/tab_model_quant_inventory}
+
+% =============================================================================
+\chapter{Dataset and Task Family Inventory}\label{app:dataset_inventory}
+Table~\ref{tab:dataset_inventory} indexes all twenty-four dataset schemas, generator modules, RNG seeds, family counts, and manifest paths constructed from \texttt{design\_validation} through Cohort~\texttt{029}.
+
+\input{tables/tab_dataset_inventory}
+
+% =============================================================================
+\chapter{Prompt Evolution History}\label{app:prompt_history}
+To enable exact inspection of how CausalFade's prompt engineering evolved across nine distinct design generations, we reproduce below verbatim prompt templates extracted byte-for-byte from archived \texttt{public\_tasks.jsonl}, \texttt{tasks.jsonl}, and \texttt{forms.json} artifacts.
+
+\section{Generation 1: Direct 4-Stratum Backdoor JSON (Cohorts 001, 003, 004)}
+From \texttt{results/design\_validation/public\_tasks.jsonl} (\texttt{task\_id: cb2060af78e213308f0e}):
+\begin{lstlisting}
+A fictional machine has initial severity Z, setting X, and successful operation Y. All variables are binary. Z=1 means severe initial condition. X=1 activates the setting. Y=1 means success. The known causal graph is Z -> X, Z -> Y, X -> Y. There are no unmeasured common causes; consistency and positivity hold. The target population has P(Z=0)=P(Z=1)=0.5. Estimate the population average effect E[Y|do(X=1)]-E[Y|do(X=0)]. Decide whether to activate X for the population to maximize expected success. Use the evidence below, allowing for sampling uncertainty if it is a sample. Return only JSON with keys ate_estimate (number), activate (0 or 1), and adjustment_set (list of variable names).
+Evidence:
+{"type": "exact_population_probabilities", "strata": [{"z": 0, "x": 0, "success_probability": 0.833548764815494, "population_cell_probability": 0.44274551497154646}, ...]}
+\end{lstlisting}
+
+\section{Generation 2: Minimal Two-Study Supplied Rates (Cohorts 005, 008--016 Base)}
+From \texttt{experiments/cohort\_016/base\_source/public\_tasks.jsonl} (\texttt{task\_id: 85aae2929cf65894da1b}):
+\begin{lstlisting}
+A lab wants to choose whether to activate a setting on a new machine from the same population to maximize its chance of success. Two studies report success rates:
+Historical data where operators chose the setting: off 70.94%, on 29.06%.
+Random assignment by the lab: off 54.11%, on 45.89%.
+Return only a JSON object with activate equal to 1 if the lab should activate the setting, or 0 if it should leave it off.
+\end{lstlisting}
+
+\section{Generation 3: Matched Noncausal Conditional Control (Cohort 018)}
+From \texttt{experiments/cohort\_018/input/public\_tasks.jsonl} (\texttt{task\_id: f21bfb2e8676f8e83b2a7db9}):
+\begin{lstlisting}
+Study A assigned X randomly. Study B used historical operator choices. Study B is listed first. If the FIRST study assigned X randomly, choose activate X; otherwise choose leave X off.
+Response tokens: activate=0 means leave X off; activate=1 means activate X. Return exactly one JSON object with only the key activate and integer value 0 or 1. Do not include a Markdown fence, explanation, or any other text.
+\end{lstlisting}
+
+\section{Generation 4: Causal Context With Neutral Symbol Contract (Cohort 019)}
+From \texttt{experiments/cohort\_019/input/public\_tasks.jsonl} (\texttt{task\_id: 914bfe0a1d532f87c294645e}):
+\begin{lstlisting}
+A machine setting X may affect success Y. Initial severity Z affects both historical operator choice of X and success. There are no unmeasured common causes. The lab and historical studies refer to the same target population. The lab assigned X randomly; historical operators chose X. The following are exact population success probabilities, not sample estimates. Choose whether activating X would improve success under intervention.
+Study A (Random assignment): X=0 0.466921; X=1 0.506921.
+Study B (Historical operator choices): X=0 0.666921; X=1 0.306921.
+choice=K means leave X off; choice=M means activate X. Return exactly one JSON object: {"choice":"K"} or {"choice":"M"}. Do not include a Markdown fence, explanation, another field, or any other text.
+\end{lstlisting}
+
+\section{Generation 5: Numbered Two-Source Decision \& Component Battery (Cohorts 021--024)}
+From \texttt{experiments/cohort\_021/input/public\_tasks.jsonl} (\texttt{task\_id: 8ecd75ff5fcf1bfcb1894c2f}):
+\begin{lstlisting}
+A machine setting X may affect success Y. Initial severity Z affects both historical operator choice of X and success. The studies refer to the same target population. There are no unmeasured common causes. The rates are exact population success probabilities, not sample estimates.
+
+1. Study B
+Assignment method: operators chose X.
+Success probabilities: X=0 0.667576; X=1 0.307576.
+
+2. Study A
+Assignment method: X was assigned randomly.
+Success probabilities: X=0 0.507576; X=1 0.467576.
+
+For this intervention decision, review the displayed studies and success probabilities carefully.
+Does activating X improve success under intervention? Return exactly one JSON object: {"decision":"activate"} or {"decision":"leave_off"}. No other fields, fences, explanation, or text.
+\end{lstlisting}
+
+\section{Generation 6: Observationally Identical Confounder/Mediator Graph Switch (Cohorts 026--027)}
+From \texttt{experiments/cohort\_027/development/public\_tasks.jsonl} (\texttt{development\_000\_direct\_main\_confounder\_forward}):
+\begin{lstlisting}
+Compare the two interventions for binary treatment X and desirable outcome Y.
+Causal structure: W occurs before X. W causes X and Y; X causes Y.
+All rates below describe the same observational population.
+P(W=0,X=0,Y=0) = 0.008800 ... P(W=1,X=1,Y=1) = 0.024000
+P(W=0) = 0.400000; P(W=1) = 0.600000
+P(W=0|X=0) = 0.076923; P(Y=1|X=0,W=0) = 0.780000 ...
+If W is upstream of X, weight the outcome rates by P(W). If W is downstream of X, weight separately by P(W|X=x). Which intervention gives the larger P(Y=1)?
+Return exactly one bare answer: X=1 or X=0. No punctuation or explanation.
+\end{lstlisting}
+
+\section{Generation 7: Candidate Procedure Selection With Python Calculator (Cohort 028)}
+From \texttt{experiments/cohort\_028/development/public\_tasks.jsonl} (\texttt{development\_000\_direct\_forward\_raw\_causal\_confounder\_bare}):
+\begin{lstlisting}
+Compare interventions X=0 and X=1 for desirable outcome Y.
+Causal structure: W occurs before X. W causes X and Y; X causes Y.
+Candidate procedures:
+marginal: for each X, average P(Y=1|X,W) using P(W).
+conditional: for each X, average P(Y=1|X,W) using P(W|X) separately.
+...
+Displayed action alternatives: X=0 or X=1.
+Return exactly X=0 or X=1, with no punctuation or explanation.
+\end{lstlisting}
+
+\section{Generation 8: Confirmatory \texttt{CF-TP1} Archive and Transfer Forms (Cohort 029)}
+From \texttt{experiments/cohort\_029/freeze/fixture/forms.json} and \texttt{tasks.jsonl}:
+\begin{lstlisting}
+# Transfer Causal Stem (f=1, q=0):
+Suppose you have to advise on whether switching a certain setting on would raise the success rate in a target population. Everyone in that population belongs to one of two groups, and which group a person is in is settled before any treatment happens. You have two sources of evidence. One study handed out the setting at random, so chance decided who got it. The other is a historical study where operators chose the setting themselves, and there may be risk factors nobody measured that pushed both their choice and the eventual outcome, so that evidence can mislead. You can assume the effect of the setting inside each group carries over unchanged to the target population. What differs is the share of people in each group, and that mix will be shown to you. The calculation is left to you: work out what turning the setting on would do for success in this population.
+
+# Transfer Arithmetic Control Stem (f=1, q=1):
+This is a scorecard task. Use only the designated scorecard. Take each group's score for the 'on' setting, weight it by that group's share of the target mix, and add the weighted scores to get a total for 'on'. Repeat the same steps with the 'off' scores to get a total for 'off'. Choose whichever setting has the higher total.
+
+# Shared Table & Strict Output Block (example task f429813b...):
+Target mix: Amber 61%, Blue 39%
+Source B (randomized study): Amber: off 54.0%, on 47.5% | Blue: off 47.0%, on 54.0%
+Source A (historical study): Amber: off 53.5%, on 49.5% | Blue: off 51.0%, on 53.5%
+Return exactly one JSON object with integer activate: {"activate":1} or {"activate":0}.
+Action 0 means off. Action 1 means on. Do not include other text.
+\end{lstlisting}
+
+% =============================================================================
+\chapter{Statistical Methodology Reference}\label{app:stats_reference}
+This appendix consolidates the six statistical procedures implemented across CausalFade's evaluation pipeline:
+\begin{enumerate}
+  \item \textbf{Paired Family-Cluster Percentile Bootstrap (Cohorts 002--015, 024, 028):} Given $N$ independent world families with paired family-level summary contrast $d_i = \bar{Y}_{i,1} - \bar{Y}_{i,0}$, draw $B$ bootstrap resamples $(i_1^*,\dots,i_N^*)$ with replacement from $\{1,\dots,N\}$, compute $\bar{d}^{*(b)} = \frac{1}{N}\sum_{k=1}^N d_{i_k^*}$, and report the $2.5\text{th}$ and $97.5\text{th}$ empirical percentiles.
+  \item \textbf{One-Sample Paired Family $t$-Test With Zero-Variance Guard (Cohorts 016--017):} For $N=96$ independent family differences $d_i$, compute $\bar{d} = \frac{1}{N}\sum_{i=1}^N d_i$ and $s_d^2 = \frac{1}{N-1}\sum_{i=1}^N (d_i - \bar{d})^2$. If $s_d == 0$ (as in Cohort~017 \texttt{14B Q4\_K\_M}), return \texttt{t = null} and exact counts; otherwise compute $t_{N-1} = \bar{d}/(s_d/\sqrt{N})$ and $\bar{d} \pm t_{0.975, N-1}\,s_d/\sqrt{N}$.
+  \item \textbf{Multinomial Processing Tree Simplex EM \& Bootstrap Deviance (\texttt{design\_validation}, Cohort 005):} Fits $(C,A,B) \in [0,1]^3$ via complete-data latent branch responsibilities in \texttt{causalfade/cab\_tree.py}, testing additivity $\mathcal{I}_{\mathrm{tree}} = p_{11}-p_{10}-p_{01}+p_{00}=0$ via likelihood-ratio deviance $G^2$ over $500$ parametric bootstrap replicates.
+  \item \textbf{Signal Detection Theory Sensitivity \& Criterion (Cohort 024):} With log-linear boundary correction $H = (k_1 + 0.5)/(n_1 + 1)$ and $F = (k_0 + 0.5)/(n_0 + 1)$, computes $d' = \Phi^{-1}(H) - \Phi^{-1}(F)$ and $c = -\frac{1}{2}[\Phi^{-1}(H) + \Phi^{-1}(F)]$.
+  \item \textbf{Stratified Welch--Satterthwaite Family-Cluster Interval (Cohort 029):} Across $H=8$ equal design strata of $m_h=16$ families ($N=128$), computes $\widehat{\Delta} = \frac{1}{8}\sum_{h=1}^8 \bar{D}_h$, $\widehat{\mathrm{SE}} = \sqrt{\sum_{h=1}^8 s_h^2 / 1024}$ (since $H^2 m_h = 64 \times 16 = 1024$), and $\hat{\nu} = (\sum_h v_h)^2 / \sum_h (v_h^2 / 15)$ where $v_h = s_h^2 / 1024$ (verified in \texttt{manuscript/scripts/extract.py}, lines~43--50).
+  \item \textbf{Finite-Sample Distribution-Free Bounded Interval (Cohort 029):} For independent family contrasts $D_{hi} \in [-1, 1]$ of width $2$, applies Hoeffding's tail inequality radius $r_{0.05} = 2\sqrt{\ln(40)/256} = 0.24008070$ around $\widehat{\Delta}$.
+\end{enumerate}
+
+% =============================================================================
+\chapter{Complete Hypothesis Ledger}\label{app:hypothesis_ledger}
+Table~\ref{tab:hypothesis_ledger} reproduces the complete twenty-entry Hypothesis Ledger (\texttt{H01}--\texttt{H20}) from \texttt{evidence/hypothesis\_ledger.csv}.
+
+\input{tables/tab_hypothesis_ledger}
+
+% =============================================================================
+\chapter{Complete Methodology Ledger}\label{app:methodology_ledger}
+Table~\ref{tab:methodology_ledger} reproduces all nineteen methodological designs and diagnostic frameworks (\texttt{M01}--\texttt{M19}) from \texttt{evidence/methodology\_ledger.csv}.
+
+\input{tables/tab_methodology_ledger}
+
+% =============================================================================
+\chapter{Complete Research Decision Ledger}\label{app:decision_ledger}
+Table~\ref{tab:decision_ledger} archives all thirty pivotal research and governance decisions (\texttt{D01}--\texttt{D30}) across the 320-commit Git history from \texttt{evidence/decision\_ledger.csv}.
+
+\input{tables/tab_decision_ledger}

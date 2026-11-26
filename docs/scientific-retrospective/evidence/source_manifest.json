@@ -1,0 +1,243 @@
+{
+  "monograph_title": "The Life of CausalFade: A Scientific Retrospective of Hypotheses, Experiments, Failures, Methodological Evolution, and Discovery",
+  "investigation_date_local": "2026-11-26",
+  "repository_root": "d:/project-causalfade",
+  "git_snapshot": {
+    "head_commit": "7f3dcf6e4a880ddc9ea116adaa8428a3006099fc",
+    "origin_main_commit": "b7371530caa62d6e43a8e83ef6db361f6640f63a",
+    "immutable_scientific_tag": "cohort-029-v1.0.0",
+    "immutable_scientific_commit": "76206c259caa488668a7556ce1bc53cb35d220da",
+    "earliest_commit": "4e2fe4f53370c05878476ed0363bf472fcd34d17",
+    "earliest_commit_date": "2026-10-28T07:18:34+05:00",
+    "head_commit_date": "2026-11-26T15:35:49+05:00",
+    "total_commits_on_head": 320,
+    "deleted_or_renamed_tracked_files_in_history": 0,
+    "untracked_workspace_directories_inspected": [
+      "manuscript/"
+    ]
+  },
+  "aggregate_counts": {
+    "identifiable_cohorts": 30,
+    "synthetic_validation_suites": 1,
+    "llm_experimental_cohorts": 28,
+    "retrospective_no_inference_cohorts": 2,
+    "llm_run_directories": 71,
+    "total_scheduled_llm_requests": 48208,
+    "total_persisted_llm_responses": 48170,
+    "missing_due_to_interrupted_cohort008_run001": 38
+  },
+  "external_or_unrecoverable_artifacts": [
+    {
+      "item": "GGUF model weight binaries and HF safetensor shards",
+      "documented_locations": [
+        "H:\\AGERE",
+        "H:\\CAUSALFADE",
+        "$HOME/Desktop/CAUSALFADE/weights/gguf/"
+      ],
+      "status": "Excluded from Git by design; SHA-256 digests and byte sizes verified in run metadata and manifests."
+    },
+    {
+      "item": "Simulated editorial review DOCX referenced by Cohort 028",
+      "documented_locations": [
+        "Downloads/CausalFade_Q1_Peer_Review_Report_2026-11-19.docx"
+      ],
+      "recorded_sha256": "32bfa0097930540f2f0ab56428d5c6c3924da22513e39f881c609e3f5d7b7432",
+      "status": "Not committed to Git; contents summarized in experiments/cohort_028/README.md and REVIEW_RESPONSE_LEDGER.md."
+    },
+    {
+      "item": "Unnormalized Ubuntu home-path backups from 10 Nov 2026",
+      "documented_locations": [
+        "$HOME/Desktop/CAUSALFADE/runs/unmodified_paths_20261110"
+      ],
+      "status": "External lab backup; original paths remain visible in pre-ea78a2f Git commits."
+    },
+    {
+      "item": "Trusted signer public key for Umar Asghar transfer-form authorship signature and pre-inference human independence certification in Cohort 029",
+      "documented_locations": [
+        "experiments/cohort_029/lab/evidence/transfer-authorship.md.sig"
+      ],
+      "status": "Signature bytes validate cryptographically against embedded key, but key was absent from allowed_signers and freeze recorded human independence as undocumented."
+    },
+    {
+      "item": "Third-party publisher conversion commands for Mistral-7B-v0.3 and Llama-3.1-8B GGUF F16 baselines",
+      "documented_locations": [
+        "experiments/cohort_024/frozen_lab_plan.json"
+      ],
+      "status": "Pinned Hugging Face revisions and SHA-256 digests recorded; upstream conversion invocations undocumented."
+    }
+  ],
+  "key_artifact_hashes": {
+    "README.md": {
+      "bytes": 11444,
+      "sha256": "2c5f1bedda585d100b80efb5478f698cf485234b2e93b4689383f98c21bc2802"
+    },
+    "EXPERIMENTS.md": {
+      "bytes": 12494,
+      "sha256": "9b7286f1794e59cfa2f75586f754ead911388f0b2c7969faf3d46140aeeb82e2"
+    },
+    "DECISIONS.md": {
+      "bytes": 44761,
+      "sha256": "80f7dd335661f02344a50e00e0b784088f15a6ecdbcafaced62598e3275d4bd0"
+    },
+    "SESSION_REPORT.md": {
+      "bytes": 31154,
+      "sha256": "545f5374fe365512d9334a5b13d7789b0d014f096010cc085da9467eeff490b0"
+    },
+    "PUBLICATION_HANDOFF.md": {
+      "bytes": 8235,
+      "sha256": "c235cee5b50b5b9a61cace51c8112bd3845a09fb69f0e0b90773ac306e1faed2"
+    },
+    "LICENSES.md": {
+      "bytes": 1580,
+      "sha256": "484a131d6b286e7f953a3de966157bc3ab54ad7ae2acb31dbac21c7230336822"
+    },
+    "docs/RESEARCH_METHODOLOGY.md": {
+      "bytes": 35876,
+      "sha256": "2a471c96199ef9ca411104b28cdbb81713710bbbfae7580e5ca17c7c740b77e6"
+    },
+    "docs/METHODOLOGY_ADAPTATION.md": {
+      "bytes": 15678,
+      "sha256": "0f5b1a1c4715d7cabb6aa25702f183bba8006727e60f9881fa8786ee54e369f0"
+    },
+    "docs/STUDY_ROADMAP.md": {
+      "bytes": 11323,
+      "sha256": "380fb3b3eeab6029d6a3fe7697df4423acb2b07b4675059210215b0ed954faae"
+    },
+    "docs/INTERDISCIPLINARY_FOLLOWUP.md": {
+      "bytes": 19800,
+      "sha256": "7e46ba485774df1106c4186d49e6aec1b64db5f6cb644ba20232081885b1e2be"
+    },
+    "docs/PUBLICATION_READINESS_2026-11-15.md": {
+      "bytes": 20348,
+      "sha256": "3f1a15d7b8ecc30042a267d6c1ba1a2fb1c5df6a009630b5871b5621aa2d37e5"
+    },
+    "docs/SUPERVISOR_PROGRESS_REPORT_2026-11-19.md": {
+      "bytes": 17352,
+      "sha256": "1a422dbc805a1a245a0dafc10611f14e97ef74ae7f04877300ab8c4047c9bbf0"
+    },
+    "docs/SSD_ASSET_REUSE.md": {
+      "bytes": 9353,
+      "sha256": "5cac91bb8ed024e838085ad2b0ca3436e9f870d1baa3f9022aa49e86d7912649"
+    },
+    "docs/DATA_CONTRACT.md": {
+      "bytes": 5815,
+      "sha256": "b2b8cb962f0c345246f1ab67ab496465488c96f080fbec3b27fc9b662bc32b6f"
+    },
+    "docs/DECISIONS_BEFORE_COLLECTION.md": {
+      "bytes": 6456,
+      "sha256": "cd1643985e898f887508ec7ad43c26fad916f8c310aeebbdc2f4ca4236a359d0"
+    },
+    "docs/REPRODUCIBILITY.md": {
+      "bytes": 8039,
+      "sha256": "36f97a6a923cd105b5b77993d6f7710eabed899e3f619487ba9e3140ba8b2d8a"
+    },
+    "docs/references.bib": {
+      "bytes": 2500,
+      "sha256": "1547efb22ace0ad02105564a38fc9cc0ef0b099f23f42949af3c457bef1fbc82"
+    },
+    "literature review/EXECUTIVE_SUMMARY.md": {
+      "bytes": 11172,
+      "sha256": "a165eb50b9c1595bbec90cac4408270e04aa8df2239ac67d077a4709f8c38aaf"
+    },
+    "literature review/READING_INDEX.md": {
+      "bytes": 4473,
+      "sha256": "11085c15e26f3718be0ea3f04852f3995d532314f102a06a1b20de9b31bc1f64"
+    },
+    "literature review/paper_manifest.json": {
+      "bytes": 98712,
+      "sha256": "df33234a1e4ffcef7d227cc5569b630f4c8c07a4cc2b4813e69d5a3bc30a28a4"
+    },
+    "results/design_validation/VALIDATION_REPORT.md": {
+      "bytes": 5181,
+      "sha256": "95610d2a1ab976f48a5b1194fe2bc6fd243465c0ddccc92500ba009604c8a565"
+    },
+    "results/design_validation/parameter_recovery.json": {
+      "bytes": 20439,
+      "sha256": "1d5ccc3c8c54da695f647bae84d193870de91aabb647635409bb4323a085cf33"
+    },
+    "experiments/cohort_016/primary_analysis.json": {
+      "bytes": 3415,
+      "sha256": "a0e809a33e92b1540beb5c81e59d80501069c0d2a67192f4eccb338731628fa6"
+    },
+    "experiments/cohort_024/development_analysis_archive.json": {
+      "bytes": 986343,
+      "sha256": "aaaa7cf46f014207d0c16046164ec78d310eda90e574a2d7e322ad8df94d6305"
+    },
+    "experiments/cohort_025/archive_methods_screen.json": {
+      "bytes": 216051,
+      "sha256": "000ccc2a6d78d7c104cf56e6bd702380e2f1f0824cec4321e53f5a56fd42418c"
+    },
+    "experiments/cohort_025_1/archive_investigation.json": {
+      "bytes": 1456,
+      "sha256": "d77bc9d81767e5a43fb8bee7142dd0564d49dcc3d6da4a12a66419df3c855f34"
+    },
+    "experiments/cohort_026/development_summary.md": {
+      "bytes": 4443,
+      "sha256": "2cef8b0f50f33650daebefea6e8b0e02d32707aca44309266868444b6083d6fa"
+    },
+    "experiments/cohort_027/pipeline_status.json": {
+      "bytes": 110,
+      "sha256": "118b86f605433eb6bd9ad8d2a4a519c45657534c75844e0d06a32e23232821cc"
+    },
+    "experiments/cohort_028/pipeline_status.json": {
+      "bytes": 110,
+      "sha256": "a5c83658503381b682496bd9b7aaed25f79274bd8b40f4678cec63783b7232c0"
+    },
+    "experiments/cohort_029/freeze/manifest.json": {
+      "bytes": 4380,
+      "sha256": "5252f69d30a0a5bb65a5efa669458e325c0531f25ab55f768531c7ca29f4c766"
+    },
+    "experiments/cohort_029/runs/confirmatory/events.jsonl": {
+      "bytes": 9446431,
+      "sha256": "673eb723637614dc8b94875f2e8c4e9e20234c1d179c992791853797875977bd"
+    },
+    "experiments/cohort_029/runs/confirmatory/analysis/primary.json": {
+      "bytes": 542,
+      "sha256": "f7f3bcf537bfad04603356791bcc36562b0ac5f9d215d0b1eb5e063fd18b9a46"
+    },
+    "experiments/cohort_029/runs/confirmatory/analysis/secondary.json": {
+      "bytes": 6709,
+      "sha256": "d9e39892918c08d51779c415bb961abd35e12a7484a0ef03899480a96d15134f"
+    },
+    "experiments/cohort_029/release/verification.json": {
+      "bytes": 9343,
+      "sha256": "237242ebfa1bf9db60449d80a14fcd8e86696d9fd5fd034e6690f6f8dfc6e83d"
+    },
+    "experiments/cohort_029/release/validation_record.json": {
+      "bytes": 1324,
+      "sha256": "c944e66f110bc99cf3622baf18da80181f88e1948c558eb3cd3e85591d77cefc"
+    },
+    "experiments/cohort_029/release/RESULTS.md": {
+      "bytes": 3490,
+      "sha256": "ef9c8e523fa850397117849cc7507e3e692cb904174ae9fcd1d91382b7f916e8"
+    },
+    "experiments/cohort_029/release/PROVENANCE_AND_LIMITATIONS.md": {
+      "bytes": 5470,
+      "sha256": "ae4cb18a2c2e2e7de6ad9a61ee4421ad794c6b379c9a064b050539ebc8e1194d"
+    },
+    "manuscript/article.tex": {
+      "bytes": 31234,
+      "sha256": "44749f033a770c166616e9baca49bba1524b8e3305c618693d5179487e9588c7"
+    },
+    "manuscript/supplement.tex": {
+      "bytes": 17874,
+      "sha256": "e361cd3571201be02175105faaa0bf9ab7d3a81739b58edcfe3cb2b386eb7b89"
+    },
+    "manuscript/history.tex": {
+      "bytes": 5823,
+      "sha256": "1be71492fc78bb3142b70ca1c73a4179cbb5dece08c8a0c16000f356e4bda689"
+    },
+    "manuscript/references.bib": {
+      "bytes": 7111,
+      "sha256": "14df4ff48c6b4254ba783cd972728533c737c2e6a380ac5a353ed4f2c57231b8"
+    },
+    "manuscript/Scientific-and-editorial-QC.md": {
+      "bytes": 8940,
+      "sha256": "11216d0dc5ca2136207bb45bfd73373f122e6498ac78167ee8a2c68783cf3a1f"
+    },
+    "manuscript/audit/claim-ledger.csv": {
+      "bytes": 29520,
+      "sha256": "dbe1a65fac389330a47a5a2be2a9dcf6d1e5fd8dfa0ff76d5394a01358c51076"
+    }
+  }
+}

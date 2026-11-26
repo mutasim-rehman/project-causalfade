@@ -1,0 +1,37 @@
+{\scriptsize
+\setlength{\tabcolsep}{3.2pt}
+\begin{longtable}{@{}llrrrrrrrc@{}}
+\caption{Cohort 024 complete 21-arm evaluation matrix ($3\text{ lineages}\times 7\text{ GGUF formats}$, $1{,}472$ scheduled items per arm; $30{,}912$ total scheduled requests).}\label{tab:c24_matrix}\\
+\toprule
+\textbf{Lineage} & \textbf{Quant.} & \textbf{Valid/1472} & \textbf{Caus.Sem} & \textbf{Caus.Neu} & \textbf{Ctrl.Sem} & \textbf{Ctrl.Neu} & \textbf{Src.Sel} & \textbf{$d'_{\text{sem}}$ / $c_{\text{sem}}$} & \textbf{Gate} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Lineage} & \textbf{Quant.} & \textbf{Valid/1472} & \textbf{Caus.Sem} & \textbf{Caus.Neu} & \textbf{Ctrl.Sem} & \textbf{Ctrl.Neu} & \textbf{Src.Sel} & \textbf{$d'_{\text{sem}}$ / $c_{\text{sem}}$} & \textbf{Gate} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\texttt{qwen7b} & \texttt{F16} & 1472 & 111/256 & 144/256 & 193/256 & 186/256 & 242/256 & -0.69 / -1.22 & Fail \\
+\texttt{qwen7b} & \texttt{Q8\_0} & 1472 & 109/256 & 142/256 & 193/256 & 188/256 & 243/256 & -0.99 / -1.43 & Fail \\
+\texttt{qwen7b} & \texttt{Q6\_K} & 1472 & 109/256 & 154/256 & 197/256 & 183/256 & 243/256 & -0.75 / -1.20 & Fail \\
+\texttt{qwen7b} & \texttt{Q5\_K\_M} & 1472 & 120/256 & 134/256 & 186/256 & 191/256 & 243/256 & -1.16 / -2.08 & Fail \\
+\texttt{qwen7b} & \texttt{Q4\_K\_M} & 1472 & 110/256 & 128/256 & 183/256 & 186/256 & 240/256 & -1.24 / -1.65 & Fail \\
+\texttt{qwen7b} & \texttt{Q3\_K\_M} & 1472 & 150/256 & 155/256 & 168/256 & 161/256 & 238/256 & +0.44 / -0.24 & Fail \\
+\texttt{qwen7b} & \texttt{Q2\_K} & 1472 & 149/256 & 128/256 & 162/256 & 170/256 & 136/256 & +0.46 / -0.49 & Fail \\
+\texttt{mistral7b} & \texttt{F16} & 1472 & 134/256 & 137/256 & 158/256 & 152/256 & 128/256 & +0.12 / -0.06 & Fail \\
+\texttt{mistral7b} & \texttt{Q8\_0} & 1472 & 130/256 & 137/256 & 158/256 & 153/256 & 128/256 & +0.04 / -0.02 & Fail \\
+\texttt{mistral7b} & \texttt{Q6\_K} & 1472 & 141/256 & 140/256 & 140/256 & 133/256 & 128/256 & +0.26 / -0.15 & Fail \\
+\texttt{mistral7b} & \texttt{Q5\_K\_M} & 1472 & 130/256 & 128/256 & 135/256 & 133/256 & 128/256 & +0.04 / -0.02 & Fail \\
+\texttt{mistral7b} & \texttt{Q4\_K\_M} & 1469 & 130/256 & 139/256 & 134/256 & 159/256 & 128/256 & +0.04 / -0.32 & Fail \\
+\texttt{mistral7b} & \texttt{Q3\_K\_M} & 1472 & 129/256 & 125/256 & 160/256 & 177/256 & 128/256 & +0.02 / -0.01 & Fail \\
+\texttt{mistral7b} & \texttt{Q2\_K} & 1343 & 71/256 & 139/256 & 128/256 & 128/256 & 135/256 & +0.37 / +1.44 & Fail \\
+\texttt{llama8b} & \texttt{F16} & 1464 & 151/256 & 152/256 & 198/256 & 209/256 & 188/256 & +1.76 / -1.78 & Fail \\
+\texttt{llama8b} & \texttt{Q8\_0} & 1456 & 151/256 & 151/256 & 198/256 & 211/256 & 190/256 & +1.76 / -1.78 & Fail \\
+\texttt{llama8b} & \texttt{Q6\_K} & 1470 & 139/256 & 155/256 & 212/256 & 220/256 & 196/256 & +1.32 / -2.00 & Fail \\
+\texttt{llama8b} & \texttt{Q5\_K\_M} & 1450 & 140/256 & 153/256 & 189/256 & 210/256 & 170/256 & +1.36 / -1.98 & Fail \\
+\texttt{llama8b} & \texttt{Q4\_K\_M} & 1024 & 150/256 & 149/256 & 0/256 & 62/256 & 192/256 & +1.73 / -1.80 & Fail \\
+\texttt{llama8b} & \texttt{Q3\_K\_M} & 1469 & 149/256 & 168/256 & 225/256 & 226/256 & 179/256 & +0.60 / -0.87 & Fail \\
+\texttt{llama8b} & \texttt{Q2\_K} & 1472 & 128/256 & 172/256 & 128/256 & 149/256 & 208/256 & +0.00 / -0.00 & Fail \\
+\end{longtable}
+}

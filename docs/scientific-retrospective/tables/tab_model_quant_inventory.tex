@@ -1,0 +1,29 @@
+{\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}p{2.3cm}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{3.4cm}>{\raggedright\arraybackslash}p{3.6cm}@{}}
+\caption{Complete model lineage and GGUF quantization inventory with source revisions, formats, file sizes, provenance, and cohort deployment.}\label{tab:model_quant_inventory}\\
+\toprule
+\textbf{Model Family (Revision)} & \textbf{GGUF Formats} & \textbf{Size Notes} & \textbf{Quantization Provenance} & \textbf{Cohorts Queried} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Model Family (Revision)} & \textbf{GGUF Formats} & \textbf{Size Notes} & \textbf{Quantization Provenance} & \textbf{Cohorts Queried} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\texttt{Qwen/\allowbreak{}Qwen2.5-\allowbreak{}0.5B-\allowbreak{}Instruct} (\texttt{7ae557604a}) & \texttt{F16, Q8\_0, Q4\_K\_M, Q2\_K, Q1\_0} & 0.926 GiB (F16) & llama.cpp b12176 (no imatrix) & Prepared in SSD/\allowbreak{}PC inventory; never queried in cohorts 001-\allowbreak{}029 \\[2pt]
+\texttt{Qwen/\allowbreak{}Qwen2.5-\allowbreak{}1.5B-\allowbreak{}Instruct} (\texttt{989aa7980e}) & \texttt{F16, Q8\_0, Q4\_K\_M, Q2\_K, Q1\_0} & 2.881 GiB (F16) & llama.cpp b12176 (no imatrix) & Prepared in SSD/\allowbreak{}PC inventory; never queried in cohorts 001-\allowbreak{}029 \\[2pt]
+\texttt{Qwen/\allowbreak{}Qwen2.5-\allowbreak{}3B-\allowbreak{}Instruct} (\texttt{aa8e725379}) & \texttt{F16} & 5.754 GiB & AGERE F16 conversion (7fe450e) & Cohorts 001, 002, 005, 007, 008, 009, 010, 011, 027 \\[2pt]
+\texttt{Qwen/\allowbreak{}Qwen2.5-\allowbreak{}3B-\allowbreak{}Instruct} (\texttt{aa8e725379}) & \texttt{Q8\_0} & GGUF weight-\allowbreak{}only & llama.cpp b12176 (no imatrix) & Cohort 006 \\[2pt]
+\texttt{Qwen/\allowbreak{}Qwen2.5-\allowbreak{}3B-\allowbreak{}Instruct} (\texttt{aa8e725379}) & \texttt{Q4\_K\_M} & GGUF weight-\allowbreak{}only & llama.cpp b12176 (no imatrix) & Cohorts 001, 002, 005, 007, 008, 009, 010, 011 \\[2pt]
+\texttt{Qwen/\allowbreak{}Qwen2.5-\allowbreak{}3B-\allowbreak{}Instruct} (\texttt{aa8e725379}) & \texttt{Q2\_K} & GGUF weight-\allowbreak{}only & llama.cpp b12176 (no imatrix) & Cohorts 001, 003 (100\% length-\allowbreak{}capped operational failure) \\[2pt]
+\texttt{Qwen/\allowbreak{}Qwen2.5-\allowbreak{}3B-\allowbreak{}Instruct} (\texttt{aa8e725379}) & \texttt{Q1\_0} & GGUF 1-\allowbreak{}bit family & llama.cpp b12176 (no imatrix) & Prepared only; never queried \\[2pt]
+\texttt{Qwen/\allowbreak{}Qwen2.5-\allowbreak{}7B-\allowbreak{}Instruct} (\texttt{a09a35458c}) & \texttt{F16} & 14.191 GiB & AGERE F16 conversion (7fe450e) & Cohorts 004, 012, 013, 014, 015, 016, 018, 019, 020, 021, 022, 023, 024, 026, 027, 028 \\[2pt]
+\texttt{Qwen/\allowbreak{}Qwen2.5-\allowbreak{}7B-\allowbreak{}Instruct} (\texttt{a09a35458c}) & \texttt{Q8\_0, Q6\_K, Q5\_K\_M, Q3\_K\_M, Q2\_K} & GGUF ladder & llama.cpp b12176 from F16 & Cohort 024 (all 5 formats) \\[2pt]
+\texttt{Qwen/\allowbreak{}Qwen2.5-\allowbreak{}7B-\allowbreak{}Instruct} (\texttt{a09a35458c}) & \texttt{Q4\_K\_M (SHA-\allowbreak{}256 7ebec3cd...)} & 4.361 GiB (\textasciitilde{}4.91 BPW tensor data) & llama.cpp b12176 from F16 (no imatrix) & Cohorts 015, 016, 024, 029 (CF-\allowbreak{}TP1 production deployment) \\[2pt]
+\texttt{Qwen/\allowbreak{}Qwen2.5-\allowbreak{}14B-\allowbreak{}Instruct} (\texttt{608247a797}) & \texttt{F16 (29.55 GB), Q8\_0, Q4\_K\_M} & 29.55 GB F16 source & llama.cpp b12176 on Ubuntu host & Cohort 017 ran Q8\_0 \& Q4\_K\_M; F16 excluded from Cohort 017 \& 027 due to 32 GB host RAM guard \\[2pt]
+\texttt{mistralai/\allowbreak{}Mistral-\allowbreak{}7B-\allowbreak{}Instruct-\allowbreak{}v0.3} (\texttt{61fd4167ff}) & \texttt{F16, Q8\_0, Q6\_K, Q5\_K\_M, Q4\_K\_M, Q3\_K\_M, Q2\_K} & 4.37 GB (bartowski Q4\_K\_M); 7-\allowbreak{}format ladder in 024 & Cohort 022 used bartowski Q4\_K\_M; Cohort 024 quantized from F16 GGUF & Cohort 022 (Q4\_K\_M), Cohort 024 (all 7 formats), Cohort 027 (F16) \\[2pt]
+\texttt{meta-\allowbreak{}llama/\allowbreak{}Llama-\allowbreak{}3.1-\allowbreak{}8B-\allowbreak{}Instruct} (\texttt{Pinned thi}) & \texttt{F16, Q8\_0, Q6\_K, Q5\_K\_M, Q4\_K\_M, Q3\_K\_M, Q2\_K} & 7-\allowbreak{}format ladder from F16 & llama.cpp b12176 from F16 GGUF & Cohort 024 (all 7 formats), Cohort 026 (F16 v2/\allowbreak{}v3), Cohort 027 (F16), Cohort 028 (F16) \\[2pt]
+\end{longtable}
+}

@@ -1,0 +1,166 @@
+% =============================================================================
+% Part II, Chapter 11: Cohorts 026--028
+% =============================================================================
+\chapter{Observational Equivalence, Graph-Switch Falsification, and the Deterministic Calculator Ablation (Cohorts 026--028)}\label{ch:cohorts_026_028}
+
+Up through Cohort~024, every two-study prompt labeled one table ``randomized'' and the other ``historical.'' A skeptic could argue that deciding between two named studies tests epistemic source trust rather than structural graphical reasoning. Following Cohort~025.1's roadmap, Cohorts~026--028 (November 19--23, 2026) constructed a pure test of Judea Pearl's causal hierarchy: \textbf{holding the 8-cell observational joint distribution $\Prob(W,X,Y)$ exact-rational identical across paired prompts while changing only whether $W$ is an upstream confounder ($W\to X,Y$) or a downstream mediator ($X\to W\to Y$)}. When models failed this test across four lineages in Cohort~027, Cohort~028 coupled the models to an allowlisted Python deterministic calculator---proving once and for all that offloading arithmetic rescued matched noncausal tasks ($128/128$ in Qwen) while leaving causal adjustment-rule selection near $50\%$ chance!
+
+% =============================================================================
+\section{Cohort 026: Observationally Identical Graph-Switch Assay (v1 Bug, v2 Punctuation, and v3 Option Confound)}
+
+\subsection*{1. Historical Context}
+Designed on November 19, 2026, Cohort~026 generated $48$ exact-rational SCM families ($8$ development, $8$ validation, $32$ reserved confirmation) where the confounder graph ($W\to X, W\to Y, X\to Y$) and mediator graph ($X\to W\to Y, X\to Y$) share the \textbf{exact same 8-cell joint distribution $\Prob(W,X,Y)$} yet have opposite interventional effect signs $\sign(\Prob(Y=1\mid \doop(X=1)) - \Prob(Y=1\mid \doop(X=0)))$, paired with a $W\to Z$ unchanged-answer control graph.
+
+\subsection*{2. Research Question}
+When $\Prob(W,X,Y)$ and derived conditional/marginal tables are held identical, can \texttt{Qwen2.5-7B F16} or \texttt{Llama-3.1-8B F16} switch their intervention recommendation between confounder and mediator graphs while retaining their answer under a non-ancestral $W\to Z$ graph extension?
+
+\subsection*{3. Hypothesis}
+\textbf{Classification:} \emph{Documented prospective bounded development qualification (\texttt{H12}).} Frozen gate required $\ge 95\%$ strict bare-token validity, $\ge 80\%$ graph-reading and arithmetic controls, $\ge 70\%$ switch accuracy in each polarity, $\ge 80\%$ no-change accuracy, and $\ge 60\%$ ($5/8$) paired switch fidelity before querying validation/quantized arms.
+
+\subsection*{4. Experimental Design}
+Two \texttt{F16} lineages (\texttt{Qwen2.5-7B}, \texttt{Llama-3.1-8B}) $\times$ two prompt forms (\texttt{direct} vs.\ \texttt{decision}, $56$ prompts/form $= 112$ prompts/arm) across $8$ development families ($5$ total development runs $= 560$ persisted responses: invalidated \texttt{pilot\_qwen\_v1} + \texttt{v2} for both models + \texttt{v3} single permitted wording revision for both models).
+
+\subsection*{5. Mathematical Formulation}
+Under identical $\Prob(W,X,Y)$:
+\begin{align}
+  \text{Confounder } (W \to X,Y): \quad \Prob(Y=1\mid \doop(X=x)) &= \sum_{w\in\{0,1\}} \Prob(Y=1\mid X=x, W=w)\,\Prob(W=w), \\
+  \text{Mediator } (X \to W \to Y): \quad \Prob(Y=1\mid \doop(X=x)) &= \sum_{w\in\{0,1\}} \Prob(Y=1\mid X=x, W=w)\,\Prob(W=w\mid X=x) = \Prob(Y=1\mid X=x).
+\end{align}
+Exact rational fractions guaranteed $\tau_{\mathrm{conf}} \cdot \tau_{\mathrm{med}} < 0$ even after 6-decimal rounding.
+
+\subsection*{6. Experimental Execution}
+Executed November 19, 2026 (commit \texttt{a75d5e0}) across three transparent stages preserved in the archive:
+\begin{enumerate}
+  \item \textbf{06:54 UTC (\texttt{invalidated\_pilot\_qwen\_v1}, $112$ calls):} Immediately invalidated because the arithmetic control oracle erroneously assumed complementing $Y \mapsto 1-Y$ preserved the optimal action (in fact it reverses $\arg\max_x$!) and included a stray intervention question. Preserved intact rather than deleted.
+  \item \textbf{07:26--07:56 UTC (\texttt{qwen7b\_f16\_v2} \& \texttt{llama8b\_f16\_v2}, $224$ calls):} Repaired oracle; however, \texttt{Llama v2} appended a period (\texttt{"X=1."}) on all $64$ action prompts ($48/112 = 42.9\%$ strict bare-token validity).
+  \item \textbf{08:25--08:57 UTC (\texttt{qwen7b\_f16} \& \texttt{llama8b\_f16} [v3], $224$ calls):} Exercised the single pre-permitted wording revision adding the explicit weighting rule and forbidding trailing punctuation (\emph{``Do not add a period or explanation''}). Note: run folder names \texttt{qwen7b\_f16} and \texttt{llama8b\_f16} hold v3 outputs, verified by UTC timestamps in \texttt{development\_summary.md}.
+\end{enumerate}
+
+\subsection*{7. Results}
+\begin{itemize}
+  \item \textbf{\texttt{Qwen2.5-7B F16} (v2 \& v3):} $112/112$ strict-valid, $16/16$ graph reading (v3), $6/8$--$8/8$ arithmetic, but \textbf{$0/8$ ($0.0\%$)} paired switch fidelity in both forms ($8/16$ switch items, outputting \texttt{X=1} on \textbf{$100\%$} of switch and no-change items)!
+  \item \textbf{\texttt{Llama-3.1-8B F16} (v3):} Punctuation fix restored $112/112$ ($100\%$) strict validity and $32/32$ graph reading. In \texttt{direct} form, Llama scored \textbf{$0/16$ ($0/8$ pairs)} on switch items! In \texttt{decision\textbf{ form, Llama jumped to }$14/16$ ($6/8 = 75\%$ paired switch fidelity)\textbf{---seemingly passing the switch bar---yet on the }no-change control pair} ($W\to Z$), it scored $8/8$ on base confounder items and \textbf{$0/8$ ($0\%$) on $W\to Z$ items} ($8/16 = 50\% < 80\%$ gate)! Worse, subsequent inspection revealed that option order (\texttt{X=1 or X=0} vs.\ \texttt{X=0 or X=1}) had been coupled with condition in Cohort~026!
+\end{itemize}
+
+\subsection*{8. Interpretation at the Time}
+Zero of four model-form arms cleared all qualification gates (\texttt{Qualified = No}). Following the pre-declared stopping rule, the team halted Cohort~026 at development without touching the 40 validation/confirmation families or running quantized arms, and refused to cherry-pick Llama's $6/8$ decision-form switch score given its $0/8$ $W\to Z$ failure and $0/16$ direct-form score!
+
+\subsection*{9. Retrospective Interpretation}
+Refusing to cherry-pick Llama v3's $14/16$ decision-form result was vindicated within hours: Cohort~027 proved that once option order (\texttt{X=1 or X=0} vs.\ \texttt{X=0 or X=1}) was fully crossed within every graph item, Llama's order-robust paired switch fidelity collapsed from $6/8$ to \textbf{$0/8$}!
+
+\subsection*{10. Methodological Limitations}
+v1 oracle complement bug (caught and isolated); option display order coupled with graph variant in v2/v3.
+
+\subsection*{11. Scientific Contribution}
+\emph{Methodological \& artifact discovery:} Introduced exact-rational observationally equivalent confounder/mediator tables, caught trailing-period tokenization sensitivity in Llama, and demonstrated why no-change controls ($W\to Z$) and option counterbalancing prevent false positives.
+
+\subsection*{12. Transition to Subsequent Research}
+Directly spawned Cohort~027 on fresh families with fully crossed forward/reverse option ordering across four \texttt{F16} models.
+
+\subsection*{13. Evidence and Reproducibility}
+Artifacts: \texttt{experiments/cohort\_026/frozen\_development\_plan.json}, \texttt{development\_summary.md}, \texttt{invalidated\_pilot\_qwen\_v1/}, \texttt{*\_v2/}, \texttt{qwen7b\_f16/}, \texttt{llama8b\_f16/}; commit \texttt{a75d5e0}.
+
+% =============================================================================
+\section{Cohort 027: Order-Balanced Multi-Model Graph-Switch Screen (\texttt{0/8} Across All Four Lineages)}
+
+\subsection*{1. Historical Context}
+Cohort~027 repaired Cohort~026's option-order coupling by fully crossing forward (\texttt{X=1 or X=0}) and reverse (\texttt{X=0 or X=1}) answer option orders across every graph and control item, expanding the development screen to four \texttt{F16} models (\texttt{Qwen 3B}, \texttt{Qwen 7B}, \texttt{Mistral 7B}, \texttt{Llama 8B}; \texttt{Qwen 14B F16} was formally excluded pre-run by the 32 GiB RAM guard).
+
+\subsection*{2. Research Question}
+When answer option order is fully counterbalanced on observationally identical confounder-vs.-mediator pairs, does \emph{any} of four \texttt{F16} open-weight models ($3\text{B}$--$8\text{B}$) achieve order-robust paired graph-switch fidelity?
+
+\subsection*{3. Hypothesis}
+\textbf{Classification:} \emph{Documented prospective staged qualification (\texttt{H12}, \texttt{H13}).} Required order-robust paired switch fidelity (correct on both confounder and mediator under \emph{both} option orders) and $\ge 80\%$ arithmetic/graph controls before querying $16$ validation families or quantized formats.
+
+\subsection*{4. Experimental Design}
+Four \texttt{F16} arms (\texttt{qwen3b\_F16}, \texttt{qwen7b\_F16}, \texttt{mistral7b\_F16}, \texttt{llama8b\_F16}) $\times 224$ prompts/arm ($8$ fresh dev families $\times 2$ forms [\texttt{direct}, \texttt{decision}] $\times 2$ option orders across main confounder/mediator switches, $W\to Z$ invariance controls, graph-reading checks, and explicit weighted-average arithmetic checks) $= \mathbf{896}$ total requests.
+
+\subsection*{5. Mathematical Formulation}
+An order-robust switch quartet $(x_{\mathrm{conf,fwd}}, x_{\mathrm{conf,rev}}, x_{\mathrm{med,fwd}}, x_{\mathrm{med,rev}})$ scores $1$ iff all four binary outputs match their respective interventional optima: $F_{\mathrm{quartet}} = \prod_{g\in\{\mathrm{conf},\mathrm{med}\}} \prod_{o\in\{\mathrm{fwd},\mathrm{rev}\}} \mathbb{I}(\hat{a}_{g,o} = a^*_g)$.
+
+\subsection*{6. Experimental Execution}
+Completed November 19, 2026 (commit \texttt{31fa454}); \textbf{$896/896$ ($100.0\%$)} strict bare-token compliance (\texttt{X=1} or \texttt{X=0}).
+
+\subsection*{7. Results}
+\begin{itemize}
+  \item \textbf{Universal $0/8$ Order-Robust Switch Failure Across All 8 Model-Form Cells:} Every single model and prompt form---\texttt{Qwen 3B}, \texttt{Qwen 7B}, \texttt{Mistral 7B}, and \texttt{Llama 8B}, in both \texttt{direct} and \texttt{decision} forms---scored \textbf{$0/8$ ($0.0\%$)} order-robust paired switch fidelity!
+  \item \textbf{Intact Graph Reading Paired With Weak Single-Pass Arithmetic:} Models read causal ancestry from the prompt accurately (e.g., \texttt{Llama 8B} direct graph reading scored \textbf{$31/32 = 96.88\%$}), yet single-pass weighted-average arithmetic controls hovered near chance (\textbf{$15/32$ to $17/32$}, $46.9\%$--$53.1\%$) across arms!
+  \item \textbf{Pipeline Halted by Pre-Declared Gate:} \texttt{pipeline\_status.json} recorded \texttt{"stopped\_by\_gate"}; validation families and quantized GGUF runs were never executed.
+\end{itemize}
+
+\subsection*{8. Interpretation at the Time}
+Cohort~027 eliminated Cohort~026's Llama decision-form mirage ($6/8 \to 0/8$) and left one remaining charitable explanation for why \texttt{F16} models failed graph switching despite $97\%$ graph reading: *perhaps single-pass floating-point multiplication ($15/32$--$17/32$ arithmetic controls) masked genuine ability to choose the right causal adjustment formula!*
+
+\subsection*{9. Retrospective Interpretation}
+This exact question---\emph{is it just an arithmetic bottleneck?}---set up Cohort~028's surgical deterministic calculator experiment.
+
+\subsection*{10. Methodological Limitations}
+Bare-token single-pass generation (\texttt{X=1}/\texttt{X=0}) forced mental multiplication of 6-decimal probabilities without scratchpad or tool calculation.
+
+\subsection*{11. Scientific Contribution}
+\emph{Decisive cross-lineage refutation (\texttt{H12}):} Demonstrated $0/8$ order-robust confounder-vs.-mediator switching across four \texttt{F16} models despite explicit weighting instructions in the prompt.
+
+\subsection*{12. Transition to Subsequent Research}
+Directly motivated Cohort~028: give the LLM an exact Python calculator so arithmetic error drops to zero, and test whether it can simply select \texttt{marginal} ($P(W)$) for confounders vs.\ \texttt{conditional} ($P(W\mid X)$) for mediators!
+
+\subsection*{13. Evidence and Reproducibility}
+Artifacts: \texttt{experiments/cohort\_027/plan.json}, \texttt{README.md}, \texttt{pipeline\_status.json}, four \texttt{*\_F16/} run folders; commit \texttt{31fa454}.
+
+% =============================================================================
+\section{Cohort 028: Procedure Selection With an Allowlisted Deterministic Calculator}
+
+\subsection*{1. Historical Context}
+In Cohort~027, explicit weighted-average controls scored only $15/32$--$17/32$ in single-pass bare-token inference. Cohort~028 removed arithmetic execution as a confound by comparing three inference systems on identical worlds:
+\begin{itemize}
+  \item \textbf{System A (Bare Token):} Direct single-token output (\texttt{X=0} or \texttt{X=1}).
+  \item \textbf{System B (Structured Single-Pass JSON):} Model outputs selected procedure (\texttt{"marginal"} or \texttt{"conditional"}), estimated scores, and binary action in one JSON object.
+  \item \textbf{System C (Deterministic Calculator-Assisted):} Takes the model's selected procedure field from \texttt{System B} and executes exact rational/decimal arithmetic in an allowlisted Python calculator to choose the winning action deterministically!
+\end{itemize}
+
+\subsection*{2. Research Question}
+When exact deterministic Python calculation (\texttt{System C}) eliminates all arithmetic error, does offloading calculation rescue causal confounder-vs.-mediator procedure selection, or does it selectively rescue only matched noncausal named-rule tasks?
+
+\subsection*{3. Hypothesis}
+\textbf{Classification:} \emph{Documented prospective staged qualification (\texttt{H14}).} Tested primary causal gain $\Delta_{\mathrm{causal}} = \mathrm{Acc}_{\mathrm{causal}}(C) - \mathrm{Acc}_{\mathrm{causal}}(B)$ and causal-vs.-noncausal specificity $\Delta_{\mathrm{spec}} = \Delta_{\mathrm{causal}} - \Delta_{\mathrm{noncausal}}$.
+
+\subsection*{4. Experimental Design}
+\begin{itemize}
+  \item \textbf{Models:} \texttt{Qwen2.5-7B-Instruct F16} and \texttt{Meta-Llama-3.1-8B-Instruct F16}.
+  \item \textbf{Sample:} $16$ fresh development families ($32$ validation families held unqueried), fully counterbalanced across form (\texttt{direct}, \texttt{decision}), option order (\texttt{forward}, \texttt{reverse}), candidate rule order (\texttt{marginal}/\texttt{conditional}), representation (\texttt{raw} probabilities vs.\ \texttt{supplied} pre-computed rule scores), and task kind (\texttt{causal} confounder/mediator vs.\ \texttt{noncausal} named-rule control where the prompt explicitly says ``apply the marginal rule'' or ``apply the conditional rule'').
+  \item \textbf{Scheduled Calls:} $640$ \texttt{bare} + $640$ \texttt{structured} $= 1{,}280$ LLM calls/model ($\mathbf{2{,}560}$ total requests; \texttt{System C} deterministically evaluates the $640$ structured outputs).
+\end{itemize}
+
+\subsection*{5. Mathematical Formulation}
+In raw-rate tasks ($128$ causal, $128$ noncausal per model), \texttt{System C} maps model-chosen rule $\hat{r} \in \{\text{\texttt{marginal}}, \text{\texttt{conditional}}\}$ to exact interventional/procedural score $S(x; \hat{r}) = \sum_w \Prob(Y=1\mid X=x,W=w)\,w(\hat{r}, x)$ and outputs $\hat{a}_C = \arg\max_{x\in\{0,1\}} S(x; \hat{r})$. Because $\tau_{\mathrm{marginal}}$ and $\tau_{\mathrm{conditional}}$ have opposite signs by construction, $\hat{a}_C$ is correct \emph{if and only if} $\hat{r} = r^*$!
+
+\subsection*{6. Experimental Execution}
+Completed November 19--23, 2026 (commit \texttt{ac6ed58}). Schema validity was $640/640$ bare and $640/640$ structured on \texttt{Qwen 7B F16}, and $587/640$ bare and $630/640$ structured on \texttt{Llama 8B F16}.
+
+\subsection*{7. Results}
+\emph{(Summarized in Table~\ref{tab:c28_ablation} and Figure~\ref{fig:control_arch}B; verified from \texttt{experiments/cohort\_028/*/analysis.json}.)}
+
+\input{tables/tab_c28_ablation}
+
+\begin{itemize}
+  \item \textbf{Spectacular Rescue on Matched Noncausal Named-Rule Controls:} When told which named rule to use, \texttt{System B} (model mental math) scored only $58/128$ ($45.31\%$) in Qwen and $68/128$ ($53.13\%$) in Llama, with exact numerical score match $0/128$! Handing the chosen rule to \texttt{System C}'s Python calculator vaulted Qwen to \textbf{$128/128$ ($100.00\%$, $+54.69\pp$)} and Llama to \textbf{$112/128$ ($87.50\%$, $+34.38\pp$)}!
+  \item \textbf{Total Failure to Rescue Causal Graph-Switch Tasks:} On the exact same numerical tables under causal confounder/mediator descriptions, \texttt{System C} moved Qwen from $65/128$ to \textbf{$68/128$ ($53.13\%$, $+2.34\pp$, 95\% family CI $[-3.91, +9.38]\pp$)} and moved Llama \emph{downward} from $71/128$ to \textbf{$60/128$ ($46.88\%$, $-8.59\pp$, 95\% CI $[-13.28, -3.91]\pp$)}!
+  \item \textbf{Strongly Negative Rescue Specificity:} Causal-minus-noncausal calculator gain was \textbf{$-52.34\pp$\textbf{ (95\% CI $[-61.72, -43.75]\pp$) in Qwen and }$-42.97\pp$\textbf{ (95\% CI $[-50.00, -34.38]\pp$) in Llama! Even when pre-computed marginal and conditional scores were supplied directly in the prompt (\texttt{supplied} condition), paired causal switch fidelity remained }$0/16$\textbf{ in decision form across both models ($0/16$ in direct supplied too; $4/16$ raw direct in Qwen)! Why? Because on causal prompts, Qwen and Llama selected the correct rule (\texttt{marginal} for upstream $W$, \texttt{conditional} for downstream $W$) on only }$68/128$ ($53.1\%$)} and \textbf{$60/128$ ($46.9\%$)} of items!
+\end{itemize}
+
+\subsection*{8. Interpretation at the Time}
+Cohort~028 answered Cohort~027's open question with surgical precision (\texttt{D10}): arithmetic error was \emph{indeed} holding back noncausal rule execution ($+54.7\pp$ rescue), \textbf{but arithmetic was NOT why models failed causal graph switching}. Even when given both candidate rules in plain English and a flawless Python calculator, 7B--8B \texttt{F16} models failed to map ``$W$ occurs before $X$ and causes $X$ and $Y$'' onto marginal $P(W)$ adjustment vs.\ ``$W$ occurs after $X$'' onto conditional $P(W\mid X)$ weighting! Per gate rules, validation and quantization arms were stopped (\texttt{stopped\_by\_gate}).
+
+\subsection*{9. Retrospective Interpretation}
+Cohort~028 is one of the cleanest mechanistic ablations in the LLM causal reasoning literature, empirically validating \citet{sawarni2026crb} and \citet{leban2026causalds} in a fully controlled zero-leakage setting.
+
+\subsection*{10. Methodological Limitations}
+Tested two 7B--8B \texttt{F16} models on abstract variable symbols ($W, X, Y$).
+
+\subsection*{11. Scientific Contribution}
+\emph{Landmark positive diagnostic dissociation (\texttt{H14}):} Proved $+54.69\pp$ / $+34.38\pp$ calculator rescue on noncausal controls vs.\ $+2.34\pp$ / $-8.59\pp$ on causal identification ($p$-intervals excluding positive causal specificity by $>34\pp$).
+
+\subsection*{12. Transition to Subsequent Research}
+Synthesizing every lesson learned across Cohorts~001--028---exact-rational worlds, two-study provenance, target-population standardization, matched arithmetic controls, option/order/role counterbalancing, $162$-policy shortcut auditing, and pairwise switch/invariance scoring---the researchers designed CausalFade's culminating confirmatory benchmark: \textbf{Cohort~029 (\texttt{CF-TP1})}.
+
+\subsection*{13. Evidence and Reproducibility}
+Artifacts: \texttt{experiments/cohort\_028/README.md}, \texttt{pipeline\_status.json}, \texttt{qwen7b/analysis.json}, \texttt{llama8b/analysis.json}; commit \texttt{ac6ed58}.

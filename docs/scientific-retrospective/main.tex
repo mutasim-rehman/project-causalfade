@@ -1,0 +1,191 @@
+% =============================================================================
+% The Life of CausalFade: A Scientific Retrospective of Hypotheses,
+% Experiments, Failures, Methodological Evolution, and Discovery
+% =============================================================================
+\documentclass[11pt,oneside,openany]{book}
+
+\usepackage[letterpaper,margin=1in,headheight=14.5pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,longtable,tabularx,array,multirow}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[
+  colorlinks=true,
+  linkcolor=cfnavy,
+  citecolor=cfteal,
+  urlcolor=cfnavy,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  pdftitle={The Life of CausalFade: A Scientific Retrospective of Hypotheses, Experiments, Failures, Methodological Evolution, and Discovery},
+  pdfauthor={Mutasim ur Rehman, Ahmad Raza, Umar Asghar},
+  pdfsubject={Causal Inference, Large Language Model Evaluation, Quantization, Research Methodology}
+]{hyperref}
+\usepackage{bookmark}
+
+% --- Color Palette ---
+\definecolor{cfnavy}{HTML}{1B365D}
+\definecolor{cfteal}{HTML}{125C70}
+\definecolor{cfamber}{HTML}{B85D19}
+\definecolor{cfcrimson}{HTML}{9E2A2B}
+\definecolor{cfslate}{HTML}{5C6B73}
+\definecolor{cfbg}{HTML}{F7F9FA}
+\definecolor{cfrule}{HTML}{CBD5E1}
+
+% --- Mathematical Notation Macros ---
+\newcommand{\doop}{\operatorname{do}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\Ind}{\perp\!\!\!\perp}
+\newcommand{\ATE}{\mathrm{ATE}}
+\newcommand{\CATE}{\mathrm{CATE}}
+\newcommand{\RD}{\mathrm{RD}}
+\newcommand{\SDT}{\mathrm{SDT}}
+\newcommand{\BPW}{\mathrm{BPW}}
+\newcommand{\pp}{\,\mathrm{pp}}
+\newcommand{\sign}{\operatorname{sign}}
+
+% --- Theorem & Pedagogical Callout Styles (page-breakable via amsthm) ---
+\newtheoremstyle{cfboxstyle}
+  {10pt}{10pt}{\normalfont}{0pt}{\bfseries\color{cfnavy}}{.}{0.5em}{}
+\newtheoremstyle{cfauditstyle}
+  {10pt}{10pt}{\normalfont}{0pt}{\bfseries\color{cfcrimson}}{.}{0.5em}{}
+\newtheoremstyle{cfmathstyle}
+  {10pt}{10pt}{\itshape}{0pt}{\bfseries\color{cfteal}}{.}{0.5em}{}
+
+\theoremstyle{cfmathstyle}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+
+\theoremstyle{cfboxstyle}
+\newtheorem{conceptlayer}{Layered Concept Guide}[chapter]
+\newtheorem{workedexample}{Worked Example}[chapter]
+\newtheorem{pedagogicalexample}{Constructed Teaching Example}[chapter]
+
+\theoremstyle{cfauditstyle}
+\newtheorem{auditcallout}{Retrospective Audit Note}[chapter]
+\newtheorem{pitfallbox}{Methodological Pitfall}[chapter]
+
+% --- Code and Verbatim Artifact Listings ---
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  breakatwhitespace=false,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  frame=single,
+  rulecolor=\color{cfrule},
+  backgroundcolor=\color{cfbg},
+  aboveskip=8pt,
+  belowskip=8pt,
+  xleftmargin=4pt,
+  xrightmargin=4pt
+}
+
+% --- Section & Chapter Typography ---
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{cfnavy}}
+  {\filright\large\scshape\color{cfteal}\chaptertitlename\ \thechapter}
+  {6pt}
+  {\titlerule[1.2pt]\vspace{8pt}\filright}
+  [\vspace{6pt}\titlerule]
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{cfnavy}}{\thesection}{0.8em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{cfteal}}{\thesubsection}{0.7em}{}
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\color{cfslate}}{\thesubsubsection}{0.6em}{}
+
+% --- Running Headers and Footers ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize\scshape\color{cfslate}\nouppercase{\leftmark}}
+\fancyhead[R]{\footnotesize\color{cfslate}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\setlength{\emergencystretch}{3em}
+\DeclareRobustCommand{\_}{\textunderscore\allowbreak}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\do\/\do\-\do\_\do\.\do\0\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\a\do\b\do\c\do\d\do\e\do\f}
+\makeatother
+\setlist[itemize]{topsep=3pt,itemsep=2pt}
+\setlist[enumerate]{topsep=3pt,itemsep=2pt}
+
+\begin{document}
+
+% =============================================================================
+% FRONT MATTER
+% =============================================================================
+\frontmatter
+\input{chapters/frontmatter}
+
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+\listoftables
+\clearpage
+
+% =============================================================================
+% MAIN MATTER
+% =============================================================================
+\mainmatter
+
+% --- PART I: THE BIRTH OF CAUSALFADE ---
+\part{The Birth of CausalFade}
+\input{chapters/part1_ch01_origin}
+\input{chapters/part1_ch02_literature}
+\input{chapters/part1_ch03_theory}
+
+% --- PART II: THE EXPERIMENTAL JOURNEY ---
+\part{The Experimental Journey}
+\input{chapters/part2_ch04_infrastructure}
+\input{chapters/part2_ch05_cohorts_dv_004}
+\input{chapters/part2_ch06_cohorts_005_007}
+\input{chapters/part2_ch07_cohorts_008_012}
+\input{chapters/part2_ch08_cohorts_013_017}
+\input{chapters/part2_ch09_cohorts_018_023}
+\input{chapters/part2_ch10_cohorts_024_025}
+\input{chapters/part2_ch11_cohorts_026_028}
+\input{chapters/part2_ch12_cohort_029}
+
+% --- PART III: THE EVOLUTION OF THE SCIENCE ---
+\part{The Evolution of the Science}
+\input{chapters/part3_evolution}
+
+% --- PART IV: SCIENTIFIC SCRUTINY ---
+\part{Scientific Scrutiny}
+\input{chapters/part4_scrutiny}
+
+% --- PART V: THE FINAL SCIENTIFIC FRAMEWORK ---
+\part{The Final Scientific Framework}
+\input{chapters/part5_final_framework}
+
+% --- PART VI: THE MAKING OF THE PAPER ---
+\part{The Making of the Paper}
+\input{chapters/part6_making_paper}
+
+% --- PART VII: WHAT CAUSALFADE TEACHES US ---
+\part{What CausalFade Teaches Us}
+\input{chapters/part7_lessons}
+
+% =============================================================================
+% APPENDICES & BIBLIOGRAPHY
+% =============================================================================
+\appendix
+\part*{Appendices}
+\addcontentsline{toc}{part}{Appendices}
+\input{appendices/appendices_a_to_i}
+\input{appendices/appendices_j_to_q}
+
+\end{document}

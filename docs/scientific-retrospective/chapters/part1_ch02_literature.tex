@@ -1,0 +1,348 @@
+% =============================================================================
+% Part I, Chapter 2: The Intellectual Foundation
+% =============================================================================
+\chapter{The Intellectual Foundation}\label{ch:literature}
+
+Scientific projects do not arise in a vacuum, nor does their bibliography remain static while their research question transforms. A rigorous historical retrospective must distinguish between two bodies of literature that often become blended together in a finished journal article:
+\begin{enumerate}
+  \item \textbf{Contemporaneous foundational literature} that was actively read, summarized, and cited \emph{prior to or during} experimental design, directly shaping early hypotheses, metrics, and models; and
+  \item \textbf{Retrospective positioning literature} incorporated later during benchmark hardening and manuscript preparation to situate newly discovered failure modes (such as option-order sensitivity, contrast-set scoring, and population transportability) within established research traditions.
+\end{enumerate}
+
+In Project CausalFade, Git provenance allows us to draw this boundary with unusual precision:
+\begin{itemize}
+  \item \textbf{Wave 1 (October 28, 2026, commit \texttt{4e2fe4f}):} Fourteen recent (2025--2026) papers on causal LLM benchmarks and quantized reasoning were downloaded, hashed in \texttt{literature review/paper\_manifest.json}, and analyzed in individual technical dossiers (\texttt{literature review/summaries/*.md}).
+  \item \textbf{Wave 2 (November 1, 2026, commit \texttt{caf5b1d}):} Six foundational cognitive psychology, psychophysics, and psychometric modeling papers were added to \texttt{docs/references.bib} to ground the CNI-style multinomial processing tree (\texttt{design\_validation}, Cohort~005) and Signal Detection Theory (\texttt{SDT}) sensitivity/criterion decompositions.
+  \item \textbf{Wave 3 (November 19--25, 2026, Cohort~029 and \texttt{manuscript/references.bib}):} Classical causal inference, transportability, shortcut-learning, long-context position bias, and finite-sample statistical references were integrated as the project pivoted to observationally equivalent graph switches (Cohorts~026--028) and the confirmatory \texttt{CF-TP1} target-population transport protocol (Cohort~029).
+\end{itemize}
+
+Below, we examine all thirty-nine verified publications in our monograph bibliography (\texttt{bibliography/references.bib}), organized into the nine intellectual pillars required to understand CausalFade. For each work, we document its research question, methodology, principal findings, limitations, provenance wave, documented influence on CausalFade, and how CausalFade diverged from or extended it.
+
+% -----------------------------------------------------------------------------
+\section{Foundational Causal Inference Literature}
+
+\subsection{Pearl (2009) --- \emph{Causality: Models, Reasoning, and Inference} \citep{pearl2009causality}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Judea Pearl, \emph{Causality: Models, Reasoning, and Inference}, 2nd ed., Cambridge University Press, 2009 (ISBN 978-0521895606). \emph{Provenance:} Implicit mathematical foundation from commit \texttt{4e2fe4f}; formally cited in \texttt{manuscript/references.bib}.
+  \item \textbf{Research Question \& Methodology:} How can causal claims, interventions, and counterfactuals be formalized mathematically rather than treated merely as informal interpretations of statistical associations? Introduces Structural Causal Models (SCMs), Directed Acyclic Graphs (DAGs), $d$-separation, the intervention operator $\doop(X=x)$, the backdoor and frontdoor criteria, and the three-rung Ladder of Causation (Rung~1 association $\Prob(y\mid x)$, Rung~2 intervention $\Prob(y\mid \doop(x))$, Rung~3 counterfactuals $\Prob(y_x\mid x', y')$).
+  \item \textbf{Principal Findings \& Limitations:} Establishes sound and complete graphical and algebraic rules ($\doop$-calculus) for deciding when interventional distributions are identifiable from observational distributions. Assumes exact knowledge of qualitative causal structure and positivity; finite-sample estimation and behavioral execution by bounded agents lie outside its axiomatic scope.
+  \item \textbf{Influence \& Extension in CausalFade:} Provided the exact mathematical target for every causal task in CausalFade: backdoor standardization in Cohorts~001--011, interventional vs.\ observational source dominance in Cohorts~012--025, confounder vs.\ mediator identification in Cohorts~026--028, and group-standardized causal effects in Cohort~029. CausalFade extended Pearl's identification theory into an \emph{empirical behavioral diagnostic} testing whether bounded language models actually switch estimation formulas when causal structure or target composition changes.
+\end{itemize}
+
+\subsection{Rubin (1974) --- Potential Outcomes in Randomized and Nonrandomized Studies \citep{rubin1974estimating}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Donald B. Rubin, ``Estimating Causal Effects of Treatments in Randomized and Nonrandomized Studies,'' \emph{Journal of Educational Psychology}, 66(5):688--701, 1974 (\texttt{doi:10.1037/h0037350}). \emph{Provenance:} Wave~3 positioning (\texttt{manuscript/references.bib}).
+  \item \textbf{Research Question \& Methodology:} Formalizes unit-level causal effects $Y_i(1) - Y_i(0)$ and analyzes when randomized trials versus nonrandomized observational studies yield unbiased estimates of average treatment effects across a target population.
+  \item \textbf{Principal Findings \& Limitations:} Demonstrates why random assignment eliminates unmeasured baseline confounding in expectation, whereas nonrandomized operator assignment requires Measuring and adjusting for all confounding covariates. Does not provide graphical criteria for covariate selection (where conditioning on post-treatment mediators or colliders induces bias).
+  \item \textbf{Influence \& Extension in CausalFade:} Directly underpins the two-study paradigm introduced in Cohort~012 and refined through Cohort~029, where a randomized study identifies causal stratum effects despite unmeasured operator risk $U$ that corrupts a parallel historical study.
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Causal Reasoning in Language Models}
+
+\subsection{Jin et al.\ (2023) --- \texttt{CLadder}: Assessing Causal Reasoning in Language Models \citep{jin2023cladder}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Zhijing Jin et al., ``CLadder: Assessing Causal Reasoning in Language Models,'' \emph{Advances in Neural Information Processing Systems (NeurIPS)}, 36:31038--31065, 2023. \emph{Provenance:} Referenced across Wave~1 summaries (via \citealt{nwaiwu2025compressed,yu2025causaleval}) and formally cited in Wave~3 (\texttt{manuscript/references.bib}).
+  \item \textbf{Research Question \& Methodology:} Can LLMs solve formal causal inference queries across all three rungs of Pearl's Ladder? Generates $10{,}000+$ natural-language causal queries paired with symbolic ground truth from underlying SCMs and evaluates models with and without chain-of-thought (\texttt{CausalCoT}) prompting.
+  \item \textbf{Principal Findings \& Limitations:} Off-the-shelf LLMs struggle substantially on formal backdoor, frontdoor, and counterfactual queries, though structured step-by-step prompting improves performance. Limitations: Single-item binary yes/no scoring is vulnerable to label/prior imbalances and verbal template shortcuts, and \texttt{CLadder} lacks matched noncausal arithmetic controls on identical numerical tables.
+  \item \textbf{Influence \& Extension in CausalFade:} Inspired Cohort~001's fictional machine framing (avoiding memorized world knowledge) and numerical backdoor tables. CausalFade went substantially beyond \texttt{CLadder} by adding orthogonal cue crossing, matched noncausal scorecard controls, deterministic $162$-policy shortcut audits, and paired reversal/retention scoring.
+\end{itemize}
+
+\subsection{K\i c\i man et al.\ (2023) --- Causal Reasoning and Large Language Models \citep{kiciman2023causal}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Emre K\i c\i man, Robert Ness, Amit Sharma, and Chenhao Tan, ``Causal Reasoning and Large Language Models: Opening a New Frontier for Causality,'' \emph{arXiv:2305.00050}, 2023. \emph{Provenance:} Wave~3 positioning.
+  \item \textbf{Research Question \& Methodology:} Evaluates early frontier LLMs on pairwise causal discovery, counterfactual narrative judgment, and commonsense causal attribution benchmarks.
+  \item \textbf{Principal Findings \& Limitations:} Reports surprisingly high accuracy on semantic causal direction benchmarks, sparking widespread optimism about LLM causal capabilities. However, performance relied heavily on pre-trained domain semantics rather than formal identification from quantitative data, leaving open whether models could reason causally when semantic priors were neutralized.
+  \item \textbf{Influence \& Extension in CausalFade:} Served as the foil for CausalFade's anti-memorization design: CausalFade deliberately stripped real-world semantic cues (using fictional machine settings and abstract ``Amber/Blue'' strata) precisely to prevent domain-knowledge lookup from masquerading as formal causal inference.
+\end{itemize}
+
+\subsection{Yu et al.\ (2025) --- \texttt{CausalEval}: Towards Better Causal Reasoning in Language Models \citep{yu2025causaleval}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Longxuan Yu et al., ``CausalEval: Towards Better Causal Reasoning in Language Models,'' \emph{Proceedings of NAACL-HLT 2025 (Volume 1: Long Papers)}, pp.~12512--12540, 2025 (\texttt{doi:10.18653/v1/2025.naacl-long.622}). \emph{Provenance:} Wave~3 positioning.
+  \item \textbf{Research Question \& Methodology:} Separates knowledge-driven causal questions from formal rule-driven causal inference tasks across multiple LLM families.
+  \item \textbf{Principal Findings \& Limitations:} Shows that LLMs perform much worse on formal structural causal tasks than on commonsense causal questions, and exhibit sensitivity to surface phrasing. Lacks paired interventional switch scoring and quantization/control baselines.
+  \item \textbf{Influence \& Extension in CausalFade:} Reinforced the distinction between archive prompt wording and natural-prose transfer wording implemented as an explicit crossed factor in Cohort~029 (\texttt{CF-TP1}).
+\end{itemize}
+
+\subsection{Ma (2025) --- Causal Inference with Large Language Model: A Survey \citep{ma2025survey}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Jing Ma, ``Causal Inference with Large Language Model: A Survey,'' \emph{Findings of the Association for Computational Linguistics: NAACL 2025}, pp.~5901--5913, 2025 (\texttt{doi:10.18653/v1/2025.findings-naacl.327}). \emph{Provenance:} Wave~3 positioning.
+  \item \textbf{Research Question \& Methodology:} Taxonomizes roles of LLMs in causality (causal discovery prior, treatment effect estimator, natural-language confounder adjuster, and benchmark subject).
+  \item \textbf{Principal Findings \& Limitations:} Identifies benchmark contamination, prompt brittleness, and lack of theoretical guarantees as central open challenges. Survey scope without new empirical experiments.
+  \item \textbf{Influence \& Extension in CausalFade:} Contextualized CausalFade's final methodological contribution within broader evaluation pitfalls surveyed across NLP and causal AI.
+\end{itemize}
+
+\subsection{Wang, Zhu, and Li (2026) --- \texttt{CausalFlip}: Beyond Semantic Matching \citep{wang2026causalflip}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Yuzhe Wang, Yaochen Zhu, and Jundong Li, ``CausalFlip: A Benchmark for LLM Causal Judgment Beyond Semantic Matching,'' \emph{arXiv:2602.20094v2}, 2026. \emph{Provenance:} Wave~1 (\texttt{literature review/summaries/02\_causalflip.md}, commit \texttt{4e2fe4f}).
+  \item \textbf{Research Question \& Methodology:} Do LLMs answer causal questions by genuine structural reasoning or by matching semantic associations? Constructs paired scenarios where minimal structural edits flip the true causal relation while preserving surface lexical similarity.
+  \item \textbf{Principal Findings \& Limitations:} Demonstrates steep accuracy drops when structural flips contradict semantic expectations. Evaluates qualitative judgment rather than quantitative interventional standardization or compressed local models.
+  \item \textbf{Influence \& Extension in CausalFade:} Directly inspired CausalFade's insistence on \emph{paired structural flips}---first in Cohort~001's $2\times 2$ $(T,S)$ family quartets, then in Cohort~026--028's confounder-vs.-mediator flips on identical $P(W,X,Y)$ tables, and finally in Cohort~029's target-mix switch pairs.
+\end{itemize}
+
+\subsection{Sawarni, Tan, and Syrgkanis (2026) --- \texttt{CausalReasoningBenchmark} \citep{sawarni2026crb}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Ayush Sawarni, Jiyuan Tan, and Vasilis Syrgkanis, ``CausalReasoningBenchmark: A Real-World Benchmark for Disentangled Evaluation of Causal Identification and Estimation,'' \emph{arXiv:2602.20571v3}, 2026. \emph{Provenance:} Wave~1 (\texttt{literature review/summaries/07\_causal\_reasoning\_benchmark.md}, commit \texttt{4e2fe4f}).
+  \item \textbf{Research Question \& Methodology:} Disentangles two stages of applied causal inference: (1) \emph{causal identification} (choosing valid adjustment sets/estimators from a graph or domain story) and (2) \emph{statistical estimation} (computing numerical estimates from data). Evaluates coding/data-science LLM workflows on 143 real-world datasets.
+  \item \textbf{Principal Findings \& Limitations:} Shows that identification errors and estimation implementation bugs fail independently and must not be collapsed into a single composite score. Relies on real-world empirical studies (potential pre-training familiarity) and full-precision cloud models.
+  \item \textbf{Influence \& Extension in CausalFade:} Directly motivated Cohort~001's multi-field schema (\texttt{adjustment\_set}, \texttt{ate\_estimate}, \texttt{activate}), Cohort~006's formula-assisted separation of identification from calculation, and Cohort~028's \texttt{System B} vs.\ \texttt{System C} deterministic calculator ablation, which cleanly proved that offloading estimation rescued noncausal tasks ($+54.69\pp$ in Qwen) while leaving causal identification near chance ($68/128$).
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Model Quantization and Compression}
+
+\subsection{Nwaiwu, Jongsawat, and Tungkasthan (2025) --- Compressed Causal Reasoning \citep{nwaiwu2025compressed}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Steve Nwaiwu, Nipat Jongsawat, and Anucha Tungkasthan, ``Compressed Causal Reasoning: Quantization and GraphRAG Effects on Interventional and Counterfactual Accuracy,'' \emph{arXiv:2512.13725v2}, 2025. \emph{Provenance:} Wave~1 (\texttt{literature review/summaries/01\_compressed\_causal\_reasoning.md}, commit \texttt{4e2fe4f})---the single closest prior study to CausalFade's initial premise.
+  \item \textbf{Research Question \& Methodology:} Evaluates quantized open-weight LLMs (4-bit and 8-bit) with and without GraphRAG retrieval on interventional and counterfactual questions adapted from \texttt{CLadder}.
+  \item \textbf{Principal Findings \& Limitations:} Reports modest accuracy reductions under 4-bit quantization partially mitigated by external graph retrieval. Crucially, however, as noted in CausalFade's Wave~1 summary, it evaluated passive single-item question answering without matched noncausal arithmetic controls, without crossing causal and associative signs to control for default yes/no bias, and without exploring sub-4-bit GGUF formats (\texttt{Q3\_K\_M}, \texttt{Q2\_K}).
+  \item \textbf{Influence \& Extension in CausalFade:} Provided the direct springboard for CausalFade's founding gap claim. Ironically, CausalFade's deeper controls later showed that single-item accuracy shifts of the kind studied in \citet{nwaiwu2025compressed} are heavily confounded by formatting invalidity, action priors, and baseline noncausal failures.
+\end{itemize}
+
+\subsection{Liu et al.\ (2025) --- Quantization Hurts Reasoning? \citep{liu2025hurts}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Ruikang Liu et al., ``Quantization Hurts Reasoning? An Empirical Study on Quantized Reasoning Models,'' \emph{arXiv:2504.04823v2 (COLM 2025)}, 2025. \emph{Provenance:} Wave~1 (\texttt{09\_quantization\_hurts\_reasoning.md}).
+  \item \textbf{Research Question \& Methodology:} Systematically benchmarks weight, KV-cache, and activation quantization (W8A8, W4, W3, W2) across reasoning-distilled Qwen and Llama families ($1.5\text{B}$--$70\text{B}$) on mathematical and coding benchmarks.
+  \item \textbf{Principal Findings \& Limitations:} Finds near-lossless performance at 8-bit, mild degradation at 4-bit that widens on smaller ($1.5\text{B}$--$3\text{B}$) models, and severe collapse at $\le 3$-bit precision. Does not test causal confounding or decision bias.
+  \item \textbf{Influence \& Extension in CausalFade:} Directly informed CausalFade's choice of the \texttt{Qwen2.5} and \texttt{Llama-3.1} model families and the initial quantization ladder (\texttt{F16}, \texttt{Q8\_0}, \texttt{Q4\_K\_M}, \texttt{Q2\_K}), accurately foreshadowing both the \texttt{3B Q4\_K\_M} formula-execution drop in Cohorts~006--007 and the catastrophic \texttt{Q2\_K} collapse in Cohort~001.
+\end{itemize}
+
+\subsection{Li et al.\ (2025) --- Quantization Meets Reasoning \citep{li2025meets}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Zhen Li et al., ``Quantization Meets Reasoning: Exploring and Mitigating Degradation of Low-Bit LLMs in Mathematical Reasoning,'' \emph{arXiv:2505.11574v4}, 2025. \emph{Provenance:} Wave~1 (\texttt{10\_quantization\_meets\_reasoning.md}).
+  \item \textbf{Research Question \& Methodology:} Investigates why low-bit PTQ degrades multi-step mathematical chains through error accumulation across reasoning steps.
+  \item \textbf{Principal Findings \& Limitations:} Shows that small logit perturbations compound over sequential arithmetic steps, causing trajectory divergence even when single-step recall appears intact. Limited to mathematical word problems.
+  \item \textbf{Influence \& Extension in CausalFade:} Motivated testing whether causal failures in quantized models were actually disguised multi-step arithmetic errors---leading directly to Cohort~006's formula-assisted condition, Cohort~024's matched noncausal scorecard controls, and Cohort~029's arithmetic baseline.
+\end{itemize}
+
+\subsection{Zhang et al.\ (2025) --- When Reasoning Meets Compression \citep{zhang2025compression}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Nan Zhang et al., ``When Reasoning Meets Compression: Understanding the Effects of LLMs Compression on Large Reasoning Models,'' \emph{arXiv:2504.02010v3 (ICLR 2026)}, 2025. \emph{Provenance:} Wave~1 (\texttt{11\_when\_reasoning\_meets\_compression.md}).
+  \item \textbf{Research Question \& Methodology:} Compares quantization, pruning, and distillation on reasoning models across difficulty tiers and output-length budgets.
+  \item \textbf{Principal Findings \& Limitations:} Demonstrates that compression interacts strongly with generation-length caps: compressed models frequently require longer, more repetitive chains and suffer premature truncation under tight \texttt{max\_tokens} budgets.
+  \item \textbf{Influence \& Extension in CausalFade:} Directly explained two major operational artifacts in CausalFade: \texttt{3B Q2\_K} hitting \texttt{finish\_reason="length"} on $64/64$ items in Cohort~001, and \texttt{Llama-3.1-8B Q4\_K\_M} hitting length caps on $448$ noncausal control prompts in Cohort~024 when ignoring JSON-only instructions.
+\end{itemize}
+
+\subsection{Lian et al.\ (2026) --- Quantization Inflates Reasoning \citep{lian2026inflates}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Xinyu Lian et al., ``Quantization Inflates Reasoning: Token Inflation as a Hidden Cost of Low-Bit Reasoning Models,'' \emph{arXiv:2606.25519v2}, 2026. \emph{Provenance:} Wave~1 (\texttt{08\_quantization\_inflates\_reasoning.md}).
+  \item \textbf{Research Question \& Methodology:} Quantifies ``token inflation''---the tendency of low-bit quantized models to emit substantially more tokens, repetitive self-corrections, or verbose preambles before terminating.
+  \item \textbf{Principal Findings \& Limitations:} Shows that low-bit quantization degrades stopping calibration and format conciseness, inflating completion length by $20\%$--$200\%$ and causing truncation under fixed token budgets.
+  \item \textbf{Influence \& Extension in CausalFade:} Motivated logging \texttt{completion\_tokens}, \texttt{finish\_reason}, and parser failure categories separately from semantic accuracy across all cohorts, which proved essential for diagnosing Cohort~024's \texttt{Llama Q4\_K\_M} control-task truncation anomaly.
+\end{itemize}
+
+\subsection{Alimaskina et al.\ (2026) --- Extreme Low-Bit Inference in Reasoning Models \citep{alimaskina2026extreme}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Ekaterina Alimaskina et al., ``Extreme Low-Bit Inference in Reasoning Models: Failure Modes and Targeted Recovery,'' \emph{arXiv:2606.02011v1}, 2026. \emph{Provenance:} Wave~1 (\texttt{12\_extreme\_low\_bit\_reasoning.md}).
+  \item \textbf{Research Question \& Methodology:} Catalogs taxonomy of failure modes at $1.5$--$3$ bits per weight (token looping, punctuation collapse, instruction amnesia) and tests mixed-precision recovery.
+  \item \textbf{Principal Findings \& Limitations:} Distinguishes catastrophic syntactic/looping collapse at $\le 2.5\;\BPW$ from subtle semantic errors at $4\;\BPW$.
+  \item \textbf{Influence \& Extension in CausalFade:} Provided the diagnostic lens for Cohorts~001, 003, and 004, where \texttt{Qwen2.5-3B Q2\_K} degenerated into numeric/quote token loops (\texttt{"43)366323..."}), prompting CausalFade to test whether \texttt{Q3\_K\_M} (Cohort~004) or larger $7\text{B}$ lineages (Cohort~024) remained schema-viable at extreme compression.
+\end{itemize}
+
+\subsection{Lv et al.\ (2026) --- Low-Bit Quantization-Aware Training for Reasoning LLMs \citep{lv2026reasoningqat}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Keyu Lv et al., ``What Makes Low-Bit Quantization-Aware Training Work for Reasoning LLMs? A Systematic Study,'' \emph{arXiv:2601.14888v1}, 2026. \emph{Provenance:} Wave~1 (\texttt{13\_low\_bit\_qat\_reasoning.md}).
+  \item \textbf{Research Question \& Methodology:} Compares post-training quantization (PTQ) against quantization-aware training (QAT) on multi-step reasoning benchmarks.
+  \item \textbf{Principal Findings \& Limitations:} Shows naive uniform/block PTQ without calibration data (such as uncalibrated \texttt{llama-quantize} runs) suffers sharper degradation below 4 bits than QAT or importance-matrix (\texttt{imatrix}) calibrated PTQ.
+  \item \textbf{Influence \& Extension in CausalFade:} Motivated CausalFade's meticulous provenance recording (\texttt{docs/SSD\_ASSET\_REUSE.md}), explicitly documenting that the local GGUF conversions used \texttt{llama-quantize} build \texttt{b12176} \emph{without} an importance matrix so readers would not confuse uncalibrated PTQ collapse at \texttt{Q2\_K} with optimal QAT performance.
+\end{itemize}
+
+\subsection{Vaish et al.\ (2026) --- \texttt{PRISM}: Parametric Recall Degradation in Quantized LLMs \citep{vaish2026prism}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Swastik Vaish, Arpit Singh Gautam, Varun Tiwari, and Jitendra Singh Yadav, ``PRISM a diagnostic framework for parametric recall degradation in quantized large language models,'' \emph{Discover Computing}, 29(1):700, 2026 (\texttt{doi:10.1007/s10791-026-10580-5}). \emph{Provenance:} Wave~1 (\texttt{14\_prism\_quantization\_recall.md}).
+  \item \textbf{Research Question \& Methodology:} Separates factual parametric memory loss from in-context reasoning loss across quantized LLMs.
+  \item \textbf{Principal Findings \& Limitations:} Demonstrates that quantization disproportionately erodes rare parametric facts stored in weights before degrading in-context copying.
+  \item \textbf{Influence \& Extension in CausalFade:} Reinforced CausalFade's decision to make every causal task \emph{self-contained in context} (supplying exact numerical tables and explicit graph assumptions in the prompt) so parametric memory loss could not be conflated with causal reasoning failure.
+\end{itemize}
+
+\subsection{Marcuzzi et al.\ (2026) --- How Quantization Shapes Bias in Large Language Models \citep{marcuzzi2026bias}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Federico Marcuzzi, Xuefei Ning, Roy Schwartz, and Iryna Gurevych, ``How Quantization Shapes Bias in Large Language Models,'' \emph{Proceedings of EACL 2026 (Volume 1: Long Papers)}, 2026 (\texttt{doi:10.18653/v1/2026.eacl-long.17}). \emph{Provenance:} Wave~2 (\texttt{docs/references.bib}, commit \texttt{caf5b1d}).
+  \item \textbf{Research Question \& Methodology:} Examines how weight and activation quantization alter social, lexical, and label-selection biases across instruction-tuned LLMs.
+  \item \textbf{Principal Findings \& Limitations:} Proves that quantization frequently shifts output priors and response tendencies rather than uniformly adding symmetric noise---meaning accuracy on unbalanced or non-crossed benchmarks can artificially rise or fall when a quantized model becomes more biased toward one response label.
+  \item \textbf{Influence \& Extension in CausalFade:} Crucially anticipated CausalFade's discovery in Cohorts~005, 011, and 024 that \texttt{Q4\_K\_M} could exhibit a \emph{smaller} apparent conflict penalty than \texttt{F16} simply because quantization shifted unconditional \texttt{activate=1} / \texttt{decline} bias!
+\end{itemize}
+
+\subsection{Lyu et al.\ (2026) --- Task Value of Precision Upgrades in Closed-Loop Agents \citep{lyu2026precision}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Sicheng Lyu et al., ``Measuring the Task Value of Precision Upgrades in Closed-Loop Agents,'' \emph{arXiv:2610.24346}, 2026. \emph{Provenance:} Wave~1 (\texttt{06\_precision\_upgrades\_agents.md}).
+  \item \textbf{Research Question \& Methodology:} Evaluates when upgrading precision from 4-bit to 8-bit/16-bit materially improves decision utility in sequential agent loops.
+  \item \textbf{Principal Findings \& Limitations:} Finds that precision upgrades often yield negligible end-to-end decision gains unless the underlying full-precision agent already possesses non-degenerate task competence.
+  \item \textbf{Influence \& Extension in CausalFade:} Foreshadowed CausalFade's overarching empirical outcome: when \texttt{F16} models themselves lack robust causal switching ($0/8$ in Cohort~027; $<75\%$ controls in Cohort~024), comparing \texttt{Q4\_K\_M} against \texttt{F16} measures shifts between degenerate policies rather than loss of causal competence.
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Reasoning Evaluation, Process Dissociation, and Psychometrics}
+
+\subsection{Jacoby (1991) --- Process Dissociation Framework \citep{jacoby1991process}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Larry L. Jacoby, ``A Process Dissociation Framework: Separating Automatic from Intentional Uses of Memory,'' \emph{Journal of Memory and Language}, 30(5):513--541, 1991 (\texttt{doi:10.1016/0749-596X(91)90025-F}). \emph{Provenance:} Wave~2 (\texttt{docs/references.bib}, commit \texttt{caf5b1d}).
+  \item \textbf{Research Question \& Methodology:} Introduces the method of \emph{inclusion} (automatic and intentional processes act in concert) versus \emph{exclusion} (intentional control opposes automatic habit) to algebraically separate controlled processing from automatic fallback.
+  \item \textbf{Principal Findings \& Limitations:} Proves that comparing aligned ($T=S$) and conflict ($T\neq S$) conditions alone cannot separate intentional control from automatic bias unless response bias is also controlled; assumes stochastic independence and parameter invariance across inclusion and exclusion cells.
+  \item \textbf{Influence \& Extension in CausalFade:} Provided the exact conceptual blueprint for crossing interventional direction $T$ with associative direction $S$ in \texttt{design\_validation} and Cohorts~001--011, and also predicted the exact invariance failure observed in Cohort~005 when \texttt{F16} violated cross-cell parameter homogeneity.
+\end{itemize}
+
+\subsection{Gawronski et al.\ (2017) --- The CNI Model of Moral Decision-Making \citep{gawronski2017cni}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Bertram Gawronski, Joel Armstrong, Paul Conway, Rebecca Friesdorf, and Mandy H{\"u}tter, ``Consequences, Norms, and Generalized Inaction in Moral Dilemmas: The CNI Model of Moral Decision-Making,'' \emph{Journal of Personality and Social Psychology}, 113(3):343--376, 2017 (\texttt{doi:10.1037/pspa0000086}). \emph{Provenance:} Wave~2 (\texttt{docs/references.bib}, commit \texttt{caf5b1d}).
+  \item \textbf{Research Question \& Methodology:} Uses a $2\times 2$ multinomial processing tree with three parameters---Consequences ($C$), Norms ($N$), and generalized Inaction/action preference ($I$)---across four dilemma types ($1$ degree of freedom for goodness-of-fit testing).
+  \item \textbf{Principal Findings \& Limitations:} Separates genuine sensitivity to two competing rules from unconditional action/inaction bias. Assumes sequential conditional hierarchy ($C$ dominates $N$, which dominates $I$) and homogeneous parameters across all four cells.
+  \item \textbf{Influence \& Extension in CausalFade:} Directly adapted in \texttt{causalfade/cab\_tree.py} as the Causal/Associative/Bias ($C/A/B$) processing tree: $\Prob(\text{act}=1\mid T,S) = C T + (1-C)[A S + (1-A) B]$. Critically, CausalFade tested Gawronski's $1$-df goodness-of-fit constraint rather than assuming it, discovering in Cohort~005 that \texttt{Qwen2.5-3B F16} violated tree additivity by $-43.75\pp$ and retiring $C/A/B$ latent-route claims immediately (\texttt{D05}).
+\end{itemize}
+
+\subsection{Heck, Arnold, and Arnold (2018) --- \texttt{TreeBUGS} and MPT Diagnostics \citep{heck2018treebugs}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Daniel W. Heck, Nina R. Arnold, and Denis Arnold, ``TreeBUGS: An R Package for Hierarchical Multinomial-Processing-Tree Modeling,'' \emph{Behavior Research Methods}, 50:264--284, 2018 (\texttt{doi:10.3758/s13428-017-0869-7}). \emph{Provenance:} Wave~2 (\texttt{docs/references.bib}).
+  \item \textbf{Research Question \& Methodology:} Develops hierarchical estimation, parameter-recovery checks, and parametric bootstrap deviance diagnostics for multinomial processing trees (MPTs), emphasizing item/family heterogeneity and simplex boundary behavior.
+  \item \textbf{Principal Findings \& Limitations:} Warns that pooling heterogeneous items into an aggregate MPT biases parameter estimates and that conditional branch parameters become weakly identified when upstream parameters approach $1$ or sample sizes are small.
+  \item \textbf{Influence \& Extension in CausalFade:} Directly guided \texttt{results/design\_validation/VALIDATION\_REPORT.md} (3,600 synthetic datasets testing $C\to 1$ boundary nonconvergence and parametric bootstrap $G^2$ deviance).
+\end{itemize}
+
+\subsection{Wu and Deng (2025) --- Applying CNI Trees to LLM Judgments \citep{wuDeng2025counts}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Wenya Wu and Weihong Deng, ``What Counts Underlying LLMs' Moral Dilemma Judgments?,'' \emph{Proceedings of the Fourth Workshop on NLP for Positive Impact (NLP4PI)}, pp.~144--150, 2025 (\texttt{doi:10.18653/v1/2025.nlp4pi-1.12}). \emph{Provenance:} Wave~2 (\texttt{docs/references.bib}).
+  \item \textbf{Research Question \& Methodology:} Applies Gawronski's CNI multinomial processing tree directly to LLM binary responses to separate rule sensitivity from action bias.
+  \item \textbf{Principal Findings \& Limitations:} Demonstrates that LLMs harbor strong generalized action/inaction biases, but applies the CNI tree without testing observational equivalence against continuous logistic cue integration.
+  \item \textbf{Influence \& Extension in CausalFade:} CausalFade explicitly audited this gap in \texttt{design\_validation}, proving mathematically and via simulation that symmetric additive logistic integration is observationally equivalent to the 3-parameter CNI/$C/A/B$ tree on 4 cells ($p_{\text{boot}} = 0.433$), preventing over-interpretation of tree parameters as sequential internal mechanisms.
+\end{itemize}
+
+\subsection{Jones (2016) --- Cue Combination and Signal Detection Theory \citep{jones2016cue}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Pete R. Jones, ``A Tutorial on Cue Combination and Signal Detection Theory: Using Changes in Sensitivity to Evaluate How Observers Integrate Sensory Information,'' \emph{Journal of Mathematical Psychology}, 73:117--139, 2016 (\texttt{doi:10.1016/j.jmp.2016.04.006}). \emph{Provenance:} Wave~2 (\texttt{docs/references.bib}).
+  \item \textbf{Research Question \& Methodology:} Formalizes Signal Detection Theory (\texttt{SDT}) sensitivity $d' = \Phi^{-1}(H) - \Phi^{-1}(F)$ and decision criterion $c = -\frac{1}{2}[\Phi^{-1}(H) + \Phi^{-1}(F)]$ for multi-cue binary classification.
+  \item \textbf{Principal Findings \& Limitations:} Shows how raw accuracy confounds sensitivity $d'$ with criterion shifts $c$, and establishes rules for multi-cue integration. Assumes Gaussian equal-variance latent decision variables when interpreting $d'$ parametrically.
+  \item \textbf{Influence \& Extension in CausalFade:} Implemented in Cohort~024 (\texttt{experiments/cohort\_024/analysis.json}) to map all 21 model-by-quantization arms onto the $(c, d')$ plane (Figure~\ref{fig:c24_matrix}C), cleanly exposing negative criterion bias ($c < -1.0$, strong \texttt{activate} default) paired with near-zero or negative causal discrimination ($d' \le 0$).
+\end{itemize}
+
+\subsection{L{\"o}hn et al.\ (2024) --- Requirements for Machine Psychology on LLMs \citep{lohn2024machinepsychology}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Lea L{\"o}hn, Niklas Kiehne, Alexander Ljapunov, and Wolf-Tilo Balke, ``Is Machine Psychology here? On Requirements for Using Human Psychological Tests on Large Language Models,'' \emph{Proceedings of INLG 2024}, pp.~230--242, 2024 (\texttt{doi:10.18653/v1/2024.inlg-main.19}). \emph{Provenance:} Wave~2 (\texttt{docs/references.bib}).
+  \item \textbf{Research Question \& Methodology:} Audits construct validity, prompt fragility, and psychometric assumptions when importing human cognitive/psychological models (like MPTs and SDT) into LLM evaluation.
+  \item \textbf{Principal Findings \& Limitations:} Demonstrates that minor prompt template, token label, or option-order changes violate measurement invariance in LLMs, invalidating naive psychological trait interpretations.
+  \item \textbf{Influence \& Extension in CausalFade:} Directly motivated CausalFade's prompt-contract, label-polarity, and option-order invariance batteries across Cohorts~018, 019, 024, 027, and 029.
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Counterfactual Reasoning vs.\ Interventional Scope}
+
+While CausalFade deliberately restricted its empirical experiments to \textbf{Rung~2 interventional identification and transport} rather than Rung~3 structural counterfactuals ($\Prob(Y_{x}\mid X=x', Y=y')$), three literature pillars shaped that boundary: \citet{pearl2009causality} established mathematically that Rung~3 counterfactuals depend on functional structural equations (such as monotonicity or noise coupling) that are under-identified from interventional or observational distributions alone; \citet{jin2023cladder} and \citet{nwaiwu2025compressed} tested deterministic counterfactual stories alongside Rung~2 queries; and \citet{wang2026causalflip} examined structural flips in causal narratives. CausalFade's early scoping (\texttt{DECISIONS.md}, Cohorts~001 and 026) recognized that until a model can reliably perform Rung~2 confounding adjustment and target standardization without succumbing to surface shortcuts, claims about Rung~3 counterfactual reasoning lack an identified empirical foundation.
+
+% -----------------------------------------------------------------------------
+\section{Intervention-Based Decision-Making and Causal Agents}
+
+Six Wave~1 papers archived on October 28, 2026 (\texttt{literature review/paper\_manifest.json}) examined LLMs as interactive or evidence-evaluating decision agents:
+
+\subsection{Yang et al.\ (2026) --- \texttt{CausaLab}: Interactive Causal Discovery \citep{yang2026causalab}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Junlin Yang et al., ``CausaLab: A Scalable Environment for Interactive Causal Discovery Toward AI Scientists,'' \emph{arXiv:2605.26029v2}, 2026. \emph{Provenance:} Wave~1 (\texttt{03\_causalab.md}).
+  \item \textbf{RQ, Method \& Findings:} Benchmarks LLM agents proposing sequential interventions to recover unknown causal graphs; finds frontier models struggle to design informative interventions under confounding. \emph{Limitation:} Multi-turn interactive setting confounds exploration policy with single-step causal inference and ignores model quantization.
+  \item \textbf{CausalFade Link:} Prompted CausalFade to isolate single-pass interventional decision-making with known graph/study structure before attempting multi-turn discovery loops.
+\end{itemize}
+
+\subsection{Deb, Shah, and Krishnan (2026) --- Active Causal Discovery Benchmark (\texttt{ACDB}) \citep{deb2026acdb}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Sagar Deb, Devam Shah, and Ashwanth Krishnan, ``Active Causal Discovery Benchmark: Evaluating LLM Agents Under Budgeted Interventions,'' \emph{arXiv:2609.31675v1}, 2026. \emph{Provenance:} Wave~1 (\texttt{04\_active\_causal\_discovery\_benchmark.md}).
+  \item \textbf{RQ, Method \& Findings:} Evaluates LLM agents allocating finite intervention budgets to identify causal edges; shows agents frequently waste intervention budgets on correlated non-ancestors. \emph{Limitation:} Cloud-API focus, no matched noncausal optimization baseline.
+  \item \textbf{CausalFade Link:} Reinforced framing CausalFade's binary choice (\texttt{activate=1} vs.\ \texttt{0}) as an actionable policy decision rather than an abstract graph quiz.
+\end{itemize}
+
+\subsection{Leban, Saarinen, and Sun (2026) --- \texttt{CausalDS}: Data-Science Agents \citep{leban2026causalds}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Andrej Leban, Theo Saarinen, and Yuekai Sun, ``CausalDS: Benchmarking Causal Reasoning in Data-Science Agents,'' \emph{arXiv:2607.08093v2}, 2026. \emph{Provenance:} Wave~1 (\texttt{05\_causalds.md}).
+  \item \textbf{RQ, Method \& Findings:} Evaluates tool-using LLM coding agents analyzing tabular datasets; finds that even when Python execution eliminates arithmetic mistakes, agents frequently specify invalid regression controls (conditioning on colliders or mediators). \emph{Limitation:} Open-ended code execution introduces multi-turn failure variance.
+  \item \textbf{CausalFade Link:} Directly prefigured Cohort~028's tightly controlled single-step deterministic calculator (\texttt{System C}), which confirmed Leban et al.'s insight in a zero-variance setting: exact Python execution fixed noncausal math ($128/128$) while leaving confounder-vs.-mediator rule selection at $68/128$ ($53.1\%$).
+\end{itemize}
+
+\subsection{Chen et al.\ (2026) --- \texttt{ACED-Bench}: Acquiring and Acting on Causal Evidence \citep{chen2026acedbench}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Yiwei Chen et al., ``ACED-Bench: Evaluating How LLM Agents Acquire and Act on Causal Evidence,'' \emph{arXiv:2610.14381}, 2026. \emph{Provenance:} Wave~3 positioning (\texttt{manuscript/references.bib}).
+  \item \textbf{RQ, Method \& Findings:} Studies whether LLM agents distinguish interventional from observational evidence and act coherently on acquired evidence; documents frequent disconnects between stated causal rules and downstream action choices. \emph{Limitation:} Does not isolate target-population composition transport or exhaustively audit deterministic numeric shortcuts.
+  \item \textbf{CausalFade Link:} Paralleled CausalFade's Cohorts~020--023 discovery that $100\%$ governing-source identification (\texttt{Qwen2.5-7B F16}: $128/128$) fails to translate into coherent two-source intervention decisions ($58/128$).
+\end{itemize}
+
+\subsection{Zhang, Jiang, and Lu (2026) --- Epistemic Cue Utilization in LLMs \citep{zhang2026epistemic}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Jinchang Zhang, Kaijun Jiang, and Guoyu Lu, ``What Counts as Evidence? Epistemic Cue Utilization in Large Language Models,'' \emph{arXiv:2610.12788}, 2026. \emph{Provenance:} Wave~3 positioning (\texttt{manuscript/references.bib}).
+  \item \textbf{RQ, Method \& Findings:} Investigates how LLMs weight competing evidence sources bearing explicit epistemic reliability tags (randomized vs.\ anecdotal/observational) versus raw numerical salience. Finds numerical magnitude and position cues frequently override epistemic provenance tags.
+  \item \textbf{CausalFade Link:} Directly illuminated why Cohorts~013--016 were sensitive to study presentation order and magnitude gaps, motivating Cohort~029's exact role-swapped table design where both sources share identical distributional families.
+\end{itemize}
+
+\subsection{Lee et al.\ (2025) --- \texttt{EconCausal}: Context-Aware Economic Reasoning \citep{lee2025econcausal}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Donggyu Lee et al., ``EconCausal: A Context-Aware Economic Reasoning Benchmark for Large Language Models,'' \emph{arXiv:2510.07231}, 2025. \emph{Provenance:} Wave~3 positioning (\texttt{manuscript/references.bib}).
+  \item \textbf{RQ, Method \& Findings:} Evaluates LLMs on causal identification and policy direction questions in economic contexts where omitted variables reverse naive signs. \emph{Limitation:} Real-world macroeconomic narratives allow pre-training domain priors to assist answers.
+  \item \textbf{CausalFade Link:} Contrasted with CausalFade's domain-neutral target-transport construction (\texttt{CF-TP1}), which eliminates macroeconomic prior leakage.
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Distribution Shifts and Target-Population Transportability}
+
+\subsection{Pearl and Bareinboim (2014) --- External Validity and Transportability \citep{pearl2014external}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Judea Pearl and Elias Bareinboim, ``External Validity: From Do-Calculus to Transportability Across Populations,'' \emph{Statistical Science}, 29(4):579--595, 2014 (\texttt{doi:10.1214/14-STS486}). \emph{Provenance:} Wave~3 theoretical foundation for Cohort~029 (\texttt{manuscript/references.bib}).
+  \item \textbf{Research Question \& Methodology:} Uses selection diagrams ($S$-nodes marking structural differences between source study $\Pi$ and target population $\Pi^*$) to derive necessary and sufficient conditions for transporting causal effects across populations with differing baseline covariate distributions.
+  \item \textbf{Principal Findings \& Limitations:} When group-specific interventional distributions $\Prob^*(Y\mid \doop(A=a), S=s) = \Prob_{\mathrm{rct}}(Y\mid A=a, S=s)$ are invariant across source and target ($S \leftarrow \text{Pop}$ has no direct arrow into $Y$ given $S, A$), the target causal effect is given by the transport formula $\sum_s \Prob^*(S=s)\,\Prob_{\mathrm{rct}}(Y\mid A=a, S=s)$. Purely theoretical; does not study LLM evaluation.
+  \item \textbf{Influence \& Extension in CausalFade:} Provided the exact mathematical backbone of CausalFade's culminating protocol (\texttt{CF-TP1}, Cohort~029): varying target stratum composition $w^* = \Prob^*(S=0)$ between $w_0$ and $w_1$ reverses the optimal action $\arg\max_a \Prob^*(Y=1\mid \doop(A=a))$ while holding both source study tables completely fixed!
+\end{itemize}
+
+\subsection{Westreich et al.\ (2017) --- Transportability of Trial Results \citep{westreich2017transportability}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Daniel Westreich et al., ``Transportability of Trial Results Using Inverse Odds of Sampling Weights,'' \emph{American Journal of Epidemiology}, 186(8):1010--1014, 2017 (\texttt{doi:10.1093/aje/kwx164}). \emph{Provenance:} Wave~3 positioning (\texttt{manuscript/references.bib}).
+  \item \textbf{RQ, Method \& Findings:} Demonstrates biostatistical standardization and inverse-odds weighting to transport randomized trial stratum effects to external target populations whose baseline covariate mix differs from trial enrollment, showing how qualitative effect modification across strata reverses target population treatment recommendations.
+  \item \textbf{Influence \& Extension in CausalFade:} Grounded the realistic epidemiological logic of \texttt{CF-TP1}'s natural-prose transfer prompt, in which group-specific randomized effects carry over unchanged to a target population with a known Amber/Blue group mix.
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Benchmark Validity, Shortcut Learning, and Position Sensitivity}
+
+\subsection{McCoy, Pavlick, and Linzen (2019) --- Right for the Wrong Reasons \citep{mccoy2019right}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} R. Thomas McCoy, Ellie Pavlick, and Tal Linzen, ``Right for the Wrong Reasons: Diagnosing Syntactic Heuristics in Natural Language Inference,'' \emph{Proceedings of ACL 2019}, pp.~3428--3448, 2019 (\texttt{doi:10.18653/v1/P19-1334}). \emph{Provenance:} Wave~3 positioning (\texttt{manuscript/references.bib}).
+  \item \textbf{RQ, Method \& Findings:} Constructs \texttt{HANS} adversarial evaluation sets where lexical overlap heuristics fail, proving models scoring high on standard benchmarks collapse below chance when surface heuristics anti-correlate with gold labels.
+  \item \textbf{Influence \& Extension in CausalFade:} Provided the canonical lens for CausalFade's retrospective discovery that Cohort~016's $91.1\%$ historical-first score could be achieved $100\%$ of the time ($768/768$) by a source-blind smaller-gap heuristic, inspiring Cohort~029's exhaustive $162$-policy deterministic shortcut audit (\texttt{policy\_audit.json}).
+\end{itemize}
+
+\subsection{Gardner et al.\ (2020) --- Contrast Sets \citep{gardner2020contrast}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Matt Gardner et al., ``Evaluating Models' Local Decision Boundaries via Contrast Sets,'' \emph{Findings of EMNLP 2020}, pp.~1307--1323, 2020 (\texttt{doi:10.18653/v1/2020.findings-emnlp.117}). \emph{Provenance:} Wave~3 positioning (\texttt{manuscript/references.bib}).
+  \item \textbf{RQ, Method \& Findings:} Proposes minimal label-flipping perturbations around individual test instances and bundle consistency scoring (requiring a model to answer \emph{both} the original and perturbed instance correctly) to probe true local decision boundaries.
+  \item \textbf{Influence \& Extension in CausalFade:} Directly formalized Cohort~027's paired graph-switch metric and Cohort~029's primary target-pair fidelity endpoint $F_{\mathrm{pair}} = I_0 I_1$, which eliminates the $50\%$ free credit that constant-action policies receive on single binary items.
+\end{itemize}
+
+\subsection{Ribeiro et al.\ (2020) --- Behavioral Testing with \texttt{CheckList} \citep{ribeiro2020checklist}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Marco Tulio Ribeiro, Tongshuang Wu, Carlos Guestrin, and Sameer Singh, ``Beyond Accuracy: Behavioral Testing of NLP Models with CheckList,'' \emph{Proceedings of ACL 2020}, pp.~4902--4912, 2020 (\texttt{doi:10.18653/v1/2020.acl-main.442}). \emph{Provenance:} Wave~3 positioning (\texttt{manuscript/references.bib}).
+  \item \textbf{RQ, Method \& Findings:} Distinguishes Minimum Functionality Tests (MFT), Invariance Tests (INV: label-preserving perturbations), and Directional Expectation Tests (DIR: label-changing perturbations).
+  \item \textbf{Influence \& Extension in CausalFade:} Cohort~029's balanced $2\times 2$ sign-matrix design unites INV and DIR inside a single algebraic quartet: half of all target-mix and source-role pairs require \emph{decision reversal} (DIR) while half require \emph{decision invariance} (INV), exposing both rigid constant policies (Cohort~029 causal: $3/256$ reversals) and noisy random-flipping policies (Cohort~029 arithmetic: $45/256$ false flips on invariant pairs).
+\end{itemize}
+
+\subsection{Liu et al.\ (2024) --- Lost in the Middle \citep{liu2024lost}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Nelson F. Liu et al., ``Lost in the Middle: How Language Models Use Long Contexts,'' \emph{Transactions of the Association for Computational Linguistics}, 12:157--173, 2024 (\texttt{doi:10.1162/tacl\_a\_00638}). \emph{Provenance:} Wave~3 positioning (\texttt{manuscript/references.bib}).
+  \item \textbf{RQ, Method \& Findings:} Demonstrates strong primacy and recency biases in how LLMs attend to evidence blocks placed at the start, middle, or end of prompts.
+  \item \textbf{Influence \& Extension in CausalFade:} Contextualized the dramatic study-order crossover discovered in Cohorts~013--016 ($+62.5\pp$ recency preference for whichever study appeared second in \texttt{Qwen2.5-7B Q4\_K\_M}) and mandated exact counterbalancing of study display order across all subsequent cohorts.
+\end{itemize}
+
+\subsection{Pezeshkpour and Hruschka (2024) --- Option-Order Sensitivity in LLMs \citep{pezeshkpour2024order}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Pouya Pezeshkpour and Estevam Hruschka, ``Large Language Models Sensitivity to The Order of Options in Multiple-Choice Questions,'' \emph{Findings of NAACL 2024}, pp.~2006--2017, 2024 (\texttt{doi:10.18653/v1/2024.findings-naacl.130}). \emph{Provenance:} Wave~3 positioning (\texttt{manuscript/references.bib}).
+  \item \textbf{RQ, Method \& Findings:} Shows instruction-tuned LLMs exhibit massive accuracy swings ($13$--$75\pp$) merely from swapping the order in which answer options are listed in the prompt.
+  \item \textbf{Influence \& Extension in CausalFade:} Directly explained two pivotal debugging moments in CausalFade: \texttt{Mistral-7B F16} selecting the first listed option on $256/256$ items in Cohort~024, and Cohort~026's apparent \texttt{Qwen 7B} graph-switch signal ($11/16$) vanishing to $0/16$ in Cohort~027 once \texttt{X=1 or X=0} vs.\ \texttt{X=0 or X=1} option ordering was counterbalanced!
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Statistical Evaluation and Experimental Design}
+
+\subsection{Welch (1947) --- Unequal-Variance Studentized Inference \citep{welch1947generalization}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} B. L. Welch, ``The Generalization of `Student's' Problem when Several Different Population Variances are Involved,'' \emph{Biometrika}, 34(1--2):28--35, 1947 (\texttt{doi:10.1093/biomet/34.1-2.28}). \emph{Provenance:} Wave~3 statistical basis (\texttt{manuscript/references.bib}).
+  \item \textbf{RQ, Method \& Findings:} Derives the Welch--Satterthwaite degrees-of-freedom approximation $\hat{\nu} = (\sum_h s_h^2/n_h)^2 / \sum_h (s_h^2/n_h)^2/(n_h-1)$ for linear combinations of stratum means with heterogeneous variances.
+  \item \textbf{Influence \& Extension in CausalFade:} Used directly in Cohort~029 (\texttt{primary.json} and \texttt{manuscript/scripts/extract.py}) across $H=8$ stratified generation blocks of $16$ independent family clusters each ($\hat{\nu} = 67.53$ degrees of freedom for the primary causal-minus-arithmetic contrast).
+\end{itemize}
+
+\subsection{Hoeffding (1963) --- Probability Inequalities for Sums of Bounded Variables \citep{hoeffding1963probability}}
+\begin{itemize}
+  \item \textbf{Bibliographic Record:} Wassily Hoeffding, ``Probability Inequalities for Sums of Bounded Random Variables,'' \emph{Journal of the American Statistical Association}, 58(301):13--30, 1963 (\texttt{doi:10.1080/01621459.1963.10500830}). \emph{Provenance:} Wave~3 statistical basis (\texttt{manuscript/references.bib}).
+  \item \textbf{RQ, Method \& Findings:} Establishes finite-sample distribution-free tail bounds $\Prob(|\bar{X} - \E[\bar{X}]| \ge t) \le 2\exp(-2 n^2 t^2 / \sum_i (b_i - a_i)^2)$ for independent bounded random variables $X_i \in [a_i, b_i]$ without Gaussian assumptions.
+  \item \textbf{Influence \& Extension in CausalFade:} Grounded Cohort~029's pre-registered dual-interval reporting strategy: alongside the asymptotic stratified Welch $t$ interval ($[-7.77, +0.74]\pp$), Cohort~029 reported a finite-sample distribution-free bounded confidence interval ($[-27.52, +20.49]\pp$) on bounded family differences $D_i \in [-1, 1]$, guaranteeing nominal coverage even under discrete degeneracy.
+\end{itemize}

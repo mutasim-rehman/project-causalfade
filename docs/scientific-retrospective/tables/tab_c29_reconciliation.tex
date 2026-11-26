@@ -1,0 +1,24 @@
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Cohort 029 confirmatory metrics on \texttt{Qwen2.5-7B-Instruct Q4\_K\_M} ($4{,}096/4{,}096$ strict-valid responses) and explicit reconciliation of the manual prose transcription error in \texttt{experiments/cohort\_029/release/RESULTS.md}.}\label{tab:c29_reconciliation}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{4.8cm}>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}p{3.2cm}>{\raggedright\arraybackslash}p{3.2cm}@{}}
+\toprule
+\textbf{Metric (Transfer Form unless noted)} & \textbf{\texttt{RESULTS.md} Prose} & \textbf{Verified Raw Journal \& \texttt{secondary.json}} & \textbf{Audit Status} \\
+\midrule
+Primary Causal Target-Pair Fidelity & 128/512 (25.00\%) & 128/512 (25.00\%) & Exact match \\
+Primary Arithmetic Target-Pair Fidelity & 146/512 (28.52\%) & 146/512 (28.515625\%) & Exact match \\
+Paired Difference $\widehat{\Delta}$ (Welch $t$ 95\% CI) & $-3.52$ pp [$-7.77, +0.74$] & $-3.515625$ pp [$-7.7713, +0.7400$] & Exact match \\
+Bounded 95\% Confidence Interval & [$-27.52, +20.49$] pp & [$-27.5237, +20.4924$] pp & Exact match \\
+Archive Causal / Arithmetic Fidelity & 128/512 vs.\ 128/512 & 128/512 vs.\ 128/512 ($\Delta=0$) & Exact match \\
+Transfer Causal: Gold-Off (0) Correct & 121/512 (erroneous) & \textbf{14/512 (2.73\%)} & Manual prose typo \\
+Transfer Causal: Gold-On (1) Correct & 416/512 (erroneous) & \textbf{497/512 (97.07\%)} & Manual prose typo \\
+Transfer Causal: Total \texttt{activate=1} & 995/1024 (97.17\%) & \textbf{995/1024 (97.17\%)} & Internally inconsistent in \texttt{RESULTS.md} \\
+Transfer Arith.: Gold-Off (0) Correct & 124/512 (erroneous) & \textbf{231/512 (45.12\%)} & Manual prose typo \\
+Transfer Arith.: Gold-On (1) Correct & 397/512 (erroneous) & \textbf{316/512 (61.72\%)} & Manual prose typo \\
+Transfer Arith.: Total \texttt{activate=1} & 785/1024 (erroneous) & \textbf{597/1024 (58.30\%)} & Manual prose typo \\
+Transfer Switch Pairs: Both Correct & 3/256 (C) vs.\ 27/256 (A) & 3/256 (C) vs.\ 27/256 (A) & Exact match \\
+Transfer Invariant Pairs: Both Correct & 125/256 (C) vs.\ 119/256 (A) & 125/256 (C) vs.\ 119/256 (A) & Exact match \\
+\bottomrule
+\end{tabular}
+\end{table}

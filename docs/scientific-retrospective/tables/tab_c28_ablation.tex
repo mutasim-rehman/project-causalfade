@@ -1,0 +1,15 @@
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Cohort 028 deterministic calculator ablation (\texttt{System B} structured single-pass vs.\ \texttt{System C} allowlisted Python calculator) across 128 causal graph-switch items and 128 matched noncausal named-rule controls per model.}\label{tab:c28_ablation}
+\begin{tabular}{@{}llrrrrr@{}}
+\toprule
+\textbf{Model (F16)} & \textbf{Task Domain} & \textbf{System A} & \textbf{System B} & \textbf{System C} & \textbf{Rule ID (C)} & \textbf{$\Delta$(C $-$ B)} \\
+\midrule
+Qwen2.5-7B F16 & Causal Graph-Switch & 64/128 & 65/128 & 68/128 & 68/128 & +2.34 pp \\
+Qwen2.5-7B F16 & Noncausal Named-Rule & 64/128 & 58/128 & 128/128 & 128/128 & +54.69 pp \\
+Llama-3.1-8B F16 & Causal Graph-Switch & 64/128 & 71/128 & 60/128 & 60/128 & -8.59 pp \\
+Llama-3.1-8B F16 & Noncausal Named-Rule & 37/128 & 68/128 & 112/128 & 112/128 & +34.38 pp \\
+\bottomrule
+\end{tabular}
+\end{table}

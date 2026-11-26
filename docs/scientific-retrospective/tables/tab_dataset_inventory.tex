@@ -1,0 +1,40 @@
+{\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{2.3cm}rr>{\raggedright\arraybackslash}p{4.6cm}>{\raggedright\arraybackslash}p{3.2cm}@{}}
+\caption{Inventory of all 24 dataset schemas and task families constructed during Project CausalFade.}\label{tab:dataset_inventory}\\
+\toprule
+\textbf{Dataset ID} & \textbf{Generator} & \textbf{Fam.} & \textbf{Items} & \textbf{Task Paradigm} & \textbf{Manifest Path} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Dataset ID} & \textbf{Generator} & \textbf{Fam.} & \textbf{Items} & \textbf{Task Paradigm} & \textbf{Manifest Path} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\texttt{design\_validation} & causalfade.generate (make\_families) & 24 & 192 & Binary confounded SCM (Z-\allowbreak{}>X, Z-\allowbreak{}>Y, X-\allowbreak{}>Y), exact + sampled (n=2000), 3-\allowbreak{}key JSON & \texttt{results/\allowbreak{}design\_validation/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_001\_003\_004} & Subset of design\_validation & 16 & 64 & Exact-\allowbreak{}evidence direct causal decision (16 fam in 001, 4 in 003, 8 in 004) & \texttt{experiments/\allowbreak{}cohort\_001/\allowbreak{}run\_001\_f16/\allowbreak{}dataset\_manifest.json} \\[2pt]
+\texttt{cohort\_002\_006\_formula} & tools/\allowbreak{}make\_arithmetic\_control.py -\allowbreak{}-\allowbreak{}variant formula & 16 & 64 & Explicit backdoor arithmetic formula on same 16 exact tables & \texttt{experiments/\allowbreak{}cohort\_002/\allowbreak{}run\_001\_f16/\allowbreak{}dataset\_manifest.json} \\[2pt]
+\texttt{cohort\_005\_source} & tools/\allowbreak{}make\_arithmetic\_control.py -\allowbreak{}-\allowbreak{}variant source-\allowbreak{}selection & 16 & 64 & Pre-\allowbreak{}computed randomized vs historical rates, family-\allowbreak{}hashed source order & \texttt{experiments/\allowbreak{}cohort\_005/\allowbreak{}run\_001\_f16/\allowbreak{}dataset\_manifest.json} \\[2pt]
+\texttt{cohort\_007\_fresh\_formula} & causalfade.generate + make\_arithmetic\_control & 12 & 48 & Fresh 12-\allowbreak{}family formula-\allowbreak{}given arithmetic control & \texttt{experiments/\allowbreak{}cohort\_007/\allowbreak{}input/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_008\_reversed} & make\_arithmetic\_control -\allowbreak{}-\allowbreak{}variant source-\allowbreak{}selection-\allowbreak{}reversed & 16 & 64 & Within-\allowbreak{}item line-\allowbreak{}order reversal of cohort\_005 prompts & \texttt{experiments/\allowbreak{}cohort\_008/\allowbreak{}run\_002\_f16/\allowbreak{}dataset\_manifest.json} \\[2pt]
+\texttt{cohort\_009\_interleaved} & tools/\allowbreak{}make\_interleaved\_source\_order.py & 16 & 128 & Same-\allowbreak{}session interleaved order twins on 16 original families & \texttt{experiments/\allowbreak{}cohort\_009/\allowbreak{}input/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_010\_fresh\_order} & causalfade.generate + make\_interleaved\_source\_order & 12 & 96 & Fresh 12-\allowbreak{}family interleaved source-\allowbreak{}order crossover & \texttt{experiments/\allowbreak{}cohort\_010/\allowbreak{}input/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_011\_012\_matched} & tools/\allowbreak{}make\_matched\_source\_selection.py & 16 & 128 & Matched observational magnitude m in [0.38, 0.46) across aligned \& conflict (8 fam in 012) & \texttt{experiments/\allowbreak{}cohort\_011/\allowbreak{}input/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_013\_clarity} & tools/\allowbreak{}make\_prompt\_clarity\_crossover.py (legacy 160 tok) & 8 & 128 & Paired minimal vs causal-\allowbreak{}context prompt frames across both source orders & \texttt{experiments/\allowbreak{}cohort\_013/\allowbreak{}input/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_014\_strict} & tools/\allowbreak{}make\_prompt\_clarity\_crossover.py (strict\_json 48 tok) & 8 & 128 & Strict bare one-\allowbreak{}key JSON contract on minimal vs causal-\allowbreak{}context frames & \texttt{experiments/\allowbreak{}cohort\_014/\allowbreak{}input/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_015\_context16} & make\_matched\_source\_selection + make\_prompt\_clarity\_crossover & 16 & 128 & 16 fresh matched-\allowbreak{}strength families, causal-\allowbreak{}context strict JSON only & \texttt{experiments/\allowbreak{}cohort\_015/\allowbreak{}input/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_016\_017\_rep96} & make\_matched\_source\_selection + make\_prompt\_clarity\_crossover & 96 & 768 & 96 fresh matched-\allowbreak{}strength families for prospective order confirmation (reused in 017) & \texttt{experiments/\allowbreak{}cohort\_016/\allowbreak{}input/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_018\_sensitivity} & causalfade/\allowbreak{}sensitivity.py & 8 & 288 & Graded causal strengths (0.04, 0.12), fixed obs (0.36), noncausal controls, XOR token mapping & \texttt{experiments/\allowbreak{}cohort\_018/\allowbreak{}input/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_019\_contracts} & causalfade/\allowbreak{}contracts.py & 8 & 832 & Within-\allowbreak{}world semantic vs neutral-\allowbreak{}forward (K) vs neutral-\allowbreak{}reverse (M) contracts + controls & \texttt{experiments/\allowbreak{}cohort\_019/\allowbreak{}input/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_020\_components} & causalfade/\allowbreak{}components.py & 8 & 224 & Isolated rate comparison, randomized-\allowbreak{}only decision, numbered two-\allowbreak{}source blocks, direct source ID & \texttt{experiments/\allowbreak{}cohort\_020/\allowbreak{}input/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_021\_guidance} & causalfade/\allowbreak{}guidance.py & 8 & 576 & Governing-\allowbreak{}source selection + ordinary, source-\allowbreak{}guided, and length-\allowbreak{}matched neutral-\allowbreak{}guided decisions & \texttt{experiments/\allowbreak{}cohort\_021/\allowbreak{}input/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_022\_replication} & causalfade/\allowbreak{}guidance.py (replication\_pilot) & 8 & 576 & Fresh 8-\allowbreak{}family cohort-\allowbreak{}021 task schedule for Qwen F16 vs Mistral Q4\_K\_M & \texttt{experiments/\allowbreak{}cohort\_022/\allowbreak{}input/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_023\_audit} & causalfade/\allowbreak{}measurement\_audit.py & 8 & 896 & Full factorial crossing direction, agreement, block order, A/\allowbreak{}B name, option order + controls & \texttt{experiments/\allowbreak{}cohort\_023/\allowbreak{}input/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_024\_matrix} & causalfade/\allowbreak{}matrix024.py & 8 & 1472 & Cohort-\allowbreak{}023 factorial crossed with semantic vs neutral X=0/\allowbreak{}X=1 contracts across 21 model arms & \texttt{experiments/\allowbreak{}cohort\_024/\allowbreak{}input/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_026\_graph\_switch} & causalfade/\allowbreak{}graph\_switch.py + tools/\allowbreak{}cohort026.py & 48 & 112 & 8 dev /\allowbreak{} 8 val /\allowbreak{} 32 conf exact-\allowbreak{}rational P(W,X,Y) confounder vs mediator + W-\allowbreak{}>Z control (v1, v2, v3) & \texttt{experiments/\allowbreak{}cohort\_026/\allowbreak{}input/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_027\_graph\_balanced} & causalfade/\allowbreak{}cohort027.py & 24 & 672 & 8 dev (224 tasks) + 16 val (448 tasks) fully crossing graph, form, and option order & \texttt{experiments/\allowbreak{}cohort\_027/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_028\_proc\_calc} & causalfade/\allowbreak{}cohort028.py & 48 & 3840 & 16 dev (1,280 calls) + 32 val (2,560 calls), bare A vs structured B vs deterministic calculator C & \texttt{experiments/\allowbreak{}cohort\_028/\allowbreak{}manifest.json} \\[2pt]
+\texttt{cohort\_029\_cftp1} & causalfade/\allowbreak{}target\_transport.py + target\_forms.py & 128 & 4096 & CF-\allowbreak{}TP1: 128 families across 8 sign strata x 2 forms x 2 tasks x 2 orders x 2 feasible roles x 2 target mixes & \texttt{experiments/\allowbreak{}cohort\_029/\allowbreak{}freeze/\allowbreak{}manifest.json} \\[2pt]
+\end{longtable}
+}

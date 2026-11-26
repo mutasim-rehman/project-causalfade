@@ -1,0 +1,52 @@
+% =============================================================================
+% Part VI: The Making of the Paper (Chapters 24--25)
+% =============================================================================
+\chapter{From Experimental Archive to Manuscript}\label{ch:making_paper}
+
+When empirical data collection concluded on November 25, 2026 at tag \texttt{cohort-029-v1.0.0}, the researchers faced a formidable editorial challenge: how do you distill 30 experimental cohorts, 71 LLM run directories, $48{,}170$ raw completions, falsified psychometric trees, broken parsers, and twenty-eight developmental pivots into a concise, coherent journal submission without rewriting history or hiding negative results?
+
+Inspecting the self-contained publication package in \texttt{manuscript/} (\texttt{article.tex}, \texttt{supplement.tex}, \texttt{history.tex}, \texttt{Scientific-and-editorial-QC.md}, \texttt{scripts/extract.py}, \texttt{scripts/figures.py}, and \texttt{audit/claim-ledger.csv}) reveals a remarkably principled three-tier editorial architecture:
+
+\section{The Three-Document Publication Architecture}
+
+\begin{enumerate}
+  \item \textbf{The Main Research Article (\texttt{manuscript/article.tex}):} Framed cleanly as a \textbf{methodological benchmark and diagnostic case study} rather than a quantization paper. It centers on two verified pillars regenerated directly from raw bytes by \texttt{manuscript/scripts/extract.py}:
+    \begin{itemize}
+      \item \emph{The Diagnostic Motivation (Cohort~016 Counterexample, Figure~5 of \texttt{article.tex}):} Uses Cohort~016's $96$-family archive transparently as a concrete demonstration of how high apparent causal conflict accuracy ($91.1\%$ historical-first) and dramatic order swings ($+62.5\pp$) can arise inside a benchmark solvable $100\%$ of the time ($768/768$) by a source-blind smaller-gap heuristic.
+      \item \emph{The Constructive Solution and Confirmatory Case Study (\texttt{CF-TP1}, Cohort~029, Figures~1--4 of \texttt{article.tex}):} Presents the exact-rational target-population transport protocol, worked Family~\texttt{096}, balanced $2\times 2$ sign-matrix design, $162$-policy shortcut audit, inconclusive primary contrast ($\widehat{\Delta} = -3.52\pp$, Welch $t$ CI $[-7.77, +0.74]\pp$; bounded CI $[-27.52, +20.49]\pp$), and the secondary pairwise reversal/invariance decomposition ($3/256$ causal switches vs.\ $27/256$ arithmetic switches and $45/256$ invariant flips).
+    \end{itemize}
+  \item \textbf{The Technical Supplement (\texttt{manuscript/supplement.tex}):} Supplies complete secondary tables (archive-form parity $128/512$ vs.\ $128/512$, role-pair and order-pair matrices, directional gold-off/gold-on counts $14/512$ and $497/512$, option-order breakdowns, and exhaustive $162$-policy shortcut audit bounds).
+  \item \textbf{The Research History Disclosure (\texttt{manuscript/history.tex}):} Explicitly discloses that \texttt{CF-TP1} emerged from twenty-eight prior exploratory and developmental cohorts (\texttt{001}--\texttt{028}), summarizing the abandoned quantization hypothesis, reference-gate stops, and component/calculator ablations so no reader or referee could mistake Cohort~029 for a first-try one-shot experiment!
+\end{enumerate}
+
+\section{Editorial Selection vs.\ Full Archival Preservation}
+What moved out of \texttt{article.tex} during manuscript distillation, and why?
+\begin{itemize}
+  \item \textbf{Excluded from main-text confirmatory claims:} Cohorts~001--015 and 017--028. Because those cohorts were exploratory development screens, reused families (001--003, 006, 008--009, 012, 017), failed pre-declared reference gates (004, 012, 014, 018, 019, 024, 026, 027, 028), or suffered post-hoc discovered confounds (Cohort~026 option-order coupling), elevating any of them alongside Cohort~029's frozen confirmatory protocol would have blurred exploratory and confirmatory inference.
+  \item \textbf{Trade-off of editorial conciseness:} While \texttt{article.tex}'s tight focus on Cohort~029 + Cohort~016 maximizes statistical cleanliness for a journal audience (such as \emph{IEEE TNNLS}, evidenced by \texttt{manuscript/ieee-tnnls.log}), a reader of \texttt{article.tex} alone does not see the rich empirical gems of Cohort~007 ($-31.25\pp$ formula sign drop), Cohort~021 ($128/128$ source ID vs.\ $58/128$ guided action), Cohort~024 ($21$-arm SDT plane and Llama \texttt{Q4\_K\_M}'s $448$ control truncations), or Cohort~028 ($+54.69\pp$ Python calculator noncausal rescue vs.\ $+2.34\pp$ causal null). Preserving those twenty-eight cohorts in full depth is precisely why this retrospective monograph exists alongside the journal paper.
+\end{itemize}
+
+\section{Byte-Level Claim Auditing}
+Perhaps the most admirable engineering practice in \texttt{manuscript/} is \texttt{manuscript/scripts/extract.py} (148 lines) paired with \texttt{manuscript/audit/claim-ledger.csv}. Rather than copying numbers from Markdown summaries (which would have propagated the manual \texttt{121/512, 416/512} typo in \texttt{experiments/cohort\_029/release/RESULTS.md}!), \texttt{extract.py} decodes all $4{,}096$ base64 HTTP payloads directly from \texttt{events.jsonl}, verifies every SHA-256 hash, re-parses every JSON completion with duplicate-key rejection, recomputes every pair count and Welch $t$ interval from scratch, asserts machine-precision agreement (\texttt{< 1e-12}) with \texttt{primary.json}, and writes the exact CSVs read by \texttt{figures.py} and verified against \texttt{article.tex}!
+
+% =============================================================================
+\chapter{The Original Hypothesis Revisited}\label{ch:revisited}
+
+Let us return directly to October 28, 2026 (commit \texttt{4e2fe4f}) and place the founding hypothesis of Project CausalFade on the witness stand:
+
+\begin{quote}
+\textbf{Original Hypothesis (\texttt{H01}):} \emph{Post-training weight quantization selectively degrades interventional causal reasoning faster than surface associative processing, inflating $\mathrm{ConflictPenalty}(p) = \mathrm{Acc}_{\mathrm{aligned}}(p) - \mathrm{Acc}_{\mathrm{conflict}}(p)$ relative to unquantized \texttt{F16} models.}
+\end{quote}
+
+\section{Why \texttt{H01} Was Neither Confirmed Nor Trivially Falsified---It Was Exposed as Ill-Posed on Current 3B--8B Baselines}
+
+If a student asks, \emph{``So was CausalFade's original hypothesis right or wrong?''}, the scientifically precise answer has three parts:
+
+\begin{enumerate}
+  \item \textbf{Empirically, selective quantization inflation of causal confounding vulnerability was NEVER established.} In Cohorts~005 and 011, 4-bit quantization (\texttt{Q4\_K\_M}) changed the conflict penalty by \textbf{$-43.75\pp$} and \textbf{$-39.06\pp$}---the \emph{opposite} direction of \texttt{H01}---because quantization pushed \texttt{Qwen2.5-3B} closer to a $100\%$ \texttt{activate=1} policy where aligned and conflict accuracy both equal $50\%$. In Cohort~015, \texttt{7B Q4\_K\_M} scored $+7.0\pp$ \emph{higher} overall than \texttt{F16}. In Cohort~024's $30{,}912$-request cross-lineage matrix, \texttt{Qwen 7B F16} vs.\ \texttt{Q4\_K\_M} differed by $-0.39\pp$ ($111/256$ vs.\ $110/256$) and \texttt{Llama 8B F16} vs.\ \texttt{Q4\_K\_M} differed by $+1.56\pp$ ($146/256$ vs.\ $150/256$) on semantic causal conflict, while \texttt{Llama Q4\_K\_M} collapsed by $-47.66\pp$ on \emph{noncausal controls} due to length-capped verbosity!
+  \item \textbf{Where quantization DID hurt performance, the mechanism was noncausal.} \texttt{3B Q2\_K} failed via syntactic token-looping (\texttt{0/64}, Cohorts~001/003); \texttt{3B Q4\_K\_M} failed via explicit decimal formula arithmetic (\texttt{-25.0} to \texttt{-31.25} pp equally on aligned and conflict items, Cohorts~002/006/007); \texttt{7B Q4\_K\_M} amplified study-line recency sensitivity on one specific prompt template (\texttt{+44.79} pp interaction in Cohort~016, \texttt{0} pp in Cohort~024); and \texttt{Llama 8B Q4\_K\_M} lost JSON conciseness on scorecard controls (Cohort~024).
+  \item \textbf{More fundamentally, testing whether compression ``erodes'' causal reasoning presupposes that the uncompressed model possesses causal reasoning to lose!} Across Cohorts~004, 012, 018--024, 027, and 028, unquantized \textbf{\texttt{F16}} models ($3\text{B}$--$8\text{B}$) failed single-pass backdoor standardization, failed two-source conflict integration ($43\%$--$57\%$), failed harmful-direction controls, obeyed first-option policies (\texttt{Mistral F16}: $256/256$), scored $0/8$ on order-balanced confounder-vs.-mediator switches, and selected causal adjustment procedures at chance ($53.1\%$ and $46.9\%$) even with a Python calculator! You cannot measure the ``fading'' of a capability whose baseline signal is zero ($0.031\;\text{bits}$ mutual information in Cohort~025).
+\end{enumerate}
+
+\section{Why Discovering This Truth Surpassed the Original Goal}
+Had CausalFade stopped after Cohort~015 or Cohort~016, or had it lacked matched noncausal controls and option-order counterbalancing, it could easily have published a misleading claim about quantized causal fragility. By following the evidence ruthlessly wherever it led---even when it meant dismantling the project's own namesake premise---CausalFade uncovered a far more general truth about how language models process quantitative evidence and how causal benchmarks must be built.

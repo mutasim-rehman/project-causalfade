@@ -1,0 +1,225 @@
+% =============================================================================
+% Part II, Chapter 7: Cohorts 008--012
+% =============================================================================
+\chapter{Source-Order Crossovers, Matched-Strength Repair, and 7B Feasibility (Cohorts 008--012)}\label{ch:cohorts_008_012}
+
+Cohort~005 had hinted that \texttt{Qwen2.5-3B F16} changed its conflict choices depending on whether randomized or historical rates appeared first---and had simultaneously exposed a generator asymmetry where aligned historical gaps ($57.10\pp$) were wider than conflict historical gaps ($38.04\pp$). Between November 10 and November 12, 2026, Cohorts~008--012 systematically isolated within-item presentation order, survived a mid-run workstation shutdown and a post-hoc count-display bug, repaired the observational-gap generator flaw, and screened \texttt{Qwen2.5-7B F16} on the repaired two-study task.
+
+% =============================================================================
+\section{Cohort 008: Within-Item Source-Order Reversal (and Interrupted Run Recovery)}
+
+\subsection*{1. Historical Context}
+In Cohort~005, presentation order had been assigned at the \emph{family} level ($10$ historical-first vs.\ $22$ randomized-first conflict items), confounding item parameters with line order. Cohort~008 reversed the study line order on the exact same $64$ Cohort~005 items so every item served as its own control.
+
+\subsection*{2. Research Question}
+When study presentation order is reversed within the exact same 64 items, does \texttt{Qwen2.5-3B F16} change its binary intervention decisions, and how does \texttt{Q4\_K\_M} respond?
+
+\subsection*{3. Hypothesis}
+\textbf{Classification:} \emph{Exploratory within-item crossover (\texttt{H05}).} Motivated by Cohort~005's post-hoc split, tested whether listing historical evidence first lowers \texttt{F16} conflict accuracy on identical numerical pairs.
+
+\subsection*{4. Experimental Design}
+\begin{itemize}
+  \item \textbf{Arms:} \texttt{run\_001\_f16} (interrupted), \texttt{run\_002\_f16} (complete reversed-order \texttt{3B F16}), and \texttt{run\_002\_q4\_k\_m} (complete reversed-order \texttt{3B Q4\_K\_M}), paired against archived Cohort~005 outputs ($64$ prompts/arm).
+\end{itemize}
+
+\subsection*{5. Mathematical Formulation}
+For each item $j$ with original order $o_j \in \{\mathrm{rand}, \mathrm{hist}\}$ in Cohort~005 and reversed order $\bar{o}_j$ in Cohort~008, pooling both sessions yields balanced $(32\text{ rand-first}, 32\text{ hist-first})$ paired observations on identical $(T,S)$ items, estimating $\Delta_{\mathrm{order}} = \mathrm{Acc}(\mathrm{hist\text{-}first}) - \mathrm{Acc}(\mathrm{rand\text{-}first})$.
+
+\subsection*{6. Experimental Execution}
+Cohort~008 produced the project's \textbf{only incomplete run directory}: on November 10, 2026, \texttt{run\_001\_f16} was interrupted after $25$ completed responses plus $1$ connection-interrupted record ($26/64$ persisted lines, $38$ unscheduled) due to a planned workstation shutdown (commit \texttt{dd75c35}). Rather than overwriting or deleting the partial directory, the team preserved \texttt{run\_001\_f16} intact as an audit record and executed clean full 64-item runs (\texttt{run\_002\_f16} and \texttt{run\_002\_q4\_k\_m}, commit \texttt{2846f50}) on November 12, 2026 ($154$ persisted responses out of $192$ scheduled across the three directories).
+
+\subsection*{7. Results}
+\begin{itemize}
+  \item \textbf{\texttt{3B F16} Confirmed Within-Item Order Sensitivity:} Combining Cohort~005 and Cohort~008 \texttt{run\_002\_f16} by logical order, \texttt{F16} conflict accuracy dropped from \textbf{$16/32$ ($50.00\%$)} when randomized evidence appeared first to \textbf{$7/32$ ($21.88\%$)\textbf{ when historical evidence appeared first---a paired within-item shift of }$-28.125\pp$}!
+  \item \textbf{\texttt{3B Q4\_K\_M} Flat at Always-Activate Ceiling:} \texttt{Q4\_K\_M} scored \textbf{$16/32$ ($50.00\%$)} in both orders ($\Delta_{\mathrm{order}} = 0.0\pp$) due to near-universal \texttt{activate=1} output.
+\end{itemize}
+
+\subsection*{8. Interpretation at the Time}
+Confirmed that study line order genuinely flips \texttt{3B F16} decisions on identical numbers, though comparing Cohort~005 (Nov~10) against Cohort~008 (Nov~12) still crossed two separate server sessions.
+
+\subsection*{9. Retrospective Interpretation}
+Preserving \texttt{run\_001\_f16} ($26/64$) unaltered while rerunning cleanly in \texttt{run\_002\_f16} established exemplary archival discipline: all $38$ missing responses in the entire $48{,}208$-request CausalFade archive trace to this single documented shutdown!
+
+\subsection*{10. Methodological Limitations}
+Cross-session pairing between Cohort~005 and Cohort~008; single-fence parsing ($0/64$ strict bare JSON); reused development families.
+
+\subsection*{11. Scientific Contribution}
+\emph{Benchmark artifact discovery (within-item order non-invariance) \& reproducibility safeguard (transparent preservation of interrupted run).}
+
+\subsection*{12. Transition to Subsequent Research}
+Motivated Cohort~009 to interleave both presentation orders inside a single uninterrupted server session.
+
+\subsection*{13. Evidence and Reproducibility}
+Artifacts: \texttt{experiments/cohort\_008/summary.md}, \texttt{run\_001\_f16/} ($26$ records), \texttt{run\_002\_f16/} ($64$ records), \texttt{run\_002\_q4\_k\_m/} ($64$ records); commits \texttt{dd75c35}, \texttt{2846f50}.
+
+% =============================================================================
+\section{Cohort 009: Same-Session Interleaved Source-Order Crossover}
+
+\subsection*{1. Historical Context}
+To rule out any cross-session drift between Cohort~005 and Cohort~008, Cohort~009 interleaved both randomized-first and historical-first twin prompts for all $64$ items inside a single permuted schedule per model.
+
+\subsection*{2. Research Question}
+Does \texttt{3B F16}'s negative historical-first conflict shift persist when randomized-first and historical-first twins are interleaved in the same stateless server session?
+
+\subsection*{3. Hypothesis}
+\textbf{Classification:} \emph{Exploratory methodological verification (\texttt{H05}).} Expected same-session interleaving to reproduce Cohort~008's $\approx -25\pp$ \texttt{F16} conflict-order drop.
+
+\subsection*{4. Experimental Design}
+\texttt{Qwen2.5-3B} \texttt{F16} and \texttt{Q4\_K\_M} on $16$ reused families $\times 4$ cells $\times 2$ orders $= 128$ interleaved prompts/arm ($256$ total requests).
+
+\subsection*{5. Mathematical Formulation}
+Stateless HTTP completions (\texttt{temperature=0.0}) guarantee theoretically identical deterministic outputs regardless of schedule order unless server-side slot caching leaks state; pairing within family $i$ estimates $\bar{d}_i = \frac{1}{2}\sum_{c \in \mathrm{conflict}}(Y_{i,c,\mathrm{hist}} - Y_{i,c,\mathrm{rand}})$.
+
+\subsection*{6. Experimental Execution}
+Completed November 12, 2026 ($256/256$ fenced JSON stops, commit \texttt{1f8b169}). Note: an initial reporting script bug divided displayed integer numerator/denominator counts by $2$ while computing exact proportions and intervals correctly; this was transparently audited and repaired in commit \texttt{b90cb63}, preserving the v1 JSON alongside the corrected summary!
+
+\subsection*{7. Results}
+\texttt{3B F16} conflict accuracy was \textbf{$16/32$ ($50.00\%$)} randomized-first vs.\ \textbf{$9/32$ ($28.13\%$)} historical-first ($\Delta_{\mathrm{order}} = \mathbf{-21.875\pp}$). \texttt{3B Q4\_K\_M} scored \textbf{$16/32$ ($50.00\%$)} in both orders ($\Delta_{\mathrm{order}} = 0.0\pp$).
+
+\subsection*{8. Interpretation at the Time}
+Ruled out session/drift artifacts as the cause of \texttt{3B F16} order sensitivity.
+
+\subsection*{9. Retrospective Interpretation}
+Notice that even in its ``better'' randomized-first order, \texttt{3B F16} scored only $16/32$ ($50\%$, pure activation bias), whereas historical-first pulled it \emph{below} chance ($9/32 = 28.1\%$) because historical conflict rates actively lured \texttt{F16} into the wrong direction when placed at the top of the prompt!
+
+\subsection*{10. Methodological Limitations}
+Reused the original $16$ development families and retained the imbalanced observational-gap generator.
+
+\subsection*{11. Scientific Contribution}
+\emph{Infrastructure verification \& transparent post-hoc bug disclosure (commit \texttt{b90cb63}).}
+
+\subsection*{12. Transition to Subsequent Research}
+Led directly to Cohort~010 to verify the interleaved order effect on fresh SCM families.
+
+\subsection*{13. Evidence and Reproducibility}
+Artifacts: \texttt{experiments/cohort\_009/summary.md}, \texttt{run\_001\_f16/}, \texttt{run\_001\_q4\_k\_m/}; commits \texttt{1f8b169}, \texttt{b90cb63}.
+
+% =============================================================================
+\section{Cohort 010: Fresh-Family Interleaved Source-Order Replication on \texttt{3B}}
+
+\subsection*{1. Historical Context}
+Cohorts~005, 008, and 009 had all reused the same $16$ development worlds. Cohort~010 generated $12$ fresh worlds to test whether \texttt{3B F16}'s historical-first conflict drop generalized to unseen numerical tables.
+
+\subsection*{2. Research Question}
+Does \texttt{Qwen2.5-3B F16}'s negative historical-first conflict shift replicate on $12$ freshly sampled SCM families?
+
+\subsection*{3. Hypothesis}
+\textbf{Classification:} \emph{Exploratory fresh-family replication (\texttt{H05}).} Predicted $\mathrm{Acc}_{\mathrm{conflict}}(\mathrm{hist\text{-}first}) < \mathrm{Acc}_{\mathrm{conflict}}(\mathrm{rand\text{-}first})$ on \texttt{3B F16}.
+
+\subsection*{4. Experimental Design}
+\texttt{Qwen2.5-3B} \texttt{F16} and \texttt{Q4\_K\_M} on $12$ fresh families (\texttt{seed=20261113}) $\times 4$ cells $\times 2$ orders $= 96$ interleaved prompts/arm ($192$ total requests).
+
+\subsection*{5. Mathematical Formulation}
+Paired $12$-family cluster contrast across $24$ randomized-first vs.\ $24$ historical-first conflict items per arm.
+
+\subsection*{6. Experimental Execution}
+Completed November 12, 2026 ($192/192$ fenced stops; commit \texttt{fa79370}, count display audited in \texttt{b90cb63}).
+
+\subsection*{7. Results}
+\texttt{3B F16} conflict accuracy dropped from \textbf{$12/24$ ($50.00\%$)} randomized-first to \textbf{$6/24$ ($25.00\%$)\textbf{ historical-first: }$-25.00\pp$} (95\% family CI $[-37.50, -12.50]\pp$). \texttt{3B Q4\_K\_M} again scored \textbf{$12/24$ ($50.00\%$)} in both orders ($0.0\pp$).
+
+\subsection*{8. Interpretation at the Time}
+Confirmed that \texttt{3B F16}'s primacy pull toward misleading historical evidence when listed first was stable across fresh families, while \texttt{3B Q4\_K\_M} remained degenerate at constant activation.
+
+\subsection*{9. Retrospective Interpretation}
+Demonstrated how primacy vs.\ recency bias depends strongly on model scale and prompt scaffold: here at \texttt{3B} \texttt{F16}, historical-first \emph{hurt} conflict accuracy ($-25\pp$), whereas four cohorts later at \texttt{7B Q4\_K\_M} under causal-context framing (Cohorts~015--016), historical-first \emph{boosted} conflict accuracy by $+62.5\pp$!
+
+\subsection*{10. Methodological Limitations}
+Still used the original generator whose aligned historical gaps ($57.1\pp$) exceeded conflict historical gaps ($38.0\pp$).
+
+\subsection*{11. Scientific Contribution}
+\emph{Positive empirical replication of 3B primacy confounding pull.}
+
+\subsection*{12. Transition to Subsequent Research}
+Before scaling to 7B on two-study selection, Cohort~011 repaired the underlying SCM generator so aligned and conflict cells had exactly matched observational gap magnitudes.
+
+\subsection*{13. Evidence and Reproducibility}
+Artifacts: \texttt{experiments/cohort\_010/summary.md}, \texttt{run\_001\_f16/}, \texttt{run\_001\_q4\_k\_m/}; commits \texttt{fa79370}, \texttt{b90cb63}.
+
+% =============================================================================
+\section{Cohort 011: Matched Observational-Strength Generator Repair Pilot}
+
+\subsection*{1. Historical Context}
+In the original SCM generator (\texttt{M01}), $\RD_{\mathrm{obs}} = \tau \pm \text{confounding}$ added causal and confounding effects in aligned cells ($|\tau| + |c| \approx 57\pp$) and subtracted them in conflict cells ($|c| - |\tau| \approx 38\pp$). That meant aligned items had conspicuously more extreme historical spreads than conflict items---a subtle construct-validity flaw flagged in Cohort~005. Cohort~011 introduced the \textbf{matched observational-strength generator (\texttt{M06})}, equalizing $|\RD_{\mathrm{obs}}|$ across aligned and conflict cells within every family.
+
+\subsection*{2. Research Question}
+Once aligned and conflict historical gap magnitudes $|\RD_{\mathrm{obs}}|$ are exactly matched within each family, do \texttt{3B F16}'s order effect and \texttt{Q4\_K\_M}'s constant-activation behavior persist?
+
+\subsection*{3. Hypothesis}
+\textbf{Classification:} \emph{Exploratory development pilot (\texttt{H01}, \texttt{H05}).} Tested whether removing the $57\pp$-vs.-$38\pp$ aligned/conflict magnitude asymmetry altered source-selection behavior.
+
+\subsection*{4. Experimental Design}
+\texttt{Qwen2.5-3B} \texttt{F16} and \texttt{Q4\_K\_M} on $16$ fresh matched-strength families (\texttt{seed=20261114}) $\times 4$ cells $\times 2$ orders $= 128$ interleaved prompts/arm ($256$ total requests).
+
+\subsection*{5. Mathematical Formulation}
+Within each family $i$ with causal magnitude $|\tau_i| \in [0.06, 0.12)$ and target observational magnitude $M_i \in [0.38, 0.46)$, operator selection propensities were solved analytically so $|\Prob_{\mathrm{hist}}(Y=1\mid X=1) - \Prob_{\mathrm{hist}}(Y=1\mid X=0)| = M_i$ identically across all four $(T,S) \in \{0,1\}^2$ cells!
+
+\subsection*{6. Experimental Execution}
+Completed November 12, 2026 ($256/256$ fenced stops; commit \texttt{cd3f66d}, v1 display count audit preserved as \texttt{source\_order\_analysis\_v1\_undercounted\_counts.json} in \texttt{b90cb63}).
+
+\subsection*{7. Results}
+\emph{(From \texttt{experiments/cohort\_011/summary.md}.)}
+\begin{itemize}
+  \item \textbf{\texttt{3B F16} Crossed Order Interaction:} On conflict items, \texttt{F16} scored \textbf{$16/32$ ($50.0\%$)} randomized-first vs.\ \textbf{$8/32$ ($25.0\%$)\textbf{ historical-first (}$-25.00\pp$}, 95\% CI $[-37.50, -12.50]\pp$). On aligned items, \texttt{F16} moved in the \emph{opposite} direction: \textbf{$18/32$ ($56.25\%$)} randomized-first vs.\ \textbf{$32/32$ ($100.0\%$)\textbf{ historical-first (}$+43.75\pp$}, 95\% CI $[+34.38, +50.00]\pp$)! Why? Because whenever historical evidence appeared first, \texttt{F16} followed the historical study ($32/32$ right when aligned, $24/32$ wrong when conflicting)!
+  \item \textbf{Format Penalty Comparison:} Collapsed over order, \texttt{F16} scored $50/64$ aligned and $24/64$ conflict (penalty $+40.625\pp$), while \texttt{Q4\_K\_M} scored $33/64$ aligned ($63/64$ \texttt{activate}) and $32/64$ conflict ($64/64$ \texttt{activate}, penalty $+1.563\pp$), yielding $\Delta(\text{\texttt{Q4\_K\_M}}) = \mathbf{-39.063\pp}$ (95\% CI $[-45.313, -32.813]\pp$) purely from \texttt{Q4\_K\_M}'s $127/128$ \texttt{activate=1} policy!
+\end{itemize}
+
+\subsection*{8. Interpretation at the Time}
+Validating \texttt{M06} removed the aligned-vs.-conflict historical gap confound, and cleanly explained \texttt{3B F16}'s behavior: listing historical evidence first caused \texttt{3B F16} to anchor on historical correlation ($+43.75\pp$ aligned, $-25.0\pp$ conflict), while \texttt{3B} overall still lacked above-chance conflict competence ($24/64 = 37.5\%$).
+
+\subsection*{9. Retrospective Interpretation}
+Cohort~011 solved the \emph{between-cell} (aligned vs.\ conflict) observational magnitude imbalance, yet inadvertently introduced a \emph{within-item} magnitude invariant that remained hidden until manuscript verification: because $|\tau_i| \in [6,12)\pp$ was always strictly smaller than $M_i = |\RD_{\mathrm{obs},i}| \in [38,46)\pp$, the randomized study \emph{always} had the smaller $|\text{on}-\text{off}|$ gap across Cohorts~011--017!
+
+\subsection*{10. Methodological Limitations}
+Unrecognized $|\tau_i| < |\RD_{\mathrm{obs},i}|$ separation; \texttt{3B} reference below conflict competence; Markdown fences persisted.
+
+\subsection*{11. Scientific Contribution}
+\emph{Methodological improvement (equalized aligned/conflict $|\RD_{\mathrm{obs}}|$) \& mechanistic diagnosis of \texttt{3B F16} first-study historical anchoring.}
+
+\subsection*{12. Transition to Subsequent Research}
+Because \texttt{Qwen2.5-3B F16} never exceeded $50\%$ on conflict items in either order, Cohort~012 scaled up to \texttt{Qwen2.5-7B F16} on the repaired matched-strength two-study task.
+
+\subsection*{13. Evidence and Reproducibility}
+Artifacts: \texttt{experiments/cohort\_011/summary.md}, \texttt{format\_analysis.json}, \texttt{source\_order\_analysis.json}; commits \texttt{cd3f66d}, \texttt{b90cb63}.
+
+% =============================================================================
+\section{Cohort 012: \texttt{Qwen2.5-7B F16} Matched-Strength Reference Gate}
+
+\subsection*{1. Historical Context}
+Having retired \texttt{3B} for direct conflict decisions due to $\le 50\%$ conflict ceilings, the researchers tested whether \texttt{Qwen2.5-7B-Instruct F16} cleared a pre-specified per-order conflict competence gate on Cohort~011's matched-strength two-study prompt.
+
+\subsection*{2. Research Question}
+Does \texttt{Qwen2.5-7B F16} achieve above-chance conflict accuracy ($\ge 9/16$ in \emph{each} presentation order) on minimal two-study matched-strength prompts?
+
+\subsection*{3. Hypothesis}
+\textbf{Classification:} \emph{Documented prospective feasibility gate.} Pre-declared gate required $\ge 44/64$ overall and $\ge 9/16$ ($56.25\%$) conflict accuracy in both randomized-first and historical-first orders before running \texttt{7B Q4\_K\_M}.
+
+\subsection*{4. Experimental Design}
+Single arm (\texttt{Qwen2.5-7B F16}) on $8$ reused Cohort~011 families ($64$ interleaved prompts: $32$ aligned, $16$ rand-first conflict, $16$ hist-first conflict).
+
+\subsection*{5. Mathematical Formulation}
+Identical matched-strength two-study paradigm (\texttt{M06}) as Cohort~011.
+
+\subsection*{6. Experimental Execution}
+Completed November 12, 2026 ($64/64$ fenced JSON responses; commit \texttt{fc7dcc1}).
+
+\subsection*{7. Results}
+\texttt{7B F16} scored \textbf{$47/64$ ($73.44\%$)} overall and \textbf{$32/32$ ($100.0\%$)\textbf{ on aligned items, but scored only }$8/16$ ($50.0\%$)\textbf{ on randomized-first conflict and }$7/16$ ($43.75\%$)} on historical-first conflict---failing the $\ge 9/16$ per-order conflict gate! Per protocol, \texttt{7B Q4\_K\_M} was withheld.
+
+\subsection*{8. Interpretation at the Time}
+Even at 7B, the terse minimal prompt (\emph{``Historical data where operators chose the setting... Random assignment by the lab...''}) did not make causal confounding salient enough for \texttt{F16} to override conflicting historical rates above chance.
+
+\subsection*{9. Retrospective Interpretation}
+Enforcing the pre-declared reference gate prevented another uninformative \texttt{Q4\_K\_M} run on a chance-level \texttt{F16} baseline and motivated testing explicit causal-context framing in Cohort~013.
+
+\subsection*{10. Methodological Limitations}
+Reused $8$ Cohort~011 families; Markdown code fences still yielded $0/64$ strict bare JSON.
+
+\subsection*{11. Scientific Contribution}
+\emph{Negative feasibility screen \& disciplined gate enforcement.}
+
+\subsection*{12. Transition to Subsequent Research}
+Led directly to Cohort~013's crossover comparing the minimal prompt against an explicit causal-context prompt explaining confounding.
+
+\subsection*{13. Evidence and Reproducibility}
+Artifacts: \texttt{experiments/cohort\_012/summary.md}, \texttt{run\_001\_7b\_f16/}; commit \texttt{fc7dcc1}.

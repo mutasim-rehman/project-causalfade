@@ -1,0 +1,83 @@
+% =============================================================================
+% Part IV: Scientific Scrutiny (Chapters 18--20)
+% =============================================================================
+\chapter{The Retrospective Scientific Audits}\label{ch:audits}
+
+A distinctive feature of the Project CausalFade repository is that it subjected itself to repeated, adversarial internal audits throughout its lifecycle---preserving both plain-text readiness reviews and structured critique documents inside \texttt{docs/}, \texttt{experiments/}, and \texttt{manuscript/}. For an external historian or reproducibility auditor, however, \textbf{provenance classification of these review artifacts is essential}: several documents in the archive adopt the tone and rubric of journal peer review or external committee reports as part of AI-assisted or self-administered red-teaming. In strict adherence to scientific transparency, Table~\ref{tab:audit_provenance} classifies every major review artifact in the repository and distinguishes authentic repository engineering checks from simulated/AI-assisted peer-review exercises and uncertified placeholder metadata.
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Provenance and epistemic classification of internal audit, review, and governance records preserved in the CausalFade repository.}\label{tab:audit_provenance}
+\begin{tabular}{@{}p{4.3cm}p{1.8cm}p{3.0cm}p{4.8cm}@{}}
+\toprule
+\textbf{Repository Path} & \textbf{Date} & \textbf{Provenance Nature} & \textbf{Substantive Impact on Research} \\
+\midrule
+\texttt{docs/PUBLICATION\_READINESS\_2026-11-15.md} & 2026-11-15 & Internal readiness self-audit (post-Cohort~021) & Concluded archive was \emph{not} publication-ready as a quantization paper; demanded cross-lineage matrix (Cohort~024) and stronger noncausal controls. \\[3pt]
+\texttt{experiments/cohort\_025\_1/source\_investigation.docx} & 2026-11-19 & Cross-disciplinary methodological design memo & Proposed 10 analytical directions; Cohort~025.1 audited estimability and launched Cohorts~026--029. \\[3pt]
+\texttt{docs/CausalFade\_Q1\_Peer\_Review\_Report\_2026-11-19.docx} & 2026-11-19 & Simulated / AI-assisted adversarial ``Q1 journal'' red-team review (NOT formal journal peer review) & Critiqued two-study templates for shortcut vulnerability, single-lineage reliance, and over-interpreting null/bias shifts; catalyzed exact-rational graph-switch and transport designs. \\[3pt]
+\texttt{experiments/cohort\_029/freeze/fixture/blind\_review.json} & 2026-11-24 & Blinded fixture review record with uncertified status flag & Records co-author reviewer entries \texttt{"Raza"} and \texttt{"Umar Asghar"} with \texttt{"certified": false}; explicitly noted in \texttt{PUBLICATION\_HANDOFF.md} as uncertified at freeze time so external independent human-review claims are not overstated. \\[3pt]
+\texttt{PUBLICATION\_HANDOFF.md} \& \texttt{SESSION\_REPORT.md} & 2026-11-25 & Engineering \& governance handoff audit & Flagged uncertified blind-review status, verified SHA-256 hashes of Cohort~029 freeze/journal, and locked scope claims. \\[3pt]
+\texttt{manuscript/Scientific-and-editorial-QC.md} \& \texttt{audit/claim-ledger.csv} & 2026-11-26 & Byte-level manuscript verification \& editorial QC & Verified every number in \texttt{article.tex} and \texttt{supplement.tex} via \texttt{extract.py}, confirmed Cohort~016's $768/768$ shortcut, and enforced non-equivalence wording on $\widehat{\Delta} = -3.52\pp$. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Key Findings Across the Audit Sequence}
+
+\begin{enumerate}
+  \item \textbf{The November 15 Readiness Audit (\texttt{PUBLICATION\_READINESS\_2026-11-15.md}):} Written immediately after Cohort~021, this audit delivered an unsparing verdict on the first twenty-one cohorts: despite Cohort~016's $p = 1.24\times 10^{-37}$ order confirmation, the project had tested only \emph{one} model family (\texttt{Qwen2.5}), lacked a full multi-bit precision curve at 7B, and had just discovered in Cohorts~018--021 that noncausal controls and two-source integration failed even at \texttt{F16}. Rather than rushing Cohort~016 to submission, this audit mandated Cohort~022--024's cross-lineage expansion (\texttt{Mistral}, \texttt{Llama}) and matched scorecard controls.
+  \item \textbf{The November 19 Adversarial Red-Team Critique (\texttt{CausalFade\_Q1\_Peer\_Review\_Report\_2026-11-19.docx}):} Framed as a simulated hostile reviewer report for a top-tier venue after Cohort~024/025, this document attacked three structural vulnerabilities: (i) pre-aggregated two-study prompts do not require genuine structural adjustment over covariates, (ii) failing reference gates across all 21 arms in Cohort~024 precluded any quantization-specific causal claim, and (iii) any surviving benchmark needed mathematical proof against surface shortcuts. Crucially, we emphasize that \emph{this DOCX is an internal/AI-assisted adversarial review artifact, not an external academic journal referee report}---yet its substantive technical criticisms were spot-on and directly drove Cohorts~026--029.
+  \item \textbf{Cohort 029's Uncertified Blind-Review Metadata (\texttt{blind\_review.json}):} In Cohort~029's freeze directory, \texttt{blind\_review.json} inspected blinded prompt surfaces (verifying that causal and arithmetic prompts exposed no oracle answers or unintended formatting leaks) and recorded co-author entries \texttt{"Raza"} and \texttt{"Umar Asghar"} alongside \texttt{"certified": false}. \texttt{PUBLICATION\_HANDOFF.md} explicitly flagged this status so no downstream summary would claim certified external dual-human review beyond the internal audit.
+  \item \textbf{Manuscript Claim-Ledger Verification (\texttt{manuscript/audit/claim-ledger.csv}):} Every empirical assertion in the final manuscript was mapped to reproducible CSV outputs regenerated from raw SHA-256-verified bytes by \texttt{manuscript/scripts/extract.py} (which also uncovered the manual off/on count typo in \texttt{experiments/cohort\_029/release/RESULTS.md} reconciled in Chapter~12).
+\end{enumerate}
+
+% =============================================================================
+\chapter{Construct Validity}\label{ch:construct_validity}
+
+In psychometrics and benchmark design, \textbf{construct validity} asks a deceptively simple question: \emph{does our score actually measure causal reasoning, or does it measure something else that happens to co-vary with our labels?} Across CausalFade's thirty-one cohort units, construct validity was threatened from two opposite directions---\textbf{false-positive shortcuts} (models getting causal items right without causal reasoning) and \textbf{false-negative confounds} (models getting causal items wrong for noncausal reasons).
+
+\section{Taxonomy of False-Positive Threats Uncovered in CausalFade}
+
+\begin{enumerate}
+  \item \textbf{Unconditional Action Priors on Single-Item Scores:} On any binary benchmark balanced $50/50$ between \texttt{activate=1} and \texttt{activate=0}, a model that outputs \texttt{activate=1} unconditionally ($63/64$ in Cohort~001 \texttt{F16}; $127/128$ in Cohort~011 \texttt{Q4\_K\_M}; $384/384$ conflict items in Cohort~017 \texttt{14B Q4\_K\_M}; $995/1{,}024$ transfer causal items in Cohort~029) automatically achieves \textbf{$50.0\%$ item accuracy} and \textbf{$0.0\pp$ aligned-minus-conflict penalty}! Naive conflict-penalty metrics mistake total insensitivity to all data for ``zero vulnerability to confounding.''
+  \item \textbf{Numerical Magnitude Invariants (Cohort 016's $768/768$ Shortcut):} When synthetic SCM parameters draw causal effects from $|\tau| \in [6,12)\pp$ and confounded observational biases from $|\RD_{\mathrm{obs}}| \in [38,46)\pp$, provenance labels (\texttt{randomized} vs.\ \texttt{historical}) become redundant with spread width. Any heuristic favoring the milder contrast solves $100\%$ of items source-blind.
+  \item \textbf{Recency and Primacy Study-Position Heuristics (Cohorts 008--016):} If a model attends predominantly to whichever study appears immediately above the question (recency), placing the randomized study second produces $91.1\%$--$100\%$ ``causal'' accuracy (Cohorts~015--016 historical-first), whereas swapping line order collapses accuracy to $28.6\%$!
+  \item \textbf{Listed Option-Order Policies (Cohorts 019, 024, 026):} In Cohort~024, \texttt{Mistral-7B F16} selected whichever option appeared first in the prompt instruction on $256/256$ items ($6/128$ metamorphic consistency in Cohort~025). In Cohort~026, coupling option order with graph condition created an apparent $6/8$ switch rate in \texttt{Llama 8B} decision form that vanished to $0/8$ once option order was counterbalanced in Cohort~027.
+\end{enumerate}
+
+\section{Taxonomy of False-Negative Confounds Uncovered in CausalFade}
+
+\begin{enumerate}
+  \item \textbf{Parser and Length-Cap Artifacts (Cohorts 001, 013, 024, 026):} Wrapping valid JSON in \texttt{```json} fences (Cohort~001: $0/64$), appending didactic causal prose after valid JSON (Cohort~013: $0/64$), appending a period to a bare token (\texttt{"X=1."} in Cohort~026 Llama v2: $48/112$), or writing step-by-step prose on control prompts under a tight token cap (Cohort~024 \texttt{Llama Q4\_K\_M}: $448$ control truncations) all masquerade as reasoning collapses unless strict validity and finish reasons are audited separately.
+  \item \textbf{Lexical Token Polarity Binding (Cohort 018):} Defining \texttt{activate=0} to mean ``activate'' induced a $-56.25\pp$ Stroop-like drop ($50/64 \to 14/64$) unrelated to causal graphs.
+  \item \textbf{Multi-Step Weighted Arithmetic Bottlenecks (Cohorts 002, 027, 028, 029):} Computing $\sum_s w_s \mu(s,a)$ in a single forward pass without scratchpad tokens is nontrivial for 3B--8B transformers: matched noncausal controls scored $45.3\%$--$53.1\%$ in Cohort~028 (\texttt{System B}) and $28.52\%$ pair fidelity in Cohort~029! Attributing low raw causal scores to ``causal blindness'' without subtracting a matched arithmetic baseline commits a severe construct-validity error---and yet Cohort~028's Python calculator (\texttt{System C}) proved that even when arithmetic is $100\%$ solved on controls ($128/128$), a true \textbf{structural causal rule-selection deficit} ($68/128$) remains on graph-switch tasks!
+\end{enumerate}
+
+\section{How \texttt{CF-TP1} Resolved Construct Validity}
+Cohort~029 (\texttt{CF-TP1}) synthesized all seven lessons into four structural guarantees: (i) role-swapped exact-rational study tables where both sources come from the exact same feasible half-percent family distribution, verified against $162$ deterministic shortcut policies; (ii) full factorial counterbalancing across study order, randomized source role (\texttt{A}/\texttt{B}), target mix ($w_0$/$w_1$), and listed option order; (iii) pairwise bundle scoring $F_{\mathrm{pair}} = I_0 I_1$ split equally across $256$ required switches and $256$ required invariances; and (iv) within-family pairing against an algebraically identical weighted-scorecard control.
+
+% =============================================================================
+\chapter{Statistical Integrity}\label{ch:statistical_integrity}
+
+Rigorous experimental design requires statistical estimators whose assumptions match the physical randomization and dependence structure of the data. Five statistical principles governed CausalFade's maturation from early exploratory pilots to its final confirmatory analysis:
+
+\section{Clustered Family-Level Inference vs.\ Item Pseudo-Replication}
+In Cohort~029, $4{,}096$ prompts are generated from $N=128$ independent world families ($32$ prompts per family). Treating $n=1{,}024$ transfer causal prompts as independent Bernoulli trials would assume zero intra-family correlation ($\rho = 0$), artificially shrinking standard errors by up to $\sqrt{1 + (m-1)\rho}$. Throughout CausalFade---from 16-family paired bootstrap percentile intervals in Cohorts~002--015 and 96-family paired $t$-tests in Cohorts~016--017 to 128-family stratified Welch--Satterthwaite cluster variance in Cohort~029~\eqref{eq:strat_welch}---\textbf{the independent synthetic world family was strictly respected as the unit of statistical inference}.
+
+\section{Pre-Declared Competence Gates and Stopping Rules}
+Running twenty-nine cohorts sequentially creates an obvious danger of $p$-hacking if researchers cherry-pick whichever cohort happens to cross $p < 0.05$. CausalFade prevented selective promotion through two structural rules:
+\begin{enumerate}
+  \item \textbf{Prospective Reference Competence Gates:} Cohorts~004, 012, 014, 015, 018, 019, 024, 026, 027, and 028 pre-declared explicit numerical pass/fail thresholds for \texttt{F16} baselines \emph{before} running quantized or confirmatory arms. Seven times, \texttt{F16} failed the gate and downstream arms were lawfully aborted (\texttt{stopped\_by\_gate}), leaving validation/confirmation splits completely unqueried.
+  \item \textbf{Strict Exploratory vs.\ Confirmatory Partitioning:} Development cohorts (\texttt{001}--\texttt{015}, \texttt{017}--\texttt{028}) were explicitly labeled exploratory/diagnostic in \texttt{EXPERIMENTS.md}; only Cohort~016 (for the 7B order contrast) and Cohort~029 (for \texttt{CF-TP1} target-pair fidelity) executed frozen confirmatory plans on freshly drawn world seeds (\texttt{20261127} and \texttt{290431}).
+\end{enumerate}
+
+\section{Degenerate-Variance Guards and Dual Parametric/Bounded Intervals}
+Deterministic LLM decoding (\texttt{temperature=0.0}) frequently produces \textbf{zero-variance boundary regimes} that break textbook parametric formulas:
+\begin{itemize}
+  \item In Cohort~017, \texttt{Qwen2.5-14B Q4\_K\_M} output \texttt{\{"activate": 1\}} on all $384$ conflict items, yielding sample mean difference $\bar{d} = 0.0$ and sample standard deviation $s_d = 0.0$, so $t = 0/0$ is undefined. Adding an explicit zero-variance guard (\texttt{s\_d == 0 -> t = null}, reporting exact counts without fictitious $p$-values) prevented silent \texttt{NaN}/\texttt{Inf} propagation.
+  \item In Cohort~029, family-level differences $D_{hi} \in [-1, 1]$ live on a coarse discrete lattice (multiples of $1/4$). Reporting \textbf{both} the stratified Welch--Satterthwaite $t$ interval ($[-7.77, +0.74]\pp$, $\hat{\nu}=67.53$, justified by central-limit averaging across $128$ independent families) \textbf{and} the finite-sample Hoeffding-style bounded interval ($[-27.52, +20.49]\pp$, exact worst-case coverage without normality assumptions) models exemplary transparency.
+\end{itemize}
+
+\section{Why Inconclusive Intervals Are Never Equivalence Proofs}
+Finally, CausalFade enforced a vital inferential distinction in Cohort~029 and \texttt{manuscript/article.tex}: observing $\widehat{\Delta} = -3.52\pp$ with 95\% $t$ CI $[-7.77, +0.74]\pp$ means the data \textbf{do not establish a directional difference} between causal and arithmetic pair fidelity; it \textbf{does NOT prove equivalence} (which would require a pre-specified TOST equivalence margin $\pm \delta$ excluding meaningful differences, whereas $[-7.77, +0.74]\pp$ admits up to a $7.8\pp$ causal deficit and the bounded CI spans $\pm 24\pp$---and more fundamentally, both arms sit near a degenerate $25\%$--$28.5\%$ floor!).

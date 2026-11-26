@@ -1,0 +1,18 @@
+# Ignore LaTeX build intermediates and large compiled outputs from ordinary Git tracking
+build/*.aux
+build/*.bbl
+build/*.blg
+build/*.fdb_latexmk
+build/*.fls
+build/*.idx
+build/*.ilg
+build/*.ind
+build/*.lof
+build/*.log
+build/*.lot
+build/*.out
+build/*.synctex.gz
+build/*.toc
+build/*.xdv
+build/main.pdf
+!build/The_Life_of_CausalFade.pdf

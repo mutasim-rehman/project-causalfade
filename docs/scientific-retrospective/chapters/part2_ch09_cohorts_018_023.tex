@@ -1,0 +1,289 @@
+% =============================================================================
+% Part II, Chapter 9: Cohorts 018--023
+% =============================================================================
+\chapter{Instruction Sensitivity, Component Decomposition, and Recognition-Action Dissociation (Cohorts 018--023)}\label{ch:cohorts_018_023}
+
+When Cohort~017 showed that \texttt{Qwen2.5-14B} failed to reproduce \texttt{7B}'s order interaction and instead defaulted to \texttt{activate=1} across $100\%$ of conflict items, the researchers paused quantization runs altogether and spent six diagnostic cohorts (Cohorts~018--023, November 13--16, 2026) dissecting \emph{why} unquantized \texttt{F16} models behaved so erratically on two-study prompts. By introducing matched noncausal controls, reversed token polarity, neutral symbol labels (\texttt{K}/\texttt{M}), component sub-skill probes, explicit governing-source reminders, and a second model lineage (\texttt{Mistral-7B-v0.3}), this phase uncovered a striking cognitive-style dissociation in LLMs: \textbf{perfect explicit recognition of which evidence source governs an intervention ($128/128$) coupled with chance-level failure to apply that very source when choosing an action ($58/128$)}.
+
+% =============================================================================
+\section{Cohort 018: Graded-Sensitivity, Reversed-Polarity, and Matched-Control Pilot}
+
+\subsection*{1. Historical Context}
+Up through Cohort~017, every experiment lacked a matched noncausal control task on the same numerical spreads and assumed \texttt{activate=1} meant ``activate'' and \texttt{activate=0} meant ``leave off.'' Cohort~018 introduced both a matched noncausal rule-following control and an explicit polarity reversal (\texttt{activate=0} $\leftrightarrow$ \texttt{activate=1}) on \texttt{Qwen2.5-7B F16}.
+
+\subsection*{2. Research Question}
+Does \texttt{Qwen2.5-7B F16} pass causal competence gates when evaluated alongside matched noncausal rule-following controls and reversed integer-to-action polarity mappings?
+
+\subsection*{3. Hypothesis}
+\textbf{Classification:} \emph{Documented prospective development gate (\texttt{H07}, \texttt{H08}).} Required \texttt{F16} causal accuracy $\ge 80/128$ and $\ge 18/32$ per conflict order before running \texttt{Q4\_K\_M}.
+
+\subsection*{4. Experimental Design}
+Single arm (\texttt{Qwen2.5-7B F16}) on $8$ fresh families (\texttt{seed=20261114}), $288$ strict-JSON prompts crossing causal two-study items ($128$), matched noncausal rule controls ($128$, e.g., \emph{``If the FIRST study assigned X randomly, choose activate X; otherwise choose leave X off''}), and reversed integer token mappings ($32$ diagnostic items).
+
+\subsection*{5. Mathematical Formulation}
+Separates semantic action preference (\emph{activate X}) from integer token preference (\texttt{1} vs.\ \texttt{0}) by crossing action polarity $m \in \{\text{standard}, \text{reversed}\}$ against gold action $g \in \{0,1\}$.
+
+\subsection*{6. Experimental Execution}
+Completed November 13--14, 2026 (commit \texttt{00fd0b5}); $288/288$ ($100\%$) strict-valid JSON responses.
+
+\subsection*{7. Results}
+\begin{itemize}
+  \item \textbf{Causal Gate Failed:} \texttt{7B F16} scored \textbf{$64/128$ ($50.00\%$)} on causal items (failing $\ge 80/128$) and \textbf{$14/32$ ($43.75\%$)} on historical-first conflict (failing $\ge 18/32$).
+  \item \textbf{Matched Noncausal Control Also Failed:} On noncausal conditional instructions over the same study labels, \texttt{7B F16} scored only \textbf{$62/128$ ($48.44\%$)}!
+  \item \textbf{Catastrophic Token-Polarity Fragility:} Reversing the response code so \texttt{activate=0} meant ``activate X'' collapsed accuracy from \textbf{$50/64$ ($78.13\%$)} to \textbf{$14/64$ ($21.88\%$)} ($-56.25\pp$), because the model bound the English word \texttt{activate} lexically to integer \texttt{1} regardless of explicit definitions!
+\end{itemize}
+
+\subsection*{8. Interpretation at the Time}
+Per protocol, \texttt{Q4\_K\_M} was withheld. Two critical measurement confounds were diagnosed: (1) lexical entanglement between key name \texttt{"activate"} and integer \texttt{1}, and (2) baseline failure on conditional noncausal instructions ($62/128$).
+
+\subsection*{9. Retrospective Interpretation}
+Cohort~018 proved why matched noncausal controls are indispensable: without the $62/128$ control arm, $64/128$ causal accuracy would have been misdiagnosed purely as ``confounding blindness.''
+
+\subsection*{10. Methodological Limitations}
+Counter-intuitive reversed polarity (\texttt{activate=0} meaning ``activate'') created an artificial Stroop-like conflict with natural English semantics.
+
+\subsection*{11. Scientific Contribution}
+\emph{Benchmark artifact discovery:} Exposed lexical key-value binding (\texttt{"activate": 1}) and baseline conditional-rule failure.
+
+\subsection*{12. Transition to Subsequent Research}
+Motivated Cohort~019 to replace \texttt{"activate": 0/1} with neutral symbolic contracts (\texttt{\{"choice": "K"\}} vs.\ \texttt{"M"}).
+
+\subsection*{13. Evidence and Reproducibility}
+Artifacts: \texttt{experiments/cohort\_018/summary.md}, \texttt{run\_001\_7b\_f16/}; commit \texttt{00fd0b5}.
+
+% =============================================================================
+\section{Cohort 019: Within-World Response-Contract Crossover (\texttt{K}/\texttt{M} vs.\ Semantic)}
+
+\subsection*{1. Historical Context}
+To test whether removing the loaded word \texttt{"activate"} from the JSON schema restored causal performance, Cohort~019 compared semantic labels against neutral arbitrary letter codes (\texttt{"choice": "K"} vs.\ \texttt{"choice": "M"}) crossed in forward and reverse action assignments on the exact same worlds.
+
+\subsection*{2. Research Question}
+Do neutral symbolic output contracts (\texttt{K}/\texttt{M}) eliminate response-label bias and allow \texttt{Qwen2.5-7B F16} to pass causal and comprehension gates?
+
+\subsection*{3. Hypothesis}
+\textbf{Classification:} \emph{Documented prospective development gate (\texttt{H07}).}
+
+\subsection*{4. Experimental Design}
+Single arm (\texttt{Qwen2.5-7B F16}) on $8$ fresh 6-decimal probability families (\texttt{seed=20261115}), \textbf{$832$ prompts} crossing semantic, neutral-forward (\texttt{K}=off, \texttt{M}=on), and neutral-reverse (\texttt{K}=on, \texttt{M}=off) contracts across causal tasks, noncausal controls, and study comprehension checks.
+
+\subsection*{5. Mathematical Formulation}
+Within-world invariance requires $\hat{a}_{\mathrm{semantic}}(w) = \hat{a}_{\mathrm{neu\text{-}fwd}}(w) = \hat{a}_{\mathrm{neu\text{-}rev}}(w)$ for identical underlying decision worlds $w$.
+
+\subsection*{6. Experimental Execution}
+Completed November 14, 2026 (commit \texttt{a400569}); \textbf{$832/832$ ($100.0\%$)} strict-valid JSON responses (\texttt{\{"choice":"M"\}}).
+
+\subsection*{7. Results}
+\begin{itemize}
+  \item \textbf{Semantic Gate Failed:} Semantic causal accuracy was \textbf{$73/128$ ($57.03\%$)}, with conflict accuracy \textbf{$12/32$ ($37.5\%$)\textbf{ and }$13/32$ ($40.6\%$)}, and study comprehension $24/32$ ($75.0\%$).
+  \item \textbf{Neutral Letters Introduced Strong Alphabetical/Position Asymmetry:} Neutral-reverse (\texttt{K}=activate) outperformed neutral-forward (\texttt{K}=leave\_off) by \textbf{$+25.78\pp$} on causal items and \textbf{$+36.72\pp$} on noncausal controls because the model favored letter \texttt{"K"} (the first-defined code in the prompt), aiding activation when \texttt{K}=on and hurting it when \texttt{K}=off!
+  \item \textbf{Self-Audited Prompt Bug:} Contemporaneous inspection in \texttt{summary.md} transparently documented a minor wording bug in one comprehension check cue and withheld \texttt{Q4\_K\_M}.
+\end{itemize}
+
+\subsection*{8. Interpretation at the Time}
+Arbitrary letter codes (\texttt{K}/\texttt{M}) traded semantic \texttt{activate} bias for strong first-defined-symbol bias ($+25.8\pp$ to $+36.7\pp$), failing measurement invariance \citep{lohn2024machinepsychology}.
+
+\subsection*{9. Retrospective Interpretation}
+Proved that prompt-level symbol neutralization is not a silver bullet; instead, benchmarks must counterbalance option order and score paired transitions across invariant and switching worlds (as ultimately realized in Cohorts~027 and 029).
+
+\subsection*{10. Methodological Limitations}
+Comprehension-probe wording bug (documented contemporaneously); single 7B F16 checkpoint.
+
+\subsection*{11. Scientific Contribution}
+\emph{Benchmark artifact discovery:} Demonstrated $+25.8\pp$ to $+36.7\pp$ symbolic mapping non-invariance under neutral letter codes.
+
+\subsection*{12. Transition to Subsequent Research}
+Instead of guessing at surface response codes, Cohort~020 decomposed the two-study causal task into four atomic cognitive sub-steps to see exactly where the pipeline broke down.
+
+\subsection*{13. Evidence and Reproducibility}
+Artifacts: \texttt{experiments/cohort\_019/frozen\_run\_plan.json}, \texttt{summary.md}, \texttt{run\_001\_7b\_f16/}; commit \texttt{a400569}.
+
+% =============================================================================
+\section{Cohort 020: Staged Component Sub-Skill Diagnostic}
+
+\subsection*{1. Historical Context}
+Why did \texttt{Qwen2.5-7B F16} repeatedly score near $40\%$--$57\%$ on two-study causal prompts? Four distinct hypotheses competed: (a) inability to compare 6-decimal numbers, (b) inability to make an interventional decision from a single randomized trial, (c) inability to identify which study is randomized vs.\ historical, or (d) interference when both studies appear together. Cohort~020 tested all four stages separately on the exact same worlds!
+
+\subsection*{2. Research Question}
+Which component sub-skill fails in \texttt{Qwen2.5-7B F16}: decimal reading, single-source randomized action selection, governing-source identification, or two-source integration?
+
+\subsection*{3. Hypothesis}
+\textbf{Classification:} \emph{Exploratory component decomposition (\texttt{H09}).}
+
+\subsection*{4. Experimental Design}
+Single arm (\texttt{Qwen2.5-7B F16}) on $8$ fresh families (\texttt{seed=20261116}), \textbf{$224$ prompts} using explicit string decisions (\texttt{\{"decision": "activate"\}} vs.\ \texttt{"leave\_off"}) across four sub-tasks: (1) bare two-number comparison ($32$), (2) randomized-study-only intervention decision ($32$), (3) direct source-reliability identification ($32$), and (4) full two-study decisions ($128$).
+
+\subsection*{5. Mathematical Formulation}
+Let $p_{\mathrm{num}}, p_{\mathrm{rct}}, p_{\mathrm{id}}$ denote component accuracies; under serial independent execution without distractor interference, two-source conflict accuracy should approach $p_{\mathrm{id}} \cdot p_{\mathrm{rct}}$.
+
+\subsection*{6. Experimental Execution}
+Completed November 14, 2026 (commit \texttt{737c945}); \textbf{$224/224$ ($100.0\%$)} strict-valid JSON responses.
+
+\subsection*{7. Results}
+\begin{itemize}
+  \item \textbf{Every Isolated Component Succeeded:}
+    \begin{itemize}
+      \item Bare 6-decimal comparison: \textbf{$28/32$ ($87.50\%$)}.
+      \item Single-source randomized-only causal decision: \textbf{$29/32$ ($90.63\%$)}.
+      \item Direct governing-source identification (\emph{which study identifies causal effect?}): \textbf{$32/32$ ($100.00\%$)}!
+    \end{itemize}
+  \item \textbf{Two-Source Integration Collapsed Under Interference:} Adding the confounded historical study alongside the exact same randomized study dropped historical-first conflict accuracy to \textbf{$16/32$ ($50.00\%$)}, with the model outputting \texttt{"leave\_off"\textbf{ on }$32/32$ ($100\%$)} of those items ($0/32$ \texttt{activate})---dramatically violating $p_{\mathrm{id}}\cdot p_{\mathrm{rct}} = 1.00 \times 0.906 = 90.6\%$!
+\end{itemize}
+
+\subsection*{8. Interpretation at the Time}
+Pinpointed the bottleneck cleanly: \texttt{Qwen2.5-7B F16} possesses all three elementary ingredients (decimal comparison, single-RCT decision-making, and $100\%$ declarative recognition that randomized assignment governs intervention), yet suffers catastrophic \textbf{two-source distractor interference} when confounded historical numbers sit in the same prompt.
+
+\subsection*{9. Retrospective Interpretation}
+This was a major conceptual breakthrough in CausalFade, shifting the project's understanding from ``missing causal knowledge'' to \textbf{execution/integration failure under competing numerical cues} \citep{chen2026acedbench,zhang2026epistemic}.
+
+\subsection*{10. Methodological Limitations}
+$8$-family sample; did not yet test whether explicitly instructing the model in the prompt to \emph{use only the governing source} would fix the two-source collapse.
+
+\subsection*{11. Scientific Contribution}
+\emph{Positive diagnostic discovery (\texttt{H09}):} Isolated two-source interference from intact component skills ($32/32$ source ID, $29/32$ single-RCT).
+
+\subsection*{12. Transition to Subsequent Research}
+Directly inspired Cohort~021: if the model knows which source governs ($100\%$), what happens when we explicitly remind it to focus on the governing causal source right before deciding?
+
+\subsection*{13. Evidence and Reproducibility}
+Artifacts: \texttt{experiments/cohort\_020/frozen\_run\_plan.json}, \texttt{summary.md}, \texttt{run\_001\_7b\_f16/}; commit \texttt{737c945}.
+
+% =============================================================================
+\section{Cohort 021: Governing-Source Selection vs.\ Source-Guided Action Dissociation}
+
+\subsection*{1. Historical Context}
+Cohort~020 left one obvious question open: perhaps in an unguided two-source prompt, \texttt{Qwen2.5-7B F16} simply forgets to check assignment method before comparing numbers. Cohort~021 tested explicit \emph{source-guided} prompts reminding the model to identify the causally valid study and base its decision solely on that study.
+
+\subsection*{2. Research Question}
+Does explicit in-prompt causal-source guidance rescue \texttt{Qwen2.5-7B F16}'s two-source intervention decisions?
+
+\subsection*{3. Hypothesis}
+\textbf{Classification:} \emph{Exploratory guidance intervention (\texttt{H09}).} Expected source-guided prompting to bridge the gap between $100\%$ source identification and $50\%$ two-source action accuracy.
+
+\subsection*{4. Experimental Design}
+Single arm (\texttt{Qwen2.5-7B F16}) on $8$ fresh families (\texttt{seed=20261117}), \textbf{$576$ strict-JSON prompts} comparing: (1) randomized-only decisions ($32$), (2) governing-source selection across all $128$ two-source layouts ($128$), (3) ordinary two-source decisions ($128$), (4) explicitly source-guided two-source decisions ($128$), and (5) neutral-guided controls ($160$).
+
+\subsection*{5. Mathematical Formulation}
+Paired within-item McNemar/sign contrast between ordinary decision $Y_{j,\mathrm{ord}}$ and source-guided decision $Y_{j,\mathrm{guided}}$ across $j=1,\dots,128$ items.
+
+\subsection*{6. Experimental Execution}
+Completed November 14, 2026 (commit \texttt{77361f5}); \textbf{$576/576$ ($100.0\%$)} strict-valid JSON responses.
+
+\subsection*{7. Results}
+\emph{(Displayed in Figure~\ref{fig:shortcut_c16}C; from \texttt{experiments/cohort\_021/summary.md}.)}
+\begin{itemize}
+  \item \textbf{Governing-Source Selection:} \textbf{$128/128$ ($100.00\%$)}! Across every study label (\texttt{A}/\texttt{B}) and physical order, \texttt{7B F16} named the randomized study without a single error.
+  \item \textbf{Single-Source Randomized-Only Decisions:} \textbf{$30/32$ ($93.75\%$)}.
+  \item \textbf{Zero Rescue From Source Guidance:} Ordinary two-source decisions scored \textbf{$58/128$ ($45.31\%$)}---and explicitly source-guided two-source decisions scored \textbf{$58/128$ ($45.31\%$)} ($\widehat{\Delta} = 0.00\pp$, with exactly $11$ items improving and $11$ items worsening)!
+\end{itemize}
+
+\subsection*{8. Interpretation at the Time}
+Established a stark \textbf{recognition-vs.-action dissociation}: in a single forward pass without externalized intermediate state, \texttt{Qwen2.5-7B F16} cannot bind its $100\%$-accurate source-identification capability to selective numerical lookup when distractor rates are co-present in context.
+
+\subsection*{9. Retrospective Interpretation}
+Cohort~021 explains why purely verbal prompt engineering (\emph{``pay attention to the randomized study''}) repeatedly failed throughout CausalFade, foreshadowing Cohort~028's finding that single-pass LLMs struggle whenever rule selection and numerical aggregation must compose in-context.
+
+\subsection*{10. Methodological Limitations}
+Evaluated single-turn JSON output (\texttt{max\_tokens=48}) without multi-turn source extraction; restricted to \texttt{Qwen2.5-7B F16}.
+
+\subsection*{11. Scientific Contribution}
+\emph{Landmark negative/diagnostic finding (\texttt{H09}):} Proved $0.00\pp$ gain ($58/128$ vs.\ $58/128$) from explicit source guidance despite $128/128$ governing-source recognition.
+
+\subsection*{12. Transition to Subsequent Research}
+Raised an urgent external-validity question: was this component-strong / two-source-weak profile unique to \texttt{Qwen2.5}, or shared by an independent model lineage? Cohort~022 introduced \texttt{Mistral-7B-Instruct-v0.3}.
+
+\subsection*{13. Evidence and Reproducibility}
+Artifacts: \texttt{experiments/cohort\_021/frozen\_run\_plan.json}, \texttt{summary.md}, \texttt{run\_001\_7b\_f16/}; commit \texttt{77361f5}.
+
+% =============================================================================
+\section{Cohort 022: Cross-Lineage Replication (\texttt{Qwen2.5-7B F16} vs.\ \texttt{Mistral-7B-v0.3 Q4\_K\_M})}
+
+\subsection*{1. Historical Context}
+Every experiment from Cohort~001 to Cohort~021 had queried Alibaba's \texttt{Qwen2.5} family. On November 16, 2026, Cohort~022 onboarded an independent European open-weight lineage, \texttt{Mistral-7B-Instruct-v0.3} (initially available locally as \texttt{Q4\_K\_M}), alongside \texttt{Qwen2.5-7B F16} on $8$ fresh worlds.
+
+\subsection*{2. Research Question}
+Does Cohort~021's $+48\pp$ gap between single-source randomized competence and two-source decisions replicate on fresh worlds in \texttt{Qwen2.5-7B F16}, and how does \texttt{Mistral-7B-v0.3 Q4\_K\_M} perform on the same component battery?
+
+\subsection*{3. Hypothesis}
+\textbf{Classification:} \emph{Exploratory cross-lineage development screen (\texttt{H09}, \texttt{H10}).}
+
+\subsection*{4. Experimental Design}
+Two arms (\texttt{run\_001\_qwen\_f16} and \texttt{run\_002\_mistral\_q4}) on $8$ fresh families (\texttt{seed=20261118}), \textbf{$576$ prompts/arm} ($1{,}152$ total requests) matching Cohort~021's component-and-two-source battery.
+
+\subsection*{5. Mathematical Formulation}
+Within-lineage component-minus-composite gap $\Delta_{\mathrm{comp}} = \mathrm{Acc}_{\mathrm{rct\text{-}only}} - \mathrm{Acc}_{\mathrm{two\text{-}source}}$, plus label-bias diagnostics across \texttt{Study A} vs.\ \texttt{Study B}.
+
+\subsection*{6. Experimental Execution}
+Completed November 16, 2026 (commit \texttt{21dabb2}); \textbf{$1{,}152/1{,}152$ ($100.0\%$)} strict-valid JSON responses (note \texttt{Mistral} emitted a leading space \texttt{' \{"decision":"activate"\}'}, valid under standard JSON whitespace rules).
+
+\subsection*{7. Results}
+\begin{itemize}
+  \item \textbf{\texttt{Qwen2.5-7B F16} Replicated Cohort~021 Precisely:} Governing-source selection \textbf{$128/128$ ($100.0\%$)}, single-source randomized-only \textbf{$31/32$ ($96.88\%$)\textbf{, vs.\ ordinary two-source decisions }$56/128$ ($43.75\%$)\textbf{---repeating a }$+53.13\pp$} single-to-two-source collapse!
+  \item \textbf{\texttt{Mistral-7B-v0.3 Q4\_K\_M} Failed Elementary Components via Pure Label Bias:} Governing-source selection was \textbf{$64/128$ ($50.00\%$)} because Mistral answered \texttt{"Study A"\textbf{ on }$128/128$ items\textbf{! Single-source randomized-only accuracy was }$16/32$ ($50.00\%$)\textbf{ because Mistral answered \texttt{"activate"} on }$32/32$ items}!
+\end{itemize}
+
+\subsection*{8. Interpretation at the Time}
+Confirmed that \texttt{Qwen2.5-7B F16}'s component-vs.-integration dissociation was highly reproducible across fresh worlds, while revealing that \texttt{Mistral-7B Q4\_K\_M} failed basic first-label/first-option component checks---though because Mistral was tested at \texttt{Q4\_K\_M} rather than \texttt{F16}, Cohort~024 would soon need all 7 formats including \texttt{Mistral F16} to separate lineage behavior from quantization!
+
+\subsection*{9. Retrospective Interpretation}
+Mistral's $128/128$ \texttt{"Study A"} selection in Cohort~022 was the earliest warning of what Cohort~024 and Cohort~025 later proved on \texttt{Mistral F16}: a rigid \textbf{first-listed-option policy} ($256/256$ first option).
+
+\subsection*{10. Methodological Limitations}
+Crossed lineage with precision (\texttt{Qwen F16} vs.\ \texttt{Mistral Q4\_K\_M}) in this preliminary screen; resolved in Cohort~024's full $3\times 7$ matrix.
+
+\subsection*{11. Scientific Contribution}
+\emph{Positive within-Qwen replication ($+53.1\pp$ gap) \& cross-lineage position/label bias discovery.}
+
+\subsection*{12. Transition to Subsequent Research}
+Before launching the full multi-lineage quantization matrix, Cohort~023 audited whether \texttt{Qwen2.5-7B F16}'s component controls themselves survived full counterbalancing of source names, physical order, and option order---including \emph{harmful-direction} ($g=0$) splits!
+
+\subsection*{13. Evidence and Reproducibility}
+Artifacts: \texttt{experiments/cohort\_022/frozen\_run\_plan.json}, \texttt{summary.md}, \texttt{run\_001\_qwen\_f16/}, \texttt{run\_002\_mistral\_q4/}; commit \texttt{21dabb2}.
+
+% =============================================================================
+\section{Cohort 023: Fully Counterbalanced Measurement Audit (Discovery of Harmful-Direction Control Failure)}
+
+\subsection*{1. Historical Context}
+In Cohorts~020--022, aggregate component accuracy ($28/32$ to $31/32$) looked reassuringly high ($\ge 87.5\%$). However, if a model has a strong \texttt{activate} bias, it can score $16/16$ ($100\%$) when the true answer is \texttt{activate} and $12/16$ ($75\%$) when the true answer is \texttt{leave\_off}, hiding directional fragility inside an $87.5\%$ average! Cohort~023 crossed source name (\texttt{A}/\texttt{B}), physical study order, and listed option order, and enforced a strict \textbf{directional $\ge 75\%$ robustness rule} on both beneficial ($g=1$) and harmful ($g=0$) controls.
+
+\subsection*{2. Research Question}
+Does \texttt{Qwen2.5-7B F16} pass $\ge 75\%$ accuracy in \emph{every directional cell} (especially harmful $g=0$ cells) on bare numeric and matched noncausal scorecard controls?
+
+\subsection*{3. Hypothesis}
+\textbf{Classification:} \emph{Documented prospective measurement audit (\texttt{H08}, \texttt{H10}).}
+
+\subsection*{4. Experimental Design}
+Single arm (\texttt{Qwen2.5-7B F16}) on $8$ fresh families (\texttt{seed=20261119}), \textbf{$896$ strict-JSON prompts} crossing study names (\texttt{A}/\texttt{B}), physical order, and option display order across randomized-only ($64$), source selection ($256$), two-source causal ($256$), two-source noncausal scorecard controls ($256$), and bare numeric comparisons ($64$).
+
+\subsection*{5. Mathematical Formulation}
+Directional robustness requires $\min_{g \in \{0,1\}} \mathrm{Acc}(\text{control} \mid G=g) \ge 0.75$ rather than merely $\frac{1}{2}[\mathrm{Acc}(G=1) + \mathrm{Acc}(G=0)] \ge 0.75$.
+
+\subsection*{6. Experimental Execution}
+Completed November 16, 2026 (commit \texttt{4aff668}); \textbf{$896/896$ ($100.0\%$)} strict-valid JSON responses.
+
+\subsection*{7. Results}
+\begin{itemize}
+  \item \textbf{Simple Single-Source Components Held Up:} Randomized-only causal decisions scored \textbf{$64/64$ ($100.0\%$)} and governing-source selection scored \textbf{$244/256$ ($95.31\%$)\textbf{, while two-source causal decisions dropped by }$-55.47\pp$} ($114/256 = 44.53\%$) regardless of study name or option order.
+  \item \textbf{Harmful-Direction Controls Failed the $\ge 75\%$ Gate:}
+    \begin{itemize}
+      \item On bare numeric comparison when leaving $X$ off was larger ($g=0$), accuracy fell to \textbf{$18/32$ ($56.25\% < 75\%$)}!
+      \item On matched two-source noncausal scorecard controls when leaving $X$ off won ($g=0$), accuracy fell to \textbf{$75/128$ ($58.59\% < 75\%$)}!
+    \end{itemize}
+\end{itemize}
+
+\subsection*{8. Interpretation at the Time}
+A crucial methodological discovery: even when causal language was removed in matched two-source noncausal controls, \texttt{Qwen2.5-7B F16} failed harmful-direction ($g=0$) decisions ($58.6\%$), proving that part of the two-source deficit was \textbf{noncausal multi-table distractor/direction bias} rather than uniquely causal confounding vulnerability!
+
+\subsection*{9. Retrospective Interpretation}
+Cohort~023 established the directional diagnostic standard (\texttt{Gold Off} vs.\ \texttt{Gold On}) that later proved decisive in Cohort~024 and Cohort~029 (where \texttt{Gold Off} causal transfer accuracy collapsed to $14/512 = 2.73\%$).
+
+\subsection*{10. Methodological Limitations}
+Single model (\texttt{Qwen2.5-7B F16}); $8$ families.
+
+\subsection*{11. Scientific Contribution}
+\emph{Methodological \& diagnostic breakthrough:} Uncovered directional ($g=0$) failure on noncausal controls ($58.6\%$), preventing false attribution of general two-table bias to causal reasoning alone.
+
+\subsection*{12. Transition to Subsequent Research}
+Set the stage for CausalFade's largest empirical campaign: Cohort~024's $30{,}912$-request cross-lineage quantization matrix across three model families and seven GGUF formats.
+
+\subsection*{13. Evidence and Reproducibility}
+Artifacts: \texttt{experiments/cohort\_023/frozen\_run\_plan.json}, \texttt{summary.md}, \texttt{run\_001\_qwen\_f16/}; commit \texttt{4aff668}.
