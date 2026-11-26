@@ -1,0 +1,18 @@
+key,title,year,edition,primary_record
+flip,CausalFlip: A Benchmark for LLM Causal Judgment Beyond Semantic Matching,2026,arXiv preprint 2602.20094v2,https://arxiv.org/abs/2602.20094v2
+econ,EconCausal: A Context-Aware Economic Reasoning Benchmark for Large Language Models,2025,arXiv preprint 2510.07231,https://arxiv.org/abs/2510.07231
+crb,CausalReasoningBenchmark: A Real-World Benchmark for Disentangled Evaluation of Causal Identification and Estimation,2026,arXiv preprint 2602.20571v3,https://arxiv.org/abs/2602.20571v3
+cue,What Counts as Evidence? Epistemic Cue Utilization in Large Language Models,2026,arXiv preprint 2610.12788,https://arxiv.org/abs/2610.12788
+compress,Compressed Causal Reasoning: Quantization and GraphRAG Effects on Interventional and Counterfactual Accuracy,2025,arXiv preprint 2512.13725,https://arxiv.org/abs/2512.13725
+causallm,Causal Reasoning and Large Language Models: Opening a New Frontier for Causality,2023,arXiv preprint 2305.00050,https://arxiv.org/abs/2305.00050
+contrast,Evaluating Models’ Local Decision Boundaries via Contrast Sets,2020,Findings of the Association for Computational Linguistics: EMNLP 2020,https://aclanthology.org/2020.findings-emnlp.117/
+checklist,Beyond Accuracy: Behavioral Testing of NLP Models with CheckList,2020,Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics,https://aclanthology.org/2020.acl-main.442/
+position,Large Language Models Sensitivity to The Order of Options in Multiple-Choice Questions,2024,Findings of the Association for Computational Linguistics: NAACL 2024,https://aclanthology.org/2024.findings-naacl.130/
+middle,Lost in the Middle: How Language Models Use Long Contexts,2024,Transactions of the Association for Computational Linguistics,https://aclanthology.org/2024.tacl-1.9/
+shortcut,Right for the Wrong Reasons: Diagnosing Syntactic Heuristics in Natural Language Inference,2019,Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics,https://aclanthology.org/P19-1334/
+cladder,CLadder: Assessing Causal Reasoning in Language Models,2023,Advances in Neural Information Processing Systems,https://papers.nips.cc/paper_files/paper/2023/hash/631bb9434d718ea309af82566347d607-Abstract-Conference.html
+transport,External Validity: From Do-Calculus to Transportability Across Populations,2014,Statistical Science,https://doi.org/10.1214/14-STS486
+trial,Transportability of Trial Results Using Inverse Odds of Sampling Weights,2017,American Journal of Epidemiology,https://doi.org/10.1093/aje/kwx164
+jacoby,A process dissociation framework: Separating automatic from intentional uses of memory,1991,Journal of Memory and Language,https://doi.org/10.1016/0749-596X(91)90025-F
+cni,"Consequences, norms, and generalized inaction in moral dilemmas: The CNI model of moral decision-making.",2017,Journal of Personality and Social Psychology,https://doi.org/10.1037/pspa0000086
+sdt,A tutorial on cue combination and Signal Detection Theory: Using changes in sensitivity to evaluate how observers integrate sensory information,2016,Journal of Mathematical Psychology,https://doi.org/10.1016/j.jmp.2016.04.006

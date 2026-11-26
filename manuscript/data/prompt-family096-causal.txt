@@ -1,0 +1,14 @@
+Suppose you have to advise on whether switching a certain setting on would raise the success rate in a target population. Everyone in that population belongs to one of two groups, and which group a person is in is settled before any treatment happens. You have two sources of evidence. One study handed out the setting at random, so chance decided who got it. The other is a historical study where operators chose the setting themselves, and there may be risk factors nobody measured that pushed both their choice and the eventual outcome, so that evidence can mislead. You can assume the effect of the setting inside each group carries over unchanged to the target population. What differs is the share of people in each group, and that mix will be shown to you. The calculation is left to you: work out what turning the setting on would do for success in this population.
+
+Target mix: Amber 58%, Blue 42%
+
+Source A (randomized study)
+Amber: off 51.0%, on 54.0%
+Blue: off 53.0%, on 47.5%
+
+Source B (historical study)
+Amber: off 52.5%, on 50.0%
+Blue: off 53.5%, on 59.5%
+
+Return exactly one JSON object with integer activate: {"activate":0} or {"activate":1}.
+Action 0 means off. Action 1 means on. Do not include other text.

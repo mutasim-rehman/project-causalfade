@@ -1,0 +1,14 @@
+This is a scorecard task. Use only the designated scorecard. Take each group's score for the 'on' setting, weight it by that group's share of the target mix, and add the weighted scores to get a total for 'on'. Repeat the same steps with the 'off' scores to get a total for 'off'. Choose whichever setting has the higher total.
+
+Target mix: Amber 58%, Blue 42%
+
+Source A (designated scorecard)
+Amber: off 51.0%, on 54.0%
+Blue: off 53.0%, on 47.5%
+
+Source B (other scorecard)
+Amber: off 52.5%, on 50.0%
+Blue: off 53.5%, on 59.5%
+
+Return exactly one JSON object with integer activate: {"activate":0} or {"activate":1}.
+Action 0 means off. Action 1 means on. Do not include other text.

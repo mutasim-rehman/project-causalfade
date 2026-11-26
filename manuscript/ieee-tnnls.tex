@@ -1,0 +1,23 @@
+% IEEE Transactions on Neural Networks and Learning Systems review manuscript.
+% Uses the IEEEtran two-column journal layout.
+\documentclass[journal]{IEEEtran}
+\usepackage{amsmath,amssymb,booktabs,array,graphicx,longtable,tabularx}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{capt-of}
+\usepackage{listings}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage[numbers,square,sort&compress]{natbib}
+\urlstyle{same}
+\lstset{basicstyle=\fontsize{5.6}{6.6}\selectfont\ttfamily,breaklines=true,breakatwhitespace=true,columns=fullflexible,frame=single,framesep=3pt,xleftmargin=1pt,xrightmargin=1pt,aboveskip=3pt,belowskip=3pt}
+\newcommand{\fplot}[3]{\begin{figure*}[t]\centering\includegraphics[width=#3\textwidth]{figures/fig#1.pdf}\caption{#2}\label{fig:#1}\end{figure*}}
+\title{Evaluating Target-Population Intervention Decisions in Language Models With Matched Switch and Invariance Tests}
+\author{Mutasim~ur~Rehman, Ahmad~Raza, and Umar~Asghar%
+\thanks{The authors are with FAST National University of Computer and Emerging Sciences, Islamabad, Pakistan. Corresponding author: Mutasim ur Rehman, i242514@isb.nu.edu.pk. Ahmad Raza: i242574@isb.nu.edu.pk; Umar Asghar: i242532@isb.nu.edu.pk.}}
+\begin{document}
+\maketitle
+\input{article}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}

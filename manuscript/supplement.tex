@@ -1,0 +1,137 @@
+\input{layout}
+\begin{document}
+\topmatter{Supplementary information}
+\begin{center}\emph{\projecttitle}\end{center}
+\section{Version and scope}
+The scientific release is \release. Its commit and the later administrative handoff commit appear below, respectively.
+{\small\begin{verbatim}
+76206c259caa488668a7556ce1bc53cb35d220da
+b7371530caa62d6e43a8e83ef6db361f6640f63a
+\end{verbatim}}
+Paths beginning with \texttt{freeze/}, \texttt{runs/} or \texttt{release/} are relative to \path{experiments/cohort_029/}. The development register identifies the cohort belonging to each historical result.
+
+\section{Identification and oracle construction}
+The binary variables are pretreatment stratum $S$, latent risk $U$, treatment $A$ and success $Y$. Independent uniform errors generate trial assignment $A=\mathbf1\{E_A<1/2\}$, historical assignment $A=\mathbf1\{E_A<(1+2U)/4\}$, and $Y(a)=\mathbf1\{E_Y<m_{SUa}\}$. In the study, $S$ and $U$ are independent fair Bernoulli variables. The target changes the prevalence of $S$ while preserving $P(U=1\mid S)=1/2$. The exact value of intervening is
+\[
+V_k(a)=\sum_{s=0}^1P_k(S=s)\sum_{u=0}^1\tfrac12 m_{sua}.
+\]
+Bayes' rule gives $P(U=1\mid A=1,S=s,M=\mathrm{historical})=3/4$ and $P(U=1\mid A=0,S=s,M=\mathrm{historical})=1/4$. For a fixed stratum and action, write $x=m_{s0a}$ and $y=m_{s1a}$. Then $x+y=2r$, where $r$ is the displayed randomized probability. When $a=0$, $3x+y=4h$; when $a=1$, $x+3y=4h$, with $h$ historical. Solving yields the two surfaces given in the main text. Interior-cell checks for each role assignment guarantee feasibility. A sign margin and exact display precision exclude ambiguous decisions.
+
+For family 096 the treated success rates in its first stratum are $r=.540$ and $h=.500$ when L governs. Latent treated probabilities for risks zero and one are $.620$ and $.460$. Their average is $.540$ and their historical $1:3$ mixture is $.500$. With R governing, $r=.500$ and $h=.540$ give $.420$ and $.580$. The historical mixture is then $.540$. These worlds share printed numerical panels. Holding one world fixed while changing target gives weighted contrasts of $-0.570$ and $+1.555$ percentage points (pp) in the first world, and $+1.070$ and $-1.055$ pp in the second. A prompt exposes one assignment and one mixture.
+
+\paragraph{Sampling and balancing.}
+Each slot has a SHA-256-derived Python MT19937 stream. The seed material is \texttt{CF-TP1|290431|slot}, substituting the decimal slot. Canonical $w_0$ is sampled on $.54,.55,\ldots,.62$ and $w_1$ on $.76,.77,\ldots,.84$. Untreated rates span 46 to 54 percent by half points. Oppositely oriented within-source stratum effects have absolute sizes of 2 to 8 pp by half points. Accepted proposals realize their prespecified signs at all four role-by-target corners, with at least 0.50 pp of margin. Distinct source effect profiles are required even up to sign. Exact and mirrored duplicates fail fixture validation. Each of eight sign strata receives all sixteen combinations of the four nuisance bits. Renaming the public strata complements both weights. The majority stratum stays fixed across targets.
+
+\paragraph{Exact checks.}
+The enumerator marginalizes each feasible surface. A separate implementation parses the public text, recovers the data, source designation and weights, and calculates rational action scores. The two implementations agree across 4,096 messages. The structural-difference audit records 2,048 checks apiece for task, target, role and physical order, with zero mismatches. The public-string duplicate list is empty. The audit records four worked cases and two mutation checks. These checks exclude the tested faults. Independent human certification of prompt construction is a separate question.
+
+\section{Deployment and response handling}
+The frozen inventory identifies Qwen/Qwen2.5-7B-Instruct, Q4\_K\_M. The model digest is
+{\small\begin{verbatim}
+7ebec3cd0f2d49bd4a8d068dc5f0e335f3647eec6dc4104d81416533a63bc5bc
+\end{verbatim}}
+The llama.cpp server digest is
+{\small\begin{verbatim}
+6d3d7416bf83500c5adda80ee4bb076f6877e38ff0a53ddc81c0b278108b2f24
+\end{verbatim}}
+The matching 016 record identifies build b12176, revision \texttt{8820b088d}. The 029 inventory records x86-64 and 28 allowed CPUs, with eight inference threads requested. Tokenized chat lengths including template overhead were 210, 197, 327 and 235 respectively for archive causal, archive arithmetic, transfer causal and transfer arithmetic. All fit the 2,048-token context with the 48-token completion budget. The transfer causal instruction is appreciably longer than the matched arithmetic instruction.
+
+The strict parser permits surrounding whitespace and one normal-stop JSON object whose sole key is \texttt{activate} and whose value is integer 0 or 1. Duplicate keys, booleans, floats, extra text, fences and length-capped completions fail. A persisted response is final. A failure provably before generation may be recovered. Ambiguous dispatch requires stopping and disclosure. Both members must be valid and correct for both-correct credit. Missing responses are distinct from observed invalid responses. Incomplete primary pairs require lower and upper identification bounds over possible scores of missing members. Here every scheduled response was present and valid. Identification bounds therefore coincide at the estimated difference, while the sampling intervals below address fresh numerical families.
+
+\section{Statistical procedure}
+For stratum $h$, family $i$, task $q$ and its four transfer pairs $j$, define $F_{hiq}=\sum_j\mathbf1\{\mathrm{both\ correct}\}/4$ and $D_{hi}=F_{hi,C}-F_{hi,A}$. If $s_h^2$ is the sample variance of the sixteen differences within stratum,
+\[
+ \widehat{\Delta}=\tfrac18\sum_h\bar D_h,\quad
+ v_h=\frac{s_h^2}{8^2\cdot16},\quad
+ SE=\sqrt{\sum_hv_h},\quad
+ \nu=\frac{(\sum_hv_h)^2}{\sum_hv_h^2/15}.
+\]
+The approximate 95\% interval uses $t_{.975,\nu}SE$. Independent slot draws with $D_{hi}\in[-1,1]$ give the distribution-free radius $\sqrt{2\log(40)/128}$, clipping endpoints to $[-1,1]$. If estimated variance is zero, the protocol suppresses the degenerate $t$ interval. Pre-inference calibration at seed 290433 used 10,000 replicates per scenario. Reporting-rule coverage was 1.0000 for constant differences, .9986 for rare discordance, .9539 for balanced extremes and .9521 for heterogeneous strata. In the rare scenario 745 replicates used the bounded fallback. These simulations supported the frozen approximate-$t$ designation within the scenarios examined.
+
+Figure 3 marginal intervals apply the same stratified variance calculation separately to $F_C$ and $F_A$. They give 23.55--26.45\% and 24.17--32.86\%. These are descriptive, manuscript-stage calculations. The primary inference uses paired differences. Roles, orders and forms within a family add no independent units. The parameter equally weights the eight design strata and conditions on one deployment and fixed transfer wording.
+
+\section{Additional outcomes and reporting reconciliation}
+\begin{table}[htbp]\centering\small\caption{Target pair components. Both, one and zero give the number of correctly answered members. Each row contains 256 pairs. Changed actions overlap the correctness counts.}
+\begin{tabular}{@{}lllrrrr@{}}\toprule
+Form & Task & Target & Both & One & Zero & Changed\\\midrule
+Archive&Causal&Switch&0&256&0&0\\
+Archive&Causal&Stable&128&1&127&1\\
+Archive&Arithmetic&Switch&0&256&0&0\\
+Archive&Arithmetic&Stable&128&0&128&0\\
+Transfer&Causal&Switch&3&248&5&8\\
+Transfer&Causal&Stable&125&7&124&7\\
+Transfer&Arithmetic&Switch&27&210&19&46\\
+Transfer&Arithmetic&Stable&119&45&92&45\\\bottomrule
+\end{tabular}\end{table}
+Transfer source-role pairs held the same action on 237/256 switch and 248/256 invariant causal pairs. Their arithmetic counterparts were 191/256 and 214/256. The physical-order pairs retained the same action on 483/512 causal and 339/512 arithmetic pairs. Each same-action count may exceed the number correctly invariant. The companion \path{data/pairs.csv} covers all three pair definitions and both forms. \path{data/option_order.csv} tabulates the first displayed answer as a between-slot presentation diagnostic.
+
+\paragraph{Correction to the release narrative.}
+The direction table in \path{release/RESULTS.md} reports 121 and 416 correct by gold off/on for causal prompts, 124 and 397 for arithmetic prompts, and 785 arithmetic activations. These entries do not reproduce. Rejoining the raw journal to frozen keys gives the matrix below. Independently summed strict row scores and machine-readable secondary cells agree. The release verifier checks numerical outputs and cells. Its pass criterion does not cover every line of the narrative.
+\begin{center}\small
+\begin{tabular}{@{}llrrr@{}}\toprule
+Transfer task & Oracle & Said off & Said on & Total\\\midrule
+Causal & Off &14&498&512\\
+Causal & On  &15&497&512\\
+Arithmetic & Off &231&281&512\\
+Arithmetic & On  &196&316&512\\\bottomrule
+\end{tabular}\end{center}
+Within task, $\#\mathrm{on}=512-\#\mathrm{correct\ off}+\#\mathrm{correct\ on}$, yielding 995 causal and 597 arithmetic activations. The discrepancy affects the manually summarized direction subsection. Reconstructed paired scores, primary contrast and both uncertainty intervals agree with their archived analyses.
+
+\paragraph{Deterministic policies and robustness.}
+Source-blind policies use a fixed name, first or last table, smaller or larger absolute standardized contrast, pooled rates or an extreme cell. Target-blind policies use the governing source with equal weights, a single stratum, the majority stratum, the largest stratum effect, an extreme rate, option position or a constant action. Other public rules threshold the majority weight, optionally reverse a majority-stratum recommendation, or invert a fixed source decision conditional on the governing name. All grid thresholds and endpoints are tested with both orientations and equality conventions. The positive control compares magnitudes of opposing, weighted stratum contributions, algebraically equivalent to the correct sign here. Unconditional role and target flips each fail on 1,024 invariant pairs. Designed balance limits a nuisance-bit-only rule to 50\% item accuracy.
+
+A constant-action rule cannot make errors under both gold actions. The frozen clarification required eligible constants to get half the items correct, err in at least sixteen transfer-causal families and solve zero required target reversals. Twelve literal failures across the two tie conventions remain recorded. The clarified gate had zero failures. Only declared constants and mathematically constant endpoint thresholds qualify for this exception. The attached \path{data/policies.csv} supplies every audited variant under each tie convention, with total correct items, correct pairs by axis and switch status, and transfer-causal families with errors. Item denominators are 4,096 and pair/status denominators are 1,024.
+
+\section{Development history and inferential status}
+The project began with a precision-by-conflict hypothesis. Crossing causal and associative recommendation directions makes action preferences visible in aligned and conflicting cells. A CNI-inspired tree additionally attributes choices to successive causal, associative and residual preference routes. Distinct policies can have the same observable action probabilities, and the homogeneous tree imposes fit restrictions. The 005 F16 additivity diagnostic violated such a restriction. Accordingly, no psychological-route parameter is interpreted as a validated property of an LLM. Process dissociation motivated crossing compatible and incompatible cues. Signal detection theory motivated distinguishing directional response tendency from discrimination. Two strength levels in the 018 pilot cannot identify a general psychometric curve or a two-dimensional causal/associative evidence surface.
+
+Graph switching addresses another form of observational ambiguity. Confounder and mediator structures can share the full observational distribution while requiring different intervention decisions. An additional irrelevant graph change supplies an invariant control. In 026--028, reference systems failed qualification on the joint decision and control criteria. The later precision arms therefore produced no evidence. CF-TP1 uses an identifiable decision from supplied study designs while retaining switch and invariance contrasts. The register includes the nested 025.1 audit. Earlier fresh-family replications are identified individually, with no pooling into either final study.
+{\small\begin{longtable}{@{}p{.065\linewidth}>{\raggedright\arraybackslash}p{.22\linewidth}>{\raggedright\arraybackslash}p{.64\linewidth}@{}}
+\toprule ID & Status & Question, outcome and consequence\\\midrule\endfirsthead
+\toprule ID & Status & Question, outcome and consequence (continued)\\\midrule\endhead
+\input{history}
+\end{longtable}}
+
+\section{Provenance, human records and reproduction}
+The original production manifest and journal have the following SHA-256 digests, respectively.
+{\small\begin{verbatim}
+5252f69d30a0a5bb65a5efa669458e325c0531f25ab55f768531c7ca29f4c766
+673eb723637614dc8b94875f2e8c4e9e20234c1d179c992791853797875977bd
+\end{verbatim}}
+The freeze, exact prompts, tokenizer checks, oracle validation, mock recovery, rival-policy clarification and coverage calibration predate the first response. The terminal record and release analyses were constructed after collection from original envelopes. Subsequent test reruns do not change the timing of the prospective checks.
+
+The transfer form matches a dated submission. An authorship record attributed to Umar Asghar describes Claude-assisted drafting. Its signature validates the submitted bytes but its key did not match the available trusted signer list. A later review attestation binds the production packet with a key under the abbreviated label Raza. The freeze recorded independent authorship and review as undocumented. These later records cannot certify the intended pre-inference human independence gate. No reviewer identity is inferred from the manuscript byline. Transfer prose is available for exact reproduction. The release documents no blanket permission for downstream redistribution of that prose.
+
+\paragraph{Offline reproduction.}
+Use Linux or a comparable POSIX environment with Python 3.13.18 and Git. From the root of a clean release clone, run the commands below. The last report should give an empty changed-file list and a passing status. No weights or inference server are required.
+{\footnotesize\begin{verbatim}
+git checkout cohort-029-v1.0.0
+C=experiments/cohort_029
+R=$C/runs/confirmatory
+D=$(mktemp -d)
+python3.13 -m tools.verify_cohort029_release --out "$D/verification.json"
+python3.13 -m unittest discover -s tests -p 'test_target_transport*.py' -v
+python3.13 -m tools.cohort029_prepare --transfer "$C/lab/transfer.json" \
+  --out "$D/fixture"
+diff -qr "$C/freeze/fixture" "$D/fixture"
+python3.13 -m tools.analyze_target_transport reproduce \
+  --fixture "$C/freeze/fixture" --run "$R" --terminal "$R/terminal.json" \
+  --reference "$R/analysis" --out "$D/replay"
+cat "$D/replay/reproduction_report.json"
+\end{verbatim}}
+For the manuscript figures, put the writing directory alongside \texttt{experiments/}. Run \path{scripts/extract.py} and \path{scripts/figures.py} with Python, SciPy and Matplotlib. The figure scripts use the extracted CSVs. Run \path{scripts/ledger.py} for the historical and evidence index. The manuscript-side automated check reproduced the complete fixture and six archived analysis files under Python 3.13.18. Independent external researcher sign-off remains outstanding. Tokenization counts come from the frozen preflight; verifying them anew would require the original model and server.
+
+\paragraph{Claim provenance.}
+The companion \path{audit/claim-ledger.csv} is the full source table. Each row gives a claim group, classification or verification method, exact tagged path, SHA-256 of its Git file content, and release commit. The table includes historical evidence for every cohort. The companion citation register identifies the primary publication or preprint edition for each literature comparison.
+{\small\begin{longtable}{@{}p{.22\linewidth}p{.71\linewidth}@{}}
+\toprule Main claim & Computational source\\\midrule\endhead
+Oracle and example & \path{freeze/fixture/worlds.jsonl}, \path{freeze/fixture/gold.jsonl}, \path{freeze/fixture/public_oracle.jsonl}. Family 096 and its two role worlds.\\
+Factor crossing & \path{freeze/fixture/design.jsonl}, \path{freeze/fixture/tasks.jsonl}, \path{freeze/fixture/structural_diffs.json}, \path{freeze/fixture/schedule.json}.\\
+Protocol and runtime & \path{freeze/protocol.md}, \path{freeze/policy-clarification.md}, \path{freeze/deployment/inventory.json}, \path{freeze/deployment/token_budget.json}.\\
+Primary and intervals & \path{runs/confirmatory/analysis/primary.json}, \path{runs/confirmatory/analysis/family_scores.jsonl}, \path{freeze/evidence/coverage.json}.\\
+Behavior and correction & \path{runs/confirmatory/events.jsonl}, \path{runs/confirmatory/analysis/row_scores.jsonl}, \path{runs/confirmatory/analysis/pair_scores.jsonl}, \path{runs/confirmatory/analysis/secondary.json}.\\
+Rival policies & \path{freeze/fixture/policy_audit.json}, \path{freeze/fixture/policy_rows_tie_0.jsonl.gz} and tie-1 counterpart.\\
+016 contrast and shortcut & 016 \path{frozen_run_plan.json}, \path{primary_analysis.json}, \path{input/public_tasks.jsonl}, \path{input/oracle_truth.jsonl} and both arms' \path{raw_responses.jsonl}.\\
+Timing and replay & \path{freeze/evidence/provenance.json}, \path{release/validation_record.json}, \path{release/verification.json}, \path{runs/confirmatory/reproduction/reproduction_report.json}.\\\bottomrule
+\end{longtable}}
+\end{document}
